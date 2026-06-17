@@ -1179,6 +1179,178 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-011",
+                category: "Leadership & People Management",
+                difficulty: "Advanced",
+                question: "How do you manage accountability on a shift-based manufacturing floor when the day shift consistently blames the night shift for missed throughput targets and poor equipment maintenance?",
+                conversational: "Shift-to-shift finger-pointing is a classic symptom of fragmented communication and misaligned metrics. To break this cycle, I eliminate separate shift targets and establish unified 24-hour operational goals for the line. If the asset wins, both shifts win; if it loses, they both lose. Next, I implement a mandatory 15-minute face-to-face shift handoff protocol right at the constraint workstation, not in a break room. The incoming and outgoing supervisors must co-sign an OEE log detailing line performance, active maintenance needs, and workplace cleanliness. This physical handoff completely removes the ability to hide issues, forcing mutual accountability right where the work happens.",
+                deepdive: "In multi-shift environments, variation between teams often exceeds process variation itself. To standardize execution, managers deploy Total Productive Maintenance (TPM) autonomous maintenance frameworks. Shift changeovers are structured via tiered accountability meetings (Tier 1 floor, Tier 2 supervisor). By tracking First-Pass Yield (FPY) and scheduled changeover accuracy per shift alongside a rolling 24-hour asset performance average, leadership can isolate behavioral variance from mechanical failure without creating siloed toxic team incentives.",
+                coaching: "Look for strong management leadership principles. The candidate should avoid passive suggestions like 'having a team meeting to discuss getting along' and focus instead on structural changes like handoff governance, shared metrics, and standardized floor logs.",
+                redFlag: "Suggesting playing the shifts against each other competitively or firing a shift supervisor before auditing the objective handoff communication data."
+            },
+            {
+                id: "Q-012",
+                category: "Behavioral / Situational (STAR)",
+                difficulty: "Core",
+                question: "Tell me about a time you had to make a high-stakes operational decision with highly ambiguous or incomplete data.",
+                conversational: "During an end-of-quarter shipping peak, our primary ERP database experienced a severe synchronization lag. On paper, it looked like we were completely out of our top-selling consumer electronics SKU, but the warehouse floor manager insisted there were unverified pallets sitting in the receiving lane. If I paused outbound shipping to do an audit, we would miss our revenue targets. If I accepted orders and ran into a real stockout, our customer service metrics would collapse. I decided to pull three cycle counters to do a rapid physical spot-check of the receiving lane while simultaneously capping our online order intake at 80% of our estimated stock buffer. Within two hours, we physically located 1,500 un-scanned units. I immediately opened the ordering gate back up to 100%, hit our quarterly numbers, and avoided any backorder penalties.",
+                deepdive: "This challenge evaluates a leader's risk-mitigation logic under pressure. The strategic calculation balances the financial risk of missed revenue (Type I error) against the penalty costs of backorders and split-shipments (Type II error). Implementing a temporary intake constraint acts as an operational buffer while executing a fast cycle count to restore inventory data accuracy (IRA) and protect systemic data integrity.",
+                coaching: "Listen for the candidate's precise multi-step actions. They should outline a structured approach to minimizing downside risk while actively taking steps to clear up data ambiguity in real time.",
+                redFlag: "Paralyzed by the data gap and delaying action indefinitely, or guessing wildly and pushing ahead blindly without establishing any inventory or processing buffers."
+            },
+            {
+                id: "Q-013",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Advanced",
+                question: "How do you strategically choose between a dedicated, product-focused assembly line layout and a flexible, process-focused functional layout?",
+                conversational: "This comes down to an analysis of your volume and product variety mix. If you have low product variety but high, stable volume, a dedicated, product-focused layout—like an automated assembly line—is the clear choice. It gives you minimal unit costs, low WIP, and optimized process flow. But if you are running a high-mix, low-volume operation with significant seasonal changes, you need a flexible, functional layout—grouping similar machines together into work centers. This structure keeps your asset utilization high because multiple products can share the same equipment, even though it adds more material handling overhead and longer lead times.",
+                deepdive: "The decision matrix uses a Product-Process Matrix analysis. Product layouts optimize line balancing to minimize idle time at individual stations, bringing processing efficiency closer to Takt time. Functional layouts rely on manufacturing cells and Group Technology (cellular manufacturing) to handle variation. The trade-off centers on financial asset structures: product-focused layouts require large, specialized capital investments with low variable costs, while functional layouts maximize capital flexibility at the expense of higher variable labor and material handling overhead.",
+                coaching: "Candidates must frame this decision through structural business logic. They should explicitly weigh capital expenditure (CapEx) asset structures against operational flexibility and product life-cycle stages.",
+                redFlag: "Recommending an automated, dedicated assembly line for a highly customized, low-volume product line, which traps capital in under-utilized assets."
+            },
+            {
+                id: "Q-014",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Expert",
+                question: "What is the Collaborative Planning, Forecasting, and Replenishment (CPFR) model, and how does it advance a standard S&OP framework?",
+                conversational: "Standard S&OP is an internal process that coordinates your sales team with your factory floor. CPFR takes that collaborative logic and extends it completely outside your four walls directly to your key retail partners and suppliers. Instead of trying to guess what a major retailer like Walmart is going to order next month using historical data, CPFR integrates your systems so you can view their real-time point-of-sale data and inventory replenishment schedules. By sharing this demand data across organizational boundaries, we can strip out speculation, compress lead times, and significantly lower safety stock investments throughout the entire supply chain.",
+                deepdive: "CPFR operates across four major collaborative pillars: Strategy & Planning, Demand & Supply Management, Execution, and Analysis. By linking downstream POS demand data with upstream production scheduling via Electronic Data Interchange (EDI) or cloud platforms, the enterprise transitions from a traditional 'push' forecast model to an active 'pull' consumption framework. This systemic synchronization minimizes forecast error variance, optimizing the cash conversion cycle and expanding aggregate supply chain gross margins.",
+                coaching: "Look for high-level supply chain visibility insights. The candidate should treat the extended supply chain as a single, integrated value stream rather than a collection of disconnected transactional buyers and sellers.",
+                redFlag: "Treating CPFR as a basic software upgrade or a standard vendor-managed inventory (VMI) program without establishing shared inter-corporate metrics and data-sharing agreements."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-006",
+                scenarioType: "demand drop / overcapacity",
+                difficulty: "Advanced",
+                title: "The Industrial Tooling Capital Utilization Drop",
+                context: "A heavy equipment component manufacturer operating an enterprise machining center in Salt Lake City experiences a sharp, sudden 35% contraction in core B2B customer orders due to a macroeconomic slowdown. Fixed facility overhead and massive multi-million dollar asset depreciation allocations are threatening to push corporate gross margins deep into the red within 60 days.",
+                interviewerPrompt: "How do you restructure operations to manage this excess capacity, preserve operating cash flow, and avoid structural permanent layoffs that could cripple future growth?",
+                candidateObjectives: [
+                    "Perform a detailed variable vs. fixed cost analysis to protect cash flow margins.",
+                    "Formulate a flexible capacity scaling strategy to align factory operations with lower demand volumes.",
+                    "Identify alternative utilization options to monetize idle assets without diluting the core brand value."
+                ],
+                clarifyingQuestions: [
+                    "What is the current breakdown of our manufacturing costs between fixed asset depreciation and variable labor/materials?",
+                    "Can our machining equipment be easily repurposed to produce components for adjacent growth industries, like aerospace or medical equipment?",
+                    "What is the average lead time and training cost if we need to re-hire and ramp up specialized operators when demand recovers?"
+                ],
+                suggestedApproach: "Implement an immediate shift consolidation and flexible labor framework. Transition from a 3-shift, 24/7 continuous operation to a consolidated 2-shift schedule, eliminating overtime variable labor costs. Repurpose under-utilized machinery to cross-train operators on preventive maintenance, bringing outsourced servicing tasks entirely back in-house to save cash. Actively open up idle machining time to short-term contract manufacturing opportunities in adjacent, non-competing sectors.",
+                keyIssues: [
+                    "Fixed asset depreciation charges account for 40% of total unit manufacturing costs, driving up paper unit expenses as volume plummets.",
+                    "The highly skilled machining workforce takes an average of 6 months to recruit and fully train, making broad structural layoffs extremely risky.",
+                    "Raw material purchase commitments have strict minimum take-or-pay volume structures that run for the next 90 days."
+                ],
+                analysisRequired: "Compute the financial break-even utilization rate under the updated cost profile, calculate cash savings from labor shift consolidations, and model the net profit impact of secondary contract manufacturing options.",
+                sampleDataOrExhibit: {
+                    caption: "Machining Center Cost Structure & Capacity Profile",
+                    rows: [
+                        ["Operational Parameter Metric", "Pre-Drop Baseline", "Post-Drop Projections", "Variable vs. Fixed Classification"],
+                        ["Weekly Production Volume", "12,000 Components", "7,800 Components", "Variable / Driven by Customer Orders"],
+                        ["Direct Labor Costs ($/Wk)", "$180,000", "$145,000", "Step-Variable / Shift Dependent"],
+                        ["Asset Depreciation Overhead", "$120,000", "$120,000", "Sunk Fixed / Non-Cash Expense"],
+                        ["Facility Operating Overhead", "$65,000", "$55,000", "Semi-Fixed / Baseline Utilities"],
+                        ["Average Asset Utilization Rate", "88.0%", "57.2%", "Triggers Unfavorable Overhead Variances"]
+                    ]
+                },
+                strongAnswerPath: "The candidate avoids the classic accounting trap of panicking over non-cash depreciation costs, focusing instead on protecting actual cash flow. They calculate that a 35% drop in volume crashes asset utilization to 57.2%, causing severe overhead variances. Rather than executing permanent layoffs that would destroy the talent pool, the candidate consolidates operations into a tight 4-day, compressed work week. This step cuts variable factory operating utility and labor costs by $35,000 a week. Next, they take advantage of the 30.8% idle capacity window to bring a previously outsourced $250k component maintenance program entirely in-house. Finally, they pitch the idle capacity to a regional aerospace company for precision contract machining work, stabilizing cash flows through the downturn.",
+                finalRecommendation: "Consolidate manufacturing schedules into a compressed 4-day work week to slash variable costs. Retain your core technical talent by shifting idle operators onto in-house maintenance and short-term contract aerospace machining projects.",
+                coachingNotes: "This scenario evaluates a candidate's mastery of managerial accounting and cost structures. Poor candidates will immediately recommend sweeping layoffs that permanently damage operational capability; elite leaders focus on protecting cash flow while keeping skilled teams intact.",
+                redFlags: [
+                    "Recommending massive, immediate layoffs of highly skilled technicians without calculating the long-term recruitment and re-training costs when market demand returns.",
+                    "Suggesting building unneeded finished goods inventory to hide the utilization drop on paper, which burns valuable cash and inflates inventory risks."
+                ]
+            },
+            {
+                id: "S-007",
+                scenarioType: "poor forecast accuracy / bullwhip",
+                difficulty: "Expert",
+                title: "The Consumer CPG Bullwhip Disconnect",
+                context: "A fast-moving consumer goods distributor with an expansive multi-tier fulfillment network discovers a massive inventory bottleneck. While retail consumer consumption of their flagship product has grown at a stable 4% rate, warehouse orders coming from regional distributors have spiked wildly by 45%, forcing the manufacturing plant to schedule expensive emergency weekend shifts and buy high-premium raw materials.",
+                interviewerPrompt: "Diagnose the underlying operational drivers of this severe bullwhip distortion, stabilize manufacturing production schedules, and protect the network from future demand amplification shocks.",
+                candidateObjectives: [
+                    "Trace the root causes of demand amplification across the distributor and retail tiers.",
+                    "Quantify the financial penalty of emergency manufacturing operations vs. holding excess inventory.",
+                    "Implement an active information-sharing framework to synchronize manufacturing directly with customer demand."
+                ],
+                clarifyingQuestions: [
+                    "What is the average order batch size and processing lead time required by our primary regional distributors?",
+                    "Are we running aggressive end-of-quarter volume promotions or discounts that encourage distributors to forward-buy?",
+                    "Do our distribution partners have visibility into our factory capacity, or do they place orders entirely in a silo?"
+                ],
+                suggestedApproach: "Eliminate the information distortions driving the bullwhip effect. Audit distributor ordering behaviors. If distributors place massive, irregular orders due to volume-based price discounts or long delivery lead times, replace those structures with an Everyday Low Pricing (EDLP) model and smaller, more frequent delivery schedules. Establish direct electronic data visibility into end-retailer Point-of-Sale (POS) metrics to guide factory scheduling, entirely bypassing the distorted distributor order stream.",
+                keyIssues: [
+                    "Distributors batch orders monthly to hit full-truckload shipping discounts, hiding real weekly demand variations.",
+                    "The commercial sales team offers a 15% discount on the last 5 days of the quarter, driving massive, artificial demand spikes.",
+                    "A historical fear of stockouts has caused distributors to add a 10% safety buffer on top of every order they process."
+                ],
+                analysisRequired: "Calculate the total cost of the bullwhip amplification (premium freight, overtime labor, warehouse congestion) and compare it against the margin impact of volume promotions and freight discounts.",
+                sampleDataOrExhibit: {
+                    caption: "Supply Chain Order Amplification Variance Map",
+                    rows: [
+                        ["Supply Chain Tier Nodes", "Average Monthly Volume", "Demand Variance (Coefficient of Variation)", "Order Cadence Structure"],
+                        ["End Retail Consumer Sales", "100,000 Units", "0.04 (Highly Stable)", "Continuous Daily Purchases"],
+                        ["Retailer to Regional Hub", "102,000 Units", "0.15 (Moderate Noise)", "Weekly Replenishment Orders"],
+                        ["Distributor to Central Factory", "125,000 Units", "0.58 (Extreme Volatility)", "Monthly Full-Truckload Batches"],
+                        ["Factory Raw Material Sourcing", "145,000 Units", "0.82 (Severe Disconnect)", "Quarterly Bulk Commitments"]
+                    ]
+                },
+                strongAnswerPath: "The candidate diagnoses the bullwhip effect by tracking the Coefficient of Variation, which explodes from a stable 0.04 at retail up to an unstable 0.58 at the distributor tier. They isolate the primary drivers: artificial quarterly sales promotions, large monthly order batching for full-truckload discounts, and a lack of clear demand visibility across tiers. The candidate implements an explicit 30-day fix: 1. Kill the end-of-quarter sales promotions and replace them with an Everyday Low Pricing (EDLP) structure to flatten demand. 2. Partner with distributors to shift from large monthly batches to frequent, collaborative multi-SKU truckloads. 3. Build a direct POS data link from top retailers into the factory's S&OP model, cutting safety stock across the network by 30% and eliminating premium emergency factory shifts.",
+                finalRecommendation: "End quarterly price promotions immediately to eliminate artificial demand spikes. Build a direct electronic POS data link with major retail partners to drive factory production schedules from real consumption data rather than distorted distributor orders.",
+                coachingNotes: "This scenario tests a candidate's understanding of systemic supply chain physics. Look for candidates who can identify the behavioral and structural drivers behind the bullwhip effect and offer cross-functional solutions linking sales policies directly to factory costs.",
+                redFlags: [
+                    "Suggesting that the solution is simply purchasing a complex AI demand forecasting tool, failing to realize that internal sales promotions and ordering batch sizes are causing the data distortions.",
+                    "Recommending building an additional central warehouse to hold massive safety stock buffers, which worsens the financial penalty and traps capital."
+                ]
+            },
+            {
+                id: "S-003",
+                scenarioType: "quality defect / yield / recall",
+                difficulty: "Advanced",
+                title: "The Medical Device Cleanroom Contamination Event",
+                context: "A high-precision medical plastics extrusion operation in Salt Lake City discovers a hydraulic fluid seal leak in a primary cleanroom compressor. A data audit reveals that up to 45,000 sterile fluid transfer sets may have been exposed to micro-contamination over a 10-day period. 15,000 of these units have already been shipped to regional hospital distribution centers.",
+                interviewerPrompt: "How do you immediately contain this critical quality failure, manage regulatory and safety risks, isolate the root cause on the shop floor, and prevent similar events from happening again?",
+                candidateObjectives: [
+                    "Formulate a rapid-response containment strategy to secure all compromised product inventory.",
+                    "Deploy a structured root-cause investigation (such as DMAIC or Fishbone) to identify why the leak went unnoticed.",
+                    "Design updated control mechanisms to ensure real-time detection of equipment failures in cleanroom environments."
+                ],
+                clarifyingQuestions: [
+                    "Have any field failures or patient adverse events been reported by hospitals using the shipped lots?",
+                    "Are the individual production batches traceable by specific unique lot numbers, or did the material get mixed together during packaging?",
+                    "What real-time pressure or fluid-level sensor monitoring systems are currently installed on the compressor unit?"
+                ],
+                suggestedApproach: "Execute a rapid quality containment protocol. Instantly freeze all internal cleanroom inventory and issue an immediate 'quarantine and hold' directive to all external distribution partners, using lot traceability numbers to secure the 15,000 shipped units before they reach hospital floors. Transition to a structured root-cause analysis (DMAIC framework): use a Fishbone diagram and the 5 Whys to investigate why the seal failed and why standard inspection loops missed it. Update standard work by installing automated pressure drop sensors on the fluid lines.",
+                keyIssues: [
+                    "Cleanroom technicians perform visual maintenance checks only once every two weeks, allowing the slow leak to go completely unnoticed for 10 days.",
+                    "Lot printing hardware failed intermittently during the run, making it difficult to clearly separate clean batches from contaminated ones.",
+                    "The plant faces strict regulatory reporting requirements (e.g., FDA Class II Recall) if contaminated product enters healthcare networks."
+                ],
+                analysisRequired: "Determine the total financial exposure of scraping the 45,000 units, calculate the cost of cleanroom decontamination and testing, and estimate the ROI of installing automated continuous monitoring sensors.",
+                sampleDataOrExhibit: {
+                    caption: "Lot Traceability Tracking & Exposure Breakdown",
+                    rows: [
+                        ["Production Lot ID", "Total Units Extruded", "Physical Inventory Location Status", "Lot Code Precision Level", "Action Priority Level"],
+                        ["Lot E-2026-01", "15,000 Units", "Internal Warehouse Staged (On Hold)", "Perfect Single-Box Traceability", "Tier 1 Internal Quarantine"],
+                        ["Lot E-2026-02", "15,000 Units", "In-Transit / Regional Distributor Staging", "Pallet-Level Group Label Only", "Immediate External Recall & Hold"],
+                        ["Lot E-2026-03", "15,000 Units", "Delivered to On-Site Hospital Inventories", "Fragmented Mixed Box Records", "Emergency Quality Containment Sweep"]
+                    ]
+                },
+                strongAnswerPath: "The candidate takes absolute, non-negotiable ownership of safety and quality. They execute an immediate lock on all three lots, issuing an emergency quarantine notice to the distributor networks within 4 hours to stop the 15,000 shipped units before they are used in patient care. They accept the immediate $350k scrap write-off as a necessary cost to protect patient safety and corporate reputation. Moving to root-cause mode, they use the 5 Whys to discover that a lack of continuous monitoring allowed the leak to bypass visual checks. They fix this by installing real-time differential pressure gauges on the compressors, linked to an automated line shutoff. This quick action resolves the crisis, maintains regulatory compliance, and upgrades cleanroom quality systems.",
+                finalRecommendation: "Issue an immediate quarantine notice for all affected lots to protect patient safety. Install automated differential pressure sensors on all cleanroom utilities to enable real-time detection and automated line shutoffs.",
+                coachingNotes: "This scenario evaluates a candidate's operational integrity and mastery of quality assurance systems. Look for an immediate, uncompromising focus on containment and consumer safety, followed by a data-driven root-cause analysis rather than an emotional or defensive reaction.",
+                redFlags: [
+                    "Attempting to cover up or downplay the contamination risk, or delaying the external product hold to avoid a financial write-off or regulatory audit.",
+                    "Suggesting a manual inspection sweep of the contaminated units to try and save them, failing to realize that cleanroom micro-contamination cannot be verified visually."
+                ]
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
