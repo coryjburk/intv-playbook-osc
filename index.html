@@ -959,6 +959,113 @@
                 mistakes: "Including scheduled downtime, maintenance windows, or lunches in the available production time calculation, which distorts line pace targets and causes missed shipments."
             }
         );
+        contentData.questions.push(
+            {
+                id: "Q-007",
+                category: "Supply Chain Strategy & Risk",
+                difficulty: "Expert",
+                question: "How do you build a resilient global supply chain architecture that cushions against sudden geopolitical tariff spikes without completely destroying your structural COGS baseline?",
+                conversational: "You can't rely on simple single-source models anymore; they leave your margin profile completely exposed. To build resilience without exploding your COGS, I design a 'China plus one' or 'Core-plus-Option' sourcing footprint. We keep 70% of our baseline volume with a high-efficiency, low-cost Asian supplier to leverage economy of scale. Crucially, we qualify and route the remaining 30% through a nearshore partner—say in Mexico or Eastern Europe. If a geopolitical shock hits, we don't have to spend 6 months building an integration from scratch; we simply flip our allocation mix, scaling the nearshore facility up to 100% capacity using existing tooling masters.",
+                deepdive: "Building resilience requires a real-option asset model approach. The financial trade-off is the premium paid to maintain an active nearshore supplier (slightly higher piece price and dual-tooling amortization) versus the value of the option to pivot instantly if a disruption occurs. Mathematically, this is modeled as an operational insurance policy. This option value increases sharply with the volatility of global freight rates and tariff exposure, lowering the company's risk-adjusted cost of capital on the balance sheet.",
+                coaching: "Listen for an emphasis on proactive supplier qualification and flexible asset allocations. Elite candidates frame resilience as a calculated financial strategy rather than an emotional reaction to a crisis.",
+                redFlag: "Suggesting that the solution is keeping six months of safety stock everywhere, which ties up massive amounts of corporate cash and creates severe obsolescence risks."
+            },
+            {
+                id: "Q-008",
+                category: "Lean / Continuous Improvement",
+                difficulty: "Advanced",
+                question: "What is the difference between Lead Time and Processing Time in a Value Stream Map (VSM), and why does it matter to executive leadership?",
+                conversational: "This is where the 'hidden factory' comes to light. Processing time is the actual hands-on time an operator spends building a product—say, 10 minutes. Lead time is the total clock time an item takes to move through the entire value stream from order to delivery—which might be 25 days. The difference is pure waste: inventory sitting idle in storage bins or staging lanes. Executive leadership cares because processing time drives labor costs, but lead time dictates your cash conversion cycle. If we compress our lead time from 25 days down to 5 days, we instantly free up cash locked on the factory floor and significantly improve customer responsiveness.",
+                deepdive: "In Value Stream Mapping, Process Efficiency is calculated as: Process Efficiency = (Total Processing Time / Total Lead Time) * 100. In many un-optimized operations, this efficiency rating is shockingly low—often under 5%. COMPRESSING lead time is achieved by removing non-value-added storage buffers between steps, enabling a continuous flow that speeds up cash generation cycles.",
+                coaching: "Candidates must clearly explain how inventory acts as a physical barrier that slows down time. They should connect the visual steps of a VSM directly to balance sheet liquidity.",
+                redFlag: "Conflating the two metrics or focusing entirely on speeding up processing machines while leaving massive inventory buffers untouched."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-004",
+                scenarioType: "supplier disruption / single-source failure",
+                difficulty: "Expert",
+                title: "The Microelectronics Sole-Source Black Swan",
+                context: "A Tier-1 medical device manufacturer relies entirely on a single proprietary microchip supplier in Taiwan for its flagship patient monitoring system. A major environmental and power grid failure knocks the supplier's fab offline for an estimated 5 months. The company has only 4 weeks of buffer inventory left, and this single product line drives 60% of aggregate enterprise corporate revenue.",
+                interviewerPrompt: "Develop an immediate crisis mitigation plan to protect product availability, manage key hospital client relationships, and restructure the long-term component sourcing footprint.",
+                candidateObjectives: [
+                    "Formulate a cash-preservation and inventory allocation framework to ration remaining stock.",
+                    "Identify alternative engineering and manufacturing paths to qualify a substitute component.",
+                    "Design a long-term sourcing policy that eliminates sole-source dependencies across critical product lines."
+                ],
+                clarifyingQuestions: [
+                    "Are there alternative chip designs already pre-qualified by our engineering team, or are we facing a clean-sheet redesign?",
+                    "What are the regulatory timeline constraints (e.g., FDA approvals) if we modify the component specification?",
+                    "Can we buy back or re-allocate inventory from our global distributor networks?"
+                ],
+                suggestedApproach: "Deploy a direct two-pronged strategy: Crisis Containment (Immediate) and Redesign/Sourcing Restructuring (Mid-term). Establish a high-level triage board to allocate the remaining 4 weeks of inventory strictly to high-margin or critical-need hospital contracts. Simultaneously, run an global inventory sweep to buy back unsold inventory from secondary distributors. Launch an accelerated engineering sprint to adapt the circuit board for a more accessible chip architecture, working in parallel with regulatory bodies to fast-track approvals via an emergency variance.",
+                keyIssues: [
+                    "The current component is tightly woven into the product's regulatory filing, meaning a clean substitution could stall production for 9 months under normal approval cycles.",
+                    "Sales teams are making aggressive commitments to new accounts, completely unaware of the looming supply cliff.",
+                    "An alternative nearshore component exists but requires a mechanical footprint adjustment on the circuit board."
+                ],
+                analysisRequired: "Calculate the financial burn rate of the product line shutdown, estimate the return on investment (ROI) for an accelerated engineering redesign, and model the financial impact of contract penalties.",
+                sampleDataOrExhibit: {
+                    caption: "Channel Inventory Balance & Contractual Liabilities",
+                    rows: [
+                        ["Customer Account Segment", "Monthly Demand (Units)", "Contractual Stockout Penalty", "Strategic Value Tier"],
+                        ["Tier 1: Global Hospital Groups", "2,500 Units", "Severe / Contract Breach Termination Risk", "High Margin / Anchor Account"],
+                        ["Tier 2: Regional Independent Clinics", "1,200 Units", "Standard Backorder Terms (Grace Period Included)", "Medium Margin / Fragmented"],
+                        ["Tier 3: Secondary Retail Distributors", "800 Units", "No Penalty / Direct Cancellation Clause", "Low Margin / Bulk Transactional"]
+                    ]
+                },
+                strongAnswerPath: "The candidate acts decisively as an executive leader. First, they establish a crisis command structure to freeze all non-essential Tier 3 shipments, redirecting the remaining 4 weeks of inventory exclusively to protect Tier 1 hospital accounts and eliminate legal liabilities. Second, they pull engineering resources off future projects to focus on modifying the circuit board to accept an alternative chip design from an domestic supplier. They estimate the redesign project will cost $750k but will reduce the production halt from 9 months down to 12 weeks. By modeling this tradeoff, they save the company over $30M in potential revenue losses and accelerate the exit from a high-risk sole-source position.",
+                finalRecommendation: "Implement strategic inventory rationing immediately to protect high-margin Tier 1 accounts. Fund the parallel board redesign sprint to shift away from the sole-source bottleneck, and implement a strict policy requiring dual-sourcing for all future product lines.",
+                coachingNotes: "This tests high-level crisis management. Elite candidates don't just panic over the supply failure; they quickly step in to manage customer expectations, protect cash flow, and lead cross-functional engineering sprints.",
+                redFlags: [
+                    "Allowing sales teams to continue burning through scarce inventory on low-margin transactional accounts.",
+                    "Waiting passively for the Taiwanese supplier to restart operations without pursuing a parallel engineering redesign."
+                ]
+            }
+        );
+
+        contentData.battlecard.push(
+            {
+                title: "Must-Know Operations Leadership Concepts",
+                items: [
+                    "Theory of Constraints (TOC): System throughput is dictated entirely by the primary bottleneck station; optimizing non-bottlenecks simply inflates WIP.",
+                    "The Bullwhip Effect: Small shifts in retail customer demand become heavily distorted as they travel upstream through distribution tiers.",
+                    "Postponement / Late Differentiation: Keeping products in a generic state as long as possible to slash finished goods holding costs.",
+                    "Kingman's Formula: Proves that process lead times explode non-linearly when utilization approaches full capacity in volatile settings.",
+                    "Kraljic Matrix Alignment: Categorizing purchases by risk and profit impact to match supplier relationships with strategic business goals."
+                ]
+            },
+            {
+                title: "Executive Key Metrics Cheat Sheet",
+                items: [
+                    "Days of Supply (DoS): Measures working capital velocity. Lower numbers increase liquidity but require reliable fulfillment loops.",
+                    "First-Pass Yield (FPY): The percentage of units that move through a process without needing any rework; a direct indicator of process health.",
+                    "Total Landed Cost: The comprehensive cost of an item including production, shipping, tariffs, customs duties, and local handling.",
+                    "Cash Conversion Cycle (CCC): The total days a dollar is tied up from raw material purchase to final customer cash collection.",
+                    "On-Time In-Full (OTIF): The ultimate metric for supply chain reliability, evaluating customer delivery performance."
+                ]
+            }
+        );
+
+        contentData.redflags.push(
+            {
+                title: "Chasing Local Efficiencies",
+                mistake: "Optimizing individual workstation speeds independently, which floods the floor with unneeded inventory.",
+                fix: "Subordinate non-bottleneck stations to match the pace of the constraint, keeping inventory low and optimizing total system throughput."
+            },
+            {
+                title: "Transactional Sourcing Blindspots",
+                mistake: "Treating mission-critical strategic suppliers like commodity vendors, risking severe supply disruptions over minor price disputes.",
+                fix: "Build long-term, collaborative alliances with strategic partners while saving competitive bidding for commoditized leverage items."
+            },
+            {
+                title: "Passive Safety Stock Strategies",
+                mistake: "Using static rules of thumb (like a flat 2 weeks of inventory) that leave the business exposed to high-volatility items.",
+                fix: "Deploy dynamic safety stock models that automatically adjust inventory buffers based on actual demand and supplier lead-time changes."
+            }
+        );
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
