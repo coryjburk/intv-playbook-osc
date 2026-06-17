@@ -638,129 +638,131 @@
     <script>
         // Data Structures Architecture Container
         const contentData = {
-            contentData.questions.push(
-    {
-        id: "Q-001",
-        category: "Operations Strategy & Fundamentals",
-        difficulty: "Advanced",
-        question: "When managing a high-variance manufacturing environment, how do you mathematically and strategically balance capacity utilization targets with lead-time responsiveness?",
-        conversational: "Look, if we run our lines at 95% utilization to chase down favorable unit costs, Kingman's formula tells us our lead times are going to explode exponentially due to variability in arrivals and processing. For an MBA or senior ops leader, the goal isn't maximizing utilization—it's optimizing total profit. I look at our demand volatility and buffer with strategically placed capacity or inventory. If our margin profile on fast delivery is premium, we intentionally scale back target utilization to 80% or 85%, structuring flexible labor shifts to absorb spikes without blowing out the customer experience.",
-        deepdive: "Kingman's formula approximates the average waiting time (W_q) in a queue as: W_q \approx (\rho / (1 - \rho)) * ((C_a^2 + C_s^2) / 2) * \tau, where \rho represents capacity utilization, C_a is the coefficient of variation for arrivals, C_s is the coefficient of variation for service time, and \tau is the mean processing time. As \rho approaches 1 (100% utilization), the term 1 / (1 - \rho) spikes to infinity. In a high-variance environment, operational strategy dictates setting an optimal utilization target (often between 75% and 85%) to protect lead times. The economic trade-off is the cost of idle capacity versus the value of speed-to-market and the avoidance of late-delivery penalties.",
-        coaching: "Candidates must explicitly reject the legacy accounting trap of chasing 100% utilization at all costs. Listen for an understanding of queues, variability, and the financial trade-off between inventory holding costs, idle capacity costs, and market stockout penalties.",
-        redFlag: "Suggesting that scheduling software or 'working harder' can simultaneously achieve 98% utilization and rock-solid, ultra-fast lead times in a high-variability environment."
-    },
-    {
-        id: "Q-002",
-        category: "Demand Planning, Forecasting & S&OP",
-        difficulty: "Expert",
-        question: "How do you systematically identify and eliminate structural bias in an S&OP process where Sales consistently over-forecasts and Operations consistently under-builds?",
-        conversational: "This is a classic corporate standoff. Sales over-forecasts because they want to ensure inventory availability and avoid missing a commission, while plant managers under-build because they are evaluated on inventory turns and minimizing excess overhead. To fix this, I strip the emotion out of the room by using data. First, we separate the unconstrained commercial demand from the supply capability constraint. Second, we implement tracked KPI metrics for Forecast Bias alongside Mean Absolute Percentage Error (MAPE). If Sales exhibits a consistent upward bias over 3 rolling months, the algorithm automatically adjusts their inputs down for operational scheduling, while holding them financially accountable for the resulting excess inventory carrying costs.",
-        deepdive: "Forecast Bias is mathematically monitored using a tracking signal: Tracking Signal = Cumulative Error / Mean Absolute Deviation (MAD). A tracking signal consistently exceeding +4 or -4 indicates that the forecast model is structurally flawed or intentionally manipulated. To align S&OP, organizations implement a multi-step gated process: 1. Statistical baseline generation (historical smoothing); 2. Consensus demand planning (Sales/Marketing overrides with documented tracking); 3. Supply constraint matching via Rough-Cut Capacity Planning (RCCP); 4. Financial reconciliation. Carrying costs of over-forecasting are allocated directly to the sales division's P&L to create behavioral accountability.",
-        coaching: "Look for strong executive presence and cross-functional diplomacy skills. The candidate should view S&OP as a financial governance mechanism, not just an supply chain scheduling meeting.",
-        redFlag: "Suggesting that the solution is simply buying a more expensive software tool or asking both sides to compromise in the middle without tracking baseline statistical bias metrics."
-    },
-    {
-        id: "Q-003",
-        category: "Inventory Management & Optimization",
-        difficulty: "Advanced",
-        question: "Explain how you would determine the optimal safety stock for a product line experiencing both demand volatility and supplier lead-time variability.",
-        conversational: "You can't just look at demand fluctuations; you have to evaluate supply-side uncertainty simultaneously. I use a decoupled safety stock formula that aggregates both variances. If our lead time from a supplier shifts from 10 days to 20 days unexpectedly, that variance can destroy our service level faster than a 10% demand spike. Once we calculate this risk-adjusted profile, we map it against our target service level—say, 98%—using the appropriate Z-score. But as a manager, I don't stop at the math; I look for operational drivers to shrink those numbers, like negotiating shorter supplier review intervals or localized dual-sourcing.",
-        deepdive: "The comprehensive safety stock formula accounting for both demand and lead-time variability is: SS = Z * \sqrt{(L * \sigma_d^2) + (D^2 * \sigma_L^2)}, where Z is the standard normal distribution factor for a target service level, L is the average supplier lead time, \sigma_d is the standard deviation of daily demand, D is the average daily demand, and \sigma_L is the standard deviation of supplier lead time. This highlights that lead-time variance (\sigma_L^2) is heavily amplified by the square of average demand (D^2). Reducing supplier delivery variability or shortening the absolute lead time has a massive, non-linear downward impact on working capital requirements.",
-        coaching: "The candidate must articulate how the formula changes when lead time is variable. They should naturally bridge technical statistical terms with practical cash flow and working capital impacts on the balance sheet.",
-        redFlag: "Using simple rules of thumb like 'always keep two weeks of inventory on hand' without acknowledging statistical distributions or lead-time variance."
-    }
-);
-contentData.scenarios.push(
-    {
-        id: "S-001",
-        scenarioType: "production bottleneck / throughput constraint",
-        difficulty: "Core",
-        title: "The Automotive Component Throughput Squeeze",
-        context: "A regional Tier-1 automotive electronics manufacturing site in Salt Lake City is failing to meet a sudden 20% increase in weekly client demand for a critical sensor assembly. The plant manager is demanding a $2.5M capital expenditure injection for a new robotic line. You need to validate the bottleneck and find an execution path that avoids unneeded asset investments.",
-        interviewerPrompt: "Walk me through how you would diagnose the line constraint, optimize current capacity, and present your recommendation to the executive leadership team.",
-        candidateObjectives: [
-            "Identify the true mathematical bottleneck using capacity analysis across operations.",
-            "Evaluate Overall Equipment Effectiveness (OEE) and identify losses.",
-            "Determine an implementation plan to unlock the required 20% capacity increase without spending $2.5M."
-        ],
-        clarifyingQuestions: [
-            "What are the individual cycle times or hourly throughput capabilities of each process step?",
-            "What is the current OEE breakdown (Availability, Performance, Quality) of the constrained step?",
-            "Is the line currently running 24/7, or are there scheduling and shift structures we can utilize?"
-        ],
-        suggestedApproach: "Apply the Theory of Constraints (TOC). Map the cycle time of every step to find the operation where cycle time exceeds the required Takt time. Calculate current OEE at that constraint. If OEE is low (e.g., 60-65%), implement SMED (Single-Minute Exchange of Die) for setups, improve preventative maintenance to eliminate unplanned downtime, and rebalance the line instead of purchasing raw capacity.",
-        keyIssues: [
-            "The plant manager is prioritizing local efficiency metrics over global system throughput.",
-            "Changeovers on the molding machine take 90 minutes and occur twice per day.",
-            "Unplanned maintenance on the assembly step causes 15% availability losses."
-        ],
-        analysisRequired: "Calculate Takt time based on demand, compare individual step capacities to isolate the bottleneck, and calculate the financial impact of increasing OEE vs. introducing capital expenditures.",
-        sampleDataOrExhibit: {
-            caption: "Sensor Assembly Line Cycle Times & Performance Baseline",
-            rows: [
-                ["Process Step", "Design Capacity (units/hr)", "Current Actual (units/hr)", "Labor Count", "Historical OEE (%)"],
-                ["Step 1: SMT Placement", "150", "140", "1", "88%"],
-                ["Step 2: Plastic Injection Molding", "125", "95", "2", "62%"],
-                ["Step 3: Robotic Reflow & Test", "160", "155", "1", "90%"],
-                ["Step 4: Manual Pack & Kitting", "200", "190", "3", "95%"]
-            ]
-        },
-        strongAnswerPath: "The candidate notes that Step 2 (Injection Molding) is the true system bottleneck with an actual throughput of 95 units/hour, failing to hit the new target demand of 115 units/hour. Rather than spending $2.5M on a new line, the candidate isolates the low 62% OEE. They identify that the changeover times (90 mins) and cleaning cycles are draining availability. By deploying a Lean Kaizen team to transition tasks from internal to external setup steps (SMED framework), changeover times drop to 20 minutes. This lifts OEE to 78%, unlocking 119 units/hour of throughput, satisfying the demand spike without capital spending.",
-        finalRecommendation: "Deny the $2.5M CapEx request. Execute an immediate 4-week SMED and autonomous maintenance program on the Injection Molding machine to reclaim lost availability, scaling throughput by 25% while expanding free cash flow margin profiles.",
-        coachingNotes: "This tests if the candidate instinctively checks process data before greenlighting expenditures. Good candidates use structural terminology (TOC, OEE, SMED); elite candidates quantify the exact return on invested capital (ROIC) achieved by saving the CapEx.",
-        redFlags: [
-            "Approving the $2.5M expenditure without requesting step-level capacity data.",
-            "Focusing optimization efforts on Step 4 (Manual Pack), which already has excess capacity buffers."
-        ]
-    },
-    {
-        id: "S-002",
-        scenarioType: "excess & obsolete inventory (working capital)",
-        difficulty: "Advanced",
-        title: "The Post-Peak Electronics Working Capital Glut",
-        context: "A high-growth consumer hardware brand has wound up with $45M in Excess and Obsolete (E&O) inventory clogging its central fulfillment hub following a sharp post-holiday demand drop. Holding costs are eroding operating margins by 18% annually, and the CFO wants this inventory off the books within 60 days to stabilize free cash flow metrics.",
-        interviewerPrompt: "How do you systematically triage this inventory liabilities exposure, minimize further bleeding, and re-engineer the demand planning architecture to prevent this from repeating?",
-        candidateObjectives: [
-            "Segment the current inventory using ABC/XYZ analysis to pinpoint high-risk components.",
-            "Formulate an immediate disposition strategy for excess stock.",
-            "Establish automated structural changes inside the demand management protocol."
-        ],
-        clarifyingQuestions: [
-            "What is the shelf life or technological obsolescence window of these SKU matrices?",
-            "Are the components shared across active product lines, or are they uniquely tied to a legacy model?",
-            "What are our current contractual liability structures with our contract manufacturers (CMs) regarding raw materials?"
-        ],
-        suggestedApproach: "Perform an immediate margin-focused triage. Segment stock into liquid overstock, slow-moving service parts, and completely obsolete material. Execute a fast-disposition roadmap (bundling, secondary B2B channels, or raw component salvage options). Shift the manufacturing planning loops from an uncoordinated push model to an active pull structure tied to rolling consumption metrics.",
-        keyIssues: [
-            "Long component procurement lead times (16 weeks) caused procurement teams to over-order based on early optimism.",
-            "Sales teams are insulated from inventory penalties, shielding them from the consequences of optimistic forecasting inputs.",
-            "Warehouse holding space costs are experiencing premium spikes due to local footprint constraints."
-        ],
-        analysisRequired: "Determine total annualized holding cost exposure, compute the financial trade-off of immediate liquidation discount hair-cuts vs. protracted storage, and model working capital metrics.",
-        sampleDataOrExhibit: {
-            caption: "Inventory Exposure Breakdown by Product Lifecycle Tier",
-            rows: [
-                ["SKU Category Group", "Book Value ($M)", "Current MoS (Months of Supply)", "Forecasted Demand Trend", "Salvage Value Offer (%)"],
-                ["Tier A: Active Flagship Models", "$15.0M", "4.5 Months", "-10% QoQ VS Expected", "80% of Cost via Re-Kitting"],
-                ["Tier B: Mature Product Lines", "$20.0M", "14.0 Months", "-45% YoY Decline", "35% via Secondary Flash Sales"],
-                ["Tier C: Legacy Obsolescence", "$10.0M", "36.0 Months", "Near Zero", "5% Scrap / Material Reclamation"]
-            ]
-        },
-        strongAnswerPath: "The candidate structures an explicit 2-part strategy: Triage (Immediate Cash Recovery) and Process Correction. For the triage, they calculate that holding $45M in inventory costs $8.1M annually ($45M * 18%). For Tier C, holding it for 3 years costs more than it's worth; they recommend writing it off immediately for a 5% scrap value recovery, generating $500k cash and freeing up valuable space. For Tier B, they recommend running secondary marketplace promotions at a 50% discount, yielding $7M in quick cash and beating the annualized carrying cost drag. For Tier A, they adjust production downward and re-kit components into upcoming bundles. For structural fixes, they establish a joint-accountability framework linking the VP of Sales' bonus structure directly to forecast accuracy tracking metrics.",
-        finalRecommendation: "Liquidate Tier B/C assets immediately to recover $7.5M in non-dilutive working capital within 45 days. Transition the production strategy to a component-level postponement model, cutting final assembly exposure and reducing future risk.",
-        coachingNotes: "Elite candidates recognize that inventory is a cash asset that degrades rapidly. Look for an understanding of the impact on cash flow, inventory write-downs, and proactive process improvements.",
-        redFlags: [
-            "Recommending holding onto the inventory for multiple years to protect paper gross margins, ignoring carrying costs and obsolescence cycles.",
-            "Blaming production teams for building what the sales team explicitly forecasted."
-        ]
-    }
-);
+            questions: [],
+            scenarios: [],
             frameworks: [],
             quant: [],
             behavioral: [],
             battlecard: [],
             redflags: []
         };
+        contentData.questions.push(
+            {
+                id: "Q-001",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Advanced",
+                question: "When managing a high-variance manufacturing environment, how do you mathematically and strategically balance capacity utilization targets with lead-time responsiveness?",
+                conversational: "Look, if we run our lines at 95% utilization to chase down favorable unit costs, Kingman's formula tells us our lead times are going to explode exponentially due to variability in arrivals and processing. For an MBA or senior ops leader, the goal isn't maximizing utilization—it's optimizing total profit. I look at our demand volatility and buffer with strategically placed capacity or inventory. If our margin profile on fast delivery is premium, we intentionally scale back target utilization to 80% or 85%, structuring flexible labor shifts to absorb spikes without blowing out the customer experience.",
+                deepdive: "Kingman's formula approximates the average waiting time (W_q) in a queue as: W_q ≈ (ρ / (1 - ρ)) * ((C_a^2 + C_s^2) / 2) * τ, where ρ represents capacity utilization, C_a is the coefficient of variation for arrivals, C_s is the coefficient of variation for service time, and τ is the mean processing time. As ρ approaches 1 (100% utilization), the term 1 / (1 - ρ) spikes to infinity. In a high-variance environment, operational strategy dictates setting an optimal utilization target (often between 75% and 85%) to protect lead times. The economic trade-off is the cost of idle capacity versus the value of speed-to-market and the avoidance of late-delivery penalties.",
+                coaching: "Candidates must explicitly reject the legacy accounting trap of chasing 100% utilization at all costs. Listen for an understanding of queues, variability, and the financial trade-off between inventory holding costs, idle capacity costs, and market stockout penalties.",
+                redFlag: "Suggesting that scheduling software or 'working harder' can simultaneously achieve 98% utilization and rock-solid, ultra-fast lead times in a high-variability environment."
+            },
+            {
+                id: "Q-002",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Expert",
+                question: "How do you systematically identify and eliminate structural bias in an S&OP process where Sales consistently over-forecasts and Operations consistently under-builds?",
+                conversational: "This is a classic corporate standoff. Sales over-forecasts because they want to ensure inventory availability and avoid missing a commission, while plant managers under-build because they are evaluated on inventory turns and minimizing excess overhead. To fix this, I strip the emotion out of the room by using data. First, we separate the unconstrained commercial demand from the supply capability constraint. Second, we implement tracked KPI metrics for Forecast Bias alongside Mean Absolute Percentage Error (MAPE). If Sales exhibits a consistent upward bias over 3 rolling months, the algorithm automatically adjusts their inputs down for operational scheduling, while holding them financially accountable for the resulting excess inventory carrying costs.",
+                deepdive: "Forecast Bias is mathematically monitored using a tracking signal: Tracking Signal = Cumulative Error / Mean Absolute Deviation (MAD). A tracking signal consistently exceeding +4 or -4 indicates that the forecast model is structurally flawed or intentionally manipulated. To align S&OP, organizations implement a multi-step gated process: 1. Statistical baseline generation (historical smoothing); 2. Consensus demand planning (Sales/Marketing overrides with documented tracking); 3. Supply constraint matching via Rough-Cut Capacity Planning (RCCP); 4. Financial reconciliation. Carrying costs of over-forecasting are allocated directly to the sales division's P&L to create behavioral accountability.",
+                coaching: "Look for strong executive presence and cross-functional diplomacy skills. The candidate should view S&OP as a financial governance mechanism, not just an supply chain scheduling meeting.",
+                redFlag: "Suggesting that the solution is simply buying a more expensive software tool or asking both sides to compromise in the middle without tracking baseline statistical bias metrics."
+            },
+            {
+                id: "Q-003",
+                category: "Inventory Management & Optimization",
+                difficulty: "Advanced",
+                question: "Explain how you would determine the optimal safety stock for a product line experiencing both demand volatility and supplier lead-time variability.",
+                conversational: "You can't just look at demand fluctuations; you have to evaluate supply-side uncertainty simultaneously. I use a decoupled safety stock formula that aggregates both variances. If our lead time from a supplier shifts from 10 days to 20 days unexpectedly, that variance can destroy our service level faster than a 10% demand spike. Once we calculate this risk-adjusted profile, we map it against our target service level—say, 98%—using the appropriate Z-score. But as a manager, I don't stop at the math; I look for operational drivers to shrink those numbers, like negotiating shorter supplier review intervals or localized dual-sourcing.",
+                deepdive: "The comprehensive safety stock formula accounting for both demand and lead-time variability is: SS = Z * √(L * σ_d^2 + D^2 * σ_L^2), where Z is the standard normal distribution factor for a target service level, L is the average supplier lead time, σ_d is the standard deviation of daily demand, D is the average daily demand, and σ_L is the standard deviation of supplier lead time. This highlights that lead-time variance (σ_L^2) is heavily amplified by the square of average demand (D^2). Reducing supplier delivery variability or shortening the absolute lead time has a massive, non-linear downward impact on working capital requirements.",
+                coaching: "The candidate must articulate how the formula changes when lead time is variable. They should naturally bridge technical statistical terms with practical cash flow and working capital impacts on the balance sheet.",
+                redFlag: "Using simple rules of thumb like 'always keep two weeks of inventory on hand' without acknowledging statistical distributions or lead-time variance."
+            }
+        );
+contentData.scenarios.push(
+            {
+                id: "S-001",
+                scenarioType: "production bottleneck / throughput constraint",
+                difficulty: "Core",
+                title: "The Automotive Component Throughput Squeeze",
+                context: "A regional Tier-1 automotive electronics manufacturing site in Salt Lake City is failing to meet a sudden 20% increase in weekly client demand for a critical sensor assembly. The plant manager is demanding a $2.5M capital expenditure injection for a new robotic line. You need to validate the bottleneck and find an execution path that avoids unneeded asset investments.",
+                interviewerPrompt: "Walk me through how you would diagnose the line constraint, optimize current capacity, and present your recommendation to the executive leadership team.",
+                candidateObjectives: [
+                    "Identify the true mathematical bottleneck using capacity analysis across operations.",
+                    "Evaluate Overall Equipment Effectiveness (OEE) and identify losses.",
+                    "Determine an implementation plan to unlock the required 20% capacity increase without spending $2.5M."
+                ],
+                clarifyingQuestions: [
+                    "What are the individual cycle times or hourly throughput capabilities of each process step?",
+                    "What is the current OEE breakdown (Availability, Performance, Quality) of the constrained step?",
+                    "Is the line currently running 24/7, or are there scheduling and shift structures we can utilize?"
+                ],
+                suggestedApproach: "Apply the Theory of Constraints (TOC). Map the cycle time of every step to find the operation where cycle time exceeds the required Takt time. Calculate current OEE at that constraint. If OEE is low (e.g., 60-65%), implement SMED (Single-Minute Exchange of Die) for setups, improve preventative maintenance to eliminate unplanned downtime, and rebalance the line instead of purchasing raw capacity.",
+                keyIssues: [
+                    "The plant manager is prioritizing local efficiency metrics over global system throughput.",
+                    "Changeovers on the molding machine take 90 minutes and occur twice per day.",
+                    "Unplanned maintenance on the assembly step causes 15% availability losses."
+                ],
+                analysisRequired: "Calculate Takt time based on demand, compare individual step capacities to isolate the bottleneck, and calculate the financial impact of increasing OEE vs. introducing capital expenditures.",
+                sampleDataOrExhibit: {
+                    caption: "Sensor Assembly Line Cycle Times & Performance Baseline",
+                    rows: [
+                        ["Process Step", "Design Capacity (units/hr)", "Current Actual (units/hr)", "Labor Count", "Historical OEE (%)"],
+                        ["Step 1: SMT Placement", "150", "140", "1", "88%"],
+                        ["Step 2: Plastic Injection Molding", "125", "95", "2", "62%"],
+                        ["Step 3: Robotic Reflow & Test", "160", "155", "1", "90%"],
+                        ["Step 4: Manual Pack & Kitting", "200", "190", "3", "95%"]
+                    ]
+                },
+                strongAnswerPath: "The candidate notes that Step 2 (Injection Molding) is the true system bottleneck with an actual throughput of 95 units/hour, failing to hit the new target demand of 115 units/hour. Rather than spending $2.5M on a new line, the candidate isolates the low 62% OEE. They identify that the changeover times (90 mins) and cleaning cycles are draining availability. By deploying a Lean Kaizen team to transition tasks from internal to external setup steps (SMED framework), changeover times drop to 20 minutes. This lifts OEE to 78%, unlocking 119 units/hour of throughput, satisfying the demand spike without capital spending.",
+                finalRecommendation: "Deny the $2.5M CapEx request. Execute an immediate 4-week SMED and autonomous maintenance program on the Injection Molding machine to reclaim lost availability, scaling throughput by 25% while expanding free cash flow margin profiles.",
+                coachingNotes: "This tests if the candidate instinctively checks process data before greenlighting expenditures. Good candidates use structural terminology (TOC, OEE, SMED); elite candidates quantify the exact return on invested capital (ROIC) achieved by saving the CapEx.",
+                redFlags: [
+                    "Approving the $2.5M expenditure without requesting step-level capacity data.",
+                    "Focusing optimization efforts on Step 4 (Manual Pack), which already has excess capacity buffers."
+                ]
+            },
+            {
+                id: "S-002",
+                scenarioType: "excess & obsolete inventory (working capital)",
+                difficulty: "Advanced",
+                title: "The Post-Peak Electronics Working Capital Glut",
+                context: "A high-growth consumer hardware brand has wound up with $45M in Excess and Obsolete (E&O) inventory clogging its central fulfillment hub following a sharp post-holiday demand drop. Holding costs are eroding operating margins by 18% annually, and the CFO wants this inventory off the books within 60 days to stabilize free cash flow metrics.",
+                interviewerPrompt: "How do you systematically triage this inventory liabilities exposure, minimize further bleeding, and re-engineer the demand planning architecture to prevent this from repeating?",
+                candidateObjectives: [
+                    "Segment the current inventory using ABC/XYZ analysis to pinpoint high-risk components.",
+                    "Formulate an immediate disposition strategy for excess stock.",
+                    "Establish automated structural changes inside the demand management protocol."
+                ],
+                clarifyingQuestions: [
+                    "What is the shelf life or technological obsolescence window of these SKU matrices?",
+                    "Are the components shared across active product lines, or are they uniquely tied to a legacy model?",
+                    "What are our current contractual liability structures with our contract manufacturers (CMs) regarding raw materials?"
+                ],
+                suggestedApproach: "Perform an immediate margin-focused triage. Segment stock into liquid overstock, slow-moving service parts, and completely obsolete material. Execute a fast-disposition roadmap (bundling, secondary B2B channels, or raw component salvage options). Shift the manufacturing planning loops from an uncoordinated push model to an active pull structure tied to rolling consumption metrics.",
+                keyIssues: [
+                    "Long component procurement lead times (16 weeks) caused procurement teams to over-order based on early optimism.",
+                    "Sales teams are insulated from inventory penalties, shielding them from the consequences of optimistic forecasting inputs.",
+                    "Warehouse holding space costs are experiencing premium spikes due to local footprint constraints."
+                ],
+                analysisRequired: "Determine total annualized holding cost exposure, compute the financial trade-off of immediate liquidation discount hair-cuts vs. protracted storage, and model working capital metrics.",
+                sampleDataOrExhibit: {
+                    caption: "Inventory Exposure Breakdown by Product Lifecycle Tier",
+                    rows: [
+                        ["SKU Category Group", "Book Value ($M)", "Current MoS (Months of Supply)", "Forecasted Demand Trend", "Salvage Value Offer (%)"],
+                        ["Tier A: Active Flagship Models", "$15.0M", "4.5 Months", "-10% QoQ VS Expected", "80% of Cost via Re-Kitting"],
+                        ["Tier B: Mature Product Lines", "$20.0M", "14.0 Months", "-45% YoY Decline", "35% via Secondary Flash Sales"],
+                        ["Tier C: Legacy Obsolescence", "$10.0M", "36.0 Months", "Near Zero", "5% Scrap / Material Reclamation"]
+                    ]
+                },
+                strongAnswerPath: "The candidate structures an explicit 2-part strategy: Triage (Immediate Cash Recovery) and Process Correction. For the triage, they calculate that holding $45M in inventory costs $8.1M annually ($45M * 18%). For Tier C, holding it for 3 years costs more than it's worth; they recommend writing it off immediately for a 5% scrap value recovery, generating $500k cash and freeing up valuable space. For Tier B, they recommend running secondary marketplace promotions at a 50% discount, yielding $7M in quick cash and beating the annualized carrying cost drag. For Tier A, they adjust production downward and re-kit components into upcoming bundles. For structural fixes, they establish a joint-accountability framework linking the VP of Sales' bonus structure directly to forecast accuracy tracking metrics.",
+                finalRecommendation: "Liquidate Tier B/C assets immediately to recover $7.5M in non-dilutive working capital within 45 days. Transition the production strategy to a component-level postponement model, cutting final assembly exposure and reducing future risk.",
+                coachingNotes: "Elite candidates recognize that inventory is a cash asset that degrades rapidly. Look for an understanding of the impact on the balance sheet, inventory write-downs, and proactive process improvements.",
+                redFlags: [
+                    "Recommending holding onto the inventory for multiple years to protect paper gross margins, ignoring carrying costs and obsolescence cycles.",
+                    "Blaming production teams for building what the sales team explicitly forecasted."
+                ]
+            }
+        );
 
         const competencies = [
             "Problem structuring & root-cause rigor",
