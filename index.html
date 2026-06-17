@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations & Supply Chain Manager Interview Playbook</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,400&display=swap');
+
+        :root {
+            --bg-main: #FBF9F6;
+            --text-ink: #1E293B;
+            --text-muted: #64748B;
+            --utah-red: #CC0000;
+            --gold-accent: #C9A84C;
+            --gold-light: #FBF7ED;
+            --card-bg: #FFFFFF;
+            --border-color: #E2E8F0;
+            --font-serif: 'Source Serif 4', Georgia, serif;
+            --font-sans: 'Source Sans 3', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-ink);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        header {
+            background: var(--card-bg);
+            border-bottom: 2px solid var(--utah-red);
+            padding: 2rem 4rem;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--text-ink);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat-badge {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .stat-badge strong { color: var(--utah-red); }
+
+        .nav-container {
+            background: #F1EFEA;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            padding: 0 4rem;
+        }
+
+        .nav-tabs {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+            list-style: none;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar { display: none; }
+
+        .tab-link {
+            padding: 1.2rem 1.5rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-link:hover { color: var(--text-ink); }
+        .tab-link.active {
+            color: var(--utah-red);
+            border-bottom-color: var(--utah-red);
+            background: var(--card-bg);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 4rem;
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        .toolbar {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input, .filter-select {
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            background: var(--bg-main);
+            color: var(--text-ink);
+        }
+        .search-input { flex-grow: 1; }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            letter-spacing: 0.03em;
+        }
+
+        .badge-cat { background: #E2E8F0; color: var(--text-ink); }
+        .badge-Foundational { background: #E2F0D9; color: #385723; }
+        .badge-Core { background: #FFF2CC; color: #7F6000; }
+        .badge-Advanced { background: #FCE4D6; color: #C65911; }
+        .badge-Expert { background: #F8CBAD; color: #C00000; }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-ink);
+        }
+
+        .action-btn {
+            background: transparent;
+            border: 1px solid var(--utah-red);
+            color: var(--utah-red);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--utah-red);
+            color: #FFFFFF;
+        }
+
+        .detail-view {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            display: none;
+        }
+
+        .detail-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+            gap: 0.5rem;
+        }
+
+        .detail-tab {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--text-muted);
+            border-bottom: 2px solid transparent;
+        }
+
+        .detail-tab.active {
+            color: var(--text-ink);
+            border-bottom-color: var(--gold-accent);
+        }
+
+        .detail-pane { display: none; font-size: 0.95rem; }
+        .detail-pane.active { display: block; }
+
+        .pane-heading {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .practice-trigger-row {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30, 41, 59, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .modal.active { opacity: 1; pointer-events: auto; }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 6px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--utah-red);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body { padding: 2rem; }
+
+        .modal-close {
+            background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);
+        }
+
+        /* Practice Modal Layout */
+        .audio-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .mic-btn {
+            background: var(--utah-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: background 0.2s;
+        }
+
+        .mic-btn.recording {
+            background: #E11D48;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(225, 29, 72, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+        }
+
+        .transcript-area {
+            width: 100%;
+            height: 180px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+
+        .metrics-bar {
+            display: flex;
+            gap: 2rem;
+            background: var(--bg-main);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .prompt-box {
+            width: 100%;
+            height: 120px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            background: #0F172A;
+            color: #F8FAFC;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        /* Dashboard Engine Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .paste-box-container h3 {
+            margin-bottom: 0.5rem;
+            font-family: var(--font-serif);
+        }
+
+        .paste-input {
+            width: 100%;
+            height: 250px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .score-card-container {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+        }
+
+        .meter-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .meter-lbl-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .meter-bg {
+            background: #E2E8F0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            background: var(--utah-red);
+            height: 100%;
+            width: 0%;
+            transition: width 0.6s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
+        .overall-tier-box {
+            background: var(--gold-light);
+            border: 1px solid var(--gold-accent);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .overall-tier-title {
+            font-size: 1.4rem;
+            font-family: var(--font-serif);
+            font-weight: 700;
+            color: var(--text-ink);
+        }
+
+        /* Utilities */
+        .hidden { display: none !important; }
+        .red-flag-box {
+            background: #FFF5F5;
+            border-left: 3px solid #E53E3E;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .deep-dive-box {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div>
+                <h1>Operations & Supply Chain Manager Interview Playbook</h1>
+                <div class="subtitle">An advanced technical preparation framework and responsive dashboard customized for executive management and operations leadership roles.</div>
+                <div class="hero-stats">
+                    <div class="stat-badge">Questions: <strong id="stat-q-count">0</strong></div>
+                    <div class="stat-badge">Operational Scenarios: <strong id="stat-s-count">0</strong></div>
+                    <div class="stat-badge">Frameworks: <strong id="stat-f-count">0</strong></div>
+                    <div class="stat-badge">Quant Drills: <strong id="stat-d-count">0</strong></div>
+                </div>
+            </div>
+            <div>
+                <button class="action-btn" onclick="app.exportProgress()">Export Data</button>
+                <button class="action-btn" onclick="app.triggerImport()">Import Data</button>
+                <input type="file" id="import-file" class="hidden" onchange="app.importProgress(event)">
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-container">
+        <ul class="nav-tabs">
+            <li class="tab-link active" onclick="app.switchTab('questions')">Question Bank</li>
+            <li class="tab-link" onclick="app.switchTab('scenarios')">Scenario Library</li>
+            <li class="tab-link" onclick="app.switchTab('frameworks')">Frameworks</li>
+            <li class="tab-link" onclick="app.switchTab('quant')">Quant Drills</li>
+            <li class="tab-link" onclick="app.switchTab('behavioral')">Leadership & Behavioral</li>
+            <li class="tab-link" onclick="app.switchTab('battlecard')">Battlecard Reference</li>
+            <li class="tab-link" onclick="app.switchTab('redflags')">Red Flags Matrix</li>
+            <li class="tab-link" onclick="app.switchTab('insights')">Live Insights</li>
+            <li class="tab-link" onclick="app.switchTab('dashboard')">Readiness Dashboard</li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- QUESTION BANK -->
+        <section id="panel-questions" class="tab-panel active">
+            <div class="toolbar">
+                <input type="text" class="search-input" id="q-search" placeholder="Search operational methodologies, capabilities, or metrics..." oninput="app.renderQuestions()">
+                <select class="filter-select" id="q-filter-cat" onchange="app.renderQuestions()">
+                    <option value="">All Functional Categories</option>
+                    <option value="Leadership & People Management">Leadership & People Management</option>
+                    <option value="Behavioral / Situational (STAR)">Behavioral / Situational (STAR)</option>
+                    <option value="Operations Strategy & Fundamentals">Operations Strategy & Fundamentals</option>
+                    <option value="Lean / Continuous Improvement">Lean / Continuous Improvement</option>
+                    <option value="Process Improvement & Root-Cause">Process Improvement & Root-Cause</option>
+                    <option value="Inventory Management & Optimization">Inventory Management & Optimization</option>
+                    <option value="Demand Planning, Forecasting & S&OP">Demand Planning, Forecasting & S&OP</option>
+                    <option value="Procurement & Supplier Management">Procurement & Supplier Management</option>
+                    <option value="Logistics, Distribution & Network Design">Logistics, Distribution & Network Design</option>
+                    <option value="Manufacturing / Production & Capacity">Manufacturing / Production & Capacity</option>
+                    <option value="Quality Management, Metrics & KPIs">Quality Management, Metrics & KPIs</option>
+                    <option value="Supply Chain Strategy & Risk">Supply Chain Strategy & Risk</option>
+                </select>
+                <select class="filter-select" id="q-filter-diff" onchange="app.renderQuestions()">
+                    <option value="">All Difficulties</option>
+                    <option value="Foundational">Foundational</option>
+                    <option value="Core">Core</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+            <div class="grid-layout" id="questions-grid"></div>
+        </section>
+
+        <!-- SCENARIO LIBRARY -->
+        <section id="panel-scenarios" class="tab-panel">
+            <div class="toolbar">
+                <input type="text" class="search-input" id="s-search" placeholder="Search case scenarios..." oninput="app.renderScenarios()">
+                <select class="filter-select" id="s-filter-diff" onchange="app.renderScenarios()">
+                    <option value="">All Difficulties</option>
+                    <option value="Foundational">Foundational</option>
+                    <option value="Core">Core</option>
+                    <option value="Advanced">Advanced</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+            <div class="grid-layout" id="scenarios-grid"></div>
+        </section>
+
+        <!-- FRAMEWORKS -->
+        <section id="panel-frameworks" class="tab-panel">
+            <div class="grid-layout" id="frameworks-grid"></div>
+        </section>
+
+        <!-- QUANT DRILLS -->
+        <section id="panel-quant" class="tab-panel">
+            <div class="grid-layout" id="quant-grid"></div>
+        </section>
+
+        <!-- BEHAVIORAL -->
+        <section id="panel-behavioral" class="tab-panel">
+            <div class="grid-layout" id="behavioral-grid"></div>
+        </section>
+
+        <!-- BATTLECARD -->
+        <section id="panel-battlecard" class="tab-panel">
+            <div class="grid-layout" id="battlecard-grid"></div>
+        </section>
+
+        <!-- RED FLAGS -->
+        <section id="panel-redflags" class="tab-panel">
+            <div class="grid-layout" id="redflags-grid"></div>
+        </section>
+
+        <!-- LIVE INSIGHTS -->
+        <section id="panel-insights" class="tab-panel">
+            <div class="toolbar">
+                <h2>Industry Intelligence Feed</h2>
+                <div class="subtitle">System data synchronized using external Python pipelines and continuous deployment tasks to avoid system runtime CORS blocks.</div>
+            </div>
+            <div id="insights-container">
+                <p style="color: var(--text-muted); font-style: italic;">No external intelligence file loaded. Ensure automated background fetching pipelines have executed properly.</p>
+            </div>
+        </section>
+
+        <!-- CLOSED LOOP DASHBOARD -->
+        <section id="panel-dashboard" class="tab-panel">
+            <div class="overall-tier-box">
+                <div class="subtitle" style="text-transform: uppercase; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em;">Current Assessment Rating</div>
+                <div class="overall-tier-title" id="dash-tier-name">Emerging</div>
+                <div style="font-size: 0.9rem; margin-top: 0.3rem; color: var(--text-muted);" id="dash-rep-count">Based on 0 logged practice cycles</div>
+                <button class="action-btn" style="margin-top: 1rem; font-size: 0.75rem;" onclick="app.resetDashboard()">Reset Dashboard Metrics</button>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="paste-box-container">
+                    <h3>Paste Feedback Matrix</h3>
+                    <div class="subtitle" style="margin-bottom: 1rem; font-size: 0.9rem;">Copy the raw feedback payload generated from your external LLM session here. The architecture will automatically capture performance metrics.</div>
+                    <textarea class="paste-input" id="dash-paste" placeholder="Paste structural feedback output containing [READINESS SCORES] directly here..."></textarea>
+                    <button class="action-btn" style="width: 100%; padding: 0.8rem;" onclick="app.parseScores()">Process Analytics Evaluation</button>
+                </div>
+                <div class="score-card-container">
+                    <h3>Capability Tracking Matrix</h3>
+                    <div class="subtitle" style="margin-bottom: 1.5rem; font-size: 0.9rem;">Aggregated capability benchmarks derived from active testing matrices.</div>
+                    
+                    <div id="meters-target"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PRACTICE MODAL INTERFACE -->
+    <div class="modal" id="practice-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="pm-title" style="font-family: var(--font-serif);">Interactive Interview Simulator</h3>
+                <button class="modal-close" onclick="app.closePractice()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 1.5rem;">
+                    <span class="badge badge-cat" id="pm-meta-cat">Category</span>
+                    <p id="pm-question-prompt" style="font-size: 1.1rem; font-weight: 600; margin-top: 0.5rem; font-family: var(--font-serif);"></p>
+                </div>
+
+                <div class="audio-controls">
+                    <button class="mic-btn" id="mic-trigger" onclick="app.toggleRecording()">🎙️</button>
+                    <div>
+                        <div id="mic-status" style="font-weight: 600; font-size: 0.95rem;">Microphone Terminated</div>
+                        <div class="subtitle" style="font-size: 0.85rem;">Utilizes native system API execution engine for real-time capturing.</div>
+                    </div>
+                </div>
+
+                <textarea class="transcript-area" id="pm-transcript" placeholder="Your captured verbal interface transcript stream metrics populate directly here. You can manually tweak or adjust structural syntax typos as needed before compilation."></textarea>
+
+                <div class="metrics-bar">
+                    <div>Pacing Counter: <strong id="pm-word-count">0</strong> words</div>
+                    <div>Verbal Filler Identifications: <strong id="pm-filler-count">0</strong> counts detected</div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <div class="pane-heading">Automated Prompt Package Generator</div>
+                    <div class="subtitle" style="margin-bottom: 0.5rem; font-size: 0.85rem;">Copy this standardized directive package block directly into your localized target engine runtime session.</div>
+                    <textarea class="prompt-box" id="pm-prompt-out" readonly onclick="this.select()"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Structures Architecture Container
+        const contentData = {
+            questions: [],
+            scenarios: [],
+            frameworks: [],
+            quant: [],
+            behavioral: [],
+            battlecard: [],
+            redflags: []
+        };
+
+        const competencies = [
+            "Problem structuring & root-cause rigor",
+            "Operational & technical knowledge",
+            "Quantitative & metrics fluency",
+            "Process-improvement application (Lean/Six Sigma)",
+            "Trade-off & business judgment",
+            "Leadership & people management",
+            "Stakeholder communication & executive presence",
+            "Recommendation & implementation focus"
+        ];
+
+        // Global Selector Elements Engine Utility Helpers
+        const $ = selector => document.querySelector(selector);
+        const esc = text => {
+            if (!text) return '';
+            return text.toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        };
+
+        class PlaybookApp {
+            constructor() {
+                this.currentTab = 'questions';
+                this.recognition = null;
+                this.isRecording = false;
+                this.activeQuestionContext = null;
+                this.fillerWords = ['um', 'like', 'you know', 'uh', 'so', 'actually', 'basically'];
+                
+                this.initDashboardState();
+            }
+
+            init() {
+                this.initSpeechEngine();
+                this.renderStats();
+                this.renderAllPanels();
+                this.renderDashboardMeters();
+            }
+
+            switchTab(tabId) {
+                this.currentTab = tabId;
+                document.querySelectorAll('.tab-link').forEach(el => el.classList.remove('active'));
+                document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
+                
+                event.target.classList.add('active');
+                $(`#panel-${tabId}`).classList.add('active');
+            }
+
+            renderStats() {
+                $('#stat-q-count').innerText = contentData.questions.length;
+                $('#stat-s-count').innerText = contentData.scenarios.length;
+                $('#stat-f-count').innerText = contentData.frameworks.length;
+                $('#stat-d-count').innerText = contentData.quant.length;
+            }
+
+            renderAllPanels() {
+                this.renderQuestions();
+                this.renderScenarios();
+                this.renderFrameworks();
+                this.renderQuant();
+                this.renderBehavioral();
+                this.renderBattlecards();
+                this.renderRedFlags();
+            }
+
+            toggleDetails(id) {
+                const el = $(`#details-${id}`);
+                if(el.style.display === 'block') {
+                    el.style.display = 'none';
+                } else {
+                    el.style.display = 'block';
+                }
+            }
+
+            switchDetailTab(id, paneType) {
+                const card = $(`#card-${id}`);
+                card.querySelectorAll('.detail-tab').forEach(t => t.classList.remove('active'));
+                card.querySelectorAll('.detail-pane').forEach(p => p.classList.remove('active'));
+
+                event.target.classList.add('active');
+                card.querySelector(`.pane-${paneType}`).classList.add('active');
+            }
+
+            // --- MODULE RENDER METHODS ---
+            renderQuestions() {
+                const target = $('#questions-grid');
+                const query = $('#q-search').value.toLowerCase();
+                const catFilter = $('#q-filter-cat').value;
+                const diffFilter = $('#q-filter-diff').value;
+
+                let html = '';
+                const filtered = contentData.questions.filter(q => {
+                    const matchQ = q.question.toLowerCase().includes(query) || q.conversational.toLowerCase().includes(query) || q.deepdive.toLowerCase().includes(query);
+                    const matchCat = catFilter === '' || q.category === catFilter;
+                    const matchDiff = diffFilter === '' || q.difficulty === diffFilter;
+                    return matchQ && matchCat && matchDiff;
+                });
+
+                if (filtered.length === 0) {
+                    target.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted); text-align: center; padding: 2rem;">No matching questions found in the current engine database slice.</p>`;
+                    return;
+                }
+
+                filtered.forEach(q => {
+                    html += `
+                    <div class="card" id="card-${q.id}">
+                        <div class="badge-row">
+                            <span class="badge badge-cat">${esc(q.category)}</span>
+                            <span class="badge badge-${q.difficulty}">${esc(q.difficulty)}</span>
+                        </div>
+                        <div class="card-title">${esc(q.question)}</div>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button class="action-btn" onclick="app.toggleDetails('${q.id}')">Examine Strategy</button>
+                            <button class="action-btn" style="border-color: var(--gold-accent); color: var(--gold-accent);" onclick="app.openPractice('question', '${q.id}')">Practice Aloud</button>
+                        </div>
+                        
+                        <div class="detail-view" id="details-${q.id}">
+                            <div class="detail-tabs">
+                                <div class="detail-tab active" onclick="app.switchDetailTab('${q.id}', 'conv')">Conversational Response</div>
+                                <div class="detail-tab" onclick="app.switchDetailTab('${q.id}', 'deep')">Deep Dive Integration</div>
+                                <div class="detail-tab" onclick="app.switchDetailTab('${q.id}', 'coach')">Coaching Directives</div>
+                            </div>
+                            <div class="detail-pane pane-conv active">
+                                <div class="pane-heading">Verbal Execution Blueprint</div>
+                                <p style="font-style: italic; color: var(--text-ink);">"${esc(q.conversational)}"</p>
+                                <div class="red-flag-box">
+                                    <strong>Hiring Manager Alert Trigger:</strong> ${esc(q.redFlag)}
+                                </div>
+                            </div>
+                            <div class="detail-pane pane-deep">
+                                <div class="pane-heading">Technical System Metrics & Structural Parameters</div>
+                                <div class="deep-dive-box">${esc(q.deepdive)}</div>
+                            </div>
+                            <div class="detail-pane pane-coach">
+                                <div class="pane-heading">Executive Calibration Focus</div>
+                                <p>${esc(q.coaching)}</p>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+                target.innerHTML = html;
+            }
+
+            renderScenarios() {
+                const target = $('#scenarios-grid');
+                const query = $('#s-search').value.toLowerCase();
+                const diffFilter = $('#s-filter-diff').value;
+
+                let html = '';
+                const filtered = contentData.scenarios.filter(s => {
+                    const matchS = s.title.toLowerCase().includes(query) || s.context.toLowerCase().includes(query);
+                    const matchDiff = diffFilter === '' || s.difficulty === diffFilter;
+                    return matchS && matchDiff;
+                });
+
+                if (filtered.length === 0) {
+                    target.innerHTML = `<p style="grid-column: 1/-1; color: var(--text-muted); text-align: center; padding: 2rem;">No operational case simulations identified.</p>`;
+                    return;
+                }
+
+                filtered.forEach(s => {
+                    html += `
+                    <div class="card" id="card-${s.id}">
+                        <div class="badge-row">
+                            <span class="badge badge-cat">${esc(s.scenarioType)}</span>
+                            <span class="badge badge-${s.difficulty}">${esc(s.difficulty)}</span>
+                        </div>
+                        <div class="card-title">${esc(s.title)}</div>
+                        <p style="font-size:0.9rem; color: var(--text-muted); margin-bottom:1rem;">${esc(s.context.substring(0,120))}...</p>
+                        <div style="display:flex; gap:0.5rem;">
+                            <button class="action-btn" onclick="app.toggleDetails('${s.id}')">Examine Scenario</button>
+                            <button class="action-btn" style="border-color: var(--gold-accent); color: var(--gold-accent);" onclick="app.openPractice('scenario', '${s.id}')">Practice Case</button>
+                        </div>
+                        
+                        <div class="detail-view" id="details-${s.id}">
+                            <div class="detail-tabs">
+                                <div class="detail-tab active" onclick="app.switchDetailTab('${s.id}', 'prompt')">Context & Prompt</div>
+                                <div class="detail-tab" onclick="app.switchDetailTab('${s.id}', 'approach')">Strategic Path</div>
+                                <div class="detail-tab" onclick="app.switchDetailTab('${s.id}', 'analysis')">Quant Analysis</div>
+                            </div>
+                            <div class="detail-pane pane-prompt active">
+                                <div class="pane-heading">Interviewer Prompt Instruction</div>
+                                <p style="font-weight:600; margin-bottom:1rem;">${esc(s.interviewerPrompt)}</p>
+                                <div class="pane-heading">Key Parameters & Objectives</div>
+                                <ul style="margin-left:1.2rem; margin-bottom:1rem;">
+                                    ${s.candidateObjectives.map(o => `<li>${esc(o)}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="detail-pane pane-approach">
+                                <div class="pane-heading">Suggested Operational Resolution Matrix</div>
+                                <p style="margin-bottom:1rem;">${esc(s.suggestedApproach)}</p>
+                                <div class="pane-heading">Final Recommendation Targets</div>
+                                <p style="font-weight:600; color: var(--utah-red);">${esc(s.finalRecommendation)}</p>
+                            </div>
+                            <div class="detail-pane pane-analysis">
+                                <div class="pane-heading">Required Operational Quant Calculations</div>
+                                <p style="margin-bottom:1rem;">${esc(s.analysisRequired)}</p>
+                                ${this.renderScenarioExhibit(s.sampleDataOrExhibit)}
+                            </div>
+                        </div>
+                    </div>`;
+                });
+                target.innerHTML = html;
+            }
+
+            renderScenarioExhibit(exhibit) {
+                if(!exhibit || !exhibit.rows || exhibit.rows.length === 0) return '';
+                let tableHtml = `<table style="width:100%; border-collapse:collapse; font-size:0.85rem; margin-top:0.5rem; background: #FFF;">`;
+                exhibit.rows.forEach((row, i) => {
+                    let cellStyle = `border: 1px solid var(--border-color); padding: 0.4rem;`;
+                    if(i === 0) {
+                        cellStyle += `background: var(--bg-main); font-weight:700;`;
+                    }
+                    tableHtml += `<tr>${row.map(c => `<td style="${cellStyle}">${esc(c)}</td>`).join('')}</tr>`;
+                });
+                tableHtml += `</table><div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">Exhibit: ${esc(exhibit.caption)}</div>`;
+                return tableHtml;
+            }
+
+            renderFrameworks() {
+                const target = $('#frameworks-grid');
+                if(contentData.frameworks.length === 0) {
+                    target.innerHTML = `<p style="color:var(--text-muted);">No structural methodologies currently populated.</p>`;
+                    return;
+                }
+                let html = '';
+                contentData.frameworks.forEach((f, idx) => {
+                    html += `
+                    <div class="card">
+                        <div class="badge-row"><span class="badge badge-cat">${esc(f.tag)}</span></div>
+                        <div class="card-title">${esc(f.name)}</div>
+                        <div style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Application Logic:</strong> ${esc(f.when)}</div>
+                        <div class="deep-dive-box" style="font-family: monospace; font-size:0.85rem; margin-bottom:0.5rem;">${esc(f.structure)}</div>
+                        <div style="font-size:0.85rem; color: var(--text-muted);"><strong>Operational Case Mapping:</strong> ${esc(f.example)}</div>
+                    </div>`;
+                });
+                target.innerHTML = html;
+            }
+
+            renderQuant() {
+                const target = $('#quant-grid');
+                if(contentData.quant.length === 0) {
+                    target.innerHTML = `<p style="color:var(--text-muted);">No quantitative metrics parameters populated.</p>`;
+                    return;
+                }
+                let html = '';
+                contentData.quant.forEach(d => {
+                    html += `
+                    <div class="card">
+                        <div class="card-title" style="color: var(--utah-red);">${esc(d.name)}</div>
+                        <div class="deep-dive-box" style="font-weight:700; margin-bottom:0.5rem; text-align:center;">${esc(d.formula)}</div>
+                        <div style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Case Scenario Calculation:</strong> ${esc(d.example)} &rarr; <code>${esc(d.calc)}</code></div>
+                        <div style="font-size:0.85rem; background: var(--gold-light); padding:0.5rem; border-left:2px solid var(--gold-accent);">
+                            <strong>Verbal Execution Model:</strong> "${esc(d.verbalize)}"
+                        </div>
+                    </div>`;
+                });
+                target.innerHTML = html;
+            }
+
+            renderBehavioral() {
+                const target = $('#behavioral-grid');
+                if(contentData.behavioral.length === 0) {
+                    target.innerHTML = `<p style="color:var(--text-muted);">No management leadership challenges populated.</p>`;
+                    return;
+                }
+                let html = '';
+                contentData.behavioral.forEach((b, idx) => {
+                    html += `
+                    <div class="card">
+                        <div class="card-title" style="font-size:1.1rem;">${esc(b.prompt)}</div>
+                        <div style="font-size:0.85rem; color: var(--text-muted); margin-bottom:0.5rem;"><strong>Assessment Target:</strong> ${esc(b.testing)}</div>
+                        <div class="deep-dive-box" style="font-size:0.9rem; margin-bottom:0.5rem;"><strong>Recommended Strategy Profile:</strong> ${esc(b.answer)}</div>
+                        <div style="font-size:0.85rem; color: var(--utah-red);"><strong>Executive Track Upgrades:</strong> ${esc(b.elevate)}</div>
+                    </div>`;
+                });
+                target.innerHTML = html;
+            }
+
+            renderBattlecards() {
+                const target = $('#battlecard-grid');
+                if(contentData.battlecard.length === 0) {
+                    target.innerHTML = `<p style="color:var(--text-muted);">No core summary tools loaded.</p>`;
+                    return;
+                }
+                let html = '';
+                contentData.battlecard.forEach(c => {
+                    html += `
+                    <div class="card">
+                        <div class="card-title" style="border-bottom: 1px solid var(--border-color); padding-bottom:0.3rem;">${esc(c.title)}</div>
+                        <ul style="margin-left:1.2rem; margin-top:0.5rem; font-size:0.9rem;">
+                            ${c.items.map(i => `<li style="margin-bottom:0.3rem;">${esc(i)}</li>`).join('')}
+                        </ul>
+                    </div>`;
+                });
+                target.innerHTML = html;
+            }
+
+            renderRedFlags() {
+                const target = $('#redflags-grid');
+                if(contentData.redflags.length === 0) {
+                    target.innerHTML = `<p style="color:var(--text-muted);">No target diagnostic matrices loaded.</p>`;
+                    return;
+                }
+                let html = '';
+                contentData.redflags.forEach(r => {
+                    html += `
+                    <div class="card" style="border-left: 4px solid var(--utah-red);">
+                        <div class="card-title" style="font-size:1.1rem; margin-bottom:0.5rem;">Category: ${esc(r.title)}</div>
+                        <div style="font-size:0.9rem; color:#C00000; margin-bottom:0.3rem;"><strong>Common Execution Flaw:</strong> ${esc(r.mistake)}</div>
+                        <div style="font-size:0.9rem; color:#385723; font-weight:600;"><strong>Operational Pivot:</strong> ${esc(r.fix)}</div>
+                    </div>`;
+                });
+                target.innerHTML = html;
+            }
+
+
+            // --- SIMULATOR & AUDIO ENGINE INTERFACE SYSTEMS ---
+            initSpeechEngine() {
+                window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                if (window.SpeechRecognition) {
+                    this.recognition = new window.SpeechRecognition();
+                    this.recognition.continuous = true;
+                    this.recognition.interimResults = true;
+                    this.recognition.lang = 'en-US';
+
+                    this.recognition.onresult = (event) => {
+                        let finalTranscript = '';
+                        for (let i = event.resultIndex; i < event.results.length; ++i) {
+                            if (event.results[i].isFinal) {
+                                finalTranscript += event.results[i][0].transcript + ' ';
+                            }
+                        }
+                        if(finalTranscript !== '') {
+                            const currentText = $('#pm-transcript').value;
+                            $('#pm-transcript').value = currentText + finalTranscript;
+                            this.analyzeTranscriptMetrics();
+                        }
+                    };
+
+                    this.recognition.onerror = (e) => {
+                        console.error("Speech interface failure diagnostics:", e);
+                        this.stopRecording();
+                    };
+
+                    this.recognition.onend = () => {
+                        if(this.isRecording) {
+                            this.recognition.start(); // Auto-restart structure to ensure longer data windows survive
+                        }
+                    };
+                } else {
+                    $('#mic-status').innerText = "Speech API Native Interface Missing";
+                }
+            }
+
+            openPractice(type, id) {
+                let contextObj = null;
+                if(type === 'question') {
+                    contextObj = contentData.questions.find(q => q.id === id);
+                    $('#pm-title').innerText = "Question Performance Interface";
+                    $('#pm-meta-cat').innerText = contextObj.category;
+                    $('#pm-question-prompt').innerText = contextObj.question;
+                } else {
+                    contextObj = contentData.scenarios.find(s => s.id === id);
+                    $('#pm-title').innerText = "Operational Case Resolution Simulator";
+                    $('#pm-meta-cat').innerText = contextObj.scenarioType;
+                    $('#pm-question-prompt').innerText = contextObj.interviewerPrompt;
+                }
+
+                this.activeQuestionContext = { type, id, object: contextObj };
+                $('#pm-transcript').value = '';
+                $('#pm-word-count').innerText = '0';
+                $('#pm-filler-count').innerText = '0';
+                
+                this.generateCoachingPrompt();
+                $('#practice-modal').classList.add('active');
+            }
+
+            closePractice() {
+                this.stopRecording();
+                $('#practice-modal').classList.remove('active');
+                this.activeQuestionContext = null;
+            }
+
+            toggleRecording() {
+                if(!this.recognition) {
+                    alert("Native voice parsing algorithms not supported inside this local system configuration browser engine.");
+                    return;
+                }
+                if(this.isRecording) {
+                    this.stopRecording();
+                } else {
+                    this.startRecording();
+                }
+            }
+
+            startRecording() {
+                this.isRecording = true;
+                $('#mic-trigger').classList.add('recording');
+                $('#mic-status').innerText = "System Listening Stream Active...";
+                this.recognition.start();
+            }
+
+            stopRecording() {
+                this.isRecording = false;
+                $('#mic-trigger').classList.remove('recording');
+                $('#mic-status').innerText = "Microphone Terminated";
+                if(this.recognition) this.recognition.stop();
+                this.analyzeTranscriptMetrics();
+            }
+
+            analyzeTranscriptMetrics() {
+                const text = $('#pm-transcript').value;
+                if(!text) return;
+
+                const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+                $('#pm-word-count').innerText = words.length;
+
+                let fillerCount = 0;
+                // Extended string matching loop architecture to capture multi-word structural filler blocks
+                const cleanText = text.toLowerCase();
+                this.fillerWords.forEach(word => {
+                    const regex = new RegExp(`\\b${word}\\b`, 'g');
+                    const matches = cleanText.match(regex);
+                    if(matches) fillerCount += matches.length;
+                });
+                $('#pm-filler-count').innerText = fillerCount;
+
+                this.generateCoachingPrompt();
+            }
+
+            generateCoachingPrompt() {
+                if(!this.activeQuestionContext) return;
+                const obj = this.activeQuestionContext.object;
+                const transcript = $('#pm-transcript').value || "[No transcript data compiled yet. Speak or input text response strategy.]";
+
+                let coreContextString = this.activeQuestionContext.type === 'question' 
+                    ? `QUESTION: ${obj.question}\nFUNCTIONAL FOCUS: ${obj.category}\nEXPECTED TECHNICAL DEPTH: ${obj.deepdive}`
+                    : `CASE CONTEXT: ${obj.context}\nPROMPT DIRECTIVE: ${obj.interviewerPrompt}\nREQUIRED CALCULATIONS EXPECTATION: ${obj.analysisRequired}`;
+
+                const targetPrompt = `You are acting as an elite Executive Operations Director and MBA Career Coach. Critically evaluate my performance response for the following challenge:
+
+${coreContextString}
+
+CANDIDATE TRANSCRIBED RESPONSE RECORD:
+"""
+${transcript}
+"""
+
+Provide a concise, direct critique of structural errors, technical execution limits, or delivery issues that an elite management leader would notice. You must provide constructive steps for improvement and absolute tactical updates.
+
+At the absolute terminal boundary of your generated assessment, you must precisely structure and output this exact statistical data container template payload without changing any label strings so the tracking dashboard parse automation reads it cleanly:
+
+[READINESS SCORES]
+Problem structuring & root-cause rigor: <Insert Score 0-100 or NA>
+Operational & technical knowledge: <Insert Score 0-100 or NA>
+Quantitative & metrics fluency: <Insert Score 0-100 or NA>
+Process-improvement application (Lean/Six Sigma): <Insert Score 0-100 or NA>
+Trade-off & business judgment: <Insert Score 0-100 or NA>
+Leadership & people management: <Insert Score 0-100 or NA>
+Stakeholder communication & executive presence: <Insert Score 0-100 or NA>
+Recommendation & implementation focus: <Insert Score 0-100 or NA>
+[END READINESS SCORES]`;
+
+                $('#pm-prompt-out').value = targetPrompt;
+            }
+
+
+            // --- CLOSED LOOP DASHBOARD ANALYTICS CORE SYSTEMS ---
+            initDashboardState() {
+                const defaultState = {
+                    scores: {},
+                    repCounts: {},
+                    totalReps: 0
+                };
+                competencies.forEach(c => {
+                    defaultState.scores[c] = 0;
+                    defaultState.repCounts[c] = 0;
+                });
+
+                const stored = localStorage.getItem('osc_playbook_dash');
+                this.dashState = stored ? JSON.parse(stored) : defaultState;
+            }
+
+            saveDashboardState() {
+                localStorage.setItem('osc_playbook_dash', JSON.stringify(this.dashState));
+                this.renderDashboardMeters();
+            }
+
+            resetDashboard() {
+                if(confirm("Confirm deletion of historical tracking metrics matrices? Data parameters reset immediately.")) {
+                    localStorage.removeItem('osc_playbook_dash');
+                    this.initDashboardState();
+                    this.saveDashboardState();
+                }
+            }
+
+            renderDashboardMeters() {
+                const target = $('#meters-target');
+                let html = '';
+
+                competencies.forEach(c => {
+                    const currentAvg = Math.round(this.dashState.scores[c]) || 0;
+                    const loggedReps = this.dashState.repCounts[c] || 0;
+                    html += `
+                    <div class="meter-group">
+                        <div class="meter-lbl-row">
+                            <span>${esc(c)} <small style="color: var(--text-muted); font-weight:400;">(${loggedReps} samples)</small></span>
+                            <span style="color: var(--utah-red);">${currentAvg}/100</span>
+                        </div>
+                        <div class="meter-bg">
+                            <div class="meter-fill" style="width: ${currentAvg}%"></div>
+                        </div>
+                    </div>`;
+                });
+                target.innerHTML = html;
+
+                // Overall Tier Compilation Processing Algorithms
+                let validMetersSum = 0;
+                let activeMetersCount = 0;
+                competencies.forEach(c => {
+                    if(this.dashState.scores[c] > 0) {
+                        validMetersSum += this.dashState.scores[c];
+                        activeMetersCount++;
+                    }
+                });
+
+                const cumulativeScoreAvg = activeMetersCount > 0 ? (validMetersSum / activeMetersCount) : 0;
+                let finalTierLabel = "Emerging Performance";
+                
+                if(cumulativeScoreAvg >= 85) finalTierLabel = "Manager-Caliber Strategy";
+                else if(cumulativeScoreAvg >= 68) finalTierLabel = "Interview-Ready Infrastructure";
+                else if(cumulativeScoreAvg >= 45) finalTierLabel = "Developing Operations Framework";
+
+                $('#dash-tier-name').innerText = finalTierLabel;
+                $('#dash-rep-count').innerText = `Based on ${this.dashState.totalReps} compiled performance review matrices`;
+            }
+
+            parseScores() {
+                const payload = $('#dash-paste').value;
+                if(!payload) {
+                    alert("Analytics payload data empty.");
+                    return;
+                }
+
+                const containerRegex = /\[READINESS SCORES\]([\s\S]*?)\[END READINESS SCORES\]/;
+                const matchBlock = payload.match(containerRegex);
+
+                if(!matchBlock) {
+                    alert("Failure parsing evaluation block: Validation boundaries [READINESS SCORES] not found.");
+                    return;
+                }
+
+                const blockContent = matchBlock[1];
+                let pointsLoggedCount = 0;
+
+                competencies.forEach(c => {
+                    // Escape special characters for dynamic RegExp evaluation mapping loops
+                    const escapedLabel = c.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                    const targetScoreLineRegex = new RegExp(`${escapedLabel}\\s*[:|-]\\s*(\\d{1,3}|NA|N\\/A)`, 'i');
+                    const parsedLineMatch = blockContent.match(targetScoreLineRegex);
+
+                    if(parsedLineMatch) {
+                        const extractedValStr = parsedLineMatch[1].trim().toUpperCase();
+                        if(extractedValStr !== 'NA' && extractedValStr !== 'N/A') {
+                            const scoreNum = parseFloat(extractedValStr);
+                            if(!isNaN(scoreNum) && scoreNum >= 0 && scoreNum <= 100) {
+                                // Calculate moving target running window averages dynamically
+                                const historicTotalPoints = this.dashState.scores[c] * this.dashState.repCounts[c];
+                                this.dashState.repCounts[c]++;
+                                this.dashState.scores[c] = (historicTotalPoints + scoreNum) / this.dashState.repCounts[c];
+                                pointsLoggedCount++;
+                            }
+                        }
+                    }
+                });
+
+                if(pointsLoggedCount > 0) {
+                    this.dashState.totalReps++;
+                    this.saveDashboardState();
+                    $('#dash-paste').value = '';
+                    alert(`Successfully parsed and saved ${pointsLoggedCount} capability evaluation scores.`);
+                } else {
+                    alert("No valid capability scores extracted from payload string data blocks. Verify numeric ranges conform between 0 and 100.");
+                }
+            }
+
+            // --- IMPORT EXPORT PORTABILITY UTILITIES ---
+            exportProgress() {
+                const bundle = {
+                    dashboard: this.dashState,
+                    timestamp: new Date().getTime()
+                };
+                const blob = new Blob([JSON.stringify(bundle, null, 2)], {type : 'application/json'});
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = `OSC_Playbook_User_Progress_Matrix.json`;
+                link.click();
+            }
+
+            triggerImport() {
+                $('#import-file').click();
+            }
+
+            importProgress(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedBundle = JSON.parse(e.target.result);
+                        if(importedBundle.dashboard) {
+                            this.dashState = importedBundle.dashboard;
+                            this.saveDashboardState();
+                            alert("Performance metrics state records successfully restored to client engine.");
+                        } else {
+                            alert("Format deviation detected inside configuration file structural validation.");
+                        }
+                    } catch (err) {
+                        alert("Structural compilation failure reading uploaded data stream metrics.");
+                    }
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        // Global Execution Launch Instance Instantiation Bindings
+        const app = new PlaybookApp();
+        window.onload = () => app.init();
+    </script>
+</body>
+</html>
