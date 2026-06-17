@@ -2985,6 +2985,167 @@
                 mistakes: "Using gross sales revenue instead of Cost of Goods Sold (COGS) when calculating Days Inventory Outstanding, which distorts inventory efficiency metrics due to corporate profit margins."
             }
         );
+
+        contentData.questions.push(
+            {
+                id: "Q-063",
+                category: "Procurement & Supplier Management",
+                difficulty: "Advanced",
+                question: "How do you systematically migrate a high-volume product category away from a historical sole-source vendor to a strategic dual-sourcing model without disrupting factory operations?",
+                conversational: "Migrating away from a single supplier is like changing an engine while the plane is flying—if you rush it, you will freeze your production lines. I map this transition out in three distinct phases to control the risk. Phase one is data alignment: we keep our primary source running at 100% capacity while qualifying the secondary vendor, running low-volume pilot test runs to verify their quality metrics. Phase two is a careful volume shift: we move to a 80/20 split, giving the secondary vendor enough volume to satisfy their minimum order quantity and keep their lines warm, while keeping the primary supplier secure as our dominant source. Phase three is full dual-sourcing execution, settling into a stable 70/30 split. This structure leverages our total buying power to keep unit costs low while giving us an active backup source ready to scale instantly if a disruption hits.",
+                deepdive: "Transitioning a procurement network to a dual-sourcing model requires balancing tool duplication capital expenditures against the risk-adjusted cost of supply failures. Supplier qualification requires active validation runs to verify that the secondary source achieves a machine capability index (Cₚₖ) strictly greater than 1.33. Contractually, volume allocations should follow an optimized split-curve layout (e.g., 70/30 or 80/20) rather than a flat 50/50 division. This structured split preserves scale economies with your primary partner, protects priority status thresholds, and guarantees that the secondary vendor's allocation clears their baseline operational Break-Even Volume and Minimum Order Quantity (MOQ) limits.",
+                coaching: "Listen for an focus on risk containment and a phased operational timeline. Strong candidates reject sudden contract cut-offs and explicitly detail how pilot testing, tool qualification, and minimum order thresholds govern the volume allocation process.",
+                redFlag: "Proposing an immediate, unhedged 50/50 volume split on Day 1 without running pilot validation tests or evaluating the loss of volume-based discounts with the primary supplier."
+            },
+            {
+                id: "Q-064",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Foundational",
+                question: "What is Mean Absolute Percentage Error (MAPE), and how do you use it alongside Mean Absolute Deviation (MAD) to evaluate a forecasting team's performance?",
+                conversational: "MAPE and MAD are the two primary metrics I use to grade our forecasting accuracy, but they look at our errors through different lenses. Mean Absolute Deviation (MAD) gives you the average error size in raw, physical units—like showing that your forecast was off by an average of 450 tires per month. This is excellent for warehouse managers who need to plan physical pallet space. Mean Absolute Percentage Error (MAPE) converts that error into a relative percentage compared to actual sales—showing that your forecast was off by 8%. MAPE is the ideal metric for executive S&OP reviews because it lets you benchmark accuracy across completely different product lines, regardless of whether a category sells 1,000 units or 100,000 units a month.",
+                deepdive: "The mathematical definitions are critical for proper demand analysis. Mean Absolute Deviation is modeled as: MAD = (Sum of Absolute Errors) / n, tracking absolute volume discrepancies in native inventory units. Mean Absolute Percentage Error is defined as: MAPE = ((Sum of (Absolute Error / Actual Demand)) / n) · 100, providing a dimensionless relative scale. While MAPE is the standard benchmarking tool for cross-functional S&OP scorecards, it suffers from a significant mathematical limitation: it divides by actual sales, meaning it can skew toward infinity if actual demand approaches zero, requiring teams to pair it with MAD metrics when evaluating low-volume or volatile SKUs.",
+                coaching: "The candidate should clearly explain that MAD tracks raw physical unit volume variations while MAPE tracks relative percentage scales. Look for them to identify that MAPE serves as the primary executive benchmark for cross-functional alignment.",
+                redFlag: "Suggesting that MAPE can be used blindly as a perfect accuracy metric for slow-moving or intermittent demand SKUs without realizing that low actual sales values inflate percentage metrics."
+            },
+            {
+                id: "Q-065",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Core",
+                question: "What are the primary operational trade-offs between a Hub-and-Spoke distribution network and a Direct Point-to-Point transportation model?",
+                conversational: "A Hub-and-Spoke network consolidates shipments into a large, centralized mega-distribution center before cross-docking and routing them out to regional facilities. This shared layout maximizes trailer capacity utilization, groups local volumes, and significantly lowers your fixed warehouse overhead and inbound transit costs. But it adds handling steps and introduces transit delays at the central hub. A Direct Point-to-Point model bypasses the middleman entirely, shipping full truckloads straight from the production floor to the customer's loading dock. This point-to-point path maximizes delivery speed and eliminates product handling damage risks completely, though it requires massive, predictable customer order volumes to prevent shipping half-empty trailers that drain cash.",
+                deepdive: "The optimization matrix maps transport lane density against delivery timeline restrictions. Hub-and-Spoke architectures optimize network economies of scale by routing multi-directional Less-Than-Truckload (LTL) volumes through a single sorting node, dropping total transport layout costs across low-density shipping lanes. However, this structure increases product handling frequency, elevating the risk of product damage and extending transit cycles. Point-to-Point logistics eliminates center cross-dock staging frictions, minimizing lead-time variation and variable terminal handling expenses, but requires high, consistent demand that satisfies minimum Full Truckload (FTL) cubic and weight utilization targets.",
+                coaching: "The candidate must frame the choice using clear volume density parameters. Look for them to weigh fixed infrastructure overhead and trailer cube efficiencies against product handling risks and delivery speed commitments.",
+                redFlag: "Arguing that a point-to-point model is always superior because it avoids warehouse handling steps, completely ignoring the massive financial cost of shipping under-utilized trailers across low-volume regional lanes."
+            },
+            {
+                id: "Q-066",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Advanced",
+                question: "How do you distinguish between a Continuous Flow Cellular Manufacturing layout and a traditional Functional Layout, and how does this alter your work-in-progress (WIP) levels?",
+                conversational: "A traditional functional layout groups similar machines together into independent departments—like placing all CNC lathes in one room and all welding stations in another. This setup forces parts to travel long distances across the facility, building up massive piles of WIP inventory between departments as batches wait for their turn on the next machine. A Continuous Flow Cellular layout arranges completely different machines in a tight U-shaped sequence to build a specific product family from start to finish. Parts move through the cell one unit at a time with zero intermediate staging queues. Transitioning to cellular manufacturing cuts your floor travel distances, slashes your WIP inventory, and shortens your production lead times from weeks down to hours.",
+                deepdive: "Functional layouts optimize local machine utilization metrics by allowing each department to run large batches independently, which creates large Work-in-Progress (WIP) accumulation triangles and lengthens total process lead times as governed by Little's Law. Cellular manufacturing utilizes Group Technology to combine processing steps into a single integrated cell. By balancing individual machine processing capacities straight to the customer Takt time, the cell enables Single-Piece Flow. This layout shifts material handling from a decoupled batch push strategy over to a highly synchronized pull model, drastically reducing floor footprint requirements and inventory holding overhead.",
+                coaching: "Look for candidates who can seamlessly demonstrate line physics. They should explicitly use terms like Single-Piece Flow and Little's Law to explain how dropping batch sizes down to one unit cuts floor WIP and shortens production lead times.",
+                redFlag: "Believing that functional layouts minimize inventory costs because machines can run continuously at maximum speed, failing to see the massive cash drain of stagnant floor WIP queues."
+            },
+            {
+                id: "Q-067",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Foundational",
+                question: "What is Overall Equipment Effectiveness (OEE), and how do you calculate its three core components on a manufacturing line?",
+                conversational: "OEE is the gold standard metric for tracking how efficiently your machines are actually running compared to their full potential. It breaks performance down into three distinct pillars: Availability, Performance, and Quality. Availability tracks your time losses—measuring actual running time against your planned schedule, catching things like breakdowns and changeovers. Performance tracks your speed losses—measuring how fast the machine executed during its run compared to its ideal design speed. Quality tracks your yield losses—measuring the percentage of good units that pass inspection without needing rework. By multiplying these three percentages together, you get your true OEE score, showing you exactly where your capacity is leaking.",
+                deepdive: "The formal OEE mathematical equation is structured as: OEE = Availability · Performance · Quality. 1. Availability = (Planned Production Time - Unplanned Downtime) / Planned Production Time. 2. Performance = (Actual Output · Ideal Cycle Time) / Actual Run Time, which captures micro-stoppages and machine speed degradation. 3. Quality = Good Units Produced / Total Units Started, isolating scrap and rework loops. This multi-layered metric prevents operations from masking poor performance; a line can achieve a deceptive 95% Availability and 98% Quality, but if its machines run at only 60% of their design speed, the true OEE drops to a weak 55.8%, directing engineers to target speed losses.",
+                coaching: "The candidate must clearly detail the calculations for all three pillars. Look for an focus on how multiplying the metrics exposes hidden efficiency losses that traditional standalone utilization metrics conceal.",
+                redFlag: "Conflating simple machine utilization (how many hours a machine was turned on) with true OEE, which factors in running speeds and product quality yields."
+            },
+            {
+                id: "Q-068",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Expert",
+                question: "How do you systematically design and evaluate a comprehensive Risk Diversification framework for a highly volatile global supply chain footprint?",
+                conversational: "Designing a risk diversification framework means moving past simple cost-cutting and treating your supply chain like a financial investment portfolio. If you source 100% of your critical parts from a single global hub, a weather disruption or tariff shift can freeze your entire enterprise. I balance this exposure by spreading our operational footprints across geographic regions and sourcing models. We combine a high-volume, low-cost overseas source for our baseline predictable demand, a flexible nearshore factory to handle seasonal market spikes, and a domestic spot vendor to absorb sudden emergency panics. This diverse footprint drives up management complexity, but it protects our supply lines and ensures our business can survive global disruptions.",
+                deepdive: "Global risk diversification applies portfolio optimization theory to supply chain network design. Total network risk exposure is mitigated by sourcing from non-correlated manufacturing regions, ensuring geopolitical shifts or natural disasters in one grid corridor do not cripple the entire pipeline. Operational leaders evaluate these networks using Real Options Analysis: treating the higher piece price of a flexible nearshore supplier as an options premium that buys the business the agility to scale production volumes up or down dynamically in response to real-time market shifts, maximizing enterprise value under highly volatile demand conditions.",
+                coaching: "Look for strong, high-level systemic thinking. Elite candidates should frame supply chain flexibility as a financial option value, comfortably explaining how non-correlated geographic footprints protect corporate EBITDA margins.",
+                redFlag: "Focusing entirely on raw piece-price metrics during global network evaluations, failing to model the financial risks of single-source disruptions or long-distance logistics vulnerabilities."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-028",
+                scenarioType: "supplier capacity constraint / multi-tier risk",
+                difficulty: "Advanced",
+                title: "The European Specialty Casting Allocation Triage",
+                context: "A high-precision industrial valve manufacturer based in Salt Lake City relies on a specialized foundries cluster in Germany for a unique titanium valve casting. Due to an unexpected regional energy grid failure, the German supplier declares partial Force Majeure, slashing their monthly material allocation to the Salt Lake plant by 50% for the upcoming high-volume summer production quarter.",
+                interviewerPrompt: "Develop an immediate 72-hour material allocation and capacity optimization strategy to maximize corporate margins under this resource constraint, ration available castings across product lines, and secure alternative supply options.",
+                candidateObjectives: [
+                    "Design a contribution-margin-per-constraint-hour matrix to prioritize casting allocations across active product models.",
+                    "Evaluate the costs and lead times of activating an alternative, un-certified domestic spot-market foundry option.",
+                    "Formulate a communication plan to manage delivery delays with lower-priority distributor accounts without triggering contract breaches."
+                ],
+                clarifyingQuestions: [
+                    "What are the precise gross margins and machine hour requirements for our individual valve product models?",
+                    "Does our alternative domestic supplier hold active quality certifications, or will they require a lengthy product testing cycle?",
+                    "Can we purchase any completed valve inventory back from our international distributors to fulfill immediate domestic hospital orders?"
+                ],
+                suggestedApproach: "Apply clear Theory of Constraints financial logic. Do not allocate the scarce titanium castings based on raw sales volumes or historical customer relationships. Calculate the contribution margin per bottleneck hour for each product model. Allocate 100% of the restricted castings to maximize total profitability, prioritizing the high-margin Model Alpha. For lower-priority accounts, initiate an alternative domestic spot-market qualification track, and implement proactive communication loops to stagger customer delivery dates safely.",
+                keyIssues: [
+                    "An alternative domestic foundry exists but their casting piece price is 35% higher and requires a 6-week tooling calibration timeline.",
+                    "Failing to meet delivery commitments for Tier-1 industrial accounts triggers strict $15,000 per day delayed shipment penalties.",
+                    "The sales team is aggressively lobbying to spread the limited castings evenly across all customer accounts to keep all clients happy."
+                ],
+                analysisRequired: "Compute contribution margin per constraint hour across product categories, calculate the total financial penalty of delivery delays, and model alternative sourcing cost structures.",
+                sampleDataOrExhibit: {
+                    caption: "Product Financial Margins & Constrained Resource Requirements",
+                    rows: [
+                        ["Product Valve Model Line", "Monthly Market Demand", "Unit Retail Price Paid", "Unit Material Cost (COGS)", "Bottleneck Machine Processing Time"],
+                        ["Model Alpha: Medical Flow Valve", "1,200 Units", "$850", "$320", "1.5 Hours Per Completed Unit"],
+                        ["Model Beta: Industrial Gas Valve", "1,800 Units", "$500", "$180", "1.0 Hours Per Completed Unit"],
+                        ["Model Gamma: Standard Water Valve", "2,500 Units", "$250", "$110", "0.5 Hours Per Completed Unit"]
+                    ]
+                },
+                strongAnswerPath: "The candidate uses Theory of Constraints logic to reject the sales team's unoptimized proposal to spread the limited castings evenly. They calculate the true contribution margin per unit: Model Alpha = $530 ($850 - $320), Model Beta = $320 ($500 - $180), Model Gamma = $140 ($250 - $110). Next, they divide these margins by the bottleneck processing time to find the true profit velocity: Model Alpha = $353.33/hour ($530 / 1.5), Model Beta = $320.00/hour ($320 / 1), Model Gamma = $280.00/hour ($140 / 0.5). They build a highly profitable allocation roadmap: 1. Route the first wave of limited castings to fulfill 100% of Model Alpha demand, securing the highest-value revenue stream. 2. Direct remaining materials to Model Beta, and place the low-velocity Model Gamma on a temporary 30-day shipping delay. 3. To protect delayed accounts, they authorize the 35% cost premium to activate the domestic vendor's 6-week tooling build, blending the added costs across categories. This structured approach protects corporate margins and prevents deep contract stockout penalties.",
+                finalRecommendation: "Allocate remaining casting inventory using a contribution-margin-per-bottleneck-hour framework, prioritizing Model Alpha orders. Activate the domestic secondary foundry immediately under a fast-track tooling contract to restore full capacity within 6 weeks.",
+                coachingNotes: "This scenario evaluates a candidate's mastery of bottleneck economics and cross-functional leadership. Look for them to ignore raw top-line revenues and prioritize restricted resources based on contribution margin per constraint hour, using data to align conflicting sales goals.",
+                redFlags: [
+                    "Spreading the scarce castings evenly across all customer lines to avoid conflict, which lowers corporate profits and leaves anchor accounts facing deep late delivery fines.",
+                    "Selecting product priorities based entirely on the highest retail price ($850) without accounting for the machine processing times required to build each unit."
+                ]
+            },
+            {
+                id: "S-029",
+                scenarioType: "production bottleneck / throughput constraint",
+                difficulty: "Core",
+                title: "The Salt Lake Automotive Assembly Line Imbalance",
+                context: "A major Tier-1 automotive structural components facility along the Wasatch Front faces a capacity challenge. Customer demand has surged to 240 units per shift due to a new vehicle program launch. While the upstream welding robots run smoothly, the manual sub-assembly workstations are bottlenecked, creating large WIP piles, causing frequent line stoppages, and dropping total shift output down to 180 units.",
+                interviewerPrompt: "Walk me through how you would evaluate this assembly line imbalance, calculate the customer Takt time beat, and redistribute assembly tasks to eliminate idle time and meet the required output target.",
+                candidateObjectives: [
+                    "Compute customer Takt time based on active shift parameters and production targets.",
+                    "Analyze individual workstation processing times to pinpoint the primary line constraint step.",
+                    "Redistribute standard work elements across workstations to balance the line pace safely below Takt time."
+                ],
+                clarifyingQuestions: [
+                    "What is the total planned production running time per shift, factoring out scheduled lunches and breaks?",
+                    "What are the precise standalone cycle times for each of the four manual sub-assembly workstations?",
+                    "Can we cross-train our upstream robotic operators to assist with manual assembly tasks during their automated run windows?"
+                ],
+                suggestedApproach: "Deploy a rigorous line-balancing methodology. Calculate customer Takt time to establish the required production beat. Map individual workstation cycle times on a visual balancing chart to isolate the exact workstation where cycle time exceeds Takt time. Break down the standard operating procedures into individual elements, moving simple manual tasks away from the bottleneck station and onto under-utilized adjacent operators to balance the line flow safely.",
+                keyIssues: [
+                    "Station 2 has an unoptimized manual layout, forcing operators to spend 35 seconds searching for fasteners during every assembly cycle.",
+                    "Workstations 1 and 4 are highly efficient, running with over 40% idle time while waiting for material from the bottleneck station.",
+                    "The line layout is a rigid straight-line configuration, preventing operators from stepping across lanes to help adjacent stations."
+                ],
+                analysisRequired: "Calculate customer Takt time, compute individual workstation cycle times, and determine total Line Balancing Efficiency gains achieved by redistributing work tasks.",
+                sampleDataOrExhibit: {
+                    caption: "Sub-Assembly Workstation Cycle Times & Performance Baselines",
+                    rows: [
+                        ["Workstation Assembly Node", "Number of Active Operators", "Manual Work Cycle Time", "Workstation Idle Time Percentage", "Local Process Status Classification"],
+                        ["Station 1: Component Prep", "1 Operator", "70 Seconds", "36.4% Idle Staging Wait", "Under-Utilized / Fast Step"],
+                        ["Station 2: Core Manual Weld", "1 Operator", "135 Seconds (Bottleneck)", "0.0% Structural Stress", "System Constraint Asset"],
+                        ["Station 3: Hardware Inserter", "1 Operator", "85 Seconds", "22.7% Idle Staging Wait", "Stable / Moderate Execution"],
+                        ["Station 4: Final Quality Tag", "1 Operator", "65 Seconds", "40.9% Idle Staging Wait", "Under-Utilized / Fast Step"]
+                    ]
+                },
+                strongAnswerPath: "The candidate calculates the line physics systematically. First, they determine the customer Takt time: an 8-hour shift contains 480 minutes, and subtracting 30 minutes of planned breaks leaves 450 minutes of actual production time. To deliver 240 units, the line must produce one unit every 1.875 minutes, setting a firm Takt time of 112.5 seconds per unit. Reviewing the data exhibit, they isolate Station 2 as the true constraint, since its 135-second cycle time exceeds the 112.5-second Takt limit and caps shift output at 200 units. To balance the line, they break down Station 2's tasks and move 30 seconds of simple hardware prep work upstream to the under-utilized Station 1 (shifting Station 1 from 70 to 100 seconds) and relocate 15 seconds of visual inspection work downstream to Station 4 (shifting Station 4 from 65 to 80 seconds). This smart task redistribution drops Station 2's cycle time down to a clean 90 seconds, bringing every station safely below the 112.5-second Takt line. This optimization scales line output to the required 240 units per shift and increases line balancing efficiency from 65.7% up to 88.9% without adding any labor overhead.",
+                finalRecommendation: "Redistribute 45 seconds of manual work elements away from the Station 2 bottleneck, moving tasks upstream to Station 1 and downstream to Station 4 to balance the line pace safely below the 112.5-second customer Takt time.",
+                coachingNotes: "This scenario evaluates a candidate's understanding of line balancing and throughput mechanics. Look for them to calculate Takt time accurately and use precise task redistribution methods over basic suggestions like adding more staff or forcing operators to work faster.",
+                redFlags: [
+                    "Proposing to hire an expensive secondary operator for Station 2 without realizing that adjacent workers are sitting completely idle for nearly 40% of their shifts.",
+                    "Failing to calculate Takt time, or trying to optimize machine speeds at Station 1 while leaving the primary line bottleneck at Station 2 completely unaddressed."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "The 8 Lean Wastes Framework (TIMWOODS)",
+                tag: "Continuous Improvement & Process Diagnostics",
+                when: "Auditing a manufacturing plant floor, distribution center, or administrative workflow to isolate non-value-added activities and maximize process throughput velocity.",
+                structure: "Identify and eliminate non-value-added activities across 8 categories:\n1. Transportation: Unnecessary movement of materials between facilities or warehouse racks.\n2. Inventory: Excess raw material, WIP, or finished goods safety buffers that trap working capital.\n3. Motion: Inefficient physical movement or walking travel distance waste by operators during tasks.\n4. Waiting: Operators or machines sitting idle due to upstream process bottlenecks or delayed material arrivals.\n5. Overproduction: Building products faster or in larger volumes than real-time customer demand requires.\n6. Overprocessing: Performing extra assembly, finishing, or inspection steps that the customer does not value.\n7. Defects: Scrap material, line rework loops, and inspection failures that erode gross operating margins.\n8. Skills: Failing to cross-train workers or fully utilize the problem-solving talents of your frontline staff.",
+                example: "A fulfillment center runs a TIMWOODS audit and discovers that packing operators lose 90 minutes per shift walking to retrieve empty cardboard boxes (Motion waste), helping them install localized gravity-feed staging racks to recover lost time.",
+                mistakes: "Focusing all continuous improvement efforts on tracking machine speeds while ignoring the large piles of inventory and operator waiting delays building up between workstations.",
+                customize: "Add a custom 'Digital Processing' sub-tier within the Overprocessing pillar to track where redundant manual ERP data re-entry steps are slowing down shipping workflows."
+            }
+        );
         
         const competencies = [
             "Problem structuring & root-cause rigor",
