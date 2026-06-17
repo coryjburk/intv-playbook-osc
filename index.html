@@ -1220,13 +1220,62 @@
                 this.renderDashboardMeters();
             }
 
-            switchTab(tabId) {
+        switchTab(tabId) {
                 this.currentTab = tabId;
                 document.querySelectorAll('.tab-link').forEach(el => el.classList.remove('active'));
                 document.querySelectorAll('.tab-panel').forEach(el => el.classList.remove('active'));
                 
-                event.target.classList.add('active');
+                // Set active target modifiers
+                if (event && event.target) {
+                    event.target.classList.add('active');
+                } else {
+                    // Fallback lookup navigation fallback mapping logic
+                    document.querySelectorAll('.tab-link').forEach(el => {
+                        if(el.textContent.toLowerCase().includes(tabId.substring(0,3))) el.classList.add('active');
+                    });
+                }
                 $(`#panel-${tabId}`).classList.add('active');
+
+                if (tabId === 'insights') {
+                    this.loadLiveInsights();
+                }
+            }
+
+            async loadLiveInsights() {
+                const target = $('#insights-container');
+                target.innerHTML = `<p style="color: var(--text-muted); font-style: italic;">Synchronizing industry intelligence matrices from local cluster repositories...</p>`;
+                try {
+                    const response = await fetch('./feeds.json');
+                    if(!response.ok) throw new Error("Local intelligence cache stream absent.");
+                    const data = await response.json();
+                    
+                    let html = `<div class="grid-layout" style="grid-template-columns: 1fr 1fr; gap: 1.5rem;">`;
+                    data.articles.forEach(art => {
+                        html += `
+                        <div class="card" style="border-top: 3px solid var(--gold-accent);">
+                            <div class="badge-row">
+                                <span class="badge badge-cat" style="background: var(--gold-light); color: var(--gold-accent);">${esc(art.source)}</span>
+                                <span class="badge" style="color: var(--text-muted); font-weight: normal;">${esc(art.date)}</span>
+                            </div>
+                            <div class="card-title" style="font-size: 1.1rem; margin-bottom: 0.5rem;">${esc(art.title)}</div>
+                            <p style="font-size: 0.9rem; color: var(--text-ink); margin-bottom: 1rem;">${esc(art.snippet)}</p>
+                            <a href="${esc(art.link)}" target="_blank" class="action-btn" style="text-decoration: none; display: inline-block; font-size: 0.75rem;">Access Industry Analysis &rarr;</a>
+                        </div>`;
+                    });
+                    html += `</div>`;
+                    target.innerHTML = html;
+                } catch (err) {
+                    target.innerHTML = `
+                    <div style="background: #FFF8E1; border: 1px solid #FFB300; padding: 1.5rem; border-radius: 4px;">
+                        <h4 style="color: #B78103; font-family: var(--font-serif); margin-bottom: 0.5rem;">Offline Mode Profile Active</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-ink); margin-bottom: 1rem;">The live pipeline data file (<code>feeds.json</code>) was not found in this environment. Direct access to industry sites is available below:</p>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <a href="https://www.mckinsey.com/capabilities/operations/our-insights" target="_blank" class="action-btn" style="text-decoration:none; font-size:0.8rem;">McKinsey Operations Insights</a>
+                            <a href="https://www.gartner.com/en/supply-chain" target="_blank" class="action-btn" style="text-decoration:none; font-size:0.8rem;">Gartner Supply Chain Portal</a>
+                            <a href="https://www.ascm.org/ascm-insights/" target="_blank" class="action-btn" style="text-decoration:none; font-size:0.8rem;">ASCM Insights Hub</a>
+                        </div>
+                    </div>`;
+                }
             }
 
             renderStats() {
