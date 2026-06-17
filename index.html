@@ -2233,6 +2233,165 @@
                 mistakes: "Using mismatched time units for demand and lead time (such as combining daily demand with hourly lead times), which ruins the calculation and leads to severe material shortages."
             }
         );
+
+        contentData.questions.push(
+            {
+                id: "Q-045",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Advanced",
+                question: "How do you evaluate and present the financial trade-off between supply chain Efficiency (Lean/low-cost) and supply chain Resilience (redundancy/buffers) to executive leadership?",
+                conversational: "This is a fundamental strategic choice. A hyper-efficient, purely Lean supply chain minimizes inventory buffers and relies on single-source suppliers to capture rock-bottom unit costs, which looks fantastic on a P&L when everything runs perfectly. Resilience adds deliberate redundancy—like holding safety stock buffers and qualifying secondary vendors—which acts as an insurance premium that drives up short-term costs. To present this to executives, I move away from vague concepts and model the risk financially. I run a scenario analysis comparing the baseline holding costs against the catastrophic penalty of a line shutdown. I show leadership that spending a 4% cost premium on a nearshore secondary vendor reduces our exposure to a potential $10M stockout crisis down to near zero, framing resilience as a critical risk-mitigation investment that protects our long-term EBITDA.",
+                deepdive: "The strategic evaluation balances the continuous carrying cost of inventory and supplier redundancy against the expected value of supply chain disruption losses. Disruption Risk Exposure ($E$) can be modeled as: $E = P_{fail} \cdot L_{shutdown}$, where $P_{fail}$ is the statistical probability of a network failure and $L_{shutdown}$ represents the fully loaded hourly cost of unabsorbed fixed overhead, missed customer delivery penalties, and potential market share erosion. Operational leaders use this matrix to select different supply architectures: highly predictable, low-margin products utilize a cost-optimized 'Efficient' model, while highly volatile, high-margin items utilize a responsive, multi-source 'Agile' model to maximize network resilience.",
+                coaching: "Look for candidates who can bridge shop-floor configurations with high-level corporate risk management. They should comfortably use financial terminology like EBITDA protection and scenario value modeling, avoiding purely emotional arguments about safety buffers.",
+                redFlag: "Arguing that the supply chain should always be 100% Lean or 100% redundant, demonstrating a surface-level understanding of the financial balance between efficiency and risk protection."
+            },
+            {
+                id: "Q-046",
+                category: "Procurement & Supplier Management",
+                difficulty: "Core",
+                question: "What is a Supplier Performance Improvement Plan (PIP), and what progressive operational steps do you take when a critical vendor repeatedly misses quality metrics?",
+                conversational: "A Supplier PIP is a formal, time-bound framework designed to correct chronic vendor execution issues before you are forced to pull the contract. If a critical supplier's First-Pass Yield upon receipt drops below our 98% threshold for two consecutive months, we don't just send angry emails. We launch a formal PIP. Step one is a mandatory joint root-cause audit where our quality engineers review the vendor's shop floor to isolate their process variation. Step two requires the vendor to submit a formal CAPA plan with a strict 30-day implementation runway. During this window, we run 100% inspections on incoming lots at their expense. If they hit their targets, the PIP closes. If they continue to fail, we activate our progressive containment protocol: freezing new volume allocations and shifting production over to our pre-qualified secondary source.",
+                deepdive: "Governing an underperforming supplier requires clear contractual clawbacks and measurable key milestones. The progressive resolution sequence is structured as: 1. Formal Alert Notification and Data Reconciliation; 2. On-Site Process Capability Audit (calculating supplier machine capability metrics); 3. Mandated CAPA Submission with explicit 30-60-90 day tracking milestones; 4. Containment Safeguards (e.g., source inspection or supplier-funded third-party sorting); 5. Financial Cost Recovery (charging the vendor for internal line stoppages or scrap expenses); and 6. De-certification and volume diversion. This disciplined structure ensures procurement adjustments are legally protected and fully backed by data.",
+                coaching: "Listen for a structured, progressive approach to vendor management. Strong candidates treat a PIP as a collaborative process engineering effort backed by strict financial and contractual accountability rules.",
+                redFlag: "Recommending an immediate, emotional cancellation of a critical single-source supplier contract over a quality issue without verifying secondary source availability or running a formal warning process."
+            },
+            {
+                id: "Q-047",
+                category: "Inventory Management & Optimization",
+                difficulty: "Core",
+                question: "Why do standard warehouse cycle counting programs prioritize SKU adjustments by transaction velocity rather than physical item size or unit cost?",
+                conversational: "Prioritizing cycle counts by transaction velocity—meaning how frequently a product is picked and moved—targets your inventory audits right where the risk of data corruption is highest. Every single time an operator touches a pallet, picks a part, or transfers a box, a human or system error can happen. A cheap item that is picked 500 times a week is mathematically far more likely to experience an inventory data error than a massive, $5,000 generator that sits untouched in a back rack for six months. By counting our fast-moving items frequently, we catch and correct digital record discrepancies early, keeping our Inventory Record Accuracy high before data errors cause expensive production stockouts.",
+                deepdive: "Inventory record corruption scales linearly with transaction frequency, not item value. In a standard ABC velocity matrix, 'A' tier items represent the highest volume of touches, meaning they accumulate data discrepancies at an accelerated rate due to barcode scan failures, picking errors, and manual entry mistakes. Maintaining high Inventory Record Accuracy (IRA) is a critical prerequisite for Material Requirements Planning (MRP) calculations. If the system's digital balance records are inaccurate for high-velocity parts, the scheduling engine will miscalculate net requirements, triggering either emergency spot-freight buying panics or high-volume warehouse congestion.",
+                coaching: "The candidate needs to connect transaction frequency directly to the statistical likelihood of data entry errors. They should explain how inventory data accuracy underpins effective warehouse execution and smooth manufacturing schedules.",
+                redFlag: "Suggesting that cycle counters should spend all their time counting big or expensive items that rarely move, while leaving high-velocity, fast-moving parts unverified."
+            },
+            {
+                id: "Q-048",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Advanced",
+                question: "What is a 'Milk Run' logistics routing model, and what specific geographic and volume parameters are required to execute it successfully?",
+                conversational: "A Milk Run routing model is a logistics strategy where a single dedicated truck makes a scheduled, circular route to collect smaller material shipments from multiple local suppliers everyday, bringing them back to a single central manufacturing facility. This shared transport loop replaces high-cost, irregular less-than-truckload shipments with a highly predictable, full-truckload freight routing guide. To make a milk run work, you need specific geographic clustering—all your suppliers must sit within a tight regional radius. You also need highly stable, daily production schedules. If one supplier falls behind on their production or experiences a loading dock delay, it creates a cascading ripple effect that disrupts the entire pickup loop, throwing off your factory's material arrival times.",
+                deepdive: "Milk Run logistics leverages fixed vehicle routing problem (VRP) optimization frameworks to compress total transportation mileage and maximize trailer capacity utilization. The operational trade-off balances lower LTL shipping tariffs and smaller inventory delivery sizes against higher route coordination complexities and strict schedule discipline requirements. The mathematical prerequisites mandate that the cumulative volume or weight collected across all local vendor nodes must consistently match a standard trailer's physical capacity limits, while individual supplier locations must sit within a tight regional loop to minimize travel distance overhead.",
+                coaching: "Look for candidates who understand the geographical constraints of localized supply clusters. They should explain how milk runs help stabilize material flow and lower inventory holding costs by enabling smaller, frequent deliveries.",
+                redFlag: "Recommending a milk run logistics model for suppliers scattered across different time zones or long geographic distances, which creates an uncoordinated transportation network."
+            },
+            {
+                id: "Q-049",
+                category: "Behavioral / Situational (STAR)",
+                difficulty: "Core",
+                question: "Describe a time you encountered an unexpected bottleneck or material shortage that threatened a critical delivery timeline, and explain how you resolved it.",
+                conversational: "During a peak end-of-quarter push, our primary custom packaging supplier experienced a sudden machinery breakdown, halting deliveries of our retail product boxes. We had $800k in finished product stacked on the floor, ready to ship, but we couldn't release it without the protective outer branded cartons. Missing the shipping window meant absorbing major retail late fees. I set up an immediate daily crisis meeting to manage our options. First, I renegotiated delivery allocations with a secondary local vendor, agreeing to a temporary price premium to secure 40% of our capacity needs within 48 hours. Second, I worked with our engineering team to approve a temporary packaging standard change, letting us use generic unprinted boxes with custom-printed adhesive labels for our industrial accounts. This pivot cleared 100% of the floor backlog, met our customer delivery timelines on time, and avoided any retail late penalties.",
+                deepdive: "This situational challenge evaluates a leader's problem-solving agility and crisis communication under pressure. The strategic response highlights the simultaneous deployment of parallel risk mitigations: activating a secondary supplier option to cover capacity gaps and implementing an immediate engineering change notice (ECN) to adapt packaging specifications for non-retail accounts, preserving cash velocity and customer service metrics.",
+                coaching: "Listen for clear actions that balance short-term adjustments with financial awareness. The candidate should demonstrate a structured approach to identifying alternative options and working across teams to protect customer commitments.",
+                redFlag: "Panicking under pressure and accepting the shipping delay as an unavoidable supply failure without attempting to find alternative packaging options or modify material specifications."
+            },
+            {
+                id: "Q-050",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Expert",
+                question: "How do you use Little's Law to diagnose an un-optimized manufacturing line where customer lead times are steadily slipping despite a high local machine utilization rate?",
+                conversational: "When local machine utilization looks perfect on paper but customer delivery times are getting worse, the plant is usually trapped in an overproduction loop. I use Little's Law to diagnose this disconnect. Little's Law states that your total Process Lead Time is directly equal to your Work-in-Progress inventory divided by your actual throughput rate. If managers keep pushing raw materials onto the factory floor just to keep the machines busy, they aren't increasing final output—they are just inflating the WIP inventory triangles between stations. This excess WIP clogs the floor, creates traffic jams at the workstations, and causes lead times to skyrocket. To fix this, I ignore local utilization metrics, throttle material intake at the front of the line, and focus strictly on accelerating flow velocity through the true bottleneck station.",
+                deepdive: "Little's Law is a fundamental theorem in operations research and queueing theory, defined as: $WIP = TH \cdot CT$, where $WIP$ represents Work-in-Progress inventory, $TH$ is the actual throughput rate (exit rate of good units), and $CT$ is the cycle time or total process lead time. Rearranging the formula yields: $CT = WIP / TH$. This equation proves that for a fixed production capacity ($TH$), any increase in material inputs directly lengthens your process lead time ($CT$). High local machine utilization metrics often encourage overproduction, creating un-decoupled WIP buffers that hide process variation, lengthen manufacturing cycles, and increase total factory inventory holding overhead.",
+                coaching: "Look for strong systemic thinking based on Little's Law. Elite candidates identify that maximizing local machine efficiencies can inadvertently lengthen customer lead times if it isn't aligned with the bottleneck's pace.",
+                redFlag: "Proposing to solve a lead-time delay by forcing upstream machines to run even faster, which increases unmanaged floor WIP and worsens the constraint backlog."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-022",
+                scenarioType: "reverse logistics / returns processing",
+                difficulty: "Advanced",
+                title: "The E-Commerce Electronics Returns Profit Drain",
+                context: "A high-volume consumer electronics distributor utilizing a centralized direct-to-consumer fulfillment hub in Salt Lake City experiences a massive 35% surge in post-holiday product returns. The warehouse floor is becoming heavily congested with un-vetted return boxes, customer refund processing times have slowed from 3 days to 24 days, and B-grade refurbished inventory is losing value while sitting in unorganized staging areas.",
+                interviewerPrompt: "How would you design a high-velocity reverse logistics framework to accelerate product inspection times, minimize administrative overhead, and maximize asset recovery values for returned items?",
+                candidateObjectives: [
+                    "Design a dedicated gatekeeping and sorting workflow to separate clean returns from damaged units at the dock.",
+                    "Apply Lean process principles to accelerate return evaluation cycle times and shorten customer refund loops.",
+                    "Establish a secondary monetization strategy to sell refurbished B-grade stock quickly to avoid asset depreciation."
+                ],
+                clarifyingQuestions: [
+                    "What percentage of returned electronics are unopened and completely functional compared to damaged or defective items?",
+                    "Are our warehouse teams using the same primary picking lines to handle returns, or do we have a separate reverse logistics area?",
+                    "What is the average financial value loss per week for electronic components sitting un-refurbished in our warehouse?"
+                ],
+                suggestedApproach: "Establish an independent, high-velocity reverse logistics cell completely separated from forward fulfillment areas. Implement a strict gatekeeping protocol right at the receiving dock, using clear sorting rules to split returns into three streams: immediate return-to-stock for unopened items, light refurbishment for open-box units, and raw components salvage for defective devices. Automate customer refund processing by linking automated diagnostic tests to the facility's WMS, and build a direct secondary marketplace channel to liquidate B-grade stock quickly.",
+                keyIssues: [
+                    "Returned materials are mixed together with incoming new raw inventory, creating massive data confusion and tracking errors on the receiving docks.",
+                    "The current inspection process requires a highly manual 45-minute technical test per item, creating a severe operational bottleneck.",
+                    "Refurbished electronic units lose roughly 2% of their retail market value every week they sit un-liquidated in storage."
+                ],
+                analysisRequired: "Calculate the total cost of return delays (handling labor, value depreciation, customer service calls), evaluate the efficiency gains of a specialized sorting cell, and model asset recovery yields across product streams.",
+                sampleDataOrExhibit: {
+                    caption: "Reverse Logistics Inventory Volume & Asset Recovery Profiles",
+                    rows: [
+                        ["Returned Material Stream Class", "Weekly Return Volume (Units)", "Current Average Dwell Time", "Testing Processing Cost ($/Unit)", "Est. Resale Recovery Value Yield"],
+                        ["Stream A: Unopened / Mint Box", "4,500 Units", "18.2 Days Staged", "$4.50 (Manual Visual Check)", "100% Full Retail Re-stock Value"],
+                        ["Stream B: Open Box / Functional", "2,500 Units", "24.5 Days Staged", "$18.00 (Technical Diagnostic)", "75% Refurbished Marketplace Value"],
+                        ["Stream C: Defective / Damaged", "1,200 Units", "42.0 Days Staged", "$35.00 (Teardown Inspection)", "15% Component Scrap Salvage Value"]
+                    ]
+                },
+                strongAnswerPath: "The candidate utilizes the data exhibit to target the biggest cost drain: allowing high-value Stream A and B items to sit completely idle for 18 to 24 days while losing 2% of their market value every week. They implement a high-velocity reverse logistics strategy: 1. Create a dedicated 4-person receiving cell separated from standard warehouse operations. 2. Establish a clear sorting protocol at the dock to clear Stream A items instantly using a fast 1-minute visual check, returning them to active inventory within 24 hours and wiping out the 18-day delay. 3. For Stream B items, they invest $45,000 in automated diagnostic testing software, cutting evaluation times from 45 minutes down to 4 minutes per unit, and slashing processing costs from $18 down to $6. 4. They partner with an online secondary liquidator to stream refurbished open-box products to market via automated daily listings. This process overhaul cuts returns processing times from 24 days down to 48 hours, captures $850k in recovered asset value, and completely clears warehouse floor congestion.",
+                finalRecommendation: "Build an independent reverse logistics cell to separate incoming returns from forward fulfillment streams. Automate Stream B diagnostics using specialized testing software, and implement a fast visual check for Stream A items to return high-value stock to shelves within 24 hours.",
+                coachingNotes: "This scenario evaluates reverse logistics and velocity optimization skills. Look for candidates who avoid generic solutions and instead use product segmentation and process flow adjustments to shorten return loops and maximize financial asset recovery values.",
+                redFlags: [
+                    "Proposing a blanket policy to scrap all returned open-box electronics to save on warehouse labor costs, failing to realize they are throwing away valuable inventory with a 75% resale recovery yield.",
+                    "Leaving returned units sitting unorganized in staging lanes while waiting for standard fulfillment pickers to process them during rare idle moments."
+                ]
+            },
+            {
+                id: "S-023",
+                scenarioType: "supplier disruption / network disruption",
+                difficulty: "Advanced",
+                title: "The West Coast Port Congestion Gridlock",
+                context: "A consumer goods importer based in Salt Lake City faces a major distribution crisis due to a sudden labor dispute and congestion gridlock at the Port of Los Angeles. 14 ocean freight containers containing high-demand seasonal inventory are stuck at anchor on container ships, transit delays have extended by an unpredictable 25 days, and the company's central warehouse faces total stockouts on key SKUs within a week.",
+                interviewerPrompt: "Develop an immediate 72-hour supply chain mitigation strategy to secure alternative product volume, reroute incoming shipments, and allocate remaining inventory to protect critical customer accounts.",
+                candidateObjectives: [
+                    "Establish an emergency product allocation framework to distribute remaining on-hand inventory to top-tier accounts.",
+                    "Evaluate the costs and logistics of rerouting incoming containers to alternative Pacific Northwest or Canadian port networks.",
+                    "Secure short-term alternative supply options using domestic nearshore or spot-market vendors."
+                ],
+                clarifyingQuestions: [
+                    "What are the contractual stockout penalties and late-delivery fee structures enforced by our top-tier retail accounts?",
+                    "Can any of our incoming ocean containers be fast-tracked or prioritized for offloading once the ship reaches the container terminal?",
+                    "Are alternative domestic suppliers available who can produce identical product specifications within a 5-day window?"
+                ],
+                suggestedApproach: "Deploy a rigorous total landed cost and account allocation triage strategy. Instantly implement a strict inventory rationing board, routing remaining on-hand stock exclusively to fulfill anchor customer accounts to avoid high retail stockout fines. For containers still moving across the ocean, work with ocean carriers to divert ships to less congested northern ports, like the Port of Seattle or Vancouver, using intermodal rail links to transport the materials to Salt Lake City. Secure a short-term volume allocation from a domestic spot supplier to bridge the remaining inventory gap.",
+                keyIssues: [
+                    "Missing delivery deadlines for Tier-1 retail accounts triggers immediate 12% gross contract revenue penalties and threatens long-term account churn.",
+                    "Rerouting containers to alternative Canadian ports adds an extra $2,400 per container in rail transport freight fees.",
+                    "Domestic spot suppliers are available but their unit manufacturing cost is 30% higher than our overseas contract baseline."
+                ],
+                analysisRequired: "Compare the financial penalties of retail stockouts against the extra costs of container rerouting or domestic spot buying, and model structured inventory allocation pathways.",
+                sampleDataOrExhibit: {
+                    caption: "Customer Account Profitability & Supply Disruption Risks",
+                    rows: [
+                        ["Customer Account Classification", "Weekly Order Volume", "Gross Margin Contribution", "Contract Stockout Penalty Rate", "Service Level Disruption Profile"],
+                        ["Tier 1: Anchor Retail Accounts", "8,000 Units / Wk", "42.0% Gross Margin", "12% Gross Revenue Fine", "Catastrophic Account Churn Risk"],
+                        ["Tier 2: Regional Distributors", "4,500 Units / Wk", "35.0% Gross Margin", "5% Flat Order Penalty", "Moderate Short-Term Delay Tolerance"],
+                        ["Tier 3: Independent E-Commerce", "2,000 Units / Wk", "55.0% Gross Margin", "0% (Simple Order Delay)", "High Delivery Window Flexibility"]
+                    ]
+                },
+                strongAnswerPath: "The candidate acts with impressive tactical clarity. They use the data exhibit to protect high-risk revenue lines, calculating that a stockout on Tier-1 accounts triggers a devastating 12% fine alongside catastrophic churn risks. They execute an immediate 3-step mitigation framework: 1. Launch an inventory allocation protocol, diverting 100% of the remaining 9,500 on-hand units to completely cover Tier-1 retail needs, while placing Tier-2 and Tier-3 orders on a temporary 14-day delivery delay. 2. For the 14 containers still on the ocean, they pay a $2,400 per container premium to reroute the vessels to the Port of Vancouver, bypassing the Los Angeles gridlock entirely and cutting the transit delay down from 25 days to 6 days. 3. To bridge the remaining supply gap for distributor accounts, they purchase 3,000 units from a high-cost domestic spot vendor, accepting the 30% margin premium as a necessary cost to prevent contract breach fines. This active intervention minimizes revenue losses and protects all core retail partnerships.",
+                finalRecommendation: "Ration remaining on-hand inventory exclusively to fulfill high-risk Tier-1 retail accounts. Pay the freight premium to divert incoming ocean containers to less congested Pacific Northwest ports, using rail corridors to secure supply continuity.",
+                coachingNotes: "This scenario evaluates supply chain risk mitigation and cross-functional decision-making. Look for candidates who can calculate the financial trade-offs between freight premiums and contractual penalties, prioritizing high-value customer accounts to protect the company's bottom line.",
+                redFlags: [
+                    "Relying on a passive, first-come-first-served fulfillment approach that accidentally ships available stock to flexible e-commerce accounts while leaving anchor retail partners facing deep contract stockout penalties.",
+                    "Refusing to reroute containers or use domestic spot suppliers out of a desire to avoid short-term freight cost increases, causing massive downstream revenue losses and customer churn."
+                ]
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Inventory Turnover Ratio & Days of Supply Metrics",
+                formula: "Inventory Turns = COGS / Avg Inventory; Days of Supply = (Avg Inventory / COGS) * 365",
+                example: "A manufacturing facility tracks an annual Cost of Goods Sold (COGS) of $24,000,000. Balance sheet financial records show that the facility maintains an average physical inventory asset value of $3,000,000 on its floor.",
+                calc: "COGS = $24M, Avg Inventory = $3M. Inventory Turns = 24,000,000 / 3,000,000 = 8.0 turns per year. Days of Supply = (3,000,000 / 24,000,000) * 365 = 0.125 * 365 = 45.625 days.",
+                verbalize: "Our facility is currently running at 8.0 inventory turns per year, which means we carry an average of 46 days of supply locked up on our warehouse floor. Carrying 46 days of inventory represents a significant amount of working capital tied up in static stock buffers. If our operations team can implement a leveled scheduling framework and coordinate with suppliers to compress lead times, we can safely drop our average inventory from $3M down to $2M while supporting our baseline production. This optimization scales our performance to 12.0 turns per year and compresses our cash exposure down to 30 days of supply, instantly freeing up $1,000,000 in liquid cash that can be redirected to expand our high-yield manufacturing capabilities.",
+                mistakes: "Using sales revenue instead of Cost of Goods Sold (COGS) when calculating inventory turns, which artificially inflates your performance metrics due to retail profit margins."
+            }
+        );
         
         const competencies = [
             "Problem structuring & root-cause rigor",
