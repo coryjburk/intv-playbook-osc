@@ -678,7 +678,7 @@
                 redFlag: "Using simple rules of thumb like 'always keep two weeks of inventory on hand' without acknowledging statistical distributions or lead-time variance."
             }
         );
-contentData.scenarios.push(
+        contentData.scenarios.push(
             {
                 id: "S-001",
                 scenarioType: "production bottleneck / throughput constraint",
@@ -763,7 +763,7 @@ contentData.scenarios.push(
                 ]
             }
         );
-contentData.frameworks.push(
+        contentData.frameworks.push(
             {
                 name: "Theory of Constraints (TOC) System Optimization",
                 tag: "Continuous Improvement / Throughput",
@@ -840,6 +840,123 @@ contentData.frameworks.push(
                     "Relying on strict management authority and mandates to force technology adoption without addressing underlying team concerns.",
                     "Slowing down necessary automation projects indefinitely just to avoid uncomfortable conversations or floor friction."
                 ]
+            }
+        );
+        contentData.questions.push(
+            {
+                id: "Q-004",
+                category: "Procurement & Supplier Management",
+                difficulty: "Advanced",
+                question: "How do you evaluate total cost of ownership (TCO) when choosing between a low-cost overseas supplier with a 14-week lead time and a nearshore supplier costing 15% more on a unit basis?",
+                conversational: "Chasing unit cost alone is an amateur mistake that destroys balance sheets when supply chains fracture. To evaluate TCO, I map the hidden costs of that 14-week lead time: the massive working capital tied up in transit inventory, the safety stock needed to buffer against ocean transit variability, and the missed revenue from stockouts when demand spikes. When you layer on an annual inventory carrying charge of 25%, international freight tariffs, and quality inspection overhead, that 15% unit cost premium for the nearshore option often completely vanishes, leaving us with a much more agile, risk-mitigated operation.",
+                deepdive: "TCO calculations must encompass: TCO = Unit Price + Transport Cost + Tariff/Customs Cost + Pipeline Inventory Carrying Cost + Safety Stock Carrying Cost + Quality/Scrap Overhead + Administrative Sourcing Costs. Pipeline inventory is calculated as Pipeline Inventory = Daily Demand * Lead Time in Days. Longer lead times directly swell pipeline asset values. Safety stock must also expand because lead-time demand variance scales linearly with lead time length, requiring significant additional working capital buffers to maintain identical service levels.",
+                coaching: "Look for candidates who frame sourcing as an optimization problem balancing working capital against cost of goods sold (COGS). They should explicitly use terms like 'carrying cost of capital' and 'pipeline inventory velocity'.",
+                redFlag: "Focusing entirely on unit purchase price or shipping freight rates without modeling the balance sheet carrying costs of pipeline inventory."
+            },
+            {
+                id: "Q-005",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Expert",
+                question: "What quantitative methodologies do you deploy to optimize warehouse layout and slotting configuration when a facility's product mix shifts from low-cube, high-frequency items to high-cube, low-frequency items?",
+                conversational: "When the product mix changes like that, your warehouse congestion points shift completely. I start with an unconditional SKU velocity analysis—specifically an ABC profile sorted by order frequency, not just sales dollars. For high-cube, low-frequency items, we need to balance travel time against space utilization. I use a combination of cube-per-order-index (COI) calculations to assign locations. We pull the fast-moving, dense items closest to the staging docks to reduce travel distance, and slot the bulky, slow-moving items in deeper, high-bay storage areas, reconfiguring pick paths to prevent material handling equipment bottlenecks.",
+                deepdive: "The Cube-per-Order Index (COI) is defined as COI = Space Required (Storage Volume) / Frequency of Orders (Trips per period). SKUs with the lowest COI values offer the highest throughput per unit of space and must be allocated to slots nearest the primary shipping docks. When shifting to high-cube items, space constraints dominate; optimization models use mixed-integer linear programming (MILP) to minimize total material handling costs subject to explicit spatial footprint and forklift weight capacity constraints.",
+                coaching: "The candidate needs to demonstrate an understanding of warehouse physics. Listen for clear distinctions between picking frequency (velocity) and physical product dimensions (cube).",
+                redFlag: "Suggesting that warehouse operators should just place items wherever there is open space, ignoring pick-path travel times and travel-distance waste."
+            },
+            {
+                id: "Q-006",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Core",
+                question: "How do you establish a balanced dashboard for an operational unit without creating metrics fatigue or encouraging local sub-optimization?",
+                conversational: "If you give a team 30 KPIs to track, they effectively track nothing. Worse, if you only reward local metrics—like a plant manager focused strictly on low line changeover times—they will run massive batches that destroy warehouse inventory turns. I design balanced operational dashboards using a cascading framework of no more than 5 critical metrics. Every single operational metric must directly connect to a financial lever on our P&L: safety leads to lower insurance and labor costs, quality protects gross margin, and throughput drives revenue. If an operational metric doesn't move a financial line item, it doesn't belong on the executive radar.",
+                deepdive: "Effective dashboards use cascading balanced scorecards across four structural pillars: Safety, Quality, Delivery, and Cost (SQDC). To prevent sub-optimization, metrics must be mathematically paired with counterweights. For example, if you track and reward Production Throughput, you must pair it with a strict First-Pass Yield (Quality) and Days of Supply (Inventory) constraint. This structure prevents the operation from generating low-quality output or inflating working capital just to hit a volume target.",
+                coaching: "Candidates should demonstrate strong systemic thinking. They must articulate how changes in operational variables directly impact corporate financial metrics like cash conversion cycles and EBITDA margins.",
+                redFlag: "Proposing an un-prioritized list of standalone metrics without implementing any structural counterweights or linking them back to financial performance."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-003",
+                scenarioType: "stockouts / low fill rate",
+                difficulty: "Advanced",
+                title: "The Omni-Channel Fulfillment Service Failure",
+                context: "A national specialty retailer operating a major distribution center in Salt Lake City has seen its e-commerce order fill rate plummet from a target of 98.5% down to 89% over two consecutive quarters. Customer churn is accelerating, and the omni-channel retail division is experiencing severe margin degradation due to split-shipment air freight penalties.",
+                interviewerPrompt: "How do you isolate the root causes of this systemic service failure, restore order fulfillment metrics within 30 days, and stabilize total distribution costs?",
+                candidateObjectives: [
+                    "Perform a structured end-to-end audit of the order cycle to find the root bottleneck.",
+                    "Analyze the trade-offs between inventory safety stock levels, order processing times, and freight costs.",
+                    "Implement immediate tactical fixes to clear the order backlog and stop split-shipment penalties."
+                ],
+                clarifyingQuestions: [
+                    "Is the stockout driven by a lack of raw inventory in the building, or a failure of the picking system to locate inventory?",
+                    "What is the current accuracy rate of the Warehouse Management System (WMS) inventory records?",
+                    "Are the stockouts concentrated in a few high-velocity SKUs or spread across the entire product catalog?"
+                ],
+                suggestedApproach: "Deploy a data-driven root cause assessment. Check inventory record accuracy (IRA) via cycle counting data. Audit the WMS allocation logic. If IRA is low, inventory exists on paper but is physically lost in the warehouse, causing the system to accept orders it cannot fulfill. Implement a rapid cycle-counting sweep on top-velocity SKUs and adjust safety stock parameters using an updated demand variance calculation.",
+                keyIssues: [
+                    "Inventory record accuracy has dropped to 81% due to poor employee training on new scanning hardware.",
+                    "The top 5% of SKUs generate 45% of total order volume but face frequent stockouts due to delayed reorder triggers.",
+                    "The WMS system forces split-shipments from alternative regional hubs when local inventory cannot be verified within 4 hours."
+                ],
+                analysisRequired: "Calculate the financial loss of split-shipments, determine the necessary safety stock adjustment for top-velocity items, and evaluate inventory record accuracy metrics.",
+                sampleDataOrExhibit: {
+                    caption: "Order Fulfillment & Inventory Accuracy Metrics",
+                    rows: [
+                        ["Fulfillment Metric", "Target Baseline", "Q1 Actuals", "Q2 Actuals", "Financial Penalty Impact"],
+                        ["Order Fill Rate (%)", "98.5%", "92.0%", "89.0%", "Estimated $1.2M in Lost Revenue"],
+                        ["Inventory Record Accuracy", "99.0%", "87.0%", "81.0%", "Causes WMS Allocation Blindspots"],
+                        ["Split-Shipment Rate", "2.0%", "8.5%", "14.2%", "Drives $350k Extra Air Freight / Mo."],
+                        ["Top SKU Stockout Frequency", "< 1.0%", "6.8%", "11.5%", "Concentrated on Top 50 revenue SKUs"]
+                    ]
+                },
+                strongAnswerPath: "The candidate isolates low inventory record accuracy (81%) as the primary cause of the fill-rate failure. Because the system believes inventory is available when it is not, it triggers phantom orders, resulting in stockouts and costly split-shipments ($350k/month penalty). The candidate outlines an immediate 30-day turnaround plan: 1. Freeze active warehouse replenishment for 48 hours to execute a focused cycle-counting sweep on the top 100 high-velocity SKUs to restore data integrity. 2. Implement a strict 'wall-to-wall' scan validation process at pick locations. 3. Dynamically increase safety stock levels specifically for the top 5% of SKUs to buffer against upstream supplier delivery variations. This action reduces split-shipments by 75% within 30 days, rapidly reclaiming lost profit margins.",
+                finalRecommendation: "Deploy an immediate cycle-counting sweep to fix the 81% inventory data error. Tie the warehouse management team's performance incentives directly to Inventory Record Accuracy (IRA) to sustain fulfillment stability.",
+                coachingNotes: "This scenario tests if a candidate can see past surface symptoms. Poor candidates will immediately recommend buying more inventory; elite candidates recognize that data inaccuracy within the WMS is the real driver of capital waste.",
+                redFlags: [
+                    "Recommending an immediate blanket increase in inventory levels for all SKUs without identifying that the underlying inventory records are inaccurate.",
+                    "Blaming third-party shipping carriers for split-shipment freight costs that are actually caused by internal warehouse picking errors."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "DMAIC Process Improvement Methodology",
+                tag: "Lean / Six Sigma Quality",
+                when: "When an active operational process is stable but failing to meet target performance tolerances, resulting in high scrap rates, yield losses, or customer complaints.",
+                structure: "1. Define: Document the problem statement, project goals, customer requirements, and high-level process boundaries.\n2. Measure: Establish a baseline of current performance using reliable data collections and process capability metrics.\n3. Analyze: Use root cause tools (5 Whys, Fishbone diagrams, regression analysis) to identify the vital few variables driving process variation.\n4. Improve: Design, test, and implement targeted solutions to remove the root causes of defects.\n5. Control: Put robust control systems in place (SPC charts, updated standard work) to lock in the gains and prevent the process from slipping back.",
+                example: "An electronics plant faces an 8% rejection rate on a circuit board soldering line. Applying DMAIC, the team identifies through statistical regression that solder wave temperature variations are the primary driver of defects. They install automated thermal sensors and update standard work protocols, dropping the defect rate below 0.5%.",
+                mistakes: "Jumping directly from Define to Improve based on gut feel or institutional bias without measuring data or validating the true statistical root causes of variation.",
+                customize: "Adapt this tool by assigning clear, individual ownership to the 'Control' phase. Explicitly name the operations team members who will monitor the process metrics daily to ensure performance gains are maintained over time."
+            },
+            {
+                name: "The 8 Lean Wastes Framework (DOWNTIME)",
+                tag: "Continuous Improvement / Lean Operations",
+                when: "Evaluating any operations footprint—from a manufacturing floor to a fulfillment hub—to remove non-value-added activities and accelerate process velocity.",
+                structure: "Audit the operation across 8 distinct categories of waste:\n1. Defects: Time spent fixing or scrapping errors.\n2. Overproduction: Making items before they are actually ordered.\n3. Waiting: Idle time for operators or machines due to process bottlenecks.\n4. Non-Utilized Talent: Failing to engage or leverage the frontline team's insights.\n5. Transportation: Unneeded movement of materials between stations.\n6. Inventory: Excess WIP or finished goods tying up working capital.\n7. Motion: Unnecessary physical movement by operators during their shifts.\n8. Extra-Processing: Doing more work on a product than the customer requires.",
+                example: "A distribution facility analyzes its kitting station and finds pickers wasting 4 miles of walking per shift due to poor layout design. Redesigning the station layout using Lean principles removes the Transportation and Motion wastes, boosting daily throughput by 30%.",
+                mistakes: "Treating Lean as a cost-cutting tool to reduce headcount, which breaks frontline trust and causes operators to hide process wastes from management.",
+                customize: "In modern facilities, expand your waste audit to include 'Data Waste'—the time workers spend manually re-entering information across disconnected software systems."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Inventory Turnover & Days of Supply Metrics",
+                formula: "Inventory Turns = COGS / Average Inventory Balance",
+                example: "A manufacturing plant records an annual Cost of Goods Sold (COGS) of $24,000,000. Balance sheet records show that its inventory balance across the year averaged exactly $3,000,000.",
+                calc: "Inventory Turns = $24,000,000 / $3,000,000 = 8.0 turns per year. Days of Supply = 365 Days / 8.0 Turns = 45.6 Days.",
+                verbalize: "This operation turns over its inventory asset exactly 8 times a year, meaning we hold an average of 46 days of supply tied up on our warehouse floor. From a leadership perspective, this reveals a massive opportunity to improve working capital performance. If we can run smaller production batches and shorten supplier lead times, we can lift our turnover rate to 12 turns. This single change drops our average inventory investment from $3M down to $2M, instantly unlocking $1,000,000 in free cash flow that we can reallocate to strategic growth capital.",
+                mistakes: "Calculating inventory turns using sales revenue instead of Cost of Goods Sold (COGS). Revenue includes profit margins, which artificially inflates turnover metrics and distorts working capital analysis."
+            },
+            {
+                name: "Takt Time & Production Line Balancing",
+                formula: "Takt Time = Total Available Production Time / Total Customer Demand",
+                example: "An assembly line runs a standard 8-hour shift containing 480 gross minutes. The team is allocated 30 minutes for lunch and 20 minutes for scheduled cleaning. The plant needs to deliver 430 completed units per shift to meet its contracted customer demand.",
+                calc: "Available Time = 480 - 30 - 20 = 430 minutes. Customer Demand = 430 units. Takt Time = 430 minutes / 430 units = 1.0 minute per unit (or exactly 60 seconds).",
+                verbalize: "To satisfy our customer commitments, our assembly line must deliver one completed unit every 60 seconds. This 60-second window is our absolute drumbeat. Next, I look at our individual work station cycle times. If any single station takes 75 seconds, we will inevitably miss our target volume. Conversely, if a station only takes 30 seconds, that operator is sitting idle half the time. I will use line-balancing techniques to redistribute tasks evenly across workstations, targeting a cycle time of roughly 55 seconds per station to build in a safe buffer against minor line disruptions.",
+                mistakes: "Including scheduled downtime, maintenance windows, or lunches in the available production time calculation, which distorts line pace targets and causes missed shipments."
             }
         );
         const competencies = [
