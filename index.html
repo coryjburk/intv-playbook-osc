@@ -2061,7 +2061,7 @@
                 scenarioType: "cost-to-serve reduction",
                 difficulty: "Advanced",
                 title: "The Omni-Channel Grocery Cold-Chain Profit Leak",
-                context: "A regional grocery distributor utilizing a centralized automated distribution hub in the Salt Lake City market has scaled its direct-to-home e-commerce delivery channel by 40%[cite: 1]. However, corporate finance audits reveal severe margin compression: the cost-to-serve for online orders is 22% higher than standard retail store replenishment, entirely wiping out the channel's net profitability.",
+                context: "A regional grocery distributor utilizing a centralized automated distribution hub in the Salt Lake City market has scaled its direct-to-home e-commerce delivery channel by 40%. However, corporate finance audits reveal severe margin compression: the cost-to-serve for online orders is 22% higher than standard retail store replenishment, entirely wiping out the channel's net profitability.",
                 interviewerPrompt: "How would you systematically audit this multi-channel logistics footprint, calculate the cost-to-serve per delivery lane, and re-engineer the final-mile fulfillment network to restore corporate operating income?",
                 candidateObjectives: [
                     "Apply an Activity-Based Costing (ABC) framework to isolate exact cost leaks across picking, packaging, and final-mile delivery.",
@@ -2077,7 +2077,143 @@
                 keyIssues: [
                     "The centralized automated hub forces delivery trucks to drive over 45 miles to service outlying suburban zones, driving up fuel and driver labor expenses.",
                     "Cold-chain products experience a 6% spoilage rate because delivery trucks lack active refrigeration zones, relying instead on dry-ice packs.",
-                    "Drivers spend an average of 1Awesome! Seeing that Process Cycle Efficiency (PCE) table render flawlessly with all the staging queue diagnostics is exactly how we prove the value of this data engine. It perfectly illustrates how shifting from massive, bloated batches to lean, single-piece flows can compress lead times from 18 days down to 3.8 days without compromising strict regulatory compliance.
+                    "Drivers spend an average of 18 minutes parked per delivery due to poor route sequencing and complex apartment access gates."
+                ],
+                analysisRequired: "Apply Activity-Based Costing to compute cost-to-serve metrics per zone tier, calculate delivery drop density economics, and determine profit-optimization price adjustments.",
+                sampleDataOrExhibit: {
+                    caption: "Omni-Channel Activity-Based Costing (ABC) Breakdown",
+                    rows: [
+                        ["Fulfillment Cost Component", "Retail Store Stocking (Per Case)", "Direct-to-Home Delivery (Per Order)", "Primary Cost Driver Allocation Indicator"],
+                        ["Order Picking & Staging Labor", "$0.45", "$4.20", "Units Picked Per Operator Hour"],
+                        ["Specialized Thermal Packaging", "$0.12", "$2.85", "Insulated Cooler Totes & Dry Ice Volume"],
+                        ["Final-Mile Transport Freight", "$0.85 (Bulk Fleet)", "$11.50 (Parcel Van)", "Delivery Drop Density / Miles Driven"],
+                        ["Customer Service & Returns", "$0.05", "$1.95", "Order Discrepancies & Redelivery Rates"]
+                    ]
+                },
+                strongAnswerPath: "The candidate applies Activity-Based Costing to highlight that delivery and packaging labor are the core cost drivers. They show that final-mile parcel shipping ($11.50) combined with picking labor ($4.20) makes thin-margin grocery orders unprofitable when delivered to distant suburbs. They recommend a two-pronged solution: 1. Set up a 'Click-and-Collect' option at local retail stores for low-density suburban areas, cutting the $11.50 shipping cost entirely. 2. For high-density urban areas, shift picking out of the centralized hub and into a hybrid store-level model during night shifts, shortening delivery distances. This slashes the channel's cost-to-serve by 35% and restores baseline profitability.",
+                finalRecommendation: "Implement geographic tiered delivery fees to cover high final-mile costs in low-density zones. Transition urban online orders to a localized store-level micro-fulfillment model to cut travel distances and eliminate transit spoilage risks.",
+                coachingNotes: "This scenario evaluates the candidate's mastery of multi-channel logistics physics. Look for them to move past basic transportation costs and apply Activity-Based Costing to isolate how picking labor and delivery density dictate channel margins.",
+                redFlags: [
+                    "Recommending a broad price increase across all items, which drives away online customers and ignores the root cause: high logistics costs in distant delivery zones.",
+                    "Suggesting expanding the centralized delivery fleet to chase growth, which doubles down on an unprofitable network design."
+                ]
+            },
+            {
+                id: "S-017",
+                scenarioType: "S&OP misalignment (sales vs. ops)",
+                difficulty: "Advanced",
+                title: "The Mid-Summer CPG Promotional Breakdown",
+                context: "A multi-site consumer packaged goods firm faces an operational crisis. The sales team launched a last-minute 'Buy One, Get One' flash campaign with a national retail chain, resulting in a sudden 60% surge in order volume. The factory floor was already booked at 90% capacity, causing widespread product stockouts, missing shipments, and $450k in retail penalty charges.",
+                interviewerPrompt: "How do you step in to handle this cross-functional breakdown, allocate existing inventory, and re-engineer the S&OP workflow to prevent uncoordinated commercial campaigns from disrupting factory operations?",
+                candidateObjectives: [
+                    "Design an immediate inventory rationing framework to allocate remaining stock based on customer account profitability.",
+                    "Quantify the total cost of the promotional surge, balancing added sales revenue against factory overtime and retail stockout penalties.",
+                    "Establish strict cross-functional rules within the S&OP process to link commercial campaigns directly with capacity validation steps."
+                ],
+                clarifyingQuestions: [
+                    "What is the exact margin profile of the promotional volume compared to our standard baseline orders?",
+                    "Do we have any alternative contract manufacturing partners qualified to absorb our standard production volume while the main factory handles the promotional spike?",
+                    "Are the retail penalty charges fixed, or do they scale linearly with the number of unfulfilled or delayed shipments?"
+                ],
+                suggestedApproach: "Deploy an objective, financial triage framework. Instantly establish an inventory allocation board to distribute remaining stock to protect top-tier strategic retail contracts, minimizing legal penalty exposures. Run a comprehensive total cost analysis to show executive leadership that the revenue gains from the uncoordinated flash promotion were completely wiped out by emergency factory overtime, spot-freight shipping fees, and retail stockout penalties. Update the monthly S&OP governance matrix so no marketing campaign can be launched without a formal capacity sign-off from operations.",
+                keyIssues: [
+                    "Sales performance incentives are based purely on top-line revenue volume, detaching commercial targets from actual factory operating costs.",
+                    "Factory operations are forced to run emergency Sunday shifts, triggering high double-time overtime labor expenses.",
+                    "Outbound logistics teams are using high-cost spot market couriers to expedite late shipments, driving up transport costs."
+                ],
+                analysisRequired: "Compare promotional revenue gains against capacity expansion expenses (overtime, spot freight, retail fines) and model structured inventory allocation scenarios.",
+                sampleDataOrExhibit: {
+                    caption: "Promotional Revenue Performance vs. Operational Capital Penalties",
+                    rows: [
+                        ["Financial Performance Element", "Standard Plan Baseline", "Promotional Surge Actuals", "Net Financial Impact Profile"],
+                        ["Gross Sales Volume Revenue", "$4.0M", "$6.4M", "+$2.4M Additional Gross Top-Line"],
+                        ["Direct Factory Labor Expense", "$350,000", "$680,000", "-$330,000 Overtime / Sunday Premium"],
+                        ["Outbound Freight Shipping Costs", "$180,000", "$460,000", "-$280,000 Spot Market Expedited Rates"],
+                        ["Retailer Late Stockout Fines", "$0", "$450,000", "-$450,000 Service Agreement Penalties"],
+                        ["Total Net Operating Margin", "$1,200,000", "$890,000", "-$310,000 Net Destruction of EBITDA"]
+                    ]
+                },
+                strongAnswerPath: "The candidate highlights the core issue using the financial data exhibit: the uncoordinated promotion looks like a success with a $2.4M revenue jump, but it actually destroyed $310k in corporate EBITDA due to overtime labor, spot freight, and retail fines. To handle the crisis, they set up a strict allocation matrix to route remaining inventory to anchor accounts, preventing contract terminations. For the long term, they restructure the corporate incentive model: sales bonuses are shifted from pure top-line revenue to a forecast-accuracy and margin-density metric. They also update the S&OP workflow to require a minimum 60-day lead time and a formal capacity check before any national promotion can be approved.",
+                finalRecommendation: "Establish a strict capacity sign-off rule within the S&OP workflow, blocking commercial promotions that lack operations validation. Shift sales team incentives from raw revenue volume to product mix gross margin contribution.",
+                coachingNotes: "This scenario evaluates cross-functional leadership and executive presence. Look for candidates who avoid generic complaints about sales and instead use data to prove how local optimizations can damage the company's total profitability.",
+                redFlags: [
+                    "Suggesting that operations should simply authorize unlimited overtime and spot freight to fulfill every promotional order without evaluating the underlying margin erosion.",
+                    "Proposing an arbitrary, even split of remaining inventory across all customer accounts, which offends anchor clients and fails to minimize retail late fees."
+                ]
+            },
+            {
+                id: "S-018",
+                scenarioType: "production bottleneck / throughput constraint",
+                difficulty: "Expert",
+                title: "The SMT Electronics Dual-Buffer Constraint Standoff",
+                context: "A high-precision electronics manufacturer in Salt Lake City is experiencing a throughput drop on its primary Surface Mount Technology (SMT) component assembly line. A new robotic placement system was installed upstream to boost speed, but the downstream reflow ovens and visual inspection stations are now heavily bottlenecked, causing Work-in-Progress (WIP) inventory to pile up on the floor and stalling final customer deliveries.",
+                interviewerPrompt: "How do you mathematically isolate the true line constraint, design a structured WIP decoupling buffer strategy, and rebalance the line cycle times to maximize output without purchasing additional machinery?",
+                candidateObjectives: [
+                    "Isolate the true system constraint by measuring individual workstation cycle times and OEE metrics.",
+                    "Design a drum-buffer-rope layout to decouple the high-speed automated placement asset from slower downstream steps.",
+                    "Rebalance assembly tasks and task sequences to align the entire line with customer Takt time."
+                ],
+                clarifyingQuestions: [
+                    "What are the precise standalone cycle times per unit for the placement, reflow, and inspection stations?",
+                    "What is the primary driver of downtime at the visual inspection station (e.g., software errors, manual verification delays)?",
+                    "Does the upstream robotic placement machine feature variable speed controls that allow us to throttle its output pace?"
+                ],
+                suggestedApproach: "Apply the Theory of Constraints (TOC). Map out the exact cycle time of every station on the line to isolate the operation where cycle time exceeds the required Takt time. Implement a Drum-Buffer-Rope framework: let the slow downstream station act as the drum beat, place a managed WIP buffer right before it to ensure it never runs dry, and use a communication rope to throttle the speed of the fast upstream robot. Rebalance the line tasks to eliminate the downstream backlog safely.",
+                keyIssues: [
+                    "The upstream robotic system is running at maximum speed to optimize local utilization metrics, flooding the factory floor with a massive WIP pile.",
+                    "The downstream visual inspection station experiences a high false-alarm rate, forcing operators to spend minutes manually re-checking clean boards.",
+                    "Line operators lack real-time visibility into downstream backlogs, causing upstream stations to keep pushing material forward blindly."
+                ],
+                analysisRequired: "Calculate Takt time based on current customer demand, compare individual station cycle times to pinpoint the primary constraint, and measure the required size of the decoupling WIP buffer.",
+                sampleDataOrExhibit: {
+                    caption: "SMT Electronics Assembly Station Performance Metrics",
+                    rows: [
+                        ["Assembly Line Workstation", "Design Cycle Time (Sec/Unit)", "Actual Operating Cycle Time", "Local Workstation OEE (%)", "Station Active WIP Level"],
+                        ["Station 1: Robotic Placement", "12 Seconds", "14 Seconds", "92.0%", "5 Units Staged"],
+                        ["Station 2: Reflow Solder Oven", "25 Seconds", "28 Seconds", "85.0%", "140 Units Backlogged"],
+                        ["Station 3: Automated Inspection", "20 Seconds", "42 Seconds (Bottleneck)", "64.0%", "210 Units Backlogged"],
+                        ["Station 4: Final Hand Pack", "15 Seconds", "18 Seconds", "95.0%", "2 Units Staged"]
+                    ]
+                },
+                strongAnswerPath: "The candidate isolates Station 3 (Automated Inspection) as the true system bottleneck, with an actual cycle time of 42 seconds that severely limits the line's output pace. They call out the plant's structural mistake: allowing Station 1 to run at full speed to optimize its local efficiency metrics, which simply floods the floor with 350 units of stalled WIP and traps capital. They implement a clear TOC turnaround plan: 1. Throttle the speed of Station 1 to match the 42-second pace of the bottleneck, halting the growth of unneeded WIP. 2. Address the inspection bottleneck by resolving the high false-alarm software errors, which recovers lost capacity and slashes the cycle time from 42 seconds down to 22 seconds. 3. Size a managed 20-unit WIP buffer right in front of the inspection station to protect it from running dry. This rebalancing steps up the line's daily throughput by 45% without spending any money on new machinery.",
+                finalRecommendation: "Throttle upstream production speeds to match the pace of the inspection constraint, preventing floor congestion. Resolve the inspection software's false-alarm tracking bugs to drop cycle times and unlock capacity across the line.",
+                coachingNotes: "This scenario evaluates the candidate's understanding of line physics. Look for them to resist the urge to keep every machine busy and instead focus on balancing process flow, managing WIP levels, and optimizing the true system bottleneck.",
+                redFlags: [
+                    "Approving the purchase of a second expensive inspection machine without looking at the cycle time data or realizing that software errors are driving the capacity loss.",
+                    "Leaving the upstream robotic placement station running at maximum speed, which creates massive floor inventory and fails to increase total system output."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "Pull / Kanban Loop Control Architecture",
+                tag: "Inventory Flow / Lean Controls",
+                when: "Transitioning a manufacturing facility from a speculative, forecast-driven push model over to a responsive, demand-driven pull model to cut WIP and prevent overproduction.",
+                structure: "Govern production flow using a structured 4-step material card loop:\n1. Consumption Trigger: When a downstream station consumes a bin of parts, its attached Kanban card is removed and placed in a central scheduling board.\n2. Production Authorization: The empty bin and its card travel back upstream, acting as the sole authorization for the supplier station to build a replacement batch.\n3. Strict Capacity Capping: Upstream stations are blocked from building parts unless an active Kanban card is physically present, capping WIP levels at the total number of cards in circulation.\n4. Material Staging: Once the replacement batch is completed, the Kanban card is re-attached, and the bin moves downstream to the replenishment lane.",
+                example: "An automotive assembly floor replaces its old weekly MRP scheduling model with a 3-card visual Kanban bin loop. This change cuts active floor WIP inventory by 65% and completely eliminates material shortage emergencies at the line.",
+                mistakes: "Allowing operators to build parts without an active Kanban card present just to keep machines busy, which breaks the loop and floods the floor with unneeded inventory.",
+                customize: "In highly automated settings, shift from physical plastic cards to electronic e-Kanban barcode triggers integrated directly into the facility's WMS to track bin movements in real time."
+            },
+            {
+                name: "The 5 Whys Root-Cause Protocol",
+                tag: "Quality Engineering / Problem Solving",
+                when: "Investigating a quality defect, safety event, or mechanical failure to move past surface symptoms and isolate the deep process design flaws driving the issue.",
+                structure: "Trace the cause-and-effect chain linearly by asking 'Why' five consecutive times:\n- Symptom: State the visible problem that occurred on the floor.\n- Why 1: Isolate the immediate direct cause of the symptom.\n- Why 2: Identify the technical or mechanical reason behind that direct cause.\n- Why 3: Trace the operational or maintenance gap that allowed the mechanical issue to develop.\n- Why 4: Pinpoint the standard work or process control failure that missed the operational gap.\n- Why 5 (Root Cause): Isolate the deep system design or governance flaw that failed to prevent the failure mode from existing.",
+                example: "A main conveyor motor burns out. 1. Why? The motor overheated. 2. Why? The bearing lacked lubrication. 3. Why? The automated oil pump failed. 4. Why? Its internal filter was completely clogged with metal shavings. 5. Why (Root Cause)? The preventive maintenance protocol lacked any schedule for checking or replacing pump filters, leading to a permanent process change.",
+                mistakes: "Stopping the investigation at Why 1 or Why 2 and blaming 'human error' or 'equipment age,' which leaves the true process flaw uncorrected and dooms the issue to repeat.",
+                customize: "Pair this protocol with a verification gate: for every 'Why' statement you draft, you must physically go to the floor and verify the cause-and-effect link with actual process data or technical evidence before moving to the next step."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Kanban Card Sizing Equation Matrix",
+                formula: "N = (D * L * (1 + S)) / C",
+                example: "A manufacturing cell experiences an average hourly demand (D) of 150 components. The replenishment lead time (L) required to build and transport a new batch is exactly 4 hours. Management builds in a 15% safety buffer (S = 0.15) to absorb process variation, and each standard bin holds a fixed capacity (C) of 30 parts.",
+                calc: "D = 150, L = 4, S = 0.15, C = 30. Lead Time Demand = 150 * 4 = 600 units. Sizing Equation: N = (600 * (1 + 0.15)) / 30 = (600 * 1.15) / 30 = 690 / 30 = 23.0 cards total.",
+                verbalize: "To run this production loop safely without risking material shortages, we must place exactly 23 Kanban cards in active circulation between these two stations. This total is built on two main drivers. First, we need 20 cards to cover our average consumption of 600 units over the 4-hour supplier replenishment loop. Second, we add 3 extra cards as a 15% safety buffer to protect our lines from minor downtime or transport delays upstream. If our engineering team can implement a SMED changeover project to cut that replenishment lead time down from 4 hours to 2 hours, our required card count drops to 12. This change safely cuts our factory floor WIP capital requirements in half while keeping our service levels perfectly secure.",
+                mistakes: "Using mismatched time units for demand and lead time (such as combining daily demand with hourly lead times), which ruins the calculation and leads to severe material shortages."
             }
         );
         
