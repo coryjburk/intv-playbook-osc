@@ -3147,6 +3147,179 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-069",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Foundational",
+                question: "What is the primary operational difference between a Push supply chain strategy and a Pull supply chain strategy, and how do they alter warehouse staging targets?",
+                conversational: "A Push strategy is an inventory model driven by historical sales forecasts. You project what customers will buy three months from now, trigger purchase orders upstream, and push finished goods down into your regional warehouses ahead of time. This maximizes local equipment efficiency but carries a high risk of overproduction and inventory obsolescence. A Pull strategy is demand-driven. You don't build or move a single unit until a real customer order arrives at the shop floor. This lean structure keeps warehouse storage costs ultra-low, though it demands short supplier lead times and highly responsive logistics loops to prevent customer delivery delays.",
+                deepdive: "The structural boundary between these strategies is defined as the Push-Pull Decoupling Point or Order Fulfillment Boundary. Upstream from this point, operations run on Speculative (push) scheduling logic to build aggregate component safety stocks. Downstream from this point, operations transition to Responsive (pull) execution to customize the product configuration based on verified customer signatures. Moving the decoupling point upstream compresses customer delivery lead times but expands finished goods carrying costs on the balance sheet, requiring mixed-integer optimization models to balance holding capital against delivery speed requirements.",
+                coaching: "Look for candidates who frame this using the 'Push-Pull Decoupling Point' concept. They should naturally explain how shifting this point alters the balance sheet, contrasting speculative holding risks with responsive execution pressures.",
+                redFlag: "Suggesting that a pull system can be implemented effortlessly across a global network without evaluating supplier lead times or establishing upstream component staging buffers."
+            },
+            {
+                id: "Q-070",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Core",
+                question: "What is safety stock, and how does supplier lead time variability alter the volume of inventory required to maintain a 98% service level?",
+                conversational: "Safety stock is your balance sheet's insurance policy against unexpected spikes in customer demand and random delays from your vendors. Many managers assume that if a supplier's average lead time is 10 days, they only need to hold 10 days of inventory. But if that supplier frequently misses their window—sometimes delivering in 5 days and other times lagging to 20 days—that lead time variability will trigger chronic customer stockouts. To maintain a strict 98% service level, your safety stock math must factor in the standard deviation of that delivery window, proving that supplier unreliability is often far more expensive to support than baseline demand volatility.",
+                deepdive: "When both demand and lead time are volatile, the fully loaded Safety Stock (SS) equation incorporates both variance distributions: SS = Z · sqrt(L · σ_d^2 + d^2 · σ_L^2), where Z is the service level coefficient, L is average lead time, d is average daily demand, σ_d is demand standard deviation, and σ_L is lead time standard deviation. The parameter σ_L enters the equation as a squared multiplier against average demand (d^2). This proof shows that minor increases in supplier delivery unreliability cause safety stock targets to jump exponentially, locking up liquid capital in warehouse racks.",
+                coaching: "Listen for an explicit acknowledgement of the lead time variance parameter (σ_L). Strong candidates highlight that lead time volatility can inflict a heavier working capital penalty on an operation than simple customer demand shifts.",
+                redFlag: "Calculating safety stock targets based entirely on average lead time numbers while completely ignoring supplier delivery variations or standard deviation metrics."
+            },
+            {
+                id: "Q-071",
+                category: "Procurement & Supplier Management",
+                difficulty: "Advanced",
+                question: "How do you use a Failure Mode and Effects Analysis (FMEA) framework to calculate Risk Priority Numbers (RPN) for a critical Tier-1 supplier network?",
+                conversational: "A procurement FMEA moves you away from generic risk assessments and gives you an objective tool to score vendor vulnerabilities. We evaluate every potential supplier failure mode across three pillars on a scale of 1 to 10: Severity, Occurrence, and Detection. Severity scores the financial or operational damage of a failure, Occurrence tracks the likelihood of it happening based on historical data, and Detection measures how easily our quality checks can catch the issue before it hits our lines. By multiplying these numbers together, we get a Risk Priority Number between 1 and 1,000. Any supplier that scores a high RPN gets an immediate, mandatory mitigation plan—like qualifying a secondary source or setting up a dedicated safety stock buffer.",
+                deepdive: "The Risk Priority Number (RPN) matrix is modeled as: RPN = Severity (S) · Occurrence (O) · Detection (D). 1. Severity scores the structural impact of a node failure (e.g., 10 indicates total factory shutdown). 2. Occurrence measures statistical frequency based on supplier lot yield history. 3. Detection measures the capability of existing internal quality check gates (where a 10 indicates the defect is completely invisible until the end consumer reports it). Operations leaders establish strict RPN thresholds (typically any score exceeding 125 or featuring an isolated Severity score of 9+) to automatically trigger corrective actions, prioritizing engineering capital toward the highest calculated risks.",
+                coaching: "The candidate must explicitly detail the three scoring pillars and explain the multiplication math. Look for them to treat the RPN as a dynamic, continuous improvement tool rather than a static administrative document.",
+                redFlag: "Adding the three FMEA scoring pillars together instead of multiplying them, or assuming that high risk scores can be safely managed without establishing physical process safeguards."
+            },
+            {
+                id: "Q-072",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Expert",
+                question: "Explain how the Bullwhip Effect compounds demand signal distortions across multiple echelons of a supply chain, and outline how to systematically damp it.",
+                conversational: "The Bullwhip Effect is a classic supply chain failure where minor fluctuations in retail consumer demand turn into massive, volatile capacity crises by the time they pass back to the raw material factories. Think of a retailer seeing a small 5% bump in sales; to be safe, they increase their order to the distributor by 10%. The distributor sees that 10% jump and places a 20% larger order with the factory, and the factory panics and buys 40% more raw material. This compounding distortion is driven by a lack of visibility, batch ordering habits, and price gaming. To damp the bullwhip, you must break down the walls between nodes, implement Vendor-Managed Inventory to share real-time demand data instantly, and shrink production batch sizes.",
+                deepdive: "The mathematical propagation of the bullwhip effect proves that demand variance amplifies non-linearly at each upstream tier of the network graph: Var(O) / Var(D) > 1 + (2 · L / R) + (2 · L^2 / R^2), where L is replenishment lead time and R is the forecasting review period. The four primary operational drivers are: 1. Demand forecast updating errors (compounding local adjustments). 2. Order batching habits (creating irregular demand spikes). 3. Price gaming during promotions (encouraging forward-buying behavior). 4. Rationing games during shortages. Attenuating this volatility requires compressing lead times (L), standardizing everyday low pricing strategies, and using shared electronic data links (EDI) to establish a single version of demand truth across all tiers.",
+                coaching: "Look for strong systemic thinking. The candidate should comfortably detail the four operational drivers of the bullwhip effect and propose structural data integrations (like EDI links or VMI setups) over simple adjustments to local safety stocks.",
+                redFlag: "Blaming final consumer behavior for upstream factory capacity bottlenecks, failing to see that the volatility is self-inflicted by poor communication and uncoordinated batching across supply tiers."
+            },
+            {
+                id: "Q-073",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Foundational",
+                question: "What is First-Pass Yield (FPY), and why is tracking it far superior to measuring final inspection yield metrics?",
+                conversational: "Final inspection yield is a highly deceptive metric because it hides the 'hidden factory' wastes. If a line starts 100 units and drops 95 clean pieces onto the shipping dock, a traditional manager boasts about a 95% final yield. But if 30 of those units failed midway down the line and had to be pulled off, welded again, and re-inspected by operators, you are burning untracked labor hours and scrap costs. First-Pass Yield measures the percentage of units that move from start to finish through every single workstation on the first try without a single touch of rework. Tracking FPY forces your supervisors to address process quality variations early, rather than letting hidden rework loops drain your factory's margins.",
+                deepdive: "First-Pass Yield (FPY), or Rolled Throughput Yield (RTY), represents the true indicator of process capability across a multi-stage manufacturing system. Mathematically, it is the product of the individual step yields: FPY = Y₁ · Y₂ · ... · Y_n, where Y_i represents the first-time right rate at station i. Traditional final yield tracking captures only the exit gate status, masking internal rework cycles, capacity capacity constraints, and secondary quality inspection overheads. Shifting factory KPIs to FPY metrics shines a direct light on process variation, exposing capacity drains and protecting the accuracy of standard product cost models on the corporate P&L.",
+                coaching: "The candidate needs to connect First-Pass Yield directly to the concept of the 'hidden factory' and rework labor costs. Look for an preference for tracking continuous inline variations over passive, exit-gate final quality inspections.",
+                redFlag: "Arguing that final inspection yields are sufficient for plant scheduling, showing an ignorance of how internal rework loops waste labor capacity and inflate unit manufacturing expenses."
+            },
+            {
+                id: "Q-074",
+                category: "Lean / Continuous Improvement",
+                difficulty: "Core",
+                question: "What is Poka-Yoke (mistake-proofing), and how does a contact-based design control differ from an administrative warning signal?",
+                conversational: "Poka-Yoke is the practice of designing physical mechanism checks directly into a process so that errors are completely blocked before they can happen. A great everyday example is a gas pump nozzle—it is physically sized differently for diesel so you cannot accidentally insert it into a standard unleaded vehicle tank. Administrative warnings—like warning signs, neon labels, or reminder emails—are incredibly weak because they rely entirely on human attention. A contact-based Poka-Yoke uses hard physical fixtures or proximity sensors on the machine to guarantee a part is loaded perfectly center, locking out the tool if it isn't. This hard engineering blockade is what builds an operation capable of running at zero defects.",
+                deepdive: "Poka-Yoke devices are categorized by their design control strength into Lockout mechanisms (which stop the process immediately when an abnormality is detected) and Warning mechanisms (which alert operators via visual or auditory cues). Contact-based controls use physical shapes, limit switches, or proximity eyes to verify part dimensions or loading configurations before a machine cycle can fire. This engineering approach eliminates reliance on human behavior, driving process execution toward a zero-defect standard and reducing the corporate appraisal costs needed for downstream manual inspections.",
+                coaching: "Listen for an preference for physical engineering lockouts over weak behavioral warnings or paper checklists. The candidate should demonstrate a solid understanding of mistake-proofing design principles across active production lines.",
+                redFlag: "Proposing to fix a repeated assembly error by simply adding a signature box to a paper SOP form or hanging a warning sign above the workstation, failing to address the underlying process design vulnerability."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-030",
+                scenarioType: "sourcing strategic optimization / single-source hedge",
+                difficulty: "Advanced",
+                title: "The Great Basin Specialty Fastener Dual-Sourcing Pivot",
+                context: "A high-volume industrial equipment manufacturer based in Salt Lake City imports custom aerospace-grade titanium fasteners through a sole-source agreement with an international vendor. While the vendor provides excellent unit pricing ($12.50/unit), global freight disruptions have caused supplier lead times to surge from 15 days to 45 days. This volatility forces the plant to carry $2.5M in excess raw material safety buffer stock on its balance sheet to protect assembly schedules.",
+                interviewerPrompt: "Develop a data-driven dual-sourcing transition roadmap to qualify an alternative domestic vendor located in northern Utah, determine the optimal volume allocation split, and calculate the working capital cash unlocked by compressing the lead-time pipeline.",
+                candidateObjectives: [
+                    "Evaluate the total landed cost profile of the high-cost domestic supplier against the legacy international single source.",
+                    "Apply lead-time inventory equations to quantify the capital freed up by shrinking safety stock pipelines.",
+                    "Formulate a progressive volume allocation plan that protects supplier account statuses and satisfies minimum order quantities."
+                ],
+                clarifyingQuestions: [
+                    "What is the alternative domestic supplier's exact unit piece price and minimum order quantity (MOQ) restriction?",
+                    "How long does it take our quality engineering team to complete the formal stress testing and qualification of the new domestic fasteners?",
+                    "What is our annual corporate inventory carrying cost percentage used to evaluate locked-up warehouse capital?"
+                ],
+                suggestedApproach: "Deploy a rigorous total landed cost and inventory pipeline variance analysis. Do not reject the domestic vendor immediately because their raw invoice price ($14.20) looks higher on paper. Calculate the fully loaded cost: the international source carries a heavy 45-day lead time that ties up $2.5M in static safety buffers. Compressing that pipeline down to a fast 3-day over-the-road delivery window from the local Utah source slashes safety stock requirements by 75%. Implement a strategic 70/30 volume split to capture maximum international scale savings while keeping a warm, fast-response local supplier ready to step up if a disruption hits.",
+                keyIssues: [
+                    "The alternative domestic supplier demands a $14.20 unit price, representing a 13.6% premium over the international baseline contract.",
+                    "The legacy international supplier's contract contains a volume priority clause, threatening a 5% price penalty if our annual allocation falls below 70,000 units.",
+                    "The factory's annual demand for this custom fastener specification stands at a stable 100,000 units per year."
+                ],
+                analysisRequired: "Run a total landed cost comparison incorporating a 25% annual inventory holding friction, calculate safety stock reductions using pipeline lead-time variance math, and model multi-vendor volume allocation curves.",
+                sampleDataOrExhibit: {
+                    caption: "Dual-Sourcing Strategic Vendor Performance Profiles",
+                    rows: [
+                        ["Vendor Parameter Layer", "Legacy International Single Source", "Proposed Local Utah Source", "Strategic Sourcing Evaluation Indicators"],
+                        ["Base Invoice Price Paid", "$12.50 / Unit", "$14.20 / Unit", "Surface Purchase Cost Element"],
+                        ["Average Sourcing Lead Time", "45 Days Ocean Corridor", "3 Days Over-the-Road", "Dictates In-Transit Pipeline Capital"],
+                        ["Lead Time Volatility (σ)", "12.5 Days Standard Deviation", "0.5 Days Standard Deviation", "Primary Driver of Safety Stock Requirements"],
+                        ["Minimum Order Quantity", "10,000 Units Per Batch", "1,500 Units Per Batch", "Alters Warehouse Staging Footprints"],
+                        ["Required Safety Stock Buffer", "20,000 Units ($250,000)", "5,000 Units ($71,000)", "Locked-Up Balance Sheet Working Capital"]
+                    ]
+                },
+                strongAnswerPath: "The candidate avoids the classic trap of rejecting the local Utah supplier based purely on the higher invoice price ($14.20 vs. $12.50). They model the fully loaded operational ecosystem: carrying the international supplier's 45-day lead time and massive 12.5-day volatility requires holding 20,000 units of safety stock ($250k) alongside large in-transit pipelines. Switching to a strategic 70/30 dual-sourcing allocation allows the company to: 1. Maintain 70,000 units with the international vendor, avoiding the 5% contract volume penalty. 2. Route 30,000 units to the local Utah supplier, satisfying their 1,500-unit MOQ and keeping their lines warm. 3. Compress total network lead-time volatility, safely cutting safety stock on the floor from 20,000 units down to 9,500 units. Applying a 25% annual carrying friction, this inventory compression combined with the lead-time contraction frees up $680,000 in liquid working capital cash, easily erasing the surface material price premium and establishing a resilient, low-risk sourcing footprint.",
+                finalRecommendation: "Transition the category from a sole-source model to a 70/30 dual-sourcing allocation with the local Utah supplier. This structure avoids international contract volume penalties, satisfies domestic MOQs, and compresses network pipelines to free up $680,000 in cash.",
+                coachingNotes: "This scenario evaluates sophisticated strategic sourcing and inventory physics. Look for candidates who move past raw unit invoice margins and use pipeline lead-time compression metrics to justify a higher-cost, fast-response local supplier footprint.",
+                redFlags: [
+                    "Sticking with the sole international source purely because it has the lowest unit invoice price, ignoring the massive risk of a 45-day pipeline disruption or the holding costs of $2.5M in safety inventory.",
+                    "Proposing an unhedged 50/50 volume split on Day 1 that triggers the international supplier's 5% price penalty and violates the local vendor's initial pilot quality testing protocols."
+                ]
+            },
+            {
+                id: "S-031",
+                scenarioType: "inventory optimization / bullwhip mitigation",
+                difficulty: "Expert",
+                title: "The Intermountain Distribution Network Bullwhip Whiplash",
+                context: "A medical equipment group operates a three-tier supply network along the Wasatch Front, distributing diagnostic kits across retail stores, a regional distribution hub, and a central manufacturing site. Over the past two quarters, minor 8% variations in retail consumer demand have magnified into massive 65% production capacity spikes at the factory, leaving warehouses heavily congested with slow-moving stock while key stores face chronic product shortages.",
+                interviewerPrompt: "How would you step into this multi-tier network to diagnose the root causes of the demand amplification, map the data bottlenecks across nodes, and implement lean controls to damp the bullwhip effect?",
+                candidateObjectives: [
+                    "Analyze demand order variances across network echelons to calculate the precise bullwhip amplification coefficient.",
+                    "Isolate the behavioral and systemic drivers of distortion, focusing on batch ordering rules and lack of data visibility.",
+                    "Design an integrated replenishment framework (such as an e-Kanban or VMI link) to share retail demand signals instantly with the factory floor."
+                ],
+                clarifyingQuestions: [
+                    "What is the current electronic data interchange (EDI) link frequency between our retail stores and the central manufacturing scheduling system?",
+                    "Are our regional warehouse managers evaluated on local facility utilization metrics or total network inventory turns?",
+                    "What is the fixed administrative order processing cost and lead time required to trigger a production replenishment batch?"
+                ],
+                suggestedApproach: "Deploy a rigorous multi-echelon inventory diagnostics process. Calculate the variance of orders at each tier to quantify the bullwhip coefficient. Identify that the distortion is self-inflicted: retail stores are batching orders weekly, regional hubs are forward-buying during promotional price cuts, and the factory is scheduling massive, uncoordinated production lots to optimize local machine utilization metrics. Erase these data walls by establishing a shared cloud dashboard that gives the factory direct visibility into real-time retail point-of-sale (POS) data. Implement small-batch scheduling and eliminate promotional price shifts to smooth the production pace.",
+                keyIssues: [
+                    "The factory uses local machine utilization metrics as its primary KPI, encouraging supervisors to run massive batches that overproduce stock.",
+                    "Regional warehouses engage in forward-buying behavior to beat quarterly marketing promotions, inflating demand signals.",
+                    "Fulfillment information travels sequentially via manual weekly batch emails, adding 7 days of data delay between nodes."
+                ],
+                analysisRequired: "Compute order-to-demand variance ratios across the three supply tiers, calculate total inventory holding cost drops from lead-time compression, and model shared data visibility schedules.",
+                sampleDataOrExhibit: {
+                    caption: "Multi-Tier Supply Echelon Demand Volatility Diagnostics",
+                    rows: [
+                        ["Supply Chain Network Node Echelon", "Average Monthly Order Volume", "Calculated Variance of Orders", "Local Lead Time Processing Window", "Primary Order Strategy Trigger Indicator"],
+                        ["Tier 1: Retail Storefront Nodes", "50,000 Units / Month", "Var = 4,200", "Daily Point-of-Sale (POS) Swipes", "Direct End-Consumer Consumption"],
+                        ["Tier 2: Regional Distribution Hub", "52,500 Units / Month", "Var = 18,500", "7 Days (Manual Batch Email Data)", "Fixed Weekly Economic Order Batches"],
+                        ["Tier 3: Central Manufacturing Site", "56,000 Units / Month", "Var = 76,400", "14 Days (MRP Batch Run Cycles)", "Massive Production Lots for Asset Utilization"]
+                    ]
+                },
+                strongAnswerPath: "The candidate approaches the crisis with sophisticated multi-echelon systems logic. They review the data exhibit and calculate the bullwhip coefficient between the factory and retail stores: Variance Ratio = 76,400 / 4,200 = 18.19, proving that demand signals are amplified over 1,800% by the time they reach production. They isolate the root causes: manual weekly data emails, localized order batching, and an uncoordinated factory S&OP process chasing siloed asset utilization metrics. They implement a robust lean turnaround strategy: 1. Replace the manual weekly emails with an integrated e-Kanban system, sharing real-time retail POS data straight to the factory floor to eliminate the 7-day information lag. 2. Standardize everyday low pricing contracts, banning margin-eroding promotions to kill forward-buying behavior. 3. Run a SMED changeover project to shrink production lot sizes by 50%, matching the manufacturing pace directly to real consumption. This alignment drops network inventory capital needs by 38%, eliminates warehouse congestion, and restores store fill rates to a clean 99.2%.",
+                finalRecommendation: "Deploy an integrated e-Kanban system to share real-time retail data with the factory floor, eliminating information lags. Transition the production schedule to small-batch manufacturing leveled directly to consumer consumption patterns.",
+                coachingNotes: "This scenario evaluates top-tier enterprise supply chain systems thinking. Look for candidates who can accurately calculate variance amplification coefficients and focus on structural fixes like real-time data visibility and lead-time compression over basic localized safety stock tweaks.",
+                redFlags: [
+                    "Attempting to fix the bullwhip effect by simply ordering more safety stock at every warehouse independently, which increases holding costs and worsens the network congestion.",
+                    "Blaming store clerks or retail consumer shopping habits for a massive 1,800% demand distortion that is completely self-inflicted by poor internal scheduling and uncoordinated batching."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "Failure Mode and Effects Analysis (FMEA) Risk Matrix",
+                tag: "Supply Chain Sourcing & Quality Risk Management",
+                when: "Evaluating and prioritizing hidden vulnerabilities across a critical supplier network, factory line, or product launch to establish proactive engineering safeguards.",
+                structure: "Audit and score every potential failure mode from 1 to 10 across three dynamic performance scales:\n1. Severity (S): Measures the financial, operational, or safety impact if the failure occurs (1 = completely unnoticeable; 10 = catastrophic plant freeze or regulatory breach).\n2. Occurrence (O): Tracks the statistical probability or historical frequency of the failure mode developing (1 = highly improbable; 10 = near certainty across shifts).\n3. Detection (D): Rates the likelihood that current process inspection gates will catch the defect before it leaves the building (1 = absolute certainty of automated detection; 10 = completely invisible to internal checks).\nMaster Equation: Risk Priority Number (RPN) = Severity · Occurrence · Detection.",
+                example: "A medical device facility runs an FMEA on a critical component supplier. They discover a potential molding defect with high Severity (8), moderate Occurrence (4), and weak internal Detection (5) because it's invisible until final functional testing. The resulting RPN of 160 (8 · 4 · 5) triggers a mandatory process modification: installing an inline optical laser sensor to check parts automatically at receiving, dropping the Detection score to 1 and lowering the RPN to a safe 32.",
+                mistakes: "Adding the three evaluation parameters together instead of multiplying them, which compresses the risk scale and prevents teams from isolating critical bottleneck failure modes.",
+                customize: "Add an automatic escalation trigger that flags any isolated Severity score of 9 or 10 for immediate executive engineering review, regardless of how low the total multiplied RPN score appears."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Economic Order Quantity (EOQ) Total Landed Cost Drill",
+                formula: "EOQ = sqrt((2 · D · S) / H)",
+                example: "A high-volume final assembly operation along the Wasatch Front manages an annual demand (D) of 45,000 units for a critical component sub-assembly. Fixed administrative procurement and transit setup costs (S) stand at exactly $150 per purchase order purchase. Corporate finance tracking mandates an annual inventory holding cost (H) of $2.40 per unit carried in the facility racks.",
+                calc: "D = 45,000, S = 150, H = 2.40. Numerator = 2 · 45,000 · 150 = 13,500,000. Calculation: EOQ = sqrt(13,500,000 / 2.40) = sqrt(5,625,000) = 2,370.17 ≈ 2,370 units per order batch.",
+                verbalize: "To optimize our cash flow and minimize our total operational footprint, our procurement team must trigger a new purchase order for exactly 2,370 units every time our inventory drops to its reorder point. This order size balances the total cost curve by matching our ordering expenses with our warehouse carrying costs. If we place orders in smaller batches, our warehouse holding costs drop, but we will flood our purchasing team with frequent orders and drive up administrative transport overhead. If we buy in massive batches, we save on purchase order paperwork, but we will lock up valuable working capital in static warehouse space. By utilizing this 2,370-unit batch size, we minimize our total logistics cost baseline and establish an efficient, data-driven fulfillment model.",
+                mistakes: "Placing monthly or weekly demand figures directly into the equation instead of converting them to an annualized demand baseline (D), which distorts the calculation and leads to severe inventory imbalances."
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
