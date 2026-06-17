@@ -79,19 +79,19 @@
             position: sticky;
             top: 0;
             z-index: 40;
-            padding: 0 4rem;
+            padding: 0 1.5rem; /* Reduced padding to clear up horizontal margins */
         }
 
         .nav-tabs {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            overflow-x: auto;
+            overflow-x: auto; /* Automatically deploys horizontal scrolling when tabs exceed screen width */
+            overflow-y: hidden;
             list-style: none;
-            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch; /* Adds smooth momentum touch scrolling on mobile devices */
+            padding-bottom: 6px; /* Strategic spacing layout buffer for our custom slider track */
         }
-
-        .nav-tabs::-webkit-scrollbar { display: none; }
 
         .tab-link {
             padding: 1.2rem 1.5rem;
@@ -101,7 +101,8 @@
             letter-spacing: 0.05em;
             color: var(--text-muted);
             cursor: pointer;
-            white-space: nowrap;
+            white-space: nowrap; /* CRITICAL FIX: Prevents text elements from breaking down or vertical wrapping */
+            flex-shrink: 0;      /* CRITICAL FIX: Forces each item tab to maintain its structural full-width boundary */
             border-bottom: 3px solid transparent;
             transition: all 0.2s;
         }
@@ -113,6 +114,22 @@
             background: var(--card-bg);
         }
 
+        /* Premium, lightweight custom scrollbar for narrow viewports */
+        .nav-tabs::-webkit-scrollbar {
+            height: 4px; /* Ultra-thin, elegant layout footprint */
+        }
+        .nav-tabs::-webkit-scrollbar-track {
+            background: #EAE8E3;
+            border-radius: 2px;
+        }
+        .nav-tabs::-webkit-scrollbar-thumb {
+            background: var(--gold-accent); /* Branded gold slider accent indicator */
+            border-radius: 2px;
+        }
+        .nav-tabs::-webkit-scrollbar-thumb:hover {
+            background: var(--utah-red); /* Shifts to red on hover states */
+        }
+        
         main {
             max-width: 1400px;
             margin: 2rem auto;
