@@ -1768,6 +1768,230 @@
             }
         );        
         
+        contentData.questions.push(
+            {
+                id: "Q-027",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Foundational",
+                question: "What is Simple Exponential Smoothing (SES), and how does modifying the alpha (α) smoothing parameter alter the forecast's responsiveness?",
+                conversational: "Simple Exponential Smoothing is a forecasting method that calculates a weighted moving average of past demand, where older data points lose weight exponentially. The entire responsiveness of the forecast is controlled by a single parameter called alpha, which scales between 0 and 1. If you set alpha close to 1—say 0.8—the model heavily weights the most recent month's actual sales. This makes the forecast highly responsive to sudden market shifts, though it risks chasing random data noise. If you set alpha close to 0—like 0.1—the model ignores short-term spikes and builds a very flat, stable forecast based on historical baselines.",
+                deepdive: "The mathematical formula for Simple Exponential Smoothing is: $$F_{t+1} = \alpha \cdot A_t + (1 - \alpha) \cdot F_t$$, where $F_{t+1}$ represents the forecast for the upcoming period, $A_t$ is the actual demand observed in the current period, $F_t$ was the forecast for the current period, and $\alpha$ is the smoothing constant ($0 \le \alpha \le 1$). Rewriting this reveals the error-correction mechanism: $$F_{t+1} = F_t + \alpha \cdot (A_t - F_t)$$. This demonstrates that the new forecast is simply the old forecast adjusted by a fraction ($\alpha$) of the current period's forecast error. SES is strictly optimized for stable demand streams lacking distinct linear trends or seasonal variations.",
+                coaching: "The candidate should immediately identify that alpha balances responsiveness against stability. Look for them to explain the error-correction representation of the formula, demonstrating a solid understanding of structural forecasting mechanics over basic rote memorization.",
+                redFlag: "Suggesting that Simple Exponential Smoothing can be reliably applied to highly seasonal or rapidly trending product lines without adding secondary trend or seasonal tracking parameters (such as Holt-Winters models)."
+            },
+            {
+                id: "Q-028",
+                category: "Procurement & Supplier Management",
+                difficulty: "Core",
+                question: "How do you construct and govern a multi-tiered Vendor Scorecard that aligns supplier execution directly with shop-floor manufacturing stability?",
+                conversational: "A vendor scorecard shouldn't just be an annual administrative review that sits in a file. To protect our manufacturing lines, it must be a dynamic governance tool built on concrete metrics. I track four key operational metrics: On-Time In-Full (OTIF) delivery, First-Pass Yield upon receipt, commercial price competitiveness, and responsiveness to quality alerts. These metrics are tiered into clear classifications—Platinum, Gold, Silver, and Underperforming. If a critical vendor drops into the Underperforming tier for two consecutive quarters, we automatically freeze new volume allocations, divert a portion of the spend to our pre-qualified secondary source, and charge the primary supplier for any unabsorbed factory floor downtime their delivery errors caused.",
+                deepdive: "Effective scorecard design relies on quantifiable metrics balanced with strict contractual enforcement mechanisms. On-Time In-Full (OTIF) must be calculated using a tight Delivery Window tolerance (e.g., -2 days early, 0 days late) to prevent suppliers from over-shipping or flooding the warehouse early to game the metric. Defect tracking utilizes Received Quality Level (RQL) measured in parts per million (PPM). Governance requires linking scorecard tiers directly to financial procurement terms, such as automatic eligibility for long-term contract extensions, or the immediate triggering of a formal Corrective Action Preventive Action (CAPA) process when performance drops below threshold limits.",
+                coaching: "Listen for an emphasis on linking the scorecard to immediate operational consequences. Elite candidates don't just track data passively; they establish clear rules for reallocating volumes and holding suppliers financially accountable for the shop-floor disruption costs they cause.",
+                redFlag: "Proposing a scorecard built entirely on vague, subjective rankings like 'communication quality' or 'partnership spirit' without establishing clear, objective mathematical metrics."
+            },
+            {
+                id: "Q-029",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Advanced",
+                question: "What is the operational trade-off between a Traditional Batch Processing scheduling model and a Mixed-Model scheduling framework?",
+                conversational: "Traditional batch processing maximizes local equipment efficiency. You set up a machine once and run a massive volume of a single SKU to drive down the unit setup cost, which makes the plant accounting metrics look great. But it also floods your warehouse with finished goods inventory and forces other product lines to wait weeks for a turn on the machine. Mixed-model scheduling changes that approach completely. By reducing setup times down to minutes, you can run small batches of multiple different SKUs on the same line every day. This structure cuts your warehouse storage costs and shortens your customer lead times, though it demands excellent process control and strict setup disciplines to keep minor changeover delays from eating into total capacity.",
+                deepdive: "Traditional batch processing optimizes the Economic Order Quantity (EOQ) by treating setup times as a fixed, unchangeable barrier, which tends to favor long production runs and inflates Work-in-Progress (WIP) and finished goods inventory holding buffers. Mixed-model scheduling relies on Heijunka (production leveling) principles to match production directly with real-time customer consumption patterns. This scheduling shift is mathematically enabled by reducing setup times ($S$), which drives down the optimal batch size toward single-piece flow. The strategic trade-off balances a minor drop in theoretical maximum asset utilization against a non-linear contraction in total system lead time and inventory capital requirements.",
+                coaching: "The candidate needs to frame this as a balance between machine utilization and total network agility. They should demonstrate a clear understanding of how setup reductions enable leveled production schedules, linking these improvements straight back to working capital performance.",
+                redFlag: "Arguing that batch processing is always superior purely because it minimizes equipment changeover downtime, completely ignoring the balance sheet carrying costs of excess inventory."
+            },
+            {
+                id: "Q-030",
+                category: "Leadership & People Management",
+                difficulty: "Expert",
+                question: "How do you lead a manufacturing site through a complete recovery and cultural turnaround following a severe, catastrophic safety incident on the main line?",
+                conversational: "When a major safety incident occurs, your immediate priority is human life and safety, followed by radical transparency. I don't manage this from an office; I step out onto the floor. First, we execute an immediate line freeze and halt production across the facility until a comprehensive hazard analysis is completed. I bring our frontline operators right into the investigation team to trace exactly how our safety protocols failed. We don't resume operations until we install robust, physical engineering controls—like light curtains and interlocking safety cages—bypassing unreliable behavioral mandates. To rebuild trust, I establish a daily Tier 1 safety huddle where any operator has the absolute authority to shut down the line if they spot a safety risk, ensuring the team knows that employee safety always takes priority over production volume.",
+                deepdive: "Leading through a safety crisis requires applying the formal Hierarchy of Controls: Elimination, Substitution, Engineering Controls, Administrative Controls, and Personal Protective Equipment (PPE). Relying on administrative signs or reminding workers to 'be careful' represents a weak management strategy. Executive turnarounds mandate installing hard engineering interlocks that make safety failures physically impossible. Cultural alignment is achieved by tracking leading indicators (such as near-miss reports filed and hazard remediations completed within 48 hours) alongside traditional lagging indicators like Total Recordable Incident Rate (TRIR), shifting floor incentives from hiding incidents to proactively removing hazards.",
+                coaching: "Evaluate the candidate's emotional intelligence and commitment to process safety. They must instinctively apply the Hierarchy of Controls, prioritizing physical engineering solutions over basic behavioral warnings, while detailing concrete methods to empower the frontline workforce.",
+                redFlag: "Focusing primarily on avoiding regulatory fines or blaming worker carelessness for the safety incident without addressing the systemic design flaws in the process."
+            },
+            {
+                id: "Q-031",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Foundational",
+                question: "What is Cost of Poor Quality (COPQ), and what core categories of waste does it encompass within a standard factory operation?",
+                conversational: "Cost of Poor Quality measures the direct financial loss an operation absorbs because its processes are not perfect. I split COPQ into two primary financial buckets: Internal Failure Costs and External Failure Costs. Internal failures are the expenses you incur before the product leaves the building—like scrapping a mis-machined component, paying labor to rework defective parts, or re-running quality tests when a line fails inspection. External failures occur when the defect reaches the customer, which includes processing returns, handling warranty claims, and paying late-delivery or stockout penalties. COPQ acts as a financial metric that highlights exactly how much margin your process defects are draining from your bottom line.",
+                deepdive: "Cost of Poor Quality (COPQ) is a primary metric within Six Sigma and Lean operational finance frameworks. It tracks the non-value-added costs of failing to execute a process correctly the first time. The financial calculation isolates hidden factory overheads: COPQ = (Scrap Material Cost + Rework Labor Expense + Re-inspection Time) + (Customer Return Freight + Warranty Claims + Legal Liability/Recalls). Unlike standard yield metrics that merely count defective pieces, COPQ converts operational variation directly into a dollar figure on the P&L, providing the financial justification needed to fund proactive engineering improvement projects.",
+                coaching: "The candidate should clearly separate internal failures from external failures. Look for them to explain how external failures represent a much higher financial risk due to warranty expenses, processing overhead, and customer churn.",
+                redFlag: "Suggesting that COPQ only tracks the raw cost of scrapped materials, completely ignoring the associated labor costs, re-inspection time, and external customer return penalties."
+            },
+            {
+                id: "Q-032",
+                category: "Supply Chain Strategy & Risk",
+                difficulty: "Core",
+                question: "What operational and geographic parameters distinguish a Nearshoring strategy from a Reshoring approach when adjusting a regional supply chain network?",
+                conversational: "While both strategies aim to move production closer to your end customers to compress long transit timelines, they use very different geographic and cost structures. Nearshoring moves your sourcing or manufacturing footprint to a neighboring country within your immediate region—such as shifting a US supply network from China to Mexico. This approach keeps your logistics costs low and shortens transit times while still capturing favorable regional labor cost differentials. Reshoring brings production entirely back within your home country's borders. This strategy eliminates international tariff risks and customs friction completely, though it demands heavy investments in automation to offset higher domestic labor rates.",
+                deepdive: "The strategic distinction centers on balancing labor cost differentials against total supply chain risk and regulatory barriers. Nearshoring options (e.g., US-Mexico-Canada Agreement corridors) significantly compress transit lead times from 40 days down to less than 4 days via over-the-road freight, while preserving regional labor arbitrage benefits. Reshoring eliminates cross-border customs bottlenecks, currency fluctuations, and geopolitical tariff exposures entirely, but requires transforming manufacturing processes into high-density automated cells (using advanced robotics and automated material handling) to remain cost-competitive against lower-wage manufacturing regions.",
+                coaching: "Look for an focus on total landed cost optimization. The candidate should demonstrate a clear understanding of the trade-offs involved, balancing international trade barriers and freight timelines against regional labor cost differences and automation requirements.",
+                redFlag: "Treating the terms as completely interchangeable, or assuming that reshoring can be executed successfully without making significant capital investments in shop-floor automation."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-013",
+                scenarioType: "lead-time / cycle-time reduction",
+                difficulty: "Advanced",
+                title: "The Medical Instrument Sterile Packaging Lead-Time Crunch",
+                context: "A high-precision medical instrument facility in Salt Lake City faces intense market pressure to reduce its standard order-to-ship lead time from 18 days down to less than 5 days to secure an exclusive supplier agreement with a national healthcare group. Upstream component manufacturing runs efficiently, but the final sterile cleanroom kitting and validation phases are experiencing severe bottlenecks, dragging down process velocity.",
+                interviewerPrompt: "Walk me through how you would isolate non-value-added delays within this extended value stream, safely compress the processing lead time without compromising sterile safety protocols, and restructure product flow to support a fast-response fulfillment model.",
+                candidateObjectives: [
+                    "Perform a detailed process cycle efficiency audit to separate value-added processing time from non-value-added waiting queues.",
+                    "Apply Value Stream Mapping and Lean flow mechanics to eliminate staging delays between processing steps.",
+                    "Design a parallel testing and kitting workflow to bypass sequential process bottlenecks safely."
+                ],
+                clarifyingQuestions: [
+                    "What is the actual hands-on processing time required to complete the sterile kitting and inspection tasks?",
+                    "How long do components sit idle in staging storage bins while waiting for batch validation lab releases?",
+                    "Are customer order profiles predictable enough to allow us to pre-stage generic component sub-assemblies ahead of final orders?"
+                ],
+                suggestedApproach: "Construct a comprehensive Value Stream Map to isolate the 'hidden factory' wastes. Separate the total lead time into active processing time and passive queue waiting time. If the technical kitting tasks take only 4 hours but batches spend 12 days sitting idle waiting for lab test clearances, target the testing queue bottleneck. Transition from large-batch processing to continuous single-piece flow or smaller, agile batch sizes. Set up a parallel testing workflow and implement rapid, automated validation methods to eliminate the long staging delays safely.",
+                keyIssues: [
+                    "Products are processed in massive 5,000-unit batches, creating large Work-in-Progress (WIP) queues at the sterile validation station.",
+                    "The quality control lab operates on a rigid 4-day testing cycle, utilizing sequential manual data entry protocols.",
+                    "Upstream component arrivals are highly irregular, causing kitting teams to alternate between severe backlogs and idle time."
+                ],
+                analysisRequired: "Calculate Process Cycle Efficiency (PCE), determine total lead time reductions achieved by shrinking batch sizes, and evaluate the financial return of upgrading to real-time automated quality validation testing tools.",
+                sampleDataOrExhibit: {
+                    caption: "Sterile Kitting & Validation Value Stream Diagnostics",
+                    rows: [
+                        ["Value Stream Step Stage", "Actual Processing Time (Hrs)", "Average Staging Queue Time (Days)", "Active Work-in-Progress (WIP) Level", "Process Step Classification"],
+                        ["Stage 1: Component Pick & Prep", "1.5 Hours", "2.0 Days Waiting Lane", "3,500 Units Idle", "Necessary Non-Value-Added"],
+                        ["Stage 2: Cleanroom Sterile Kitting", "2.0 Hours", "4.5 Days Batch Queue", "8,000 Units Staged", "Core Value-Added Step"],
+                        ["Stage 3: Lab Bio-Burden Testing", "0.5 Hours", "8.0 Days Lab Release", "12,500 Units Locked", "Regulatory Compliance Gate"],
+                        ["Stage 4: Final Over-Pack & Stage", "1.0 Hour", "2.5 Days Shipping Dock", "4,000 Units Staged", "Necessary Non-Value-Added"]
+                    ]
+                },
+                strongAnswerPath: "The candidate isolates the massive disconnect between processing time and total lead time. They calculate that while actual hands-on processing takes only 5 hours total ($1.5 + 2 + 0.5 + 1$), the product spends an astonishing 17 days sitting completely idle in staging queues. They compute the baseline Process Cycle Efficiency as a weak 1.2% ($5\text{ hrs} / 408\text{ hrs total lead time}$). Rather than expanding cleanroom footprints, they shrink the production batch size from 5,000 units down to a lean 500 units. This single change slashes Stage 2 batch queue wait times from 4.5 days down to less than half a day. Next, they tackle the Stage 3 lab testing bottleneck: they work with quality engineers to transition from manual, retrospective culture testing to an advanced, rapid automated PCR-testing validation model. This cuts the lab release cycle from 8 days down to 6 hours. These combined process adjustments collapse the total order lead time from 18 days down to 3.8 days, securing the premium national contract while reclaiming $2.2M in locked-up working capital cash.",
+                finalRecommendation: "Shrink the production batch size to 500 units to accelerate process velocity. Invest $180,000 to deploy rapid automated lab testing tools, collapsing the validation bottleneck from 8 days down to 6 hours to secure the national customer contract.",
+                coachingNotes: "This scenario evaluates a candidate's mastery of Lean value stream physics. Look for them to ignore machine speeds and target the staging queues, using precise Process Cycle Efficiency (PCE) calculations to support their turnaround strategy.",
+                redFlags: [
+                    "Proposing to hire more cleanroom operators or buy additional assembly fixtures without realizing that inventory is sitting idle 98% of the time in non-value-added waiting lanes.",
+                    "Suggesting to bypass or cut corners on sterile validation steps, which creates extreme regulatory compliance and safety liabilities."
+                ]
+            },
+            {
+                id: "S-014",
+                scenarioType: "demand surge / capacity shortfall",
+                difficulty: "Core",
+                title: "The Utah E-Commerce Cold-Weather Gear Peak Spike",
+                context: "An outdoor apparel distribution hub based in Salt Lake City experiences an intense, un-forecasted 50% spike in direct-to-consumer online order volumes in early November due to an unseasonably severe winter weather front across the Intermountain West. Daily parcel shipping volumes have surged past the facility's effective capacity limit, creating an immediate 8,500-order backlog and causing severe shipping delays that threaten holiday service level agreements.",
+                interviewerPrompt: "Develop an immediate 48-hour tactical plan to clear the order backlog, optimize shipping capacity using your current workforce, and re-engineer warehouse picking paths to maximize daily throughput.",
+                candidateObjectives: [
+                    "Restructure warehouse picking methodologies to maximize daily order fulfillment volumes.",
+                    "Optimize shift balancing and cross-train operators to clear shipping lane bottlenecks.",
+                    "Establish a temporary high-velocity packing line for single-item orders to accelerate throughput."
+                ],
+                clarifyingQuestions: [
+                    "What percentage of the active order backlog consists of simple, single-item shipments compared to multi-item orders?",
+                    "Can we temporarily reallocate labor from slow-moving departments—like inbound returns or wholesale inventory receiving—over to picking and packing?",
+                    "What is the primary bottleneck inside the warehouse: order picking travel times, packing station capacity, or shipping dock sorting speeds?"
+                ],
+                suggestedApproach: "Deploy a rapid order stratification and batch-picking strategy. Immediately segment the order backlog to separate single-item orders from complex multi-item shipments. Implement a batch-picking model for single-item orders, allowing pickers to harvest high volumes of identical products in a single pass, completely bypassing inefficient zone-picking routes. Temporarily freeze non-critical inbound receiving operations and cross-train those workers to support packing and shipping lanes, running a continuous 24/7 fulfillment cycle until the backlog is cleared.",
+                keyIssues: [
+                    "Operators are using traditional discrete order picking methods, walking the entire warehouse footprint for every single order.",
+                    "Packing stations are severely congested because operators are manually cutting and folding custom-sized cardboard boxes for every shipment.",
+                    "Inbound delivery trucks continue to drop off seasonal inventory, blocking the loading docks and creating traffic jams for outbound parcel carriers."
+                ],
+                analysisRequired: "Calculate the throughput gains achieved by shifting to batch-picking for single-item orders, balance labor shift assignments across departments, and measure fulfillment velocity metrics.",
+                sampleDataOrExhibit: {
+                    caption: "Fulfillment Performance Metrics & Backlog Profiling",
+                    rows: [
+                        ["Fulfillment Metric Parameter", "Standard Operating Baseline", "Peak Surge Actuals", "Current Local Bottleneck Constraint Status"],
+                        ["Daily Incoming Order Volume", "12,000 Orders / Day", "18,000 Orders / Day", "Exceeds System Effective Design Targets"],
+                        ["Average Picker Throughput", "45 Lines / Hour", "32 Lines / Hour", "Severe Travel Distance Congestion Losses"],
+                        ["Packing Line Processing Rate", "60 Orders / Station / Hr", "42 Orders / Station / Hr", "Box Assembly & Folding Delay Bottleneck"],
+                        ["Backlog Order Volume Count", "< 500 Pending Orders", "8,500 Pending Orders", "Triggers Retail Client Late Penalties"]
+                    ]
+                },
+                strongAnswerPath: "The candidate acts with impressive tactical urgency. They review the backlog data and isolate the core bottleneck: operators are losing picking velocity due to travel-distance waste from old discrete picking methods. They implement an immediate multi-step recovery plan: 1. Audit the backlog and discover that 60% of the surging orders are single-item requests for identical winter coats and gloves. 2. Shift immediately from discrete picking to a high-velocity batch-picking model for these single-item orders, allowing a single operator to pick 50 identical items in one pass, instantly boosting picking rates from 32 up to 120 lines per hour. 3. Set up a dedicated, stream-lined packing line for single-item orders, utilizing pre-formed standard shipping boxes to eliminate manual folding delays. 4. Freeze non-critical inbound returns receiving for 72 hours, reallocating 15 operators to reinforce the shipping docks. This agile reallocation clears the 8,500-order backlog within 48 hours, restores standard delivery times, and protects peak-season revenues.",
+                finalRecommendation: "Deploy an immediate single-item batch-picking model to clear the fulfillment backlog. Temporarily reallocate labor from inbound receiving to the packing lines, and use standardized pre-formed packaging to eliminate processing bottlenecks.",
+                coachingNotes: "This scenario evaluates a candidate's agile problem-solving skills and shop-floor execution speed. Look for them to implement immediate operational adjustments (like batch picking, labor rebalancing, and product stratification) to clear the capacity constraint without relying on slow, long-term hiring options.",
+                redFlags: [
+                    "Suggesting to submit an emergency request to an external agency for temporary workers, failing to realize that recruiting and training new staff would take over a week and miss the immediate 48-hour crisis window.",
+                    "Leaving the warehouse running on inefficient discrete picking pathways while simply asking the current workforce to walk faster or work mandatory double overtime shifts."
+                ]
+            },
+            {
+                id: "S-015",
+                scenarioType: "sourcing / procurement savings strategy",
+                difficulty: "Expert",
+                title: "The Global Raw Materials Direct-Sourcing Synergy",
+                context: "Following a large corporate acquisition, a consolidated industrial manufacturing enterprise manages an annual direct raw materials spend of $140M across 12 decentralized operating sites. Each plant buys its raw aluminum extrusions, fasteners, and packaging materials independently, resulting in severe price variation, fragmented vendor agreements, and significant margin leakage across the business.",
+                interviewerPrompt: "Develop an enterprise-wide procurement optimization strategy to consolidate this fragmented spend, eliminate price variation across sites, and restructure vendor relationships to maximize corporate EBITDA margins without risking supply shortages.",
+                candidateObjectives: [
+                    "Analyze and segment the consolidated procurement data to identify high-leverage spend categories.",
+                    "Design a centralized category management framework to consolidate raw material purchasing power.",
+                    "Formulate a supplier consolidation plan that leverages total business volume while protecting against sole-source risks."
+                ],
+                clarifyingQuestions: [
+                    "What is the current price variance for identical raw material specifications across our different manufacturing facilities?",
+                    "Are there long-term contractual volume commitments or early-termination penalties with our current local vendors?",
+                    "Do our plants share standardized raw material specifications, or does each site use unique custom dimensions?"
+                ],
+                suggestedApproach: "Deploy a structured strategic sourcing methodology. Begin by building a comprehensive spend visibility cube to aggregate purchase data across all 12 facilities. Segment the total spend using the Kraljic matrix to isolate high-value commodity categories like aluminum. Consolidate these fragmented local purchases into a single master request for proposal (RFP), using the company's combined purchasing power to negotiate lower prices with Tier-1 suppliers. Implement a dual-sourcing framework using a 70/30 volume allocation to capture volume discounts while protecting against supply disruptions.",
+                keyIssues: [
+                    "Local plant managers are resisting centralization, fearing that corporate vendor agreements will miss local delivery needs or hurt production flexibility.",
+                    "Three individual facilities are locked into localized supply contracts for the next 6 months, featuring high early-termination penalties.",
+                    "Raw material specifications vary slightly across sites, with over 45 individual variations for standard aluminum rods."
+                ],
+                analysisRequired: "Run a price-variance analysis across facilities, calculate total procurement cost savings from consolidated volume discount tiers, and model the financial impact of standardizing raw material specifications.",
+                sampleDataOrExhibit: {
+                    caption: "Raw Material Spend Profiling & Price Variation Matrix",
+                    rows: [
+                        ["Raw Material Category spend", "Total Consolidated Spend ($M)", "Active Vendor Count across Sites", "Min Purchase Price Paid ($/Unit)", "Max Purchase Price Paid ($/Unit)"],
+                        ["Aluminum Extrusions (T-Slot)", "$65.0M Spend", "18 Local Vendors", "$3.10 / lb (Bulk Hub)", "$4.65 / lb (Low Volume Site)"],
+                        ["Industrial Fasteners", "$25.0M Spend", "42 Local Vendors", "$0.04 / Unit (Standard)", "$0.12 / Unit (Spot Buy)"],
+                        ["Custom Packaging Cartons", "$30.0M Spend", "15 Local Vendors", "$0.85 / Box Contract", "$1.40 / Box Spot Market"],
+                        ["Specialty Chemical Solvents", "$20.0M Spend", "4 Specialized Vendors", "$18.50 / Gallon Fixed", "$19.00 / Gallon Fixed"]
+                    ]
+                },
+                strongAnswerPath: "The candidate addresses the challenge with sophisticated strategic sourcing methodologies. They analyze the data cube and highlight a major 50% price variance for identical aluminum extrusions ($3.10 vs. $4.65 per pound) caused by fragmented local spot purchasing. They outline an enterprise turnaround strategy: 1. Launch a cross-functional engineering initiative to standardize material specifications, compressing 45 regional variations of aluminum rods down to 6 standardized profiles. 2. Categorize Aluminum as a high-value Leverage Item using the Kraljic matrix; they consolidate the $65M spend into a single master regional RFP, reducing the active vendor count from 18 down to 2 pre-qualified strategic suppliers. 3. Enforce a 70/30 volume split between these 2 suppliers to secure maximum volume discounts while maintaining an active secondary source. 4. Automate the low-value fastener spend ($25M) by setting up localized Vendor-Managed Inventory (VMI) systems to cut administrative transaction costs. This procurement overhaul captures a clean 12% total savings across categories, instantly injecting $16.8M directly into corporate EBITDA margins.",
+                finalRecommendation: "Consolidate your fragmented raw material spend into a centralized corporate procurement framework. Standardize component specifications across all manufacturing sites, and negotiate master dual-sourcing contracts for high-value categories like aluminum to capture volume discounts while protecting supply security.",
+                coachingNotes: "This scenario evaluates enterprise-level sourcing and corporate synergy execution. Look for candidates who avoid simple price-haggling tactics and instead focus on structural strategies like component standardization, spend data aggregation, Kraljic matrix profiling, and lifecycle cost optimization.",
+                redFlags: [
+                    "Proposing to immediately cancel all local vendor contracts without checking early-termination penalties, which creates severe legal liabilities and risks production line shutdowns.",
+                    "Focusing all negotiation efforts on the low-value chemical solvents category ($20M spend with tiny 2% price variation) while ignoring the massive cost-reduction opportunity in aluminum."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "Single-Minute Exchange of Die (SMED) Setup Reduction",
+                tag: "Lean Operations / Changeover Optimization",
+                when: "When a critical manufacturing line bottleneck experiences high changeover downtime, making small-batch scheduling impossible and hurting production flexibility.",
+                structure: "Optimize equipment changeover times using four sequential stages:\n1. Identify and Document: Video-record the current changeover process to log every individual manual step and duration.\n2. Separate Internal vs. External Tasks: Isolate 'Internal' tasks that can only be performed while the machine is completely stopped, from 'External' tasks that can be done while the machine is actively running.\n3. Convert Internal to External: Re-engineer the process so staging tools, pre-heating dies, and cleaning parts are moved completely outside the machine stop window.\n4. Streamline All Remaining Steps: Eliminate adjustments, standardize fasteners (e.g., using quick-release clamps), and practice parallel team changeover routines.",
+                example: "A plastic injection molding site cuts machine changeover times from 90 minutes down to 14 minutes by pre-heating mold blocks before the machine stops (External conversion) and installing standardized quick-locking handles to replace old bolt fasteners.",
+                mistakes: "Attempting to optimize or speed up specific changeover tasks before clearly separating internal and external steps, which limits the total downtime reduction.",
+                customize: "In highly automated environments, integrate a digital checklist into the WMS to guarantee that all tools, raw materials, and components are physically verified at the station before the machine shutdown sequence is triggered."
+            },
+            {
+                name: "The A3 Problem Solving & Root-Cause Architecture",
+                tag: "Continuous Improvement / Problem Solving",
+                when: "Faced with a persistent process deviation, safety trend, or quality issue, where you need a structured, transparent process to guide a team from diagnosis to permanent correction.",
+                structure: "Document the complete improvement cycle on a single A3-sized visual sheet across 7 distinct panels:\n1. Background: State the business context and outline why resolving this specific issue is a priority.\n2. Current State: Detail the exact problem using clear baseline charts, error frequencies, and process flow maps.\n3. Target Condition: Define clear, quantifiable success metrics (such as dropping the defect rate below 0.5% within 30 days).\n4. Root-Cause Analysis: Use data-driven diagnostic tools (such as the 5 Whys or Fishbone diagrams) to isolate the vital few process variables driving the issue.\n5. Countermeasures: Design and test targeted changes to eliminate the identified root causes.\n6. Implementation Plan: Map out specific actions, set firm completion dates, and assign clear ownership boundaries across the team.\n7. Follow-up & Standardize: Establish regular control chart reviews and update standard work protocols to look in the performance gains.",
+                example: "An enterprise fulfillment hub uses an A3 report to address a spike in wrong-item shipping errors. The root-cause panel isolates a glaring label barcode clarity issue, helping the team design a new scanner calibration countermeasure that successfully cuts defects by 90%.",
+                mistakes: "Treating the A3 report as a simple retrospective summary form to fill out after a project is finished, rather than using it as a live, iterative tool to guide the team's actual problem-solving process on the floor.",
+                customize: "Add a dedicated 'Financial Impact Verification' section within the follow-up panel to explicitly track how the process improvement directly reduces scrap expenses or labor overhead on the corporate P&L."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Standard Deviation of Demand During Lead Time Calculation",
+                formula: "σ_LT = sqrt(L * σ_d^2)",
+                example: "An automotive assembly facility experiences a standard deviation of daily demand (σ_d) of 15 tires. The component supplier provides a reliable, fixed delivery lead time (L) of exactly 4 days.",
+                calc: "L = 4, σ_d = 15. σ_d^2 = 225. σ_LT = sqrt(4 * 225) = sqrt(900) = 30 units total demand standard deviation during lead time.",
+                verbalize: "When evaluating our safety stock targets, we must calculate the total demand volatility over our entire supplier delivery window rather than looking at daily variations in isolation. With a daily demand standard deviation of 15 tires and a fixed 4-day supplier lead time, our total demand variation across the lead time is exactly 30 units. This statistical baseline forms the core foundation for our safety stock calculation. If our supplier can shorten their delivery lead time from 4 days down to 1 day, our demand variation during lead time mathematically drops from 30 down to 15 units. This change lets us safely reduce our inventory buffers on the balance sheet by 50% while maintaining identical customer service levels.",
+                mistakes: "Multiplying the daily standard deviation directly by the lead time length ($L \cdot \sigma_d$) instead of using the correct square root relationship, which over-inflates your inventory metrics and ties up unneeded capital."
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
