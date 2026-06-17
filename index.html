@@ -2236,6 +2236,229 @@
 
         contentData.questions.push(
             {
+                id: "Q-039",
+                category: "Procurement & Supplier Management",
+                difficulty: "Foundational",
+                question: "What is the strategic purpose of a Total Cost of Ownership (TCO) framework, and why does looking only at the supplier's unit price cause supply chain failures?",
+                conversational: "Evaluating an international supplier based purely on their unit invoice price is an incredibly dangerous trap. A low invoice price completely ignores the hidden costs that stack up across the lifecycle of that material. I use a formal Total Cost of Ownership framework to bring all those invisible costs to light—including international transport freight, customs tariffs, marine insurance, and port handling fees. It also accounts for internal operational costs like holding safety stock due to long lead times, running quality inspections at receiving, and scraping units due to supplier defects. A part that costs $10 on paper but carries a 45-day lead time and a 3% defect rate is often far more expensive than a local $14 part that delivers next-day with zero defects.",
+                deepdive: "The Total Cost of Ownership (TCO) model aggregates lifecycle expenses across three major chronological phases: Pre-transaction costs (supplier qualification, prototyping, tooling, and contracting), Transaction costs (base invoice price, transport freight, import duties, customs clearance, and pipeline inventory financing), and Post-transaction costs (warehouse storage capital, quality failure scrap, product rework labor, warranty claims, and field service liabilities). By structuring procurement options into a fully loaded cost-per-unit metric, supply chain managers can run objective net present value (NPV) analyses that prevent local purchasing optimization from inadvertently increasing total operating overhead.",
+                coaching: "Look for candidates who break down costs into pre-transaction, transaction, and post-transaction buckets. They should explicitly mention how long transit lead times inflate balance sheet safety stock costs and how quality defects erode gross margins.",
+                redFlag: "Arguing that the purchasing department should always choose the lowest raw invoice price to hit local variance targets, without calculating the downstream impact on logistics or quality costs."
+            },
+            {
+                id: "Q-040",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Core",
+                question: "What are National Motor Freight Classification (NMFC) codes, and how do product density, stowability, and liability dictate your LTL shipping rates?",
+                conversational: "NMFC codes are the standardized pricing metrics used by the Less-Than-Truckload freight industry to classify products into 18 distinct classes, ranging from Class 50 all the way up to Class 500. This classification determines your shipping tariff rate. The class is driven by four key metrics: density, stowability, handling, and liability. If you are shipping dense, heavy commodities like steel bolts that sit tightly on a standard pallet, you get a low classification like Class 50, which gives you very cheap shipping rates per pound. But if you ship light, bulky items like ping-pong balls, or high-value electronics that face high theft risks, you jump to a high classification like Class 300, sending your transportation costs sky-high because you are consuming the truck's volume space rather than its weight capacity.",
+                deepdive: "The NMFC system (governed by the NMFTA) standardizes freight pricing by modeling vehicle capacity consumption. The four evaluation metrics are: 1. Density (measured in pounds per cubic foot; high-density items get lower classes). 2. Stowability (how easily the freight stacks with other cargo; irregular shapes increase classification). 3. Handling (the ease or difficulty of moving the material through regional hub terminals). 4. Liability (the financial risk of theft, breakability, or hazardous chemical exposure). Operational leaders use these parameters to negotiate custom FAK (Freight All Kinds) exceptions with carriers, grouping multiple product classes into a single negotiated pricing class to simplify freight auditing and lower shipping expenses.",
+                coaching: "The candidate must identify that shipping space (cube consumption) can be more expensive than weight capacity for a carrier. Ensure they outline all four NMFC pillars: density, stowability, handling, and liability.",
+                redFlag: "Assuming that freight rates are calculated based entirely on shipment weight and mileage, with no awareness of product density classes or handling liabilities."
+            },
+            {
+                id: "Q-041",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Advanced",
+                question: "How do you distinguish between a 'blocking' condition and a 'starving' condition on an automated manufacturing line, and how do you use decoupling buffers to fix them?",
+                conversational: "Blocking and starving are the warning signs of an unbalanced manufacturing line. A blocking condition happens upstream from your line bottleneck. If a fast machine finishes its task but the slower downstream station is still busy, that upstream machine has nowhere to send its part, so it's forced to shut down. A starving condition occurs downstream from your bottleneck. If a fast machine finishes its work but has to sit idle because the slow upstream station hasn't passed a new part down yet, that machine is starved. To protect your throughput, you must size a physical decoupling buffer right before the bottleneck asset, ensuring it never runs out of material, while using visual pull controls to keep upstream machines from overproducing.",
+                deepdive: "Line balancing optimization maps individual workstation cycle times ($CT_n$) against the overall system Takt time. A blocking event occurs when station $n$ finishes processing but station $n+1$'s queue is completely full ($CT_n < CT_{n+1}$), forcing station $n$ to stop to prevent unmanaged WIP accumulation. A starving event occurs when station $n$ is ready to process but station $n-1$ has not released a unit ($CT_n > CT_{n-1}$). To optimize line performance, teams place physical decoupling inventory buffers right before the constraint station. The required size of this buffer is determined by modeling process variance and tool changeover cycles to ensure the bottleneck asset achieves 100% schedule utilization.",
+                coaching: "Listen for an focus on line bottleneck protection. The candidate should use the terms correctly, tracking how material disruptions flow backward to block upstream machines and forward to starve downstream stations.",
+                redFlag: "Suggesting that you can resolve line blockages by simply speeding up the upstream machines, which increases unmanaged floor WIP without increasing final output."
+            },
+            {
+                id: "Q-042",
+                category: "Lean / Continuous Improvement",
+                difficulty: "Expert",
+                question: "What is Hoshin Kanri strategic policy deployment, and how does it prevent an operation from chasing conflicting KPIs across different management tiers?",
+                conversational: "Hoshin Kanri is a strategic planning system that ensures your high-level corporate goals are directly supported by daily actions on the factory floor. In many operations, departments chase conflicting goals—like sales pushing for high custom product variety while manufacturing tries to run long, low-cost batches. Hoshin Kanri resolves this disconnect by using a structured process called 'catchball' to pass goals back and forth between executives and floor teams until they align. Everything is mapped on an objective visual spreadsheet called the X-Matrix. This matrix links your 5-year corporate break-through goals to annual targets, specific lean projects, and individual floor-level KPIs, ensuring every shift huddle focuses on the metrics that matter most.",
+                deepdive: "Hoshin Kanri operates on a cascading alignment architecture. The tool uses a dual-loop communication process called catchball to negotiate target parameters across management layers, building strong cross-functional buy-in. Strategic execution is tracked via the Hoshin Kanri X-Matrix, a visual single-page management tool divided into four connected quadrants: True North Breakthrough Objectives (3-5 years), Annual Strategic Goals, Top-Priority Tactical Improvements (Kaizen events or engineering builds), and Key Performance Indicators (OEE, First-Pass Yield, Inventory turns). This tight loop ensures that local improvements directly support the company's long-term financial performance.",
+                coaching: "The candidate should highlight the collaborative 'catchball' process and explicitly explain how the X-Matrix creates a single, visible connection between high-level company goals and daily shop-floor metrics.",
+                redFlag: "Treating strategic planning as a top-down executive mandate that is handed down once a year without any floor-level catchball alignment or active performance tracking."
+            },
+            {
+                id: "Q-043",
+                category: "Inventory Management & Optimization",
+                difficulty: "Foundational",
+                question: "What is inventory shrinkage, how do you track it financially, and what operational controls eliminate inventory variance on the warehouse floor?",
+                conversational: "Inventory shrinkage is the financial loss an operation absorbs when your actual physical inventory on the shelves is lower than what your ERP system says you have. This discrepancy is caused by three main drivers: theft, material damage during handling, or administrative errors like scanning the wrong barcode during receiving. To eliminate this variance, I don't wait for the massive annual physical inventory count. Instead, I implement a strict daily cycle counting protocol, using our high-value ABC inventory classifications. We pair this with standardized warehouse standard work, forcing operators to verify every inventory movement with handheld RF scanners to ensure our digital records match floor realities in real time.",
+                deepdive: "Financially, inventory shrinkage directly inflates the Cost of Goods Sold (COGS) and lowers gross margins: Shrinkage = (Book Inventory Value - Physical Inventory Value). It represents a significant operational risk because inaccurate inventory data causes the system to trigger unnecessary or delayed purchase orders. Operational control requires a strict multi-layered approach: establishing secure access storage zones for high-value SKUs, enforcing standardized scanning procedures for all material transfers, and applying immediate root-cause diagnostics whenever cycle counts reveal an error rate above +/- 0.5% tolerance limits.",
+                coaching: "Look for candidates who focus on inventory accuracy as a prerequisite for smooth factory scheduling. Good responses prioritize proactive, continuous cycle counting over reactive, slow annual warehouse inventory audits.",
+                redFlag: "Treating inventory shrinkage as an unchangeable cost of doing business, or relying purely on an annual facility shutdown to reconcile data errors."
+            },
+            {
+                id: "Q-044",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Advanced",
+                question: "How do you use Statistical Process Control (SPC) charts and the Western Electric Rules to identify the difference between Common Cause and Special Cause process variation?",
+                conversational: "Statistical Process Control charts help you monitor a production line in real time so you can spot and fix a process deviation before it turns into expensive factory scrap. Every process has a baseline level of random, common-cause variation—like minor vibrations from a properly tuned machine. This is normal noise. Special-cause variation is an abnormal event—like a tool chipping or a raw material lot failing specification. To catch these events early, I apply the Western Electric Rules to our control charts. If a single data point jumps completely past our 3-sigma Upper Control Limit, or if 8 consecutive points drift onto one side of the process mean, that tells my team that the line has shifted. We halt the process immediately to fix the root cause before any bad parts can be built.",
+                deepdive: "Statistical Process Control (SPC) maps continuous variables on a time-series chart featuring a calculated Process Mean ($\bar{X}$), Upper Control Limits (UCL), and Lower Control Limits (LCL), typically set at $+/- 3\sigma$ from the mean. Common-cause variation is inherent to the process design and can only be reduced by re-engineering the machinery or material inputs. Special-cause variation indicates an external disruption. The Western Electric Rules detect these disruptions by tracking non-random data patterns across defined standard deviation zones: Zone A ($2\sigma$ to $3\sigma$), Zone B ($1\sigma$ to $2\sigma$), and Zone C (mean to $1\sigma$). Violations—such as 4 out of 5 consecutive points landing in Zone A or beyond—prove statistically that an external variable has entered the system, mandating immediate engineering containment protocols.",
+                coaching: "The candidate needs to explain that control limits are calculated from real process performance, whereas specification limits are set by the customer's design. They should comfortably outline how Western Electric rules pick up non-random trends before defects occur.",
+                redFlag: "Confusing calculated Statistical Control Limits with customer engineering Specification Limits, which represents a fundamental misunderstanding of quality engineering principles."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-019",
+                scenarioType: "transportation cost spike / mode optimization",
+                difficulty: "Core",
+                title: "The Regional Truckload Carrier Capacity Squeeze",
+                context: "A high-volume manufacturing operation based in Salt Lake City distributes finished consumer goods to major retail hubs across the West Coast. Following a sudden regional carrier consolidation and driver shortage, their primary contract freight carrier slashes their dedicated weekly trailer allocation by 40%. This capacity cut forces the company to source alternative trailers on the open freight spot market, where LTL and truckload rates have surged by a massive 45%, threatening to wipe out their distribution operating margins.",
+                interviewerPrompt: "Develop an immediate logistics stabilization plan to secure shipping capacity, optimize freight consolidation across remaining lanes, and minimize your exposure to high spot-market freight rates.",
+                candidateObjectives: [
+                    "Evaluate shipping profiles to maximize cube and weight utilization across all outbound trailers.",
+                    "Design a collaborative pool-distribution model to group local shipments with adjacent regional shippers.",
+                    "Structure a core-carrier routing guide to re-negotiate long-term contract rates with alternative secondary transport lines."
+                ],
+                clarifyingQuestions: [
+                    "What is our average trailer cube utilization rate under our current shipping schedule (e.g., are we cubing out or weighing out trailers early)?",
+                    "Do our retail customers accept relaxed delivery windows, or are we locked into strict on-time appointments with heavy late fines?",
+                    "Can we temporarily transition some long-distance West Coast shipping lanes over to intermodal rail freight?"
+                ],
+                suggestedApproach: "Implement an immediate freight consolidation and mode optimization program. Review shipping records to eliminate under-utilized trailer space by banning partial truckload shipments. Shift from a daily ad-hoc shipping cadence over to a structured, bi-weekly scheduled shipping model, allowing orders to accumulate into full, dense truckloads. For long-distance California and Pacific Northwest accounts, pivot lanes away from over-the-road trucks onto regional intermodal rail networks via local intermodal hubs, locking in stable contract rates and avoiding the volatile spot market entirely.",
+                keyIssues: [
+                    "Outbound trailers currently ship at a weak 62% cube utilization rate due to inefficient product stack configurations on pallets.",
+                    "Retail clients enforce strict 48-hour delivery windows, meaning uncoordinated consolidation efforts could trigger major customer stockout fines.",
+                    "Spot market freight usage has spiked from 5% of total volume up to 45% over the last 30 days, draining cash from operations."
+                ],
+                analysisRequired: "Calculate trailer cube density improvements, compute the cost savings of shifting over-the-road trucking lanes to intermodal rail transit, and model freight-pooling cost models.",
+                sampleDataOrExhibit: {
+                    caption: "Outbound Distribution Lane Sourcing & Utilization Profiles",
+                    rows: [
+                        ["Outbound Regional Lane Route", "Weekly Shipment Volume", "Current Mode Strategy", "Avg. Trailer Cube Utilization", "Spot Cost Premium Paid per Load"],
+                        ["Salt Lake to Los Angeles, CA", "24 Trailers / Week", "Over-the-Road Truckload", "64.2% Utilization", "+$1,250 Spot Freight Premium"],
+                        ["Salt Lake to Seattle, WA", "12 Trailers / Week", "Over-the-Road Truckload", "58.0% Utilization", "+$1,600 Spot Freight Premium"],
+                        ["Salt Lake to Denver, CO", "8 Trailers / Week", "Less-Than-Truckload (LTL)", "Packed Pallet Density", "+$450 Spot LTL Tariff Surcharge"]
+                    ]
+                },
+                strongAnswerPath: "The candidate acts with impressive structural focus, noting that shipping trailers at only 58% to 64% cube utilization means the company is paying to transport empty air, which worsens the spot price premium. They deploy an immediate logistics recovery strategy: 1. Redesign pallet stacking patterns and implement double-stack racks inside trailers to boost average cube utilization from 62% up to 92%. This optimization compresses total weekly trailer needs on the Los Angeles lane from 24 down to 17 loads, instantly eliminating their exposure to the spot market. 2. For the long-distance Seattle lane, they switch completely from over-the-road trucks to intermodal rail containers using regional rail links. This mode shift cuts shipping costs by $1,850 per load while extending transit lead time by a manageable 48 hours. 3. They launch a joint-freight pooling project with an adjacent non-competing Salt Lake shipper to consolidate separate Denver shipments into single full truckloads, bypassing high LTL rates. This logistics overhaul saves $1.1M in annualized freight spend and fully stabilizes distribution capacity.",
+                finalRecommendation: "Optimize pallet stacking patterns to drive trailer cube utilization to 92%, compressing total vehicle needs. Move long-distance Pacific Northwest lanes onto intermodal rail networks to capture stable contract pricing and bypass the spot market.",
+                coachingNotes: "This scenario evaluates the candidate's understanding of transportation metrics. Look for them to ignore simple price negotiations and instead leverage structural levers like cube optimization, shipment consolidation, and modal shifts to rail to eliminate spot-market exposure.",
+                redFlags: [
+                    "Accepting the 45% spot market rate premium as an unchangeable market reality and simply passing the added shipping costs onto retail clients, which risks losing anchor contracts.",
+                    "Attempting to hold back shipments to consolidate loads without verifying whether the extended delivery times will trigger late-delivery penalties from retailers."
+                ]
+            },
+            {
+                id: "S-020",
+                scenarioType: "production footprint / nearshoring evaluation",
+                difficulty: "Advanced",
+                title: "The Medical Device Nearshoring Qualification Pivot",
+                context: "A specialized medical electronic monitoring manufacturer based in Salt Lake City imports its core printed circuit board assemblies (PCBAs) from an overseas supplier. While the component piece price is highly competitive, the extended 40-day ocean transit lead time, rising import tariffs (up 25%), and regular component quality variances are stalling production schedules. The executive team wants to evaluate a nearshoring proposal to shift the contract manufacturing volume to an advanced electronics plant in Guadalajara, Mexico.",
+                interviewerPrompt: "Structure a comprehensive total landed cost and operational risk analysis to evaluate this nearshoring transition, manage the regulatory component qualification timeline, and optimize supply chain agility.",
+                candidateObjectives: [
+                    "Recalculate the end-to-end total landed cost profile comparing the overseas supplier against the nearshore option.",
+                    "Quantify the financial balance-sheet benefit of compressing transit lead times from 40 days down to 4 days.",
+                    "Design a phased component testing roadmap to navigate strict regulatory quality compliance frameworks."
+                ],
+                clarifyingQuestions: [
+                    "What is our annual carrying cost percentage for capital tied up in inventory?",
+                    "Does the Mexican electronics supplier hold all necessary international quality certifications (e.g., ISO 13485) required for medical device manufacturing?",
+                    "What is the estimated cost and lead time required to duplicate production tooling dies at the new nearshore facility?"
+                ],
+                suggestedApproach: "Construct a robust total landed cost matrix that incorporates inventory carrying costs and tariff expenses alongside base invoice prices. Apply pipeline inventory equations to quantify the capital freed up by shrinking transit times from 40 days down to 4 days via over-the-road freight. To manage regulatory risks, map out a structured transition timeline: maintain a temporary safety stock buffer of overseas parts to keep the factory running while running a pilot validation program on the Mexican floor to secure product quality approval.",
+                keyIssues: [
+                    "The Mexican supplier's raw piece price is 12% higher than the current overseas supplier's invoice on a unit basis.",
+                    "Medical regulatory changes require a mandatory 90-day product verification run and component engineering sign-off before alternative parts can enter hospital supply chains.",
+                    "The company currently maintains a massive 60-day safety stock buffer to protect operations from unpredictable ocean shipping delays."
+                ],
+                analysisRequired: "Compute fully loaded total landed costs (incorporating a 25% annual inventory holding friction), evaluate the cash flow value of pipeline inventory reductions, and model tool duplication capital expenses.",
+                sampleDataOrExhibit: {
+                    caption: "Landed Cost Architecture & Sourcing Network Metrics",
+                    rows: [
+                        ["Operational Cost Variable Tier", "Overseas Sourcing Baseline", "Nearshore Mexico Option", "Sourcing Network Impact Classification"],
+                        ["Unit Component Invoice Price", "$45.00 / Unit", "$50.40 / Unit", "Direct Variable Cost / Raw Piece Price"],
+                        ["Import Tariff Rate Surcharge", "25% Customs Tariff ($11.25)", "0% USMCA Treaty ($0.00)", "Regulatory Cross-Border Duty Cost"],
+                        ["International Transport Freight", "$2.10 / Unit (Ocean Hub)", "$3.40 / Unit (Cross-Border Truck)", "Variable Logistics Landed Overhead"],
+                        ["Transit Lead Time Window", "40 Days Pipeline Lead", "4 Days Over-the-Road", "Dictates Pipeline Inventory Carrying Costs"],
+                        ["Required Safety Stock Buffer", "60 Days Inventory Balance", "15 Days Inventory Balance", "Ties Up Corporate Working Capital Cash"]
+                    ]
+                },
+                strongAnswerPath: "The candidate avoids the classic mistake of focusing purely on the raw piece price, where Mexico looks 12% more expensive ($50.40 vs. $45.00). They run a comprehensive total landed cost analysis: including the 25% tariff on the overseas source brings its true landed unit cost to $58.35 ($45 + $11.25 + $2.10), whereas Mexico lands at a significantly cheaper $53.80 ($50.40 + $0 + $3.40), capturing an immediate $4.55 per unit savings. Next, they show that compressing the lead time from 40 days down to 4 days allows the company to cut its safety stock buffer from 60 days down to 15 days. This inventory reduction reclaims $1.8M in working capital cash from the balance sheet. To manage the 90-day medical regulatory testing window, they propose a safe, phased transition: build a temporary 90-day inventory buffer of overseas parts to keep production running smoothly while the Mexican plant completes its pilot validation runs. This strategic pivot cuts total unit costs by 7.8%, minimizes supply chain disruption risks, and dramatically improves network agility.",
+                finalRecommendation: "Approve the nearshoring transition to Mexico to capture a $4.55 per unit landed cost reduction and free up $1.8M in inventory working capital. Establish a 90-day overseas material buffer to maintain production continuity during the regulatory qualification window.",
+                coachingNotes: "This scenario evaluates global network design and total landed cost thinking. Look for candidates who can seamlessly demonstrate how shorter supply chain pipelines reduce balance sheet inventory requirements, using data to overcome superficial piece-price objections.",
+                redFlags: [
+                    "Rejecting the nearshore Mexico option immediately because its base invoice price is 12% higher, failing to account for the impact of import tariffs or inventory carrying costs.",
+                    "Proposing an immediate cut-off of the overseas supplier without creating an inventory buffer, which forces a catastrophic 90-day production freeze during the regulatory qualification window."
+                ]
+            },
+            {
+                id: "S-021",
+                scenarioType: "quality defect / yield / recall",
+                difficulty: "Advanced",
+                title: "The Automated Cereal Packaging Line Alignment Drift",
+                context: "A high-volume consumer food production plant based in the Salt Lake market runs a continuous, high-speed automated packaging line. Over a 30-day period, corporate quality control audits reveal a significant spike in scrap rates: 4.2% of completed product cartons fail final automated weight and seal-integrity inspections due to structural packaging defects, far exceeding the facility's strict 0.5% internal waste limit.",
+                interviewerPrompt: "Walk me through how you would form a cross-functional investigation team, deploy data-driven root-cause tools to isolate the process variation, and permanently stabilize line yields without lowering production speeds.",
+                candidateObjectives: [
+                    "Analyze historical machine sensor and quality inspection data to pinpoint where the process variation is introduced.",
+                    "Apply a structured root-cause framework (such as the 5 Whys or a Fishbone diagram) to isolate the mechanical or material drivers of the defects.",
+                    "Design a permanent engineering control protocol to monitor and adjust line parameters in real time."
+                ],
+                clarifyingQuestions: [
+                    "Does the packaging defect occur randomly across all lines, or is it isolated to a specific machine asset or shift team?",
+                    "Have there been any recent changes to our raw cardboard carton packaging material suppliers or material specifications?",
+                    "What specific error messages are being triggered on the automated inspection sensors (e.g., underweight fills vs. open heat seals)?"
+                ],
+                suggestedApproach: "Deploy a rigorous, structured quality engineering methodology. Begin by analyzing line inspection logs to determine if the defects are concentrated on a specific machine. Apply an Ishikawa Fishbone diagram to map out potential root causes across the 6 Ms (Man, Machine, Material, Method, Measurement, Milieu). If the data reveals that the errors are driven by an automated heat-sealing tool drifting off-temperature during high-speed evening runs, use the 5 Whys protocol to discover a failing cooling fan relay. Replace the faulty hardware and install real-time statistical process control (SPC) charts to track temperature parameters before defects develop.",
+                keyIssues: [
+                    "Line operators have been manually overriding automated sensor alarms to hit their volume targets, allowing un-centered processes to run for multiple shifts.",
+                    "A recent procurement shift to a cheaper cardboard vendor introduced slight variations in material thickness, causing cartons to warp under high sealing temperatures.",
+                    "Preventive maintenance schedules on the automated packaging machines have been delayed due to high production demands."
+                ],
+                analysisRequired: "Calculate the total financial impact of the 4.2% scrap rate (lost materials and labor hours), evaluate process capability indexes (Cp and Cpk), and compute the ROI of automated temperature control updates.",
+                sampleDataOrExhibit: {
+                    caption: "Packaging Machine Inspection Logs & Parameter Metrics",
+                    rows: [
+                        ["Packaging Machine Line Node", "Total Cartons Processed", "Inspection Failure Rate", "Sealing Tool Temp Variation", "Material Input Tracking Code"],
+                        ["Packaging Line Alpha", "140,000 Units", "0.42% (Normal Noise)", "+/- 3 Degrees (Stable)", "Vendor Tier 1 (Standard Material)"],
+                        ["Packaging Line Beta (Core)", "155,000 Units", "4.20% (Bottleneck)", "+/- 24 Degrees (Volatile)", "Vendor Tier 2 (Discount Cardboard)"],
+                        ["Packaging Line Gamma", "138,000 Units", "0.51% (Normal Noise)", "+/- 4 Degrees (Stable)", "Vendor Tier 1 (Standard Material)"]
+                    ]
+                },
+                strongAnswerPath: "The candidate takes firm control of process quality metrics. They analyze the performance logs and isolate the issue exclusively to Line Beta, where the defect rate has exploded to 4.2% and sealing temperatures are highly volatile (+/- 24 degrees). They trace the root cause to a combination of two variables: a procurement shift to a cheaper, thinner cardboard vendor and a delayed maintenance cycle that left a main sealing tool heating element worn out. The candidate implements an immediate quality correction plan: 1. Stop using the low-grade cardboard on Line Beta and return to the verified Tier-1 material to stabilize carton inputs. 2. Schedule an immediate 4-hour maintenance window to replace the worn heating elements and recalibrate Line Beta's sealing heads. 3. Lock out the ability for operators to manually bypass sensor alarms. 4. Implement real-time SPC charts at the workstation, instructing operators to halt the line immediately if temperatures drift past 2-sigma warning limits. This fast intervention drives the scrap rate back below the 0.5% threshold within 48 hours, saving $240k in monthly material waste.",
+                finalRecommendation: "Halt the usage of the low-grade cardboard on the main line and replace Line Beta's worn sealing heads during an immediate maintenance window. Enforce strict SPC control limits on the floor, blocking operators from manually overriding automated sensor alarms.",
+                coachingNotes: "This scenario evaluates a candidate's quality control and problem-solving metrics. Look for them to avoid vague guesses and instead use process data to isolate variables, applying tight engineering controls over administrative adjustments to make the process improvements permanent.",
+                redFlags: [
+                    "Suggesting to add an extra layer of manual inspectors at the end of the line to catch and sort out the bad boxes, which inflates labor overhead and fails to fix the underlying process defects.",
+                    "Blaming the line operators for poor execution without reviewing the machine temperature data or addressing the structural material changes introduced by procurement."
+                ]
+            }
+        );
+        
+        contentData.frameworks.push(
+            {
+                name: "Overall Equipment Effectiveness (OEE) Framework",
+                tag: "Manufacturing Execution & Productivity KPIs",
+                when: "Evaluating the true operational efficiency of a critical factory machine or bottleneck line asset by breaking down equipment performance into clear, actionable losses.",
+                structure: "Measure and optimize asset performance across three distinct percentage multipliers:\n1. Availability: Tracks losses from scheduled and unscheduled machine downtime = (Actual Operating Time / Planned Production Time).\n2. Performance: Tracks losses from micro-stoppages and slow operating speeds = (Actual Throughput Speed / Ideal Design Running Speed).\n3. Quality: Tracks losses from process defects and line rework loops = (Good Units Produced / Total Units Started).\nMaster Calculation: OEE % = Availability * Performance * Quality.",
+                example: "A precision stamping press runs with 80% Availability, executes at 90% Performance speed, and delivers 95% First-Pass Quality. Its overall OEE is calculated as 68.4% (0.80 * 0.90 * 0.95), helping engineers quickly identify that minimizing downtime yields the highest productivity gains.",
+                mistakes: "Calculating utilization based on total calendar hours (24/7) rather than planned production time, which distorts OEE data and misleads scheduling teams.",
+                customize: "Add a custom 'Changeover Loss' sub-category within the Availability pillar to track exactly how much asset capacity is consumed by frequent tool adjustments."
+            },
+            {
+                name: "The Kraljic Sourcing Matrix Architecture",
+                tag: "Procurement Strategy & Risk Management",
+                when: "Structuring a corporate procurement strategy to manage a massive supplier database by balancing supplier risk against financial profit impact.",
+                structure: "Segment all purchased materials into a 4-quadrant strategic matrix:\n• Leverage Items (High Profit Impact, Low Supply Risk): High-volume commodities with multiple vendors. Strategy: Consolidate buying power, run competitive RFPs, and negotiate aggressive volume discounts.\n• Strategic Items (High Profit Impact, High Supply Risk): Critical custom components with scarce sourcing options. Strategy: Build long-term partnerships, align innovation roadmaps, and design dual-sourcing frameworks.\n• Non-Critical Items (Low Profit Impact, Low Supply Risk): Cheap, standard parts like office supplies. Strategy: Automate purchasing loops, use e-procurement catalogs, and minimize transaction labor overhead.\n• Bottleneck Items (Low Profit Impact, High Supply Risk): Low-value items with highly scarce or single-source options. Strategy: Build up safety stock buffers, lock in long-term supply guarantees, or re-engineer the product to eliminate the part entirely.",
+                example: "A vehicle manufacturer uses the Kraljic matrix to organize its procurement files. They shift standard steel sheets into the Leverage quadrant to run intense vendor bidding wars, while placing specialized microchips into the Strategic quadrant to sign multi-year partnership protections.",
+                mistakes: "Treating low-value bottleneck items with aggressive pricing negotiations, which panics the single supplier and risks triggering a catastrophic production shutdown over a cheap component.",
+                customize: "Automatically shift any Leverage item into the Bottleneck quadrant if its primary supplier's regional lead time spikes by more than 30% due to cross-border transport bottlenecks."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Overall Equipment Effectiveness (OEE) Execution Math",
+                formula: "OEE = Availability * Performance * Quality",
+                example: "A manufacturing line operates on an 8-hour shift (480 minutes) with 30 minutes of scheduled lunch breaks. The line experiences 45 minutes of unscheduled maintenance downtime. During the active run window, the line builds 350 components, but its theoretical design speed is 1 component per minute. Final quality inspections reject 14 of the finished units.",
+                calc: "Planned Time = 480 - 30 = 450 minutes. Actual Run Time = 450 - 45 = 405 minutes. Availability = 405 / 450 = 90.00%. Ideal Design Output = 405 minutes * 1 unit/min = 405 units. Actual Output = 350 units. Performance = 350 / 405 = 86.42%. Total Good Output = 350 - 14 = 336 units. Quality = 336 / 350 = 96.00%. Master Calculation: OEE = 0.90 * 0.8642 * 0.96 = 74.67%.",
+                verbalize: "Our production line achieved an Overall Equipment Effectiveness score of 74.67% during this shift, meaning we lost roughly 25% of our theoretical asset capacity to process waste. When we break down the data pillars, we see that our Quality is solid at 96% and our Availability is strong at 90%. The real profit drain is our Performance, which stands at 86.42%. This means that even when the machinery was up and running, it was executing at nearly 14% below its ideal design speed. This slow-running penalty was driven by minor parts jam bottlenecks at our packaging station. By spending $15,000 to optimize that packaging track, we can eliminate those micro-stoppages, restore our performance speed to 98%, and unlock an extra 45 units of daily capacity without adding expensive weekend overtime labor.",
+                mistakes: "Using total calendar shift time instead of actual planned production time when calculating availability, which makes the line's asset performance look artificially depressed."
+            }
+        );
+        
+        contentData.questions.push(
+            {
                 id: "Q-045",
                 category: "Operations Strategy & Fundamentals",
                 difficulty: "Advanced",
