@@ -3666,6 +3666,156 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-087",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Advanced",
+                question: "What is an S&OP Maturity Model, and how do you transition an enterprise from a Stage 1 reactive firefighting state to a Stage 4 value-optimized network?",
+                conversational: "Moving a company up the S&OP maturity ladder is a cultural transformation backed by strict data governance. In a Stage 1 reactive state, departments work in silos: sales chases revenue, finance builds independent budgets, and operations is left holding the bag, trying to fight daily shortage crises. To break this cycle and drive the company toward a Stage 4 value-optimized network, we establish a unified, cross-functional calendar where everyone plans from a single version of truth. We shift the monthly executive reviews away from emotional finger-pointing and focus on running forward-looking scenario analyses. We model how variations in market demand will affect our P&L margins and asset capacities up to 18 months out, transforming the S&OP process into a strategic engine for corporate profitability.",
+                deepdive: "Enterprise S&OP maturity scaling follows a structured four-stage progression mapped out by industry benchmarks. Stage 1 (Reactive) features disconnected local planning loops and high forecast bias. Stage 2 (Anticipated) introduces formal cross-functional monthly meetings but relies on lagging manual spreadsheets. Stage 3 (Integrated) achieves end-to-end data integration, linking unconstrained sales demand with rough-cut capacity plans (RCCP). Stage 4 (Value-Optimized) represents the peak of maturity: the process incorporates mixed-integer linear programming models to run real-time financial optimizations, evaluating the net gross-margin contribution and return on invested capital (ROIC) of capacity choices before committing to production schedules.",
+                coaching: "The candidate should view S&OP as a high-level financial governance system rather than a basic inventory scheduling task. Look for them to detail a structured transformation path, focusing heavily on cross-functional alignment, shared data, and long-term financial scenario planning.",
+                redFlag: "Believing that S&OP maturity can be achieved simply by purchasing a new software tool, ignoring the critical need to align team incentives, establish data governance, and secure executive buy-in across departments."
+            },
+            {
+                id: "Q-088",
+                category: "Procurement & Supplier Management",
+                difficulty: "Expert",
+                question: "How do you construct a comprehensive Global Supplier Risk Profile that accounts for both localized currency fluctuations and macroeconomic geopolitical barriers?",
+                conversational: "When you manage a global sourcing footprint, you can't just track your tier-1 unit price and call it a day. A sudden currency swing, port labor strike, or tariff change can wipe out your profit margins instantly. I build a structured global supplier risk profile that evaluates vendor vulnerabilities across three main buckets: financial health, operational capacity, and macroeconomic exposure. For critical single-source partners, we look at their local currency trends and build protective cost-corridor clauses into the contracts to share currency risks fairly. We pair this with proactive network hedges, like pre-qualifying an alternative nearshore vendor and holding a localized safety stock buffer, ensuring our supply chain can survive global disruptions.",
+                deepdive: "Macroeconomic risk profiling requires modeling the Total Cost of Ownership (TCO) under varying economic conditions. Currency exposure is managed by tracking localized foreign exchange volatility against the US Dollar and utilizing financial collar options to cap purchase price variances within a +/- 5% threshold boundary. Geopolitical exposure is scored across international metrics like logistics performance indexes, custom processing frictions, and regional tariff outlooks. Operations leaders use these risk weights to calculate an annualized Value-at-Risk (VaR) score per supplier node, providing the financial justification needed to fund strategic nearshoring projects or justify the balance sheet cost of holding a larger raw materials inventory buffer.",
+                coaching: "Look for strong executive judgment and experience managing global networks. The candidate should move past simple price tracking and use advanced risk-modeling concepts, comfortably discussing currency collar clauses, total landed cost variables, and multi-tier network buffers.",
+                redFlag: "Focusing entirely on raw piece prices during global supplier evaluations, showing a complete lack of awareness regarding international trade barriers, currency fluctuations, or logistics pipeline risks."
+            },
+            {
+                id: "Q-089",
+                category: "Inventory Management & Optimization",
+                difficulty: "Advanced",
+                question: "What is Risk Pooling in inventory management, and how does consolidating regional warehouses alter your safety stock capital requirements?",
+                conversational: "Risk pooling is the statistical principle that explains why consolidating your inventory into a single centralized distribution center requires significantly less safety stock than spreading that same product across multiple regional warehouses. When you sell products across separate regional markets, demand fluctuations tend to be non-correlated—New York might experience an unforecasted sales spike while California sees a unexpected drop. By pulling your inventory together into a single central hub, those regional demand spikes and drops tend to cancel each other out, smoothing your overall demand distribution and allowing you to safely cut your total balance sheet inventory buffers without hurting your customer service levels.",
+                deepdive: "The mathematical foundation of Risk Pooling is governed by the Square Root Law of Inventory Consolidation, modeled as: I_total = Sum(I_i) · sqrt(n_new / n_old), where I represents the required safety stock and n represents the number of distribution nodes. When consolidating from four independent regional facilities down to one centralized mega-hub, the total demand standard deviation drops because the aggregate variance combines as the square root of the sum of non-correlated regional variances. This optimization allows companies to slash total network safety stock capital requirements by 40% to 50%, though this inventory capital savings must be balanced against the higher final-mile shipping expenses of delivering over longer transit distances.",
+                coaching: "The candidate must explicitly explain the statistical logic of non-correlated demand patterns canceling each other out. Look for them to reference the Square Root Law and outline the total logistics cost balance between inventory savings and final-mile transport costs.",
+                redFlag: "Assuming that consolidating warehouses will reduce your baseline customer transit lead times or final-mile freight costs, demonstrating an ignorance of the trade-off between warehouse consolidation and transport distance."
+            },
+            {
+                id: "Q-090",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Advanced",
+                question: "How do you evaluate the strategic financial trade-offs between deploying a Dedicated Private Fleet versus relying entirely on On-Demand Common Carriers?",
+                conversational: "This is a classic build-versus-buy decision that balances fixed financial commitments against operational flexibility and control. Relying entirely on common carriers transforms your logistics costs into a 100% variable expense—you only pay for the exact trailer space you use, which is ideal if your shipping volumes are irregular or seasonal. But it leaves you fully exposed to volatile spot-market price spikes and capacity shortages. Deploying a dedicated private fleet requires a huge upfront capital investment and locks you into fixed driver payrolls and lease liabilities, but it gives you absolute control over your delivery scheduling, guarantees capacity during peak seasons, and allows you to run high-density local delivery loops that maximize customer service.",
+                deepdive: "The operational evaluation requires a comprehensive total landed cost and utilization audit. Common carriers optimize lane costs for low-density, irregular, or long-distance shipping routes by balancing multi-tenant freight volumes. Private fleets excel in high-density, predictable logistics networks (such as regional grocery delivery or specialized industrial supply corridors) where vehicle utilization consistently exceeds a 85% backhaul break-even threshold. The financial analysis models the net present value (NPV) of private fleet lease structures, including driver retention costs and maintenance overheads, against the risk-adjusted cost of spot-market freight exposure and customer late-delivery contract fines.",
+                coaching: "Listen for an analytical focus on lane density and asset utilization. Strong candidates evaluate this choice through structural business needs, balancing fixed capital liabilities against variable spot-market pricing risks and customer service commitments.",
+                redFlag: "Proposing a massive dedicated private fleet for a low-volume, highly seasonal, or geographically scattered shipping profile, which traps capital in idle trucks and under-utilized assets."
+            },
+            {
+                id: "Q-091",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Core",
+                question: "What is Mixed-Model Sequencing (Heijunka), and how does it prevent the capacity bottlenecks that traditional batch manufacturing creates?",
+                conversational: "Traditional manufacturing plants love long production runs because they maximize machine utilization. They set up a machine once and run a massive batch of SKU Alpha for two weeks, then spend hours converting the line to run a massive batch of SKU Beta. This makes the local equipment efficiency look great, but it floods your warehouse with slow-moving inventory and forces customers to wait weeks for other products. Mixed-Model Sequencing completely flips this approach. By using smart setup reductions to drop changeover times down to minutes, you can run small, mixed batches of multiple different SKUs on the same assembly line every single day. This leveled pace matches your production directly with real customer consumption, slashes your warehouse storage costs, and shortens your customer lead times.",
+                deepdive: "Mixed-Model Sequencing, or Heijunka production leveling, optimizes material flow by smoothing demand variations across a daily manufacturing schedule. Instead of processing products in large, sequential blocks (e.g., AAAAABBBCC), the line sequences production in a continuous, blended stream (e.g., ABABABCA). This continuous flow is mathematically enabled by driving changeover times toward zero (using SMED principles), which drops the optimal Economic Manufacturing Quantity lot size down to a single unit. This synchronization stabilizes the factory's material requirements, eliminating the sudden capacity bottlenecks and long waiting queues that traditional large-batch push production forces onto downstream stations.",
+                coaching: "The candidate needs to connect setup time reductions directly to the ability to run mixed production schedules. Look for them to contrast localized machine utilization metrics with total system flow velocity and balance sheet inventory savings.",
+                redFlag: "Arguing that running multiple product changeovers every day is always inefficient, failing to see that large production batches generate massive finished goods inventory overheads and slow down customer delivery lead times."
+            },
+            {
+                id: "Q-092",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Advanced",
+                question: "What is a Multi-Vari Quality Chart, and how do you use it to separate Positional, Cyclical, and Temporal process variation variables?",
+                conversational: "A Multi-Vari chart is a powerful visual diagnostic tool that helps quality engineers break down and isolate exactly where process variation is introduced before you jump into complex statistical modeling. When a high-precision line starts producing defective parts, the cause can be hidden across multiple areas. We use a Multi-Vari chart to capture and sort variation into three distinct physical buckets: Positional, Cyclical, and Temporal. Positional variation looks at differences within a single part—like checking if a bore hole is wider on the left side than the right. Cyclical variation tracks differences between consecutive parts made on the same machine. Temporal variation tracks shifts over time—like seeing if a tool's precision drifts during high-speed evening runs as machine temperatures heat up.",
+                deepdive: "Multi-Vari analysis is a passive variables-isolation technique used in the Measure and Analyze phases of a Six Sigma DMAIC cycle. 1. Positional (intra-family) variation captures spatial distributions within a single unit or multi-cavity tool cell. 2. Cyclical (inter-family) variation isolates differences between distinct units processed sequentially, pointing to tool wear or raw material lot inconsistencies. 3. Temporal (time-to-time) variation tracks process drift across extended operational horizons, exposing environmental shifts like operator shift changes, ambient air temperature fluctuations, or hydraulic fluid breakdowns. Sorting process variation into these three geometric buckets allows engineering teams to rule out dozens of innocent variables quickly without disrupting daily factory operations.",
+                coaching: "Listen for a clear explanation of the three variation categories. Strong candidates demonstrate a solid understanding of quality diagnostics, explaining how Multi-Vari charts help isolate process root causes visually before running expensive, disruptive factory floor experiments.",
+                redFlag: "Confusing a Multi-Vari diagnostic chart with a standard SPC control chart, or attempting to fix a temporal machine drift issue by modifying raw material specification rules."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-036",
+                scenarioType: "supplier disruption / network optimization",
+                difficulty: "Advanced",
+                title: "The Intermountain Aerospace Titanium Pipeline Freeze",
+                context: "A prominent tier-1 structural aerospace sub-assembly manufacturer based in Salt Lake City relies on a specialized titanium casting forge in western Europe. Due to an unforecasted regional energy crisis and raw ingot export restrictions, the supplier cuts their monthly shipment volumes to the Salt Lake assembly floor by a massive 50%, threatening to freeze critical defense contract lines within 21 days.",
+                interviewerPrompt: "Develop an immediate 72-hour operational triage and material allocation plan to protect high-priority defense contracts, evaluate the total cost of activating a high-cost domestic spot foundry, and minimize your exposure to severe customer late-delivery fines.",
+                candidateObjectives: [
+                    "Construct a contribution-margin-per-bottleneck-hour matrix to allocate the limited titanium components to the most profitable contracts.",
+                    "Evaluate the financial and regulatory lead-time risks of qualifying an alternative domestic aerospace forge option.",
+                    "Formulate an emergency inventory recovery plan that satisfies contract volume targets while minimizing customer penalty liabilities."
+                ],
+                clarifyingQuestions: [
+                    "What are the precise gross margins, contract penalties, and machine hour requirements for our individual aerospace sub-assembly lines?",
+                    "How long does the federal regulatory qualification and stress-testing verification loop take for an alternative domestic forge component?",
+                    "Can we temporarily reallocate raw titanium ingot buffers from our non-defense commercial lines to shore up the defense assembly pipeline?"
+                ],
+                suggestedApproach: "Deploy a rigorous constraint-optimization and risk-mitigation framework. Do not distribute the limited titanium castings evenly across lines to avoid conflict; calculate the true contribution margin per constraint hour for each contract. Allocate 100% of the restricted castings to maximize total corporate profitability, prioritizing high-risk Program Alpha defense lines to avoid heavy late-delivery fines. Simultaneously, activate a fast-track tooling calibration contract with a domestic secondary foundry, using an inventory buffer to bridge the 6-week regulatory qualification delay safely.",
+                keyIssues: [
+                    "An alternative domestic foundry is available immediately, but their casting unit price carries a heavy 40% cost premium and requires an expensive 6-week tooling calibration timeline.",
+                    "Missing final delivery windows for Program Alpha triggers strict, non-negotiable $45,000 per day contract late-delivery penalties.",
+                    "The commercial sales team is aggressively lobbying to split the limited titanium parts evenly across accounts to keep all commercial clients happy."
+                ],
+                analysisRequired: "Compute contribution margin per bottleneck hour across aerospace programs, calculate the total financial exposure of contract penalties, and run a total landed cost analysis on alternative domestic sourcing options.",
+                sampleDataOrExhibit: {
+                    caption: "Aerospace Program Financial Margins & Constrained Resource Metrics",
+                    rows: [
+                        ["Aerospace Contract Program Line", "Monthly Delivery Target", "Unit Contract Price Paid", "Unit Material Cost (COGS)", "Bottleneck Machine Assembly Time"],
+                        ["Program Alpha: Defense Main Spar", "450 Units", "$3,500", "$1,200", "4.0 Hours Per Completed Spar"],
+                        ["Program Beta: Commercial Wing Box", "600 Units", "$1,800", "$650", "2.5 Hours Per Completed Unit"],
+                        ["Program Gamma: Regional Landing Gear", "800 Units", "$950", "$400", "1.0 Hours Per Completed Unit"]
+                    ]
+                },
+                strongAnswerPath: "The candidate utilizes Theory of Constraints logic to reject the sales team's unoptimized proposal to spread the limited castings evenly. They calculate the true unit contribution margins: Program Alpha = $2,300 ($3,500 - $1,200), Program Beta = $1,150 ($1,800 - $650), Program Gamma = $550 ($950 - $400). Next, they divide these margins by the bottleneck assembly time to find the true profit velocity: Program Alpha = $575.00/hour ($2,300 / 4), Program Beta = $460.00/hour ($1,150 / 2.5), Program Gamma = $550.00/hour ($550 / 1). They build a highly profitable allocation roadmap: 1. Direct the first wave of limited castings to fulfill 100% of Program Alpha demand, securing the highest profit velocity while avoiding the devastating $45,000/day customer late fine. 2. Route remaining parts to Program Gamma, and place the lower-velocity Program Beta on a temporary 30-day shipping delay. 3. To protect the delayed lines, they authorize the 40% cost premium to activate the domestic foundry's 6-week tooling build, treating the added expense as an insurance premium that keeps the factory running. This structured strategy protects corporate margins and secures long-term defense contract standing.",
+                finalRecommendation: "Prioritize the restricted titanium castings to completely fulfill Program Alpha defense orders based on a contribution-margin-per-bottleneck-hour analysis. Activate the alternative domestic foundry under a fast-track contract immediately to bridge the 6-week regulatory qualification window.",
+                coachingNotes: "This scenario evaluates the candidate's understanding of bottleneck economics and cross-functional leadership. Look for them to ignore superficial top-line revenues and prioritize restricted resources using contribution margin per constraint hour, applying hard data to align conflicting sales goals.",
+                redFlags: [
+                    "Spreading the scarce titanium castings evenly across all three programs to keep all clients happy, which lowers corporate profits and leaves the high-risk defense line facing deep late delivery fines.",
+                    "Selecting product priorities based entirely on the highest retail contract price ($3,500) without running the division math to calculate the machine assembly processing times required per unit."
+                ]
+            },
+            {
+                id: "S-037",
+                scenarioType: "inventory rationalization / cost-to-serve",
+                difficulty: "Advanced",
+                title: "The Wasatch Medical Tool S&OP Demand Misalignment",
+                context: "A specialized surgical instrument manufacturer along the Wasatch Front experiences severe margin compression. Over the last two quarters, the sales team has run aggressive volume promotions to hit their quarterly targets, driving a 45% surge in order volume. However, the factory floor was already booked near effective capacity limits, forcing operations to run emergency weekend shifts and use high-cost spot couriers, completely wiping out the promotional profit margins.",
+                interviewerPrompt: "How do you step into this cross-functional breakdown, manage the immediate delivery backlog, and re-engineer the S&OP workflow to link commercial promotions directly with factory capacity validation gates?",
+                candidateObjectives: [
+                    "Analyze the financial performance of the promotional surge, balancing added revenues against emergency labor and freight premium expenses.",
+                    "Design an immediate inventory triage framework to allocate completed instruments based on client contract profitability.",
+                    "Establish a formal governance sign-off rule within the monthly S&OP architecture to validate shop-floor capacities before promotions launch."
+                ],
+                clarifyingQuestions: [
+                    "What is the exact margin profile of the promotional surgical kits compared to our standard baseline catalog orders?",
+                    "Do we face contractual financial penalties or late-delivery fines if we delay shipments to lower-priority distributor accounts?",
+                    "Can we temporarily reallocate labor from our slow-moving dental instrument line over to reinforce the surgical packaging line bottleneck?"
+                ],
+                suggestedApproach: "Deploy a rigorous total cost and S&OP governance analysis. Use the performance data to show executive leadership that the revenue gains from the uncoordinated flash promotion were completely wiped out by emergency double-time labor overheads, spot-freight shipping fees, and retail stockout penalties. Implement a strict inventory allocation board to route remaining stock to anchor medical accounts to avoid contract breach fines. Update the monthly S&OP governance matrix so no marketing campaign can be launched without a formal capacity validation sign-off from operations.",
+                keyIssues: [
+                    "Sales performance incentives are based purely on top-line revenue volume, detaching commercial targets from actual factory operating costs.",
+                    "Factory operations are forced to run emergency Sunday shifts, triggering high double-time overtime labor expenses.",
+                    "Outbound logistics teams are using high-cost spot market couriers to expedite late shipments, driving up transport costs."
+                ],
+                analysisRequired: "Compare promotional revenue gains against capacity expansion expenses (overtime labor, spot freight, customer fines) and model structured inventory allocation pathways.",
+                sampleDataOrExhibit: {
+                    caption: "Promotional Revenue Performance vs. Operational Capital Penalties",
+                    rows: [
+                        ["Financial Performance Element", "Standard Plan Baseline", "Promotional Surge Actuals", "Net Financial Impact Profile"],
+                        ["Gross Sales Volume Revenue", "$6.0M Baseline", "$8.7M Actuals", "+$2.7M Additional Gross Top-Line"],
+                        ["Direct Factory Labor Expense", "$500,000 Standard", "$980,000 Premium", "-$480,000 Overtime / Sunday Premium"],
+                        ["Outbound Freight Shipping Costs", "$250,000 Standard", "$680,000 Premium", "-$430,000 Spot Market Expedited Rates"],
+                        ["Hospital Contract Late Fines", "$0 Flat Baseline", "$520,000 Actuals", "-$520,000 Service Agreement Penalties"],
+                        ["Total Net Operating Margin", "$1,800,000 Target", "$1,410,000 Actuals", "-$390,000 Net Destruction of EBITDA"]
+                    ]
+                },
+                strongAnswerPath: "The candidate highlights the core issue using the financial data exhibit: the uncoordinated sales promotion looks like a success with a $2.7M top-line revenue jump, but it actually destroyed $390k in corporate EBITDA due to overtime labor, spot freight, and hospital late fines. To handle the crisis, they set up a strict allocation matrix to route remaining inventory to anchor medical accounts, preventing contract terminations. For the long term, they restructure the corporate incentive model: sales team bonuses are shifted away from raw revenue volume and tied to forecast-accuracy and margin-density metrics. They also update the S&OP workflow to require a minimum 60-day lead time and a formal capacity check before any national promotion can be approved, ensuring commercial targets are aligned with factory operating parameters.",
+                finalRecommendation: "Establish a strict capacity validation gate within the monthly S&OP workflow, blocking commercial promotions that lack operations sign-off. Shift sales team incentives away from raw revenue volume and tie them directly to product mix gross margin contribution.",
+                coachingNotes: "This scenario evaluates cross-functional leadership and executive presence. Look for candidates who avoid generic complaints about the sales department and instead use data to prove how local optimizations can damage the company's total profitability, establishing strict cross-functional rules to protect margins.",
+                redFlags: [
+                    "Suggesting that operations should simply authorize unlimited overtime and spot freight to fulfill every promotional order without evaluating the underlying margin erosion.",
+                    "Proposing an arbitrary, even split of remaining inventory across all distributor accounts, which offends anchor clients and fails to minimize contractual late fees."
+                ]
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
