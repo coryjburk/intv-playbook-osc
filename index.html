@@ -3320,6 +3320,181 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-075",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Advanced",
+                question: "What is Rough-Cut Capacity Planning (RCCP), and how does it prevent a master production schedule from causing systemic bottlenecks on the factory floor?",
+                conversational: "Rough-Cut Capacity Planning is the bridge between your high-level S&OP demand targets and the daily realities of your factory floor. Before you commit to a Master Production Schedule, RCCP tests that schedule against your critical bottleneck assets, labor shifts, and tooling capacities. It checks whether you actually have the machine hours available to execute the plan. Running an unvalidated schedule can create chaos on the floor: supervisors will push material into the line blindly, work-in-progress inventory triangles will explode at the bottleneck stations, and your customer delivery lead times will collapse. RCCP ensures you validate your capacity boundaries before turning on the manufacturing line.",
+                deepdive: "RCCP operates during the planning phase by converting the Master Production Schedule (MPS) into fully loaded machine and labor hour requirements using a standard Bill of Resources (BOR). Unlike detailed Capacity Requirements Planning (CRP), which models every single routing step across the shop floor, RCCP focuses strictly on critical constraint nodes. If the required machine hours (H_req = Sum(MPS_i · BOR_i)) exceed the maximum effective capacity hours available (H_avail), the planning engine identifies a capacity shortfall. Resolving this early prevents lines from over-committing, protecting downstream throughput and keeping product standard costs accurate on the P&L.",
+                coaching: "The candidate should clearly explain that RCCP validates long-term plans against critical constraints before scheduling daily production. Look for them to highlight the difference between checking overall capacity targets and detailed, short-term routing steps.",
+                redFlag: "Conflating long-term Rough-Cut Capacity Planning with short-term, daily machine sequencing adjustments, showing a weak grasp of master scheduling governance structures."
+            },
+            {
+                id: "Q-076",
+                category: "Procurement & Supplier Management",
+                difficulty: "Core",
+                question: "What is a Should-Cost clean-sheet analysis, and how does it alter your negotiation posture when dealing with a sole-source component supplier?",
+                conversational: "A Should-Cost analysis completely changes your power dynamic with a supplier. Instead of entering a negotiation passively asking for a discount, you build a detailed bottom-up financial model of what the component *should* cost to build. You calculate the raw material weights, direct labor hours, machine setup overheads, logistics tariffs, and a fair profit margin. When dealing with a sole-source supplier who thinks they hold all the cards, presenting a precise clean-sheet model completely shifts the conversation. It forces the vendor to move away from arbitrary price increases and justify their margins line-by-line, helping you locate and cut out hidden operational wastes.",
+                deepdive: "Should-Cost clean-sheet modeling strips out supplier inefficiencies by breaking down unit prices into objective industrial variables: Unit Price = Raw Material Cost + (Cycle Time · Labor Rate) + Machine Overhead Allocation + SG&A Surcharge + Target Operating Profit Margin. Procurement leaders use this bottom-up model to challenge generic vendor price adjustments during commodity shifts. If a supplier argues that rising energy costs require a flat 12% price hike, an operations leader can use the clean-sheet data to prove that energy accounts for only 1.5% of the total manufacturing cost structure, keeping unit costs stable and protecting corporate margins.",
+                coaching: "Listen for a structured, analytical approach to cost optimization. Strong candidates focus on building bottom-up expense models rather than using generic price-haggling tactics, treating the clean-sheet as an objective tool to drive supplier alignment.",
+                redFlag: "Relying purely on historical price comparisons or simple multi-vendor bidding wars, which are useless when managing a technical sole-source procurement category."
+            },
+            {
+                id: "Q-077",
+                category: "Inventory Management & Optimization",
+                difficulty: "Advanced",
+                question: "How do you systematically identify and manage Dead Stock or Obsolete Inventory, and how does its retention alter cash flow and balance sheet accuracy?",
+                conversational: "Dead stock is a silent margin killer that clogs your warehouse operations. Many plant managers keep slow-moving or obsolete inventory on the shelves for years because they want to avoid taking an immediate financial write-off on their P&L. But holding that dead stock traps valuable working capital, consumes premium pallet space, and drives up warehouse labor costs. To manage this waste, I run a strict trailing 12-month usage audit to flag dead stock early. We categorize it quickly: we look to see if we can rework it into active product lines, return it to vendors for a restocking fee, liquidate it on secondary markets to recover raw cash, or write it off completely to free up space for fast-turning inventory.",
+                deepdive: "Retaining Obsolete Inventory (SLOB) artificially inflates balance sheet asset valuations, misrepresenting corporate liquidity metrics. Financially, holding dead stock triggers an annual inventory carrying friction of 20% to 25%, driven by warehouse square footage costs, insurance premiums, and handling labor. Operations leaders utilize automated ERP inventory aging reports to calculate the Inventory Excess and Obsolescence provision. Executing a formal inventory write-off drops the asset book value and hits near-term gross profit margins, but it unlocks immediate cash velocity by freeing up facility storage constraints and eliminating ongoing warehousing overhead.",
+                coaching: "Look for candidates who connect inventory aging directly to balance sheet health and cash flow performance. They should confidently explain the options for recovering value from dead stock—such as rework, vendor returns, secondary liquidation, or write-offs.",
+                redFlag: "Hiding slow-moving or obsolete stock in the warehouse to avoid a near-term P&L write-off charge, showing an ignorance of how dead stock carries an ongoing operational cost premium."
+            },
+            {
+                id: "Q-078",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Foundational",
+                question: "What are the structural and governance differences between a Third-Party Logistics (3PL) provider and a Fourth-Party Logistics (4PL) partner?",
+                conversational: "The difference between a 3PL and a 4PL comes down to execution versus integration. A 3PL is an asset-based provider focused on standard logistics tasks—you hire them to manage specific lanes, pick pallets in a warehouse, or transport containers between cities. You still manage the overarching supply chain strategy internally. A 4PL acts as an unaligned integrator that takes over your entire logistics network. They manage the data, oversee the technology platforms, and coordinate multiple 3PL providers on your behalf. A 3PL gives you targeted operational execution, while a 4PL serves as a single strategic point of contact to optimize your entire end-to-end distribution architecture.",
+                deepdive: "A 3PL partnership focuses on transactional, task-level execution, where performance is evaluated on localized operational metrics like freight cost per mile, warehouse picking accuracy, and trailer utilization rates. A 4PL relationship operates as a joint venture, integrating data streams across your ERP, WMS, and TMS systems. The 4PL acts as a control tower, managing multiple logistics providers and optimizing the network layout objectively because they do not own the physical trucks or warehouses. Governance shifts from transactional service level metrics to systemic supply chain KPIs, such as total logistics cost reduction, order cycle time compression, and net working capital optimization.",
+                coaching: "The candidate must clearly separate task-level outsourcing (3PL) from system-level integration (4PL). Look for them to evaluate this choice through strategic business goals, balancing internal capabilities against network scale requirements.",
+                redFlag: "Treating the terms as interchangeable, or hiring an expensive 4PL integrator to manage a simple, low-volume regional shipping lane that could be handled with a standard local carrier.",
+            },
+            {
+                id: "Q-079",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Expert",
+                question: "How do you construct an enterprise governance framework for Collaborative Planning, Forecasting, and Replenishment (CPFR) with an anchor retail client?",
+                conversational: "A successful CPFR framework moves your relationship with an anchor retailer away from reactive, transactional ordering and turns it into a highly synchronized partnership. Instead of the retailer guessing their demand and throwing irregular orders over the wall, you build a shared governance loop. We establish a single version of demand truth by combining our production constraints with the retailer's real-time point-of-sale data, promotional calendars, and distribution inventories. We agree on strict exception thresholds—such as an unforecasted 10% demand shift—which automatically triggers a joint planning review, allowing us to adjust our factory schedules before shortages happen.",
+                deepdive: "CPFR governance applies the GS1 global standard, structured across four operational phases: Strategy and Planning (establishing the joint charter, security protocols, and promotional parameters), Demand and Supply Management (merging point-of-sale consumption data with factory capacity models to draft a single collaborative forecast), Fulfillment Execution (triggering automated inventory replenishment loops), and Analysis (monitoring exceptions and running root-cause reviews on forecast errors). This integrated data loop eliminates the information lags that feed the bullwhip effect, flattening the factory production cadence and lowering safety stock requirements across both organizations.",
+                coaching: "Look for strong executive presence and experience managing cross-functional partnerships. The candidate should naturally outline the structured phases of CPFR, focusing heavily on data transparency and automated exception rules.",
+                redFlag: "Suggesting that CPFR is just a standard practice of emailing monthly sales forecasts back and forth, completely missing the need for integrated point-of-sale data data or automated exception triggers."
+            },
+            {
+                id: "Q-080",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Core",
+                question: "How do you choose between an Attribute-based control chart and a Variable-based control chart when designing a factory floor quality system?",
+                conversational: "The choice between attribute and variable control charts comes down to what kind of data your quality check gates are generating. Variable charts track continuous, precise physical measurements—like a shaft diameter measured in millimeters, a tool temperature, or a fluid weight. These are highly precise and help you spot minor process drifts early, though they require calibrated digital gauges. Attribute charts track pass-fail data—like counting the number of scratched screens, open seals, or broken components in a batch. Attribute charts are fast and simple for floor operators to use, but they require much larger sample sizes to catch process variation before defects develop.",
+                deepdive: "Statistical Quality Control selection rules dictate that Variable charts (such as X-bar and R charts or X-bar and S charts) track continuous measurement metrics, applying the Central Limit Theorem to evaluate subtle changes in process precision and mean centering. Variable charts provide high statistical power with tiny sample sizes (typically n = 4 to 5). Attribute charts (such as p-charts for defect fractions or c-charts for defect counts) process discrete, binary classifications. Because attribute data is less precise, it requires significantly larger sample sizes (often n = 100+) to establish reliable control limits, making variable charts the ideal choice for high-volume bottleneck assets where detecting minor process drift is critical.",
+                coaching: "The candidate must clearly separate continuous physical dimensions (Variable data) from binary pass-fail statistics (Attribute data). Look for them to explain that variable charts provide much higher diagnostic accuracy with smaller sample sizes.",
+                redFlag: "Recommending a slow, low-sample attribute p-chart to monitor a highly automated, ultra-precise machining asset where tracking micro-drifts in continuous dimensions is required to prevent part failure."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-032",
+                scenarioType: "sourcing consolidation / supplier negotiation",
+                difficulty: "Advanced",
+                title: "The Intermountain Medical Device Clean-Sheet Cost Extraction",
+                context: "A high-precision medical device manufacturer based in Salt Lake City sources a custom titanium housing assembly from a regional single-source supplier. Citing rising utility costs and labor rate adjustments, the supplier demands an immediate 15% price increase across all purchase orders, threatening to erode the medical enterprise's gross margin performance by a clean 220 basis points.",
+                interviewerPrompt: "How would you deploy a bottom-up Should-Cost clean-sheet analysis to evaluate the supplier's price demand, locate hidden process inefficiencies, and structure a data-driven negotiation strategy to protect corporate margins?",
+                candidateObjectives: [
+                    "Construct a bottom-up clean-sheet cost matrix to isolate actual manufacturing expenses from generic supplier inflation arguments.",
+                    "Analyze direct material weights, machine cycle times, and labor inputs to determine an objective piece-price baseline.",
+                    "Formulate a collaborative negotiation strategy that links price adjustments directly to verifiable index changes rather than flat fee increases."
+                ],
+                clarifyingQuestions: [
+                    "What is the current raw material scrap rate and machine cycle time achieved by the supplier during production runs?",
+                    "Does the supplier utilize automated machining cells, or is the housing assembly built using high-volume manual fabrication steps?",
+                    "Are alternative domestic foundries pre-qualified to manufacture this specific housing design if negotiations stall?"
+                ],
+                suggestedApproach: "Reject the flat 15% price adjustment immediately. Deploy a rigorous should-cost clean-sheet analysis by breaking down the assembly into its core component costs: raw titanium weight, CNC machining time, variable labor rates, and localized facility overheads. Use independent commodity index records to show that raw titanium costs have actually dropped by 4%. Present this clean-sheet bottom-up model to the supplier to shift negotiations from an emotional standoff into a data-driven process engineering review, eliminating arbitrary margin markups.",
+                keyIssues: [
+                    "The supplier's quote bakes in an unoptimized 18% scrap rate during the raw material casting and stamping phase.",
+                    "The supplier runs older, low-velocity CNC machinery that drives processing cycle times up to 45 minutes per completed housing unit.",
+                    "Transitioning to an alternative pre-qualified domestic foundry requires an expensive 8-week tooling recalibration window and a $45,000 capital charge."
+                ],
+                analysisRequired: "Build an objective should-cost clean-sheet model using continuous industrial engineering variables, evaluate material scrap cost inputs, and calculate contract margin protections.",
+                sampleDataOrExhibit: {
+                    caption: "Supplier Price Proposal vs. Bottom-Up Should-Cost Model",
+                    rows: [
+                        ["Cost Component Element", "Supplier Legacy Invoice Price", "Supplier Proposed 15% Increase", "Should-Cost Clean-Sheet Baseline Data"],
+                        ["Raw Material Input (Titanium)", "$18.50 / Unit", "$18.50 (Unchanged)", "$14.20 / Unit (4% Commodity Drop Shift)"],
+                        ["Direct Manufacturing Labor", "$12.00 (24 Mins)", "$15.60 (Labor Adjustment)", "$10.00 / Unit (Optimized 20-Min Standard)"],
+                        ["Machine Asset Overhead", "$8.50 Allocation", "$10.20 Allocation", "$6.40 / Unit (Based on Tier-1 CNC Efficiency)"],
+                        ["Factory SG&A Expenses", "$3.00 Allocation", "$4.15 Allocation", "$2.50 / Unit (Standard Industry Benchmark)"],
+                        ["Supplier Net Profit Margin", "$6.00 (12.5% Margin)", "$7.15 (12.8% Margin)", "$5.40 / Unit (Negotiated 14.0% Fair Return)"],
+                        ["Total Assembly Piece Price", "$48.00 / Unit", "$55.60 / Unit", "$38.50 / Unit (True Process Potential)"]
+                    ]
+                },
+                strongAnswerPath: "The candidate uses the clean-sheet exhibit to completely reframe the negotiation. They show that while the supplier is demanding a price jump to $55.60, the true should-cost potential sits at a lean $38.50, proving that the supplier is hiding process inefficiencies and expanding their profit margins ($7.15). The candidate implements a structured procurement strategy: 1. Challenge the raw material calculation, using London Metal Exchange data to show that raw titanium input costs land at $14.20, proving the supplier's $18.50 baseline is padded with an unoptimized 18% scrap rate waste. 2. Reject the labor price spike ($15.60), showing that standardizing floor layouts compresses cycle times down to 20 minutes, dropping labor back to $10.00. 3. Offer a collaborative compromise: instead of an arbitrary price increase, sign a long-term indexing contract that locks in the base price at a fair $44.00, while sending a manufacturing engineer to the supplier's floor to remove the machining waste. This protects corporate margins, lowers unit costs below the legacy baseline, and preserves supplier alignment.",
+                finalRecommendation: "Deploy the bottom-up should-cost clean-sheet model to block the supplier's unvalidated $55.60 price hike. Establish a dynamic indexing contract locked at a fair $44.00 piece price, and send an inline engineer to help the supplier remove floor scrap wastes.",
+                coachingNotes: "This scenario evaluates advanced strategic procurement and clean-sheet cost extraction skills. Look for candidates who avoid raw price haggling and instead use bottom-up, variable-by-variable cost data to uncover process inefficiencies and hold suppliers accountable.",
+                redFlags: [
+                    "Passively approving the 15% price spike because the supplier is a single-source partner, instantly destroying corporate gross margins and setting a terrible procurement precedent.",
+                    "Threatening to cancel the contract and move volume immediately without accounting for the 8-week foundry tooling delay or the $45,000 capital qualification charge."
+                ]
+            },
+            {
+                id: "S-033",
+                scenarioType: "inventory rationalization / dead stock liquidation",
+                difficulty: "Advanced",
+                title: "The Wasatch Outdoor Apparel Obsolete Stock Cleanse",
+                context: "Following an unseasonably warm winter season, a premier technical outdoor apparel distributor based along the Wasatch Front holds an excessive volume of high-end insulated ski jackets across its distribution grid. Warehouses are operating at a congested 96% layout capacity, and corporate finance logs show that $4.2M in working capital cash is trapped in slow-moving inventory that faces rapid obsolescence risks as the spring line approaches.",
+                interviewerPrompt: "Develop an immediate 30-day inventory rationalization and asset recovery plan to clear warehouse capacity, evaluate the financial trade-offs of immediate P&L write-offs versus secondary liquidations, and restore network cash velocity.",
+                candidateObjectives: [
+                    "Segment the trapped winter apparel inventory by SKU performance to isolate dead stock from slow-moving items.",
+                    "Calculate the fully loaded ongoing carrying cost penalty of holding the obsolete jackets until the next winter season.",
+                    "Model asset recovery yields across alternative liquidation channels, balancing near-term P&L margin hits against operating cash flow requirements."
+                ],
+                clarifyingQuestions: [
+                    "What is our precise annual inventory carrying cost percentage used by corporate finance to track locked-up capital?",
+                    "Do our retail contracts allow us to return un-sold winter seasonal inventory to the original manufacturing partners for credit?",
+                    "What is the estimated market value depreciation rate per month for technical apparel if it sits in storage for an entire year?"
+                ],
+                suggestedApproach: "Deploy a rigorous inventory age and velocity analysis. Run a multi-channel asset recovery model to evaluate liquidation corridors. Avoid the temptation to hold the $4.2M in inventory until next winter; calculate the heavy 25% annual carrying cost premium ($1.05M) and the 30% style depreciation risk, proving that holding the stock destroys more value than an immediate discount clear-out. Segment stock quickly, sell high-volume items through off-price secondary retail networks at a 40% discount to unlock immediate cash flow, and write off obsolete colors to free up warehouse space.",
+                keyIssues: [
+                    "Warehouse space is so congested that inbound spring inventory trucks are sitting in staging yards, accumulating $4,500 in weekly yard delay fines.",
+                    "Holding the jackets in storage for 9 months introduces an extreme style obsolescence risk, as fabrics and colors shift across fashion seasons.",
+                    "Plant managers are actively resisting an inventory write-off because their annual bonuses are directly tied to local net operating income targets."
+                ],
+                analysisRequired: "Compute the fully loaded cost of inventory retention (carrying friction, yard delays, value depreciation), calculate cash recovery profiles across liquidation channels, and align facility management incentives.",
+                sampleDataOrExhibit: {
+                    caption: "Apparel Liquidation Channel Recoveries & Cash Metrics",
+                    rows: [
+                        ["Inventory Liquidation Corridor", "Trapped Asset Book Value", "Offered Asset Recovery Yield", "Cash Velocity Timeline", "Net P&L Operating Profit Hit"],
+                        ["Channel A: Retention (Hold for 9 Months)", "$4.20M Baseline", "45% (Due to Style Aging)", "Delayed 9 Months", "-$2.31M Combined Margin Loss & Storage Costs"],
+                        ["Channel B: Off-Price Secondary Retail", "$2.50M (Core SKUs)", "60% Gross Cash Return", "Immediate 7-Day Wire", "-$1.00M Direct Write-Down Charge"],
+                        ["Channel C: Flash E-Commerce Clear-Out", "$1.20M (Mixed Stock)", "45% Gross Cash Return", "30-Day Rolling Sales", "-$0.54M Direct Write-Down Charge"],
+                        ["Channel D: Raw Scrap / Donation Write-Off", "$0.50M (Obsolete Styles)", "10% Corporate Tax Credit", "Immediate Execution", "-$0.45M Full Balance Sheet Purge"]
+                    ]
+                },
+                strongAnswerPath: "The candidate aligns their strategy directly with enterprise cash velocity. They use the data matrix to prove that holding the inventory (Channel A) is a losing strategy that destroys $2.31M in corporate value due to carrying costs, style depreciation, and yard delay fines ($4,500/wk). They override the local managers' resistance and execute a high-velocity 30-day inventory liquidation roadmap: 1. Liquidate the core functional SKUs immediately through Channel B (Off-Price Retail), accepting a $1.0M P&L write-down but instantly unlocking $1.5M in liquid cash flow ($2.5M · 0.60) within 7 days. 2. Route the remaining mixed stock through Channel C's flash e-commerce promotions, capturing a 45% cash return. 3. Purge the obsolete styles completely via Channel D to clear the final warehouse space. This integrated strategy accepts a near-term $1.99M P&L margin hit, but it instantly reclaims $2.09M in liquid operating cash, drops warehouse utilization back to a safe 78%, and eliminates the yard delay fines, protecting the incoming spring product line launch.",
+                finalRecommendation: "Reject the retention strategy and clear out the trapped winter apparel within 30 days. Execute a combined off-price retail liquidation and flash e-commerce clear-out to unlock $2.09M in immediate cash flow and free up premium warehouse capacity.",
+                coachingNotes: "This scenario evaluates advanced inventory optimization and corporate finance alignment skills. Look for candidates who can look past near-term P&L write-off targets and use total carrying cost calculations to prioritize balance sheet cash velocity and facility flow.",
+                redFlags: [
+                    "Holding the $4.2M in seasonal stock in storage for 9 months to avoid a near-term P&L write-off, completely ignoring the massive carrying costs, style depreciation risks, and incoming truck yard fines.",
+                    "Proposing to build or rent an expensive secondary warehouse building to store the dead stock, which doubles down on an unprofitable inventory profile."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "The Kraljic Sourcing Matrix Architecture",
+                tag: "Procurement Strategy & Risk Management",
+                when: "Structuring an enterprise procurement strategy to organize a massive supplier base, balance supplier market risks, and maximize purchasing leverage.",
+                structure: "Segment all purchased direct materials into a four-quadrant strategic matrix based on profit impact and supply risk:\n1. Leverage Items (High Profit Impact, Low Supply Risk): High-volume commodities with multiple qualified vendors. Strategy: Consolidate buying volumes, run intense competitive RFPs, and negotiate multi-year volume discount contracts.\n2. Strategic Items (High Profit Impact, High Supply Risk): Critical custom components with scarce sourcing options or single-source dependencies. Strategy: Build long-term partnerships, align technical innovation roadmaps, and design dual-sourcing protection networks.\n3. Non-Critical Items (Low Profit Impact, Low Supply Risk): Cheap, standard materials like office supplies or MRO fasteners. Strategy: Automate purchasing loops, implement e-procurement catalogs, and minimize transactional labor overhead.\n4. Bottleneck Items (Low Profit Impact, High Supply Risk): Low-value components with highly scarce or single-source options. Strategy: Build up physical safety stock buffers, contractually lock long-term supply guarantees, or re-engineer the product design to eliminate the part completely.",
+                example: "An industrial vehicle assembly site applies the Kraljic matrix to organize its direct spend. They shift standard steel sheets into the Leverage quadrant to run aggressive vendor bidding wars, while placing custom powertrain control modules into the Strategic quadrant to sign multi-year partnership protections.",
+                mistakes: "Treating low-value bottleneck components with aggressive pricing negotiations, which panics the single supplier and risks triggering a catastrophic production shutdown over a cheap part.",
+                customize: "Automatically shift any Leverage item into the Bottleneck quadrant if its primary supplier's regional lead time spikes by more than 30% due to cross-border transportation congestion."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Should-Cost Clean-Sheet Price Analysis Drill",
+                formula: "Should-Cost Unit Price = Raw Material Cost + (Machining Cycle Time · Labor Rate) + Overhead Allocation + SG&A Surcharge + Target Profit Margin",
+                example: "A procurement team audits a custom precision component. The part requires 4.5 lbs of raw aluminum alloy (sourcing cost is $1.80/lb). Automated CNC machining requires a cycle time of 15 minutes (0.25 hours) at a direct technical labor rate of $24.00/hour. Machine overhead is allocated at a standard plant rate of $40.00 per machine hour. Factory SG&A is applied as a fixed 5% surcharge on total direct manufacturing costs, and the contract guarantees the vendor a fair 12% operating profit margin on the fully loaded cost baseline.",
+                calc: "1. Raw Material Cost = 4.5 lbs · $1.80 = $8.10. 2. Direct Labor Cost = 0.25 hours · $24.00 = $6.00. 3. Machine Overhead Cost = 0.25 hours · $40.00 = $10.00. 4. Total Direct Manufacturing Cost = 8.10 + 6.00 + 10.00 = $24.10. 5. SG&A Surcharge = 5% of 24.10 = $1.205. 6. Fully Loaded Cost Baseline = 24.10 + 1.205 = $25.305. 7. Target Profit Margin = 12% of 25.305 = $3.0366. Should-Cost Unit Price = 25.305 + 3.0366 = $28.3416 ≈ $28.34 per piece.",
+                verbalize: "Our bottom-up should-cost clean-sheet model proves that this precision component can be manufactured profitably for exactly $28.34 per unit. This data gives our strategic sourcing team a powerful baseline for our upcoming contract renewal. If the supplier submits an unvalidated quote of $36.00 per unit, we don't have to guess where the premium is hidden—we can see that they are either padding their profit margins or burying a high 25% material scrap waste into their numbers. By presenting this line-by-line clean-sheet baseline, we can focus the negotiation on helping the supplier streamline their machine setups and eliminate floor waste, locking in our $28.34 target price while fully protecting the long-term supplier relationship.",
+                mistakes: "Failing to convert cycle times from minutes into hours before multiplying by hourly labor or machine overhead allocation rates, which creates massive calculation errors."
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
