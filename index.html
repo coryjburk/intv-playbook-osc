@@ -1992,6 +1992,95 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-033",
+                category: "Inventory Management & Optimization",
+                difficulty: "Advanced",
+                question: "What are the structural and mathematical differences between a Continuous Review ($s, Q$) inventory policy and a Periodic Review ($R, S$) policy, and when do you deploy each?",
+                conversational: "A Continuous Review policy is a reactive model where you monitor inventory levels in real time. The second your stock hits a specific reorder point ($s$), the system automatically fires off a purchase order for a fixed, pre-determined Economic Order Quantity ($Q$). This works beautifully for high-value, critical items because it keeps your safety stock low. A Periodic Review policy checks inventory on a fixed calendar cadence—say, every second Tuesday ($R$). When that day arrives, you place an order for a variable quantity to bring your stock back up to a target maximum level ($S$). This model is ideal for lower-value, predictable items because it lets you consolidate orders and save on transport costs, even though it requires a slightly larger safety stock buffer to survive the fixed review intervals.",
+                deepdive: "In a Continuous Review system ($s, Q$), safety stock is calculated solely to cover demand variance during the supplier lead time window: $$SS = Z \cdot \sigma_d \cdot \sqrt{L}$$. In a Periodic Review system ($R, S$), safety stock must expand because the system is completely blind to demand spikes between reviews. The vulnerability window covers both the review interval ($R$) and the supplier lead time ($L$), modifying the formula to: $$SS = Z \cdot \sigma_d \cdot \sqrt{R + L}$$. This highlights that Periodic Review policies trap more working capital on the balance sheet, which must be financially balanced against the freight cost efficiencies achieved by consolidating shipments.",
+                coaching: "The candidate should immediately point out that the exposure window for safety stock expands in a periodic model. Look for them to link this structural difference back to working capital carrying costs versus shipping optimization choices.",
+                redFlag: "Suggesting that a Periodic Review model requires less safety stock than a Continuous Review model for the exact same demand and lead-time variability parameters."
+            },
+            {
+                id: "Q-034",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Core",
+                question: "How do you distinguish between a Product-Focused and a Process-Focused manufacturing layout, and how does this choice shift your unit economics?",
+                conversational: "A Product-Focused layout—like a classic automated assembly line—is built for speed and efficiency. The machinery is arranged in a strict sequence to build one high-volume product line continuously. This layout gives you ultra-low variable labor costs and minimal WIP, though it demands huge upfront capital investments and leaves you with zero flexibility if product demand shifts. A Process-Focused layout groups similar types of machinery together into functional departments—like keeping all welding machines in one zone and CNC machines in another. This structure provides massive flexibility to handle custom, low-volume orders, but it introduces heavy material handling costs, high WIP backlogs, and slower customer lead times.",
+                deepdive: "Product-focused architectures prioritize line-balancing techniques to minimize machine idle time, optimizing throughput velocity to match a specific Takt time. Process-focused environments utilize Group Technology and Cellular Manufacturing principles to handle high product variety. The core financial trade-off balances fixed asset depreciation structures (high CapEx, low variable cost in product layouts) against operational flexibility (low CapEx, high variable labor and material handling overhead in process layouts), altering the facility's operational break-even point.",
+                coaching: "Candidates must frame this layout choice through structural business logic. They should explicitly weigh fixed capital structures against variable operating overheads and product lifecycle stages.",
+                redFlag: "Recommending an automated, dedicated product-focused assembly line for a highly customized, low-volume product line, which traps capital in under-utilized assets."
+            },
+            {
+                id: "Q-035",
+                category: "Process Improvement & Root-Cause",
+                difficulty: "Expert",
+                question: "How do you systematically leverage a Shainin Red X problem-solving methodology to resolve a complex, multi-variable yield failure when traditional Taguchi DOE methods are too slow?",
+                conversational: "Traditional Taguchi Design of Experiments (DOE) forces you to build complex mathematical matrices to test multiple variables at the same time, which can take weeks and halt production. The Shainin methodology takes the opposite approach: it acts as a rapid process of elimination to let the parts speak to you. We start with a component swap—taking a high-performing 'Green Y' unit and a failing 'Red Y' unit from the line and systematically swapping components until the defect flips. This lets us quickly rule out dozens of innocent variables and isolate the single dominant root cause—the 'Red X'—without disrupting daily factory operations.",
+                deepdive: "Shainin variables-isolation tools use structured pairs comparisons, component swaps, and multi-vari charts to systematically isolate the true root cause ($X$) of process variation ($Y$). Unlike full factorial regressions that assume every variable interacts linearly, Shainin logic operates on the principle that one single dominant variable (the Red X) is responsible for the majority of the defect distribution, followed by a secondary Pale Pink X. By focusing strictly on identifying and eliminating the Red X rather than optimizing a massive multi-variable equation, engineering teams can compress diagnostic timelines by up to 80%.",
+                coaching: "Listen for an emphasis on speed and operational execution. The candidate should demonstrate that they treat Shainin as a practical tool to isolate defects quickly on an active production line without needing to freeze operations for statistical modeling.",
+                redFlag: "Suggesting that the only way to solve a complex defect is to run a massive, hundred-run Taguchi matrix, failing to recognize the severe financial penalty of halting factory throughput."
+            },
+            {
+                id: "Q-036",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Foundational",
+                question: "What are the core operational parameters that dictate whether you ship a product via Less-Than-Truckload (LTL) versus Full Truckload (FTL) transport?",
+                conversational: "The choice between LTL and FTL comes down to three main levers: shipment volume, weight, and delivery speed. Full Truckload means you are renting the entire trailer—usually for shipments over 20,000 pounds or taking up more than 15 pallet spaces. FTL is fast and secure because the truck drives straight from your dock to the customer without stopping. Less-Than-Truckload is a shared-ride model for smaller shipments under 6 pallet spaces. You only pay for the specific space you occupy, which saves money on small volumes, but your product will pass through multiple regional hubs and cross-docks along the way. This extra handling slows down delivery times and significantly increases your risk of product damage.",
+                deepdive: "The operational break-even point between shipping modes is governed by spatial cube limits, weight capacities, and commercial tariff tables. FTL transport operates point-to-point, maximizing asset utilization and minimizing transit time variability. LTL transport relies on a complex hub-and-spoke network grid. While LTL dramatically reduces freight expenses for low-volume shipments, it introduces significant logistical friction: extended transit lead times due to hub processing, increased risk of handling damage, and unexpected carrier assessorial charges (such as lift-gate or residential fees) that must be modeled into total landed cost calculations.",
+                coaching: "Look for an focus on total logistics cost parameters. The candidate should clearly distinguish between point-to-point transit speed and the hub-and-spoke handling risks associated with shared LTL transport networks.",
+                redFlag: "Suggesting that LTL is always superior purely because it costs less per shipment, without accounting for the financial costs of extended transit lead times or higher product damage rates."
+            },
+            {
+                id: "Q-037",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Advanced",
+                question: "How do you lead a successful Pre-S&OP reconciliation meeting when the commercial team's revenue targets are 20% higher than the factory's physical capacity?",
+                conversational: "The Pre-S&OP meeting is where you prevent a corporate train wreck before it hits the executive suite. If sales is aiming for a 20% volume spike that the factory cannot physically build, you cannot resolve it by simply arguing or trying to split the difference. I act as the data-driven bridge. I lay out the capacity constraints clearly and present three concrete, cost-analyzed options to bridge the gap: we can authorized emergency weekend overtime shifts, outsource low-margin assemblies to a third-party manufacturer, or work with sales to prioritize our highest-margin customer accounts. This changes the meeting from an emotional standoff into a strategic financial choice for executive leadership.",
+                deepdive: "Pre-S&OP reconciliation acts as the mathematical filter between unconstrained market demand and constrained Rough-Cut Capacity Planning (RCCP). The operations leader utilizes mixed-integer linear programming models to evaluate the total cost of capacity expansion options against the margin penalty of unfulfilled demand. By converting shop-floor capacity limits (such as machine hours or labor constraints) into a clear dollar-margin impact, leadership can evaluate the exact Return on Invested Capital (ROIC) achieved by funding temporary capacity expansions versus implementing product allocation strategies.",
+                coaching: "Listen for strong executive presence and cross-functional leadership skills. The candidate should view S&OP as a financial governance mechanism rather than just a basic supply chain scheduling meeting.",
+                redFlag: "Allowing both teams to leave the Pre-S&OP meeting with completely different planning numbers, which forces a chaotic crisis during the final executive sign-off session."
+            },
+            {
+                id: "Q-038",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Expert",
+                question: "Explain the statistical and management distinctions between Process Capability indices $C_p$ and $C_{pk}$, and outline how a widening gap between them alters your operational focus.",
+                conversational: "Think of $C_p$ as a measure of your process's potential, while $C_{pk}$ tracks your actual performance. $C_p$ compares the total width of your customer specification limits against the natural variation of your machinery. It answers a simple question: if our process was perfectly centered, could we safely build this part without defects? $C_{pk}$ factors in the actual process mean, penalizing you if your production line is drifting off-center. If you have a high $C_p$ but a terrible, dropping $C_{pk}$, you don't need to buy a more precise machine; your tool is capable enough. You simply need to adjust your setup or fix a machine calibration issue to center the process back where it belongs.",
+                deepdive: "Process capability is modeled mathematically using standard deviation ($\sigma$) and process mean ($\mu$) against Upper and Lower Specification Limits (USL/LSL). The formula for potential capability is: $$C_p = \frac{USL - LSL}{6\sigma}$$. The formula for actual capability incorporates process centering: $$C_{pk} = \min\left(\frac{USL - \mu}{3\sigma}, \frac{\mu - LSL}{3\sigma}\right)$$. A widening gap between $C_p$ and $C_{pk}$ proves that process precision is stable, but accuracy is degrading due to centering drift. Operational management must shift engineering focus from root-cause variation reduction to targeted machine centering calibrations or tool wear adjustments.",
+                coaching: "The candidate must explicitly detail the formulas and outline the management adjustments indicated by the metrics gap. Look for them to emphasize that a low $C_{pk}$ with a high $C_p$ indicates a simple centering issue rather than an expensive equipment precision limitation.",
+                redFlag: "Suggesting that purchasing a brand-new, more expensive manufacturing machine is the only way to resolve a low $C_{pk}$ score without first evaluating the baseline $C_p$ potential."
+            }
+        );
+        
+        contentData.scenarios.push(
+            {
+                id: "S-016",
+                scenarioType: "cost-to-serve reduction",
+                difficulty: "Advanced",
+                title: "The Omni-Channel Grocery Cold-Chain Profit Leak",
+                context: "A regional grocery distributor utilizing a centralized automated distribution hub in the Salt Lake City market has scaled its direct-to-home e-commerce delivery channel by 40%[cite: 1]. However, corporate finance audits reveal severe margin compression: the cost-to-serve for online orders is 22% higher than standard retail store replenishment, entirely wiping out the channel's net profitability.",
+                interviewerPrompt: "How would you systematically audit this multi-channel logistics footprint, calculate the cost-to-serve per delivery lane, and re-engineer the final-mile fulfillment network to restore corporate operating income?",
+                candidateObjectives: [
+                    "Apply an Activity-Based Costing (ABC) framework to isolate exact cost leaks across picking, packaging, and final-mile delivery.",
+                    "Evaluate the financial trade-offs of centralized automated picking vs. decentralized store-level micro-fulfillment hubs.",
+                    "Optimize delivery density and routing parameters to eliminate unprofitable final-mile delivery zones."
+                ],
+                clarifyingQuestions: [
+                    "What is the average order basket size and delivery density (drops per mile) across our current logistics routes?",
+                    "How are temperature-controlled cold-chain items handled during the final-mile delivery phase (e.g., specialized refrigerated fleet vs. insulated cooler totes)?",
+                    "Are online delivery fees flat across all zones, or do we use dynamic, distance-based pricing models?"
+                ],
+                suggestedApproach: "Deploy a rigorous Activity-Based Costing (ABC) analysis. Trace every individual operational touchpoint from the inbound dock to the customer's doorstep. Isolate high-cost final-mile delivery zones lacking sufficient drop density. Transition the fulfillment model from an unoptimized, centralized hub layout over to a localized, hybrid store picking framework for high-density metropolitan zones, while introducing dynamic delivery tier fees to cover freight costs on long-distance, low-volume rural routes.",
+                keyIssues: [
+                    "The centralized automated hub forces delivery trucks to drive over 45 miles to service outlying suburban zones, driving up fuel and driver labor expenses.",
+                    "Cold-chain products experience a 6% spoilage rate because delivery trucks lack active refrigeration zones, relying instead on dry-ice packs.",
+                    "Drivers spend an average of 1Awesome! Seeing that Process Cycle Efficiency (PCE) table render flawlessly with all the staging queue diagnostics is exactly how we prove the value of this data engine. It perfectly illustrates how shifting from massive, bloated batches to lean, single-piece flows can compress lead times from 18 days down to 3.8 days without compromising strict regulatory compliance.
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
