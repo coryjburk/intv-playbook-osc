@@ -2797,6 +2797,186 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-057",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Advanced",
+                question: "What is a Forecast Tracking Signal, and how do you use it mathematically to diagnose whether your demand planning model is suffering from structural Bias versus random noise?",
+                conversational: "A tracking signal is an operational alarm system for your demand planners. While standard metrics like MAPE tell you the size of your forecasting errors, they don't tell you the direction. Your forecast can look mathematically accurate on average, but if it consistently underpredicts demand month after month, you have structural bias. The tracking signal divides your running sum of forecast errors by your Mean Absolute Deviation (MAD). If the resulting number jumps past a standard control limit—typically positive or negative 4—it proves statistically that your model is systematically broken. You need to stop tweaking random variables and actively update your baseline trends or promotional calendars.",
+                deepdive: "The mathematical definition of the Tracking Signal (TS) is: TS = RSFE / MAD, where RSFE represents the Running Sum of Forecast Errors, and MAD is the Mean Absolute Deviation. Individual period forecast error is calculated as: Eₜ = Actual Demand - Forecast Demand. If a model is unbiased, errors are random, meaning positive and negative values counteract each other, keeping the RSFE near zero. When structural bias enters the system—such as a sales team over-inflating forecasts to clear quota milestones—errors compound in one direction, causing the tracking signal to breach threshold boundaries (typically +/- 3 to 4 MADs), indicating a non-random shift that requires model recalibration.",
+                coaching: "Look for candidates who can clearly distinguish between error magnitude (MAPE/MAD) and error direction (Bias/Tracking Signal). They should comfortably outline how a tracking signal breach serves as an automated operational trigger to modify S&OP baseline models.",
+                redFlag: "Conflating forecast bias with raw forecast accuracy, or suggesting that increasing safety stock buffers is the correct mathematical fix for a systematically biased demand forecast."
+            },
+            {
+                id: "Q-058",
+                category: "Procurement & Supplier Management",
+                difficulty: "Expert",
+                question: "How do you structure and govern a strategic Risk-Sharing Contract with a critical single-source vendor to insulate your operation from raw material price volatility?",
+                conversational: "When you are locked into a critical single-source supplier, trying to force all commodity price risk onto them will backfire—they will either hide a massive risk premium inside their base unit price or go bankrupt during a market spike. Instead, I structure a formal risk-sharing contract built on a collaborative price-indexing escalator clause. We agree on a baseline material cost using an independent index, like the London Metal Exchange. If the market price fluctuates within a narrow band—say +/- 5%—the price stays flat and both companies absorb the minor variation. If it spikes beyond that band, the contract automatically splits the added cost 50/50. This protects the vendor's operating cash flow during a crisis, while guaranteeing our assembly lines keep running without emergency spot-market price shocks.",
+                deepdive: "Risk-sharing governance structures align inter-corporate incentives by establishing explicit cost-escalator and de-escalator mechanisms linked to independent benchmark indexes. The transactional unit price is modeled as a dynamic function: P_actual = P_base + α · (I_current - I_base), where α represents the risk-sharing coefficient ($0 < α < 1$), I represents the independent index value, and P_base is the negotiated baseline price. This structure limits the supplier's margin exposure during commodity spikes, eliminating the economic incentive for vendors to declare Force Majeure or delay shipments to prioritize higher-margin spot clients during regional material scarcities.",
+                coaching: "The candidate should view the supplier network as a single, connected value chain. Look for an emphasis on objective data indexes and structured financial balance over emotional or zero-sum negotiation tactics.",
+                redFlag: "Proposing a rigid, long-term fixed price contract with no indexing parameters for a highly volatile commodity, which inevitably leads to catastrophic supplier defaults when material costs spike."
+            },
+            {
+                id: "Q-059",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Core",
+                question: "What is the operational definition of Unplanned Downtime, and how do you track and minimize it using a Total Productive Maintenance (TPM) framework?",
+                conversational: "Unplanned downtime is any unexpected event that stops your assembly line when it was scheduled to run—like a motor burning out, a conveyor jamming, or a tool breaking midway through a shift. It is a major margin killer because your fixed facility overhead and labor costs keep ticking while your output drops to zero. To eliminate this waste, I transition the site away from reactive 'run-to-failure' habits and deploy a Total Productive Maintenance framework. We start by training our frontline operators to execute autonomous maintenance—giving them ownership to perform daily cleaning, lubrication, and basic visual inspections right on their machines. This floor-level ownership lets workers spot and fix minor wear patterns before they turn into major equipment breakdowns that stall production.",
+                deepdive: "Unplanned downtime represents the primary component of Availability loss within Overall Equipment Effectiveness (OEE) calculations. Minimizing this metric requires deploying the core pillars of Total Productive Maintenance (TPM), specifically Autonomous Maintenance (Jishu Hozen) and Planned Maintenance. Operators utilize standardized visual management aids (such as color-coded pressure gauges and oil level sight lines) to detect anomalies early. By pairing autonomous shift checks with predictive maintenance tools (like vibration analysis and thermal imaging scheduled via a CMMS software platform), engineering teams can execute repairs during planned changeover windows, maximizing asset reliability.",
+                coaching: "Listen for an focus on proactive floor-level governance. Strong candidates focus on moving from reactive firefighting modes to structured preventive programs, highlighting the value of operator-led autonomous maintenance loops.",
+                redFlag: "Treating equipment breakdowns as an unchangeable reality of factory floor environments, or suggesting that the only solution is to hire more maintenance mechanics to fix machines after they break."
+            },
+            {
+                id: "Q-060",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Foundational",
+                question: "What are the structural operational differences between Public Warehousing, Contract Warehousing, and Dedicated Private Warehousing?",
+                conversational: "The choice between these warehousing models comes down to balancing financial flexibility against operational control. Public warehousing is a shared 'pay-as-you-go' model where you rent short-term pallet space alongside other businesses. It offers excellent flexibility and turns your fixed real estate overhead into a 100% variable expense, making it perfect for seasonal volume spikes. Dedicated private warehousing means you lease or own the entire building. It requires massive upfront capital and locks you into fixed overhead, but it gives you total control over specialized custom layouts, automated systems, and security. Contract warehousing sits right in the middle: you sign a multi-year lease for a designated footprint, but partner with a specialized 3PL provider to manage the labor and daily operations.",
+                deepdive: "From an operational finance perspective, the decision matrix maps asset specificity against demand volume stability. Public warehousing operates as a variable expense model, optimizing cash flow for low-volume, highly seasonal, or unverified market entries. Private warehousing functions as a high-fixed-cost strategy, maximizing long-term economies of scale and process standardization when volume throughput is high and highly predictable. Contract warehousing serves as a risk-mitigation compromise, locking in custom asset layout configurations and specialized warehouse management system integrations while outsourcing variable labor liabilities and local regulatory compliance tasks to a 3PL partner.",
+                coaching: "The candidate must frame this choice using clear corporate finance and volume parameters. Look for them to link public warehousing straight to variable cost structures and private warehousing to high-volume economies of scale.",
+                redFlag: "Recommending a massive, long-term private warehouse lease for a highly seasonal or unverified product line, which ties up valuable capital in empty real estate slots."
+            },
+            {
+                id: "Q-061",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Core",
+                question: "What is Defects Per Million Opportunities (DPMO), and how does it advance a standard percentage-based defect yield metric?",
+                conversational: "Tracking quality using a simple percentage yield metric can be incredibly misleading for complex products. If you run a high-speed line that builds printed circuit boards, and 1 out of 100 boards fails final inspection, your standard defect rate looks like a minor 1%. But that circuit board has over 500 individual solder points, chips, and resistors on it, and each one of those parts represents a distinct opportunity for a defect to happen. Defects Per Million Opportunities scales your quality metrics to account for that complexity. It measures the actual errors against the total total number of defect opportunities across your volume. DPMO gives quality engineers a highly precise, standardized metric to benchmark a complex process straight against simple assembly steps without masking hidden rework loops.",
+                deepdive: "The mathematical formula for DPMO is: DPMO = (Total Number of Defects Observed / (Total Units Sampled · Opportunities Per Unit)) · 1,000,000. For example, if a process builds 1,000 units, and each unit features 200 distinct defect opportunities (solder points, dimensions, component placements), the total opportunity base is 200,000. If 4 defects are observed, the percentage defect rate is a surface-level 0.4%, but the DPMO is calculated as: (4 / 200,000) · 1,000,000 = 20 DPMO, which maps directly to a 5.6 Six Sigma capability score. DPMO normalizes quality benchmarks across highly complex assemblies and simple processing cells.",
+                coaching: "Look for a solid grasp of Six Sigma metrics. The candidate should comfortably detail the formula and explain how DPMO exposes hidden process quality failures that standard percentage metrics hide.",
+                redFlag: "Believing that DPMO and standard percentage defect metrics are identical, showing a lack of familiarity with structured statistical quality control frameworks."
+            },
+            {
+                id: "Q-062",
+                category: "Inventory Management & Optimization",
+                difficulty: "Advanced",
+                question: "How do you apply a 'Two-Bin' visual inventory replenishment system on a manufacturing floor, and what parameters govern its execution?",
+                conversational: "A two-bin system is a beautifully simple, visual lean tool that completely eliminates manual data entry and administrative labor for low-value parts, like standard fasteners or rivets. The setup is entirely physical: you place identical components into two separate bins staged at the operator's workstation. The operator pulls parts exclusively from the first bin until it runs completely dry. The exact moment that first bin is empty, it acts as a visual trigger—the operator flips the empty bin back to the supply loop to be refilled, and seamlessly switches over to pulling parts from the second bin. The capacity of that second bin must be sized perfectly to hold enough safety stock to keep the operator running until the first bin is refilled and returned.",
+                deepdive: "The physical execution of a Two-Bin Kanban system relies on matching bin capacity parameters directly with supplier replenishment lead times. The mathematical constraint dictates that the volume within a single bin (B_capacity) must strictly exceed the maximum demand generated during the replenishment cycle: B_capacity > D · L + SS, where D represents the consumption rate per hour, L is the total transport and refill turnaround time, and SS is the protective safety stock buffer. This lean control framework shifts material tracking from slow, transaction-heavy ERP manual entry steps over to localized visual cues, completely eliminating administrative overhead while ensuring the line never starves.",
+                coaching: "Listen for an focus on sizing constraints. The candidate should specify that the second bin acts as a protective lead-time safety buffer, demonstrating they understand how to design physical pull controls that keep operations running smoothly.",
+                redFlag: "Suggesting a two-bin visual system for high-value, highly customized, or volatile components, which risks inflating factory floor working capital assets or causing expensive line stockouts."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-026",
+                scenarioType: "quality defect / yield / recall",
+                difficulty: "Advanced",
+                title: "The Salt Lake Cold-Chain Temperature Excursion Crisis",
+                context: "A premium cold-chain pharmaceutical distributor based in Salt Lake City discovers a severe compliance failure. A temperature-sensor download reveals that a specialized refrigerated delivery trailer carrying 18 pallets of temperature-sensitive pediatric vaccines suffered a 4-hour cooling failure during a regional transit run over mountain passes. The vaccine temperature breached its required 2 to 8 degrees Celsius storage window, peaking at 14 degrees before the cooling unit recovered.",
+                interviewerPrompt: "How do you immediately contain this high-risk quality failure, manage regulatory and public health exposure risks, isolate the mechanical or data root causes on the trailer, and ensure compliance without risking patient safety?",
+                candidateObjectives: [
+                    "Formulate a rapid containment and isolation strategy to lock down the compromised product lot numbers instantly.",
+                    "Deploy a structured quality audit framework to verify product stability data against regulatory compliance rules.",
+                    "Design a permanent engineering control protocol to monitor trailer temperatures in real time and trigger automated driver alerts."
+                ],
+                clarifyingQuestions: [
+                    "Have any of the compromised vaccine batches from this specific trailer been unloaded or distributed to hospital pharmacies?",
+                    "Does the pharmaceutical manufacturer provide verified stability data indicating if the vaccine can survive a short-term temperature excursion?",
+                    "Was the trailer cooling failure caused by an operator setting error, a mechanical breakdown, or a system data synchronization lag?"
+                ],
+                suggestedApproach: "Take absolute, non-negotiable ownership of quality and consumer safety. Issue an immediate electronic inventory freeze to lock down all 18 pallets before they can be scanned into active hospital stock, and isolate the trailer in a secure staging bay. Gather the data logs to run a formal root-cause analysis (DMAIC framework), using a Fishbone diagram to investigate why the cooling unit failed and why the driver missed the alarm. Update standard operating procedures by installing automated real-time IoT temperature sensors that blast instant text alerts to the logistics team the second a climate boundary is crossed.",
+                keyIssues: [
+                    "The trailer's primary data logger failed to send real-time alerts because the cellular antenna dropped connection inside a mountain transit corridor.",
+                    "The driver ignored a dashboard warning light, believing it was a minor sensor calibration error.",
+                    "The delivery lot faces a total scrap write-off cost of $650,000 if stability data cannot prove the vaccines remain fully effective."
+                ],
+                analysisRequired: "Evaluate the financial exposure of scraping the 18 pallets, determine the cost of technical decontamination and testing, and calculate the corporate ROI of upgrading the fleet to continuous real-time IoT temperature monitoring sensors.",
+                sampleDataOrExhibit: {
+                    caption: "Trailer Temperature Log Profiles & Inventory Mapping",
+                    rows: [
+                        ["Vaccine Batch ID Number", "Pallet Volume Count", "Excursion Duration Boundary", "Peak Internal Temperature", "Current Inventory Staging Status"],
+                        ["Batch VAC-2026-A", "6 Pallets", "4.2 Hours Above Limit", "14.2 Degrees Celsius", "Internal Quarantine / Locked in Bay"],
+                        ["Batch VAC-2026-B", "8 Pallets", "3.8 Hours Above Limit", "12.5 Degrees Celsius", "In-Transit / Diverted to Local Hub"],
+                        ["Batch VAC-2026-C", "4 Pallets", "1.5 Hours Above Limit", "8.9 Degrees Celsius", "Delivered to Hospital Dock (Frozen)"]
+                    ]
+                },
+                strongAnswerPath: "The candidate takes fast, uncompromising control of safety metrics. They review the temperature log exhibit and issue an immediate 'quarantine and hold' notice for all 3 lots within 15 minutes, contacting the hospital dock to secure Batch VAC-2026-C before it can be used for patient care. They accept the potential $650k material write-off as a necessary cost to protect corporate reputation and public health. Moving to root-cause mode, they use the 5 Whys to discover that a cellular dead zone blocked real-time alerts, while poor driver training led to a warning light being ignored. They fix the system by implementing a 48-hour correction loop: 1. Install upgraded IoT data loggers that use dual satellite-cellular tracking to eliminate communication blind spots. 2. Establish a strict rule blocking drivers from running routes unless they have passed an updated cold-chain safety certification. 3. Work with the manufacturer's quality team to test the batches, saving any lots that stability data can fully clear while scraping the rest to protect patient safety.",
+                finalRecommendation: "Lock down all affected vaccine lots across the distribution network immediately to protect patient safety. Upgrade the logistics fleet with dual satellite-cellular IoT sensors to guarantee real-time temperature tracking and automated alert backups through mountain corridors.",
+                coachingNotes: "This scenario evaluates the candidate's operational integrity under high-stakes compliance pressures. Look for a swift, non-defensive focus on containment and patient safety, followed by data-driven root-cause adjustments over simple behavioral warnings.",
+                redFlags: [
+                    "Attempting to downplay or hide the temperature breach to avoid a material financial write-off, or waiting for hospitals to report issues before issuing a product hold.",
+                    "Suggesting a manual inspection sweep of the vaccine vials, failing to realize that thermal degradation can only be verified through scientific stability testing."
+                ]
+            },
+            {
+                id: "S-027",
+                scenarioType: "cost-to-serve reduction",
+                difficulty: "Advanced",
+                title: "The Intermountain Last-Mile Parcel Delivery Cost Explosion",
+                context: "A regional e-commerce fulfillment engine based in Salt Lake City expands its direct-to-consumer next-day parcel delivery network. While sales volume jumps by 30%, corporate accounting flags a severe cash drain: the business unit's final-mile transport cost per package has spiked by 25%, completely eroding the distribution network's net operating profit margin.",
+                interviewerPrompt: "How would you systematically audit this last-mile logistics network, apply cost-to-serve analytics to identify the primary margin leaks, and optimize fleet delivery paths to restore profitability without lowering customer service speeds?",
+                candidateObjectives: [
+                    "Apply an Activity-Based Costing framework to break down delivery operating costs per package across urban and suburban delivery lanes.",
+                    "Optimize delivery drop density and routing parameters to eliminate empty-mile travel waste across the fleet.",
+                    "Evaluate the financial return of implementing local lockers or retail click-and-collect points to consolidate parcel drops."
+                ],
+                clarifyingQuestions: [
+                    "What is our current average delivery drop density (packages delivered per mile driven) across our urban versus suburban routes?",
+                    "Are we utilizing a dedicated company-owned delivery fleet, or do we rely entirely on high-cost third-party on-demand couriers?",
+                    "Do we offer flat-rate free shipping to all zones, or do we use dynamic pricing models that scale based on customer distance?"
+                ],
+                suggestedApproach: "Deploy a rigorous Activity-Based Costing (ABC) analysis to audit the network footprint. Map the delivery costs per zone to isolate where long-distance, low-density travel is draining cash. Shift from an unoptimized ad-hoc dispatch model over to a structured dynamic zone-routing guide. Consolidate low-density suburban shipments into centralized neighborhood locker hubs, and restrict high-cost on-demand courier usage strictly to high-margin premium delivery lanes, matching transport modes with lane profitability metrics.",
+                keyIssues: [
+                    "Fulfillment vans are driving an average of 14 miles between delivery drops in suburban sectors, dropping vehicle density down to unprofitable levels.",
+                    "Drivers waste an average of 22% of their on-road hours manually re-sorting packages inside the van due to poor pre-loading sorting protocols at the main dock.",
+                    "The business offers flat-rate free shipping on low-value orders under $25, spending more on the last-mile delivery van than the order's entire gross margin."
+                ],
+                analysisRequired: "Compute delivery cost-to-serve metrics across geographic zone tiers, calculate the profit impact of increasing delivery drop density, and evaluate minimum order threshold changes.",
+                sampleDataOrExhibit: {
+                    caption: "Last-Mile Delivery Cost-to-Serve & Route Performance Profile",
+                    rows: [
+                        ["Geographic Delivery Sector Zone", "Weekly Package Volume", "Avg Drop Density (Drops / Mile)", "Landed Transport Cost Per Package", "Net Profit Margin Contribution per Order"],
+                        ["Zone 1: Downtown Urban Core", "18,000 Packages", "12.4 Drops / Mile", "$3.85 / Package", "+18.5% Healthy Net Profit"],
+                        ["Zone 2: Suburban Communities", "8,500 Packages", "1.8 Drops / Mile", "$9.20 / Package", "-4.2% Net Margin Loss Drop"],
+                        ["Zone 3: Rural Outlying Sectors", "2,200 Packages", "0.3 Drops / Mile", "$16.45 / Package", "-14.8% Deep Cash Drain Loss"]
+                    ]
+                },
+                strongAnswerPath: "The candidate applies cost-to-serve data to isolate the root cause: flat-rate free shipping is working fine in high-density urban lanes ($3.85 cost), but is draining cash in low-density suburban and rural zones, where costs jump up to $16.45 per delivery due to empty-mile travel waste. They outline a clear logistics recovery strategy: 1. Establish an immediate $45 minimum order threshold for free shipping in suburban and rural zones, blocking unprofitable low-value orders. 2. Partner with regional retail networks to install 15 consolidated pickup lockers in Zone 3, turning scattered residential routes into dense, single-drop commercial deliveries and cutting rural transport costs by 60%. 3. Update the warehouse loading protocol to pre-sort packages by delivery sequence, recovering the 22% of driver hours wasted on the road. This re-engineering cuts total last-mile operating overhead by 32%, completely restoring the channel's net profitability.",
+                finalRecommendation: "Implement structured minimum order thresholds to protect thin-margin shipping lanes. Consolidate scattered rural residential routes into high-density commercial pickup locker hubs to eliminate empty-mile transit waste.",
+                coachingNotes: "This scenario evaluates last-mile logistics and cost-to-serve optimization skills. Look for candidates who move past basic price adjustments and apply activity-based costing data to optimize delivery density and transport network physics.",
+                redFlags: [
+                    "Proposing a broad shipping fee increase across all zones, which drives away high-density urban customers and fails to address the root cause of empty-mile travel waste in suburban lanes.",
+                    "Expanding the delivery fleet footprint to chase pure sales growth without establishing route density constraints or order threshold protections."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "Total Productive Maintenance (TPM) 8 Pillars",
+                tag: "Manufacturing Capability & Equipment Reliability",
+                when: "When a manufacturing plant faces high unplanned downtime, dropping machine speeds, or chronic equipment defects that erode line OEE and disrupt production schedules.",
+                structure: "Optimize equipment lifecycle performance across 8 foundational pillars:\n1. Autonomous Maintenance: Empower operators to perform daily cleaning, lubrication, and basic visual safety inspections on their own machines.\n2. Planned Maintenance: Schedule preventive maintenance tasks based on historical wear data to complete repairs before breakdowns happen.\n3. Quality Maintenance: Integrate predictive tracking tools to detect and fix machine wear patterns that introduce part defects.\n4. Focused Improvement: Deploy dedicated cross-functional Kaizen teams to eliminate systemic capacity waste on bottleneck assets.\n5. Early Equipment Management: Use shop-floor operating insights to design new machinery for faster changeovers and easier maintenance.\n6. Training and Education: Run continuous training loops to upgrade operators and maintenance techs on troubleshooting advanced automation tools.\n7. Safety, Health, and Environment: Eliminate safety hazards on the floor to maintain a zero-accident workplace.\n8. TPM in Administration: Streamline procurement, scheduling, and logistics data workflows to support factory floor operations.",
+                example: "A precision automotive casting site deploys TPM to stabilize an underperforming press line. By establishing operator-led autonomous maintenance and data-driven planned updates, they cut unplanned downtime by 55% within 90 days.",
+                mistakes: "Treating TPM as an administrative paperwork exercise for the maintenance department, completely failing to engage or train frontline operators in autonomous machine care.",
+                customize: "Integrate automated sensor data from your CMMS tool directly into your autonomous checklist to update operator cleaning protocols based on real-time machine run hours."
+            },
+            {
+                name: "The Theory of Constraints (TOC) 5 Focusing Steps",
+                tag: "Operations Excellence & Throughput Optimization",
+                when: "Evaluating a complex, multi-stage manufacturing line or fulfillment value stream to maximize throughput capacity without purchasing expensive new equipment.",
+                structure: "Systematically optimize process flow using a continuous 5-step loop:\n1. Identify the Constraint: Map individual workstation cycle times to locate the single asset or step that limits total system output.\n2. Exploit the Constraint: Maximize utilization at that bottleneck step by removing non-value-added delays, scheduling skilled operators, and planning changeovers during breaks.\n3. Subordinate Everything Else: Throttle the speed of all non-bottleneck workstations to match the pace of the constraint, preventing unneeded WIP accumulation.\n4. Elevate the Constraint: Invest capital to expand bottleneck capacity if demand still exceeds output, such as buying a second tool or adding extra shifts.\n5. Repeat / Prevent Inertia: Once the bottleneck is cleared, relocate the new constraint and restart the loop to drive continuous improvement.",
+                example: "A consumer goods packaging line uses TOC to analyze operations. They isolate an automated labeling tool as the primary bottleneck, throttle upstream filling speeds to match its pace, and optimize label tape changeovers to boost total line output by 30%.",
+                mistakes: "Attempting to optimize or speed up non-bottleneck workstations independently, which floods the floor with unmanaged WIP inventory without increasing final system throughput.",
+                customize: "Add a color-coded visual warning board on the floor: light up a red flag the second your primary constraint asset sits idle for more than 5 minutes due to material delays."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Days Inventory Outstanding & Cash Conversion Cycle Math",
+                formula: "DIO = (Average Inventory Value / COGS) * 365; CCC = DIO + DSO - DPO",
+                example: "An enterprise electronics manufacturing operation records an annual Cost of Goods Sold (COGS) of $36,000,000 and total sales revenue of $48,000,000. Balance sheet tracking shows an average physical inventory asset value of $4,500,000, an Average Accounts Receivable balance of $3,000,000 (DSO = 22.8 days), and an Accounts Payable balance of $3,500,000 (DPO = 35.5 days).",
+                calc: "COGS = $36M, Inventory = $4.5M. DIO = (4,500,000 / 36,000,000) * 365 = 0.125 * 365 = 45.625 days. DSO = 22.8 days. DPO = 35.5 days. CCC = 45.6 + 22.8 - 35.5 = 32.9 days.",
+                verbalize: "Our operation currently runs with 46 days of inventory outstanding, meaning it takes an average of 46 days for a component to move from our receiving dock through production and out to the customer. When we look at our end-to-end financial pipeline, our Cash Conversion Cycle stands at 33 days, meaning we must secure working capital capital to finance our operating expenses for nearly a month between paying our raw material vendors and collecting cash from our clients. By implementing a lean pull replenishment system and cutting our safety stock buffers, we can safely drop our average inventory from $4.5M down to $3M. This inventory compression drops our DIO to 30 days and compresses our Cash Conversion Cycle down to just 17 days, instantly freeing up $1,500,000 in liquid capital to fund strategic market growth projects.",
+                mistakes: "Using gross sales revenue instead of Cost of Goods Sold (COGS) when calculating Days Inventory Outstanding, which distorts inventory efficiency metrics due to corporate profit margins."
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
