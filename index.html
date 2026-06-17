@@ -763,7 +763,85 @@ contentData.scenarios.push(
                 ]
             }
         );
-
+contentData.frameworks.push(
+            {
+                name: "Theory of Constraints (TOC) System Optimization",
+                tag: "Continuous Improvement / Throughput",
+                when: "When a manufacturing plant or distribution node cannot meet aggregate commercial demand, and local optimization efforts are creating excess WIP inventory without increasing net revenue.",
+                structure: "1. Identify the system constraint (the single resource with the lowest process rate).\n2. Exploit the constraint (maximize its OEE via zero-downtime staging and scheduling).\n3. Subordinate everything else (restrict upstream production rates to match the constraint's capacity; eliminate local efficiency targets for non-bottlenecks).\n4. Elevate the constraint (inject strategic CapEx or tooling upgrades if demand still exceeds capacity).\n5. Repeat (prevent inertia from masking the emergence of a new bottleneck).",
+                example: "An assembly plant wants to purchase a fast packing line because localized metrics show packing is always 'busy'. A TOC capacity audit reveals the true bottleneck is an upstream chemical curing station running at 70% availability due to poor cleaning cycles. Implementing TOC redirects engineering focus to the curing station, stabilizing the whole line without unneeded packing investments.",
+                mistakes: "Chasing 100% efficiency across every individual machine or work center simultaneously, which floods the shop floor with Work-in-Progress (WIP) inventory, ties up valuable working capital, and masks the true constraint.",
+                customize: "Adapt this framework by clearly identifying your buffer strategy: place a 'Time Buffer' directly in front of the bottleneck to ensure it never runs out of material, and a 'Shipping Buffer' at the end of the process to protect customer delivery dates."
+            },
+            {
+                name: "The Kraljic Supply Strategy Matrix",
+                tag: "Procurement & Strategic Sourcing",
+                when: "Structuring a multi-million dollar corporate procurement footprint to balance market supply risk against total purchase value impact on company EBITDA margins.",
+                structure: "Map all expenditure categories across two primary axes: Supply Risk (low to high) vs. Profit Impact (low to high).\n1. Non-Critical Items (Low Risk, Low Impact): Standardize, automate procurement loops, minimize transaction costs.\n2. Leverage Items (Low Risk, High Impact): Use competitive bidding, pool volumes, negotiate aggressive multi-vendor contract frameworks.\n3. Bottleneck Items (High Risk, Low Impact): Secure volume via long-term supply guarantees, hold safety stock buffers, seek alternative specifications.\n4. Strategic Items (High Risk, High Impact): Build long-term alliances, integrate systems, pursue joint product development, consider partial backward integration.",
+                example: "An enterprise hardware maker categorizes raw cardboard packaging as a Leverage Item, using competitive sourcing events to cut costs. Simultaneously, they treat custom application-specific microchips as a Strategic Item, forming deep technical alliances and long-term volume commitments with key foundries to insulate themselves from global component shortages.",
+                mistakes: "Using a single transactional procurement approach for all items, which can alienate critical strategic partners or waste valuable management time over-negotiating low-value goods.",
+                customize: "In volatile logistics environments, explicitly state how you use the Kraljic matrix to shift items dynamically. For example, if a standard item suddenly faces severe geopolitical shortages, explain how you quickly reclassify it as a Bottleneck item and adjust your inventory strategy accordingly."
+            },
+            {
+                name: "S&OP Financial Governance Process",
+                tag: "Demand & Supply Integration",
+                when: "Aligning Sales, Finance, Supply Chain, and Operations into a single, cohesive operating cadence to mitigate margin erosion and prevent mismatched supply plans.",
+                structure: "1. Product Review: Manage lifecycles, introduction schedules, and obsolescence profiles.\n2. Demand Review: Compile unconstrained sales projections, evaluate statistical forecast bias, and document commercial assumptions.\n3. Supply Review: Compare demand requests against operational capacity constraints (Rough-Cut Capacity Planning), and identify hiring or tooling gaps.\n4. Pre-Executive S&OP: Highlight operational trade-offs, identify gross margin gaps, and build scenario plans for unexpected demand shifts.\n5. Executive S&OP: Ratify a single operating plan, authorize capital investments, and align operational metrics directly with the corporate P&L.",
+                example: "A consumer goods group discovers a mismatch between its Q3 sales goals and factory capacity. Instead of having a last-minute crisis on the shipping dock, the monthly S&OP cadence highlights the gap 90 days out. This gives leadership enough time to approve pre-built inventory buffers and arrange flexible overtime shifts, protecting gross margins.",
+                mistakes: "Treating S&OP as a low-level scheduling meeting run purely by supply chain teams, without direct participation, accountability, or sign-off from sales and finance executives.",
+                customize: "Tailor this by explaining how you adapt the planning window based on industry lead times. For example, use a rolling 18-month view for long-lead global sourcing, but compress it to a fast-moving weekly review cycle for highly seasonal consumer products."
+            }
+        );
+        contentData.quant.push(
+            {
+                name: "Overall Equipment Effectiveness (OEE) Analysis",
+                formula: "OEE = Availability * Performance * Quality",
+                example: "A packaging line runs a standard 8-hour shift (480 minutes) with 40 minutes of scheduled lunch breaks. It experiences 60 minutes of unplanned mechanical downtime. The standard cycle speed is 100 units per minute. The line actually produces 30,000 units during the shift, and inspection catches 1,200 defective parts.",
+                calc: "Availability = (480 - 40 - 60) / (480 - 40) = 380 / 440 = 86.36%. Performance = 30,000 / (380 mins * 100 units/min) = 30,000 / 38,000 = 78.95%. Quality = (30,000 - 1,200) / 30,000 = 28,800 / 30,000 = 96.00%. OEE = 0.8636 * 0.7895 * 0.9600 = 65.46%.",
+                verbalize: "To evaluate this asset's performance, I break down the losses into three main components. First, our Availability stands at 86.36%, meaning we lost over an hour of valuable production time to unplanned equipment issues. Second, our Performance runs at 78.95%, revealing that even when the machines were running, they operated well below their design speed. Finally, our Quality rate is 96%, showing we are generating waste that eats into our margins. Multiplying these components yields an overall OEE of 65.46%. This clearly indicates that before we spend capital on adding new machines, we need to reclaim that hidden capacity by fixing minor line stoppages and stabilizing our operating speeds.",
+                mistakes: "Using total nominal calendar time instead of planned production time as the baseline, which distorts availability and masks the real root causes of line downtime."
+            },
+            {
+                name: "Economic Order Quantity (EOQ) with Working Capital Friction",
+                formula: "EOQ = sqrt((2 * D * S) / (H * C))",
+                example: "A distribution network moves 50,000 units of a high-value industrial component annually. The administrative and logistics cost to place and clear a single purchase order is $250. The unit cost of the component is $120, and corporate finance applies an annual inventory carrying cost rate of 25% to cover working capital, insurance, and warehouse space.",
+                calc: "D = 50,000, S = $250, H = 25% = 0.25, C = $120. Annual holding cost per unit = 0.25 * 120 = $30. EOQ = sqrt((2 * 50,000 * 250) / 30) = sqrt(25,000,000 / 30) = sqrt(833,333.33) = 912.87 ≈ 913 units per order.",
+                verbalize: "To optimize the total cost of this inventory footprint, we must strike a balance between our order-processing expenses and our capital holding costs. If we place larger orders, we save on transactional setup costs but tie up precious working capital. Conversely, ordering very frequently drives up processing costs. Using the classic EOQ model with a 25% annual holding friction, our cost-optimal batch size is exactly 913 units. This translates to placing roughly 55 orders per year, or adjusting our procurement schedule to order once a week. This structured approach helps minimize our total cost profile on the balance sheet.",
+                mistakes: "Underestimating the true cost of carrying inventory by only factoring in basic warehouse rent, while completely ignoring the cost of capital, product obsolescence risks, and material handling costs."
+            },
+            {
+                name: "Little's Law & Work-in-Progress (WIP) Velocity Dynamics",
+                formula: "Work-In-Progress (WIP) = Throughput (TH) * Lead Time (LT)",
+                example: "An online fulfillment facility processes an average of 14,000 customer orders per day. A real-time data audit shows that at any given moment, there is a consistent backlog of 3,500 orders currently active inside the picking, sorting, and kitting processes.",
+                calc: "TH = 14,000 orders/day. WIP = 3,500 orders. Lead Time = WIP / TH = 3,500 / 14,000 = 0.25 days. Converting to hours: 0.25 * 24 hours = 6.0 hours total processing cycle time.",
+                verbalize: "Using Little's Law, we can see a direct operational relationship between our warehouse backlog and cycle speed. With a steady throughput of 14,000 orders a day and an active floor backlog of 3,500 orders, an item spends an average of exactly six hours in our system from the initial pick to final staging. If our customer service goals require us to cut that cycle time down to three hours, we have two clear choices: we either need to double our processing speed to 28,000 orders a day, or use better line-balancing techniques to trim our active floor backlog down to 1,750 orders.",
+                mistakes: "Confusing total system lead time with local machine processing speed, leading teams to optimize individual machine run times while ignoring massive backlogs building up between stations."
+            }
+        );
+        contentData.behavioral.push(
+            {
+                prompt: "Describe a situation where you faced intense pressure to maximize short-term throughput at the expense of established quality or safety parameters.",
+                testing: "Assesses the candidate's operational integrity, their understanding of risk-adjusted cost structures, and their ability to stand firm under executive pressure during production crises.",
+                answer: "At my previous manufacturing facility, a major client order fell behind schedule due to a component delay. The business faced a severe $15,000 daily late-delivery penalty, and the commercial VP pressured us to bypass our standard 12-hour testing and validation cycle to get the products out the door. I firmly declined to skip the protocol. Instead, I gathered the engineering and operations teams to restructure the line. We split the testing station into two parallel cells and brought in certified operators on an overtime shift. This structural adjustment allowed us to compress the total cycle time safely, running the full validation protocol while missing the deadline by only 6 hours. This proactive approach saved us from potential product recalls that could have cost the company millions.",
+                structure: "Situation: Faced daily $15k late fees with commercial pressure to cut testing protocols.\nTask: Maintain product safety and brand reputation while minimizing financial penalties.\nAction: Stood firm on quality controls, re-engineered testing workflows into parallel tracks, and used overtime labor shifts.\nResult: Delivered the complete order with full quality verification, safely absorbing a minimal 6-hour delay, and protected the company from massive liability risks.",
+                elevate: "To position yourself as an executive leader, explicitly reframe quality and safety failures as long-term financial liabilities. Explain how a major recall can damage your return on invested capital (ROIC) and erode customer lifetime value far more than short-term late fees ever will.",
+                redFlags: [
+                    "Bending under pressure and skipping quality steps, then trying to justify it because no defects were caught.",
+                    "Complaining about corporate sales targets without offering a practical, data-driven operational solution to resolve the capacity issue."
+                ]
+            },
+            {
+                prompt: "How do you lead a traditional operations team through a major automation change when they are actively resisting the new technology?",
+                testing: "Evaluates the candidate's change-management skills, empathy for frontline workers, and practical approach to upgrading workforce capabilities.",
+                answer: "When we introduced automated guided vehicles (AGVs) into a major distribution hub, the frontline team pushed back out of fear of job losses, leading to a noticeable dip in daily sorting metrics. I addressed this directly by changing the narrative around the project. I pulled our team leaders into the deployment phase, creating an 'Automation Transformation Committee.' We explicitly showed them that the technology wasn't there to replace them, but to eliminate miles of exhausting manual walking every day. We committed to retraining our material handlers to operate, program, and maintain the new AGV fleet. By investing in upskilling our existing team, we boosted floor morale, reduced turnover by 20%, and saw our fulfillment throughput jump by 35% within the first quarter.",
+                structure: "Situation: Frontline workers resisted AGV automation, causing a drop in facility performance.\nTask: Overcome team resistance, protect operational stability, and implement the new technology successfully.\nAction: Involved team leaders early on, reframed the technology as a productivity partner, and provided formal upskilling opportunities.\nResult: Achieved a 35% increase in throughput, cut warehouse turnover by 20%, and successfully upgraded the technical skills of our internal workforce.",
+                elevate: "Frame your change-management strategy around labor productivity and long-term asset utilization. Show how upskilling your current team reduces the high costs of hiring external technical talent and keeps your operation agile as technology changes.",
+                redFlags: [
+                    "Relying on strict management authority and mandates to force technology adoption without addressing underlying team concerns.",
+                    "Slowing down necessary automation projects indefinitely just to avoid uncomfortable conversations or floor friction."
+                ]
+            }
+        );
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
