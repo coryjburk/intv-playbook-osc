@@ -1066,6 +1066,119 @@
                 fix: "Deploy dynamic safety stock models that automatically adjust inventory buffers based on actual demand and supplier lead-time changes."
             }
         );
+        
+        contentData.questions.push(
+            {
+                id: "Q-009",
+                category: "Process Improvement & Root-Cause",
+                difficulty: "Advanced",
+                question: "How do you distinguish between common-cause variation and special-cause variation using Statistical Process Control (SPC), and what are the management implications of confusing the two?",
+                conversational: "Confusing common-cause and special-cause variation is a massive management trap. Common-cause variation is stable and built right into the design of the system itself—like predictable daily adjustments on an assembly line. If a manager treats a normal, common-cause data drop like an emergency and starts tweaking settings, they are just introducing unneeded noise and making the process worse. Special-cause variation is a sudden outlier caused by a specific event, like a tool fracturing or a bad batch of raw material. My approach is to look at control charts first: if a data point breaches our 3-sigma control limits, it's a special cause that needs immediate root-cause extraction. If it's within the limits, we don't mess with the machine; we look at long-term systemic process updates instead.",
+                deepdive: "Statistical Process Control (SPC) defines control limits at +/- 3 standard deviations (σ) from the process mean (μ). Common-cause variation stays predictably within these upper and lower control limits (UCL/LCL). Special-cause variation is identified by specific statistical anomalies, such as a single point breaching a control limit, 9 consecutive points falling on the same side of the center line, or 6 points in a row steadily increasing or decreasing. Treating common-cause variation as a special cause is known as 'tampering,' which mathematically increases process variance and drives up scrap costs.",
+                coaching: "Look for candidates who understand that a process can be highly variable yet still remain in statistical control. They should resist the urge to react to minor day-to-day data noise and focus instead on structural, long-term systemic health.",
+                redFlag: "Suggesting that every single downward dip in daily quality metrics requires pulling the team together for an emergency root-cause brainstorming session."
+            },
+            {
+                id: "Q-010",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Expert",
+                question: "When managing a multi-product manufacturing plant, how do you mathematically determine the optimal production sequence and batch sizes under a strict capacity constraint?",
+                conversational: "When you have multiple products fighting for time on the same machine, big batches look great on paper because they minimize downtime for changeovers. However, they also flood your warehouse with inventory and lengthen lead times for your other products. To solve this, I calculate the economic manufacturing quantity for each item and combine it with a product prioritization tool—like looking at the contribution margin per bottleneck hour. We sequence the line to maximize total cash generation at the bottleneck, using minor adjustments in our changeover schedules to protect our overall product mix without tying up too much working capital.",
+                deepdive: "The optimal production batch size under manufacturing constraints is determined via the Economic Manufacturing Quantity (EMQ) model: EMQ = sqrt((2 * D * S) / (H * C * (1 - (D / P)))), where P represents the non-linear production processing rate and D is the demand rate. When scheduling multiple products across a single shared bottleneck, standard linear programming models maximize total contribution margin subject to total available machine hours. This strategy prioritizes scheduling items based on their Contribution Margin per Bottleneck Minute, ensuring the restricted resource yields the highest possible return on invested capital (ROIC).",
+                coaching: "Listen for an understanding of how batch sizes balance setup costs against inventory holding costs. The candidate should naturally connect shop-floor scheduling directly to corporate working capital performance.",
+                redFlag: "Defaulting to running massive product batches purely to keep the machines busy, without considering the inventory holding costs or product stockout risks on other lines."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-005",
+                scenarioType: "demand surge / capacity shortfall",
+                difficulty: "Advanced",
+                title: "The Cold-Chain Vaccine Distribution Surge",
+                context: "A regional life-sciences cold-chain logistics provider based in Salt Lake City faces an overnight 40% surge in daily distribution volume due to an unexpected public health update. Temperature-controlled warehouse capacity is locked, specialized refrigerated truck fleets are fully utilized, and any breach of the strict 2°C to 8°C storage profile results in total product loss and severe regulatory compliance fines.",
+                interviewerPrompt: "How do you rapidly expand cold-chain throughput within 7 days without committing to long-term capital leases, while maintaining a perfect compliance record?",
+                candidateObjectives: [
+                    "Isolate the immediate operational bottleneck across storage, transport, or handling steps.",
+                    "Evaluate low-commitment options to scale up specialized cooling capacity quickly.",
+                    "Design a cross-docking process framework to accelerate inventory flow and reduce storage times."
+                ],
+                clarifyingQuestions: [
+                    "What is the average dwell time of inventory currently sitting inside our central cold-storage facility?",
+                    "Are third-party logistics (3PL) partners with certified cold-chain fleets available for short-term spot leasing in our region?",
+                    "Can we adjust our delivery windows to transition from a single daily wave to an around-the-clock shipping schedule?"
+                ],
+                suggestedApproach: "Deploy a rapid cross-docking workflow. Instead of putting incoming product into long-term storage racks, unload it from inbound shipments and move it directly to outbound trucks within a 2-hour window. This effectively shifts the bottleneck from fixed warehouse storage space to transport flow velocity. Secure short-term spot contracts with pre-certified 3PL cold-chain fleets and set up continuous 24/7 loading schedules to maximize the utilization of your current asset footprint.",
+                keyIssues: [
+                    "Fixed cold-room facility space is running at 96% utilization, making it impossible to handle a 40% volume spike under standard warehouse rules.",
+                    "Traditional manual logging of temperature compliance data takes 20 minutes per pallet, creating a major congestion point at the loading docks.",
+                    "Local drivers are hitting their legal driving hour limits, creating a severe labor bottleneck during peak morning shipping waves."
+                ],
+                analysisRequired: "Calculate the warehouse space savings achieved by moving to a 2-hour cross-docking model, evaluate the cost-effectiveness of short-term 3PL spot rates versus potential stockout penalties, and balance shift schedules to support 24/7 operations.",
+                sampleDataOrExhibit: {
+                    caption: "Cold-Chain Asset Utilization & Bottleneck Diagnostics",
+                    rows: [
+                        ["Operational Asset Component", "Design Capacity Baseline", "Current Peak Utilization", "Average Processing Dwell Time"],
+                        ["Refrigerated Staging Vault", "10,000 Pallets", "96.0%", "72.0 Hours Avg. Storage Dwell"],
+                        ["Inbound Offloading Docks", "15 Pallets / Hour", "60.0%", "45.0 Minutes Per Inbound Vehicle"],
+                        ["Compliance QA Checkpoint", "12 Pallets / Hour", "105.0%", "25.0 Minutes Manual Scan / Entry"],
+                        ["Outbound Temperature Transport", "40 Active Reefers", "100.0%", "14.0 Hours Rolling Transit Cycle"]
+                    ]
+                },
+                strongAnswerPath: "The candidate recognizes that the fixed storage vault (96% utilization) is a critical bottleneck that cannot be expanded in 7 days. They use a smart cross-docking framework to bypass storage entirely for 50% of incoming shipments, dropping the vault storage dwell time from 72 hours down to less than 2 hours. To clear the backup at the Compliance QA Checkpoint (running at an unsustainable 105% utilization), they recommend shifting from manual paper logging to an exception-based barcode scanning system, cutting processing times from 25 minutes down to 3 minutes per pallet. Finally, they cover the transport shortage by bringing in certified 3PL spot carriers and implementing a 24/7 rotating shift schedule. This approach absorbs the 40% volume surge cleanly without committing to expensive, long-term facility leases.",
+                finalRecommendation: "Transition the facility to a high-velocity cross-docking model for all high-turnover products within 48 hours. Use automated barcode screening to accelerate QA checks, and secure pre-certified short-term 3PL transport support to protect delivery schedules.",
+                coachingNotes: "This tests the candidate's speed and adaptability. Look for candidates who avoid slow, expensive options (like building a new cold room) and instead choose to optimize asset velocity and process flow to solve the crisis.",
+                redFlags: [
+                    "Proposing to build or buy additional permanent cold-storage space to handle an immediate 7-day crisis.",
+                    "Suggesting that workers turn down the temperature settings on standard, non-refrigerated trucks to save money, which violates safety regulations and ruins the product."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "SIPOC Process Mapping Model",
+                tag: "Process Design / Root-Cause Diagnostic",
+                when: "Initializing a complex, cross-functional process improvement initiative to align stakeholders on boundaries, inputs, and ownership lines before detailed workflows are drawn.",
+                structure: "Map the operation linearly across 5 distinct high-level pillars:\n1. Suppliers: Providers of core materials, data, or resources.\n2. Inputs: The raw materials, specifications, or documents fed into the process.\n3. Process: The 4-5 core macro-steps that transform inputs into value.\n4. Outputs: The final products, services, or data packages generated.\n5. Customers: The immediate next-step users or final clients receiving the output.",
+                example: "A procurement unit uses a SIPOC map to analyze its purchase order approval loops. This visual exercise clearly reveals that unclear engineering specifications (Inputs) from product designers (Suppliers) are the primary root cause behind frequent delays occurring downstream at the buyer desk (Process).",
+                mistakes: "Diving straight into granular, low-level process details before clarifying high-level boundaries and aligning key owners across the business.",
+                customize: "Add a dedicated 'Data/System Platforms' row beneath each step to explicitly trace which software engine (such as ERP, WMS, or CRM) manages that part of the process."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Forecast Error (MAPE) & System Tracking Bias",
+                formula: "MAPE = (1 / n) * Σ (|Actual - Forecast| / Actual) * 100",
+                example: "Over a 3-month rolling window, the consensus sales forecast for a premium item was set at 1,200 units per month. The actual market demand turned out to be 1,000 units in month one, 950 units in month two, and 1,050 units in month three.",
+                calc: "M1 Error = |1,000 - 1,200| / 1,000 = 20.0%. M2 Error = |950 - 1,200| / 950 = 26.32%. M3 Error = |1,050 - 1,200| / 1,050 = 14.29%. MAPE = (20.0% + 26.32% + 14.29%) / 3 = 20.20%.",
+                verbalize: "Our forecasting model has a Mean Absolute Percentage Error of 20.2%. More importantly, the forecast was consistently higher than actual demand across all three months. This reveals a clear upward bias in our numbers. Because Sales keeps over-forecasting by roughly 200 units every single cycle, our factory is over-building and clogging our warehouse with slow-moving stock. We need to strip this emotional bias out of our scheduling and shift back to a statistical baseline forecast to protect our working capital.",
+                mistakes: "Averaging raw positive and negative errors together without taking the absolute values first, which hides large mistakes because the pluses and minuses cancel each other out."
+            }
+        );
+
+        contentData.battlecard.push(
+            {
+                title: "Scenario-Interview High-Performance Checklist",
+                items: [
+                    "Clarify Constraints First: Never recommend an expansion strategy until you have explicitly verified the factory's available capacity and labor limits.",
+                    "Trace the Cash Flow: Always state how shop-floor metrics (like OEE or scrap rates) directly shift corporate financial metrics (like EBITDA or ROIC).",
+                    "Isolate the Bottleneck: Focus your optimization arguments strictly on the primary constraint; improvements anywhere else are a waste of time.",
+                    "Execution Over Ideas: Close every scenario answer with a clear, tactical 30-60-90 day implementation roadmap that focuses on real-world delivery.",
+                    "Mitigate Risks Early: Proactively identify the primary trade-offs of your strategy and outline how you will buffer against potential failures."
+                ]
+            }
+        );
+
+        contentData.redflags.push(
+            {
+                title: "Over-Automation Traps",
+                mistake: "Throwing expensive robotics or software at a broken, un-optimized manual process, which simply speeds up the generation of waste.",
+                fix: "Use Lean principles to thoroughly clean and balance the manual process first, and then introduce automation only where it explicitly scales throughput at the bottleneck."
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
