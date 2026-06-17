@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 🔓 CRITICAL FIX: Grants the workflow permission to push files back to main
     steps:
     - name: Checkout Code Repository
       uses: actions/checkout@v4
