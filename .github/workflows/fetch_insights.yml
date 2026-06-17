@@ -1,0 +1,35 @@
+name: Continuous Operational Intelligence Aggregator Pipeline
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Executes daily at exactly midnight UTC
+  workflow_dispatch: # Allows manual trigger within the GitHub UI dashboard
+
+jobs:
+  build-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code Repository
+      uses: actions/checkout@v4
+
+    - name: Initialize Python Core Setup
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Execute Live Intelligence Extraction Script
+      run: |
+        chmod +x ./fetch_feeds.py
+        python ./fetch_feeds.py
+
+    - name: Commit Updated Intelligence Cache to Main Branch
+      run: |
+        git config --global user.name "Operational Intelligence Sync Bot"
+        git config --global user.email "sync-bot@github.actions.internal"
+        git add feeds.json
+        if git diff --staged --quiet; then
+          echo "No new industry articles identified. Skipping workspace update."
+        else
+          git commit -m "Automated Sync: Industry Intelligence Matrix Refreshed [Skip CI]"
+          git push
+        fi
