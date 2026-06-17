@@ -1428,6 +1428,115 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-018",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Advanced",
+                question: "How do you quantitatively balance transportation costs against warehouse holding costs when evaluating whether to consolidate multiple regional distribution centers into a single centralized hub?",
+                conversational: "This is the classic logistics tug-of-war. If you consolidate into a single centralized hub, you immediately drive down your fixed facility overhead and slash safety stock capital requirements across the network thanks to the square root law of inventory. But here is the catch—your outbound freight costs are going to skyrocket because you are moving shipments further to reach the end customer. To find the optimal baseline, I model the total cost curve. If our product has high margin density and low weight, centralization is an easy win for cash flow. If it's a heavy, low-margin commodity, we must stick with a decentralized regional footprint to keep transportation costs from wiping out our operating income.",
+                deepdive: "The optimization model utilizes Total Logistics Cost minimization logic: TLC = Outbound Freight Costs + Inbound Freight Costs + Fixed Warehouse Overhead + Inventory Holding Costs. The relationship between inventory consolidation and facility count is governed by the Square Root Law: SS_2 = SS_1 * sqrt(N_2 / N_1), where SS represents safety stock and N represents the number of facilities. Moving from 4 regional facilities to 1 centralized hub mathematically cuts safety stock needs by 50%. This cash reclamation must be balanced against the linear increase in outbound less-than-truckload (LTL) and parcel transportation costs using mixed-integer linear programming.",
+                coaching: "Look for candidates who frame this as a non-linear optimization model rather than a simple cost-cutting exercise. They should naturally reference the Square Root Law of Inventory and distinguish between fixed facility holding frictions and variable transit costs.",
+                redFlag: "Suggesting consolidation purely because it saves on warehouse rent, while completely ignoring the financial impact of expedited shipping or increased delivery distances to customers."
+            },
+            {
+                id: "Q-019",
+                category: "Supply Chain Strategy & Risk",
+                difficulty: "Expert",
+                question: "Explain the strategic concept of 'Postponement' or late product differentiation, and outline the manufacturing and logistical changes required to implement it.",
+                conversational: "Postponement is a masterclass in risk mitigation. Instead of guessing exactly how many customized, finished SKUs you need across 20 global regions and building them ahead of time, you keep your product in a generic, semi-finished state as long as possible. For example, you build the core electronic component centrally, ship it unpainted to a regional distribution hub, and only add the local power cord, packaging, and branding when a real customer order arrives. This shifts your forecasting challenge from highly volatile specific SKUs to much more stable, aggregate generic demand, allowing you to slash finished goods inventory and eliminate product obsolescence risks.",
+                deepdive: "Postponement leverages the statistical concept of demand aggregation: the relative variance of an aggregate demand stream is always lower than the sum of individual localized demand streams. To execute postponement successfully, the engineering team must design modular product architectures with standardized internal interfaces. Logistically, the company must transform its regional distribution centers from standard storage warehouses into light assembly cells capable of performing final configuration, testing, and packaging operations dynamically within a tight order fulfillment window.",
+                coaching: "The candidate needs to connect product design directly with supply chain flexibility. Listen for an understanding of modular manufacturing, localized customization, and the shift from a speculative push architecture to a responsive pull model.",
+                redFlag: "Treating postponement as a basic warehouse kitting task, without acknowledging that it requires upstream engineering re-design and structural configuration changes on the shop floor."
+            },
+            {
+                id: "Q-020",
+                category: "Process Improvement & Root-Cause",
+                difficulty: "Advanced",
+                question: "What is a CAPA (Corrective and Preventive Action) framework, and how do you prevent it from turning into a bureaucratic paper-shuffling exercise?",
+                conversational: "A CAPA framework is supposed to be your operation's immune system—stopping a quality failure in its tracks and changing the process so it can never happen again. But in many organizations, it turns into a checkbox activity where teams rush to blame 'human error' and prescribe more retraining. To give a CAPA framework real teeth, I enforce a strict data gate. We don't close out a corrective action the moment a quick fix is put in place. The CAPA stays open until we run a validation matrix over 30 or 60 days to prove that the root cause has actually been eliminated and that our First-Pass Yield has stabilized. Accountability must be tracked via concrete process metrics, not signed training logs.",
+                deepdive: "The formal CAPA architecture requires a 7-step sequence: 1. Identification; 2. Evaluation / Risk Assessment; 3. Investigation / Root-Cause Identification; 4. Corrective Action Plan development; 5. Implementation; 6. Verification of Effectiveness; 7. Closure. To prevent administrative bloat, operations apply risk-based filtering using Failure Mode and Effects Analysis (FMEA). CAPAs are reserved exclusively for systemic process failures with high severity or high occurrence probabilities, while minor, isolated quality events are handled immediately on the shop floor via standard root-cause loops.",
+                coaching: "Listen for an uncompromising commitment to process validation. Elite candidates talk about verifying process metrics over an extended timeline to prove the correction worked, rather than just closing the file as soon as a quick fix is implemented.",
+                redFlag: "Accepting 'human error' as a valid root cause on a CAPA file, which indicates a surface-level investigation that fails to address the underlying process design flaws."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-009",
+                scenarioType: "distribution network / DC-location redesign",
+                difficulty: "Advanced",
+                title: "The Intermountain West Multi-Echelon DC Rationalization",
+                context: "A multi-billion dollar consumer goods group distributes heavy outdoor equipment across the Intermountain West via three legacy, leased facilities in Salt Lake City, Denver, and Boise. Due to skyrocketing localized industrial lease rates (up 28% in SLC) and a major shift toward direct-to-consumer e-commerce fulfillment, the VP of Supply Chain wants to consolidate the entire regional inventory footprint into a single mega-DC location.",
+                interviewerPrompt: "Evaluate the trade-offs of this network consolidation strategy, determine the optimal location profile for the new centralized hub, and present an execution roadmap that mitigates customer delivery delays.",
+                candidateObjectives: [
+                    "Evaluate the inventory reductions achieved via the square root law against the increase in outbound freight expenses.",
+                    "Determine the geographically optimal center-of-gravity hub coordinates based on consumer demand density.",
+                    "Formulate a multi-stage transition plan to maintain shipping continuity during facility closure windows."
+                ],
+                clarifyingQuestions: [
+                    "What is the current service-level delivery window commitment to our top retail partners (e.g., next-day vs. 2-day delivery)?",
+                    "What percentage of our total volume moves via full truckload (FTL) compared to less-than-truckload (LTL) and small parcel channels?",
+                    "What are the remaining lease durations and early-termination financial penalties for the Denver and Boise facilities?"
+                ],
+                suggestedApproach: "Perform an end-to-end network total cost analysis. Map demand data coordinates to run a center-of-gravity optimization. Model the balance sheet impact of dropping total safety stock across the three sites. Weigh these cash injections against the added costs of long-distance LTL shipping to out-of-state customers. If Salt Lake City emerges as the geographical center-of-gravity due to its rail infrastructure and crossroads position, design a phased, data-driven transition plan to move inventory without interrupting customer shipments.",
+                keyIssues: [
+                    "Consolidating into a single hub extends next-day delivery windows to Denver accounts to a 2-day LTL transit cycle.",
+                    "Crossroads logistics lanes in Utah offer excellent inbound rail connectivity but face regular winter weather disruptions over mountain passes.",
+                    "Different facilities use incompatible Warehouse Management Systems (WMS), making real-time inventory tracking difficult during the move."
+                ],
+                analysisRequired: "Apply the Square Root Law of Inventory to calculate working capital savings, compute the weighted center-of-gravity coordinates, and compare the total logistics cost (TLC) of centralized vs. decentralized models.",
+                sampleDataOrExhibit: {
+                    caption: "Regional Network Node Demand & Operating Profiles",
+                    rows: [
+                        ["Current Facility Location", "Annual Node Demand (Units)", "Current Safety Stock Level", "Monthly Lease Cost ($/sq ft)", "Avg. Inbound Transit Lead Time"],
+                        ["Salt Lake City, UT Node", "500,000 Units", "$1,200,000", "$14.50 / sq ft", "12 Days (Direct Rail Link)"],
+                        ["Denver, CO Node", "450,000 Units", "$1,100,000", "$12.00 / sq ft", "15 Days (Over-the-Road Truck)"],
+                        ["Boise, ID Node", "250,000 Units", "$750,000", "$9.50 / sq ft", "16 Days (Intermodal Transfer)"]
+                    ]
+                },
+                strongAnswerPath: "The candidate runs the numbers systematically. First, they apply the Square Root Law to show that consolidating from 3 facilities to 1 drops safety stock requirements by 42.2%, immediately unlocking $1.29M in working capital cash ($3.05M total safety stock reduced to $1.76M). A center-of-gravity analysis reveals that Salt Lake City is the best location for the consolidated hub because it has strong inbound rail connections and handles 41.6% of the region's total demand. However, the candidate flags a major risk: moving the Denver inventory adds $450k in annual LTL transport costs and slows delivery times to Colorado customers down to 2 days. To protect those key accounts, they propose a hybrid approach: close Boise, consolidate the main inventory in Salt Lake City, but set up a low-cost, third-party cross-dock in Denver to maintain next-day delivery speeds while still capturing significant overhead savings.",
+                finalRecommendation: "Consolidate Boise operations into the primary Salt Lake City hub to unlock $1.29M in working capital. Partner with a 3PL cross-dock in Denver to protect next-day customer delivery speeds while avoiding expensive, long-term facility leases.",
+                coachingNotes: "This tests large-scale supply chain network thinking. Look for candidates who don't just calculate basic math, but actively design hybrid logistics solutions (like cross-docking) to protect customer delivery speeds while cutting overhead costs.",
+                redFlags: [
+                    "Recommending an immediate blanket closure of all regional facilities based entirely on real estate lease costs, without calculating the severe impact of freight cost increases or slower delivery speeds on customer churn.",
+                    "Failing to account for product weight and transport mode profiles when selecting a centralized location hub."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "The SCOR Model Hierarchy (Supply Chain Operations Reference)",
+                tag: "Supply Chain Strategy & Architecture",
+                when: "Evaluating, benchmarking, and re-engineering an end-to-end global supply chain architecture against best-in-class industry performance standards.",
+                structure: "Analyze the supply chain value stream across 6 primary macro-processes:\n1. Plan: Developing demand and supply strategies to drive the chain.\n2. Source: Sourcing infrastructure, vendor selection, and procurement agreements.\n3. Make: Manufacturing execution, production scheduling, and quality management.\n4. Deliver: Order fulfillment, warehouse processing, and logistics network routing.\n5. Return: Reverse logistics, warranty handling, and asset reclamation.\n6. Enable: Managing data governance, supply chain risk, regulations, and system tools.",
+                example: "An international medical device firm uses the SCOR model to benchmark its underperforming division. By measuring execution performance metrics across the 'Source' and 'Deliver' pillars, they discover that long supplier payment cycles are slowing down material deliveries, helping them target their process fixes.",
+                mistakes: "Using the SCOR model as a rigid compliance checklist instead of a flexible strategic tool to align supply chain operations with overarching business goals.",
+                customize: "Tailor this framework by adding explicit carbon emission and water-use tracking metrics directly into the 'Enable' and 'Make' pillars to monitor sustainability performance alongside traditional cost metrics."
+            },
+            {
+                name: "ABC / XYZ Demand Volatility Segmentation",
+                tag: "Inventory Optimization Strategy",
+                when: "Designing an automated inventory replenishment matrix that matches replenishment rules with both dollar volume and demand predictability.",
+                structure: "Map all SKUs onto a 9-box grid combining two distinct categorization profiles:\n• AX, AY, AZ: High value items split by demand stability (X = highly predictable, Y = seasonal, Z = highly volatile/random).\n• BX, BY, BZ: Mid-value items split by demand stability.\n• CX, CY, CZ: Low value parts split by demand stability.\nReplenishment Rules:\n- AX: Deploy continuous automated pull replenishment with minimal safety stock buffers.\n- AZ: Require executive review, build-to-order logic, or regional component consolidation.\n- CX/CY: Use automated visual two-box systems or bulk ordering triggers to minimize handling costs.",
+                example: "An automotive components distributor runs an ABC/XYZ data audit. They shift standard oil filters (AX) to an automated, vendor-managed inventory system. Meanwhile, they move expensive, rare custom engines (AZ) to a strict build-to-order model, completely wiping out their risk of holding obsolete inventory.",
+                mistakes: "Relying purely on standard ABC value analysis while completely ignoring demand volatility (XYZ), which leads to chronic stockouts on highly volatile, low-value parts.",
+                customize: "In volatile sourcing environments, automatically reclassify any item as a 'Z' profile if its supplier's lead-time variability jumps by more than 20% over a 60-day period."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Reorder Point (ROP) with Demand Volatility & Fixed Lead Time",
+                formula: "ROP = (Average Daily Demand * Lead Time in Days) + (Z * σ_d * sqrt(L))",
+                example: "An electronic component distributor experiences an average daily demand of 400 microchips, with a standard deviation of daily demand (σ_d) of 60 chips. The supplier's delivery lead time is fixed at exactly 9 days, and corporate leadership requires a 95% service level coefficient (Z-score = 1.645).",
+                calc: "Lead Time Demand = 400 * 9 = 3,600 units. Safety Stock Buffer = 1.645 * 60 * sqrt(9) = 1.645 * 60 * 3 = 296.1 ≈ 296 units. Total Reorder Point = 3,600 + 296 = 3,896 units.",
+                verbalize: "To guarantee a 95% product availability rate for our customers, we must trigger a new purchase order the exact moment our physical inventory drops to 3,896 units. This target is built on two main components. First, we need 3,600 units of baseline stock to cover our average consumption over the 9-day supplier delivery window. Second, we must hold a protective safety buffer of 296 units to insulate our operations from sudden spikes in customer demand. If we can partner with our clients to flatten that demand volatility and drop our standard deviation down from 60 to 20, we can safely reduce our safety stock buffer on the balance sheet, freeing up working capital without hurting our service level.",
+                mistakes: "Failing to take the square root of the lead time length when calculating safety stock, which heavily over-inflates your inventory targets and ties up unneeded working capital."
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
