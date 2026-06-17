@@ -1536,6 +1536,237 @@
                 mistakes: "Failing to take the square root of the lead time length when calculating safety stock, which heavily over-inflates your inventory targets and ties up unneeded working capital."
             }
         );
+
+        contentData.questions.push(
+            {
+                id: "Q-021",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Foundational",
+                question: "What is the structural difference between Design Capacity and Effective Capacity, and how do they alter how you calculate shop-floor utilization?",
+                conversational: "Design capacity is the theoretical maximum output a line can achieve under absolutely perfect conditions with zero equipment stoppages—essentially what the machine manufacturer promises in the manual. Effective capacity is the realistic maximum output when you factor in planned operational frictions like scheduled preventive maintenance, changeovers, shift handoffs, and employee breaks. As a manager, if you calculate your utilization against design capacity, your numbers will always look terrible. I measure utilization against effective capacity to track how well we are executing our daily schedule, and I use efficiency metrics to evaluate how well our operators perform during actual run windows.",
+                deepdive: "The mathematical relationships are defined as: Utilization = (Actual Output / Design Capacity) * 100, whereas Efficiency = (Actual Output / Effective Capacity) * 100. Effective capacity acts as the realistic operational baseline, subtracting scheduled downtime ($D_{planned}$) from total theoretical time ($T_{design}$). Confusing these metrics leads to severe scheduling errors in S&OP planning, as relying on design capacity numbers inevitably results in over-promising customer volumes that the factory floor cannot physically execute.",
+                coaching: "Look for a clear explanation of planned vs. unplanned downtime. The candidate should demonstrate that they treat effective capacity as a dynamic planning target and efficiency as an indicator of shop-floor labor and process execution.",
+                redFlag: "Suggesting that design capacity can be sustained as a reliable baseline for daily production scheduling without accounting for standard maintenance or tool changeovers."
+            },
+            {
+                id: "Q-022",
+                category: "Procurement & Supplier Management",
+                difficulty: "Advanced",
+                question: "How do you mathematically determine the optimal volume allocation split when moving from a sole-source arrangement to a dual-sourcing strategy?",
+                conversational: "Moving to a dual-sourcing model is about buying insurance against supply chain disruptions, but that insurance carries a premium. You can't just split the volume 50/50, or you will lose your economies of scale with both suppliers and drive up unit costs. I use a 70/30 or 80/20 volume split. The primary supplier gets the lion's share of the volume, which keeps our unit purchase price low and maintains our status as a high-priority account. The secondary vendor gets the remaining 20% or 30%, which must be large enough to cover their minimum order quantity (MOQ) and keep their production line warm. If the primary supplier fails, we can instantly pivot and scale up our secondary source without waiting months for tool qualification.",
+                deepdive: "Volume allocation modeling balances the marginal cost of a supply disruption against the loss of volume-based discounts. Total Sourcing Cost is modeled as: $$TC = q_1 \cdot P_1(q_1) + q_2 \cdot P_2(q_2) + P_{disrupt} \cdot L(q_2)$$, where $q_n$ represents volume allocated to supplier $n$, $P_n$ is the price function incorporating volume discount tiers, $P_{disrupt}$ is the statistical probability of primary supplier failure, and $L(q_2)$ is the financial loss mitigation enabled by having a warm secondary source. Optimization requires that the secondary allocation ($q_2$) must strictly exceed the vendor's operational Break-Even Volume and Minimum Order Quantity (MOQ) to guarantee long-term supplier viability.",
+                coaching: "Listen for the strategic term 'warm source.' The candidate must reject an arbitrary 50/50 split and explicitly discuss minimum order quantities, volume discount steps, and the financial trade-off of risk mitigation versus piece-price premiums.",
+                redFlag: "Proposing a pure 50/50 split without calculating the loss of volume discounts or verifying whether the secondary supplier's volume meets their basic MOQ requirements."
+            },
+            {
+                id: "Q-023",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Core",
+                question: "Under what specific inventory and transit parameters does an operation transition from a traditional stocking warehouse model to a high-velocity cross-docking framework?",
+                conversational: "Cross-docking is an incredible way to accelerate inventory velocity and eliminate warehouse storage costs, but it requires highly specific operational conditions to work safely. You cannot cross-dock a highly volatile, low-volume product line. The ideal parameters are high, predictable product volume, consistent customer demand, and a low mix of items. You also need a high level of supplier compliance. If a vendor's on-time delivery record is poor, your incoming trucks won't align, your staging lanes will bottleneck, and your outbound trailers will sit empty. Cross-docking requires moving from a storage model to a strict schedule synchronization strategy.",
+                deepdive: "Cross-docking eliminates two of the most expensive steps in warehousing: put-away and picking. The transition window is defined by product dwell time and demand stability. When a SKU's demand coefficient of variation ($C_v$) is low ($C_v < 0.15$) and inbound shipment volumes consistently align with outbound transport capacities, the economic cost of staging inventory inside a cross-dock lane for less than 24 hours is significantly lower than the cost of warehouse space, product handling, and inventory holding capital.",
+                coaching: "The candidate should identify that demand predictability and supplier scheduling discipline are the absolute prerequisites for cross-docking. Look for an focus on process velocity rather than static square footage storage optimization.",
+                redFlag: "Recommending cross-docking for high-mix, unpredictable, or highly customized product lines, which turns the cross-dock floor into a congested warehouse."
+            },
+            {
+                id: "Q-024",
+                category: "Lean / Continuous Improvement",
+                difficulty: "Advanced",
+                question: "How do you scope, charter, and structure a high-impact 5-day Kaizen event to resolve an un-optimized line changeover process?",
+                conversational: "A successful Kaizen event is won or lost before Day 1 even starts. You cannot just pull a random group into a room and hope for the best. First, I scope the target clearly: we are there to reduce the changeover time on a specific bottleneck asset by 30%. Next, I build a cross-functional charter team that includes engineers, maintenance techs, and the actual operators who run that machine every single day. Day 1 is about capturing baseline data and video-recording the current changeover process. Day 2, we break down that video step-by-step using a SMED framework to separate internal and external tasks. Day 3 and 4, we design and test process improvements on the floor. On Day 5, we lock in the new standard work and present the data to executive leadership, setting up strict 30-day follow-up audits to guarantee the efficiency improvements stick.",
+                deepdive: "The standard 5-day Kaizen architecture is structured as follows: Day 1: Document baseline metrics, map current workflows, and align the team on project goals. Day 2: Root-cause identification and process waste mapping using the SMED (Single-Minute Exchange of Die) framework. Day 3: Develop future-state designs and run rapid process prototyping. Day 4: Implement physical workplace re-configurations, install visual management aids, and draft standard operating procedures (SOPs). Day 5: Train operators on the new standard work, track early performance metrics, and hand over control to the line supervisors with a built-in 30/60/90-day tracking mechanism.",
+                coaching: "Listen for an focus on cross-functional team composition, especially including frontline floor operators. Ensure the candidate references structured tools like SMED and details clear follow-up metrics to sustain process improvements.",
+                redFlag: "Structuring a Kaizen event as an isolated engineering brainstorming session that completely excludes frontline operators and lacks any long-term follow-up audits."
+            },
+            {
+                id: "Q-025",
+                category: "Inventory Management & Optimization",
+                difficulty: "Expert",
+                question: "What is Multi-Echelon Inventory Optimization (MEIO), and how does it alter inventory placement compared to traditional single-echelon safety stock calculations?",
+                conversational: "Traditional safety stock calculations operate in a silo. Each location—whether it's a retail storefront, a regional distribution center, or a central factory warehouse—calculates its own inventory buffers independently. This local optimization causes inventory to pile up across the supply chain, inflating working capital and worsening the bullwhip effect. Multi-Echelon Inventory Optimization models the entire supply chain as a single, connected network. Instead of holding expensive finished goods safety stock at every single node, MEIO uses advanced algorithms to find the ideal strategic decoupling points. It might recommend keeping a larger buffer of cheap raw materials at the central factory while running the regional distribution centers with lean, fast-turning inventory profiles, protecting the customer service level at a much lower total network cost.",
+                deepdive: "Traditional single-echelon optimization models minimize holding costs at an isolated facility, ignoring upstream supply guarantees. Multi-Echelon Inventory Optimization (MEIO) solves an integrated mathematical problem across the entire network graph, modeling both safety stock costs and lead-time delays as cascading variables. The calculation balances the lower cost of holding raw materials or work-in-progress (WIP) upstream against the faster customer response speed achieved by staging finished goods downstream. This systemic optimization significantly reduces total working capital requirements while maintaining identical end-customer On-Time In-Full (OTIF) service commitments.",
+                coaching: "Look for strong systemic thinking. The candidate should clearly explain the cost and flexibility differences between upstream raw material staging and downstream finished goods placement, linking these decisions directly to corporate cash flow.",
+                redFlag: "Suggesting that simply optimizing inventory levels at individual warehouses independently will result in a cost-optimal end-to-end supply chain footprint."
+            },
+            {
+                id: "Q-026",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Advanced",
+                question: "How do you use a Cost of Quality (CoQ) accounting framework to justify a significant proactive corporate investment in preventive maintenance and supplier qualification programs?",
+                conversational: "Many executive leaders view quality control purely as an administrative expense line item that erodes operating margin. I change that perspective by deploying a formal Cost of Quality framework, breaking it into two main buckets: the Cost of Conformance and the Cost of Non-Conformance. The Cost of Non-Conformance includes internal failures like factory scrap, line rework, and engineering re-testing, plus high-risk external failures like customer returns, warranty penalties, and product recalls. I show leadership that by spending $150,000 upfront on proactive supplier audits and preventive maintenance (Cost of Conformance), we can eliminate systemic field failures that are costing us $1.2M annually in product returns and rework (Cost of Non-Conformance). This transforms quality from an administrative overhead cost into a high-return strategy that directly expands our EBITDA.",
+                deepdive: "The Cost of Quality (CoQ) calculation is modeled as: $$CoQ = (P + A) + (I + E)$$, where $(P + A)$ represents the Cost of Conformance (P = Prevention costs like training and supplier qualification; A = Appraisal costs like inspections and equipment calibration), and $(I + E)$ represents the Cost of Non-Conformance (I = Internal failure costs like scrap and rework; E = External failure costs like warranty claims, product recalls, and customer churn). In un-optimized processes, failure costs dominate. Shifting capital upstream into Prevention costs yields a non-linear reduction in total CoQ by eliminating expensive downstream failure loops and protecting the cash conversion cycle.",
+                coaching: "The candidate must use the formal terminology of the framework: Prevention, Appraisal, Internal Failure, and External Failure. They should frame quality improvements as a high-yield investment strategy that protects corporate profitability rather than a basic regulatory box checking activity.",
+                redFlag: "Focusing entirely on inspection steps (Appraisal) to fix quality issues, failing to realize that inspection alone does not remove the root causes of process variation."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-010",
+                scenarioType: "transportation cost spike / mode optimization",
+                difficulty: "Advanced",
+                title: "The Transpacific Ocean Freight Rate Shock",
+                context: "A consumer electronics business importing core sub-assemblies from manufacturing centers in Southeast Asia to its central distribution hub in Salt Lake City faces a sudden 300% spike in ocean container spot rates due to sudden maritime route disruptions. Concurrently, maritime transit times extend from 28 days to 52 days, threatening upcoming holiday product launches.",
+                interviewerPrompt: "Develop an immediate logistics mode mitigation plan to optimize total landed cost profiles, balance shipping speeds against inventory costs, and secure product availability for the critical holiday launch window.",
+                candidateObjectives: [
+                    "Evaluate the financial impact of shifting cargo from ocean freight to alternative modes (e.g., air freight or sea-air hybrid configurations).",
+                    "Recalculate pipeline inventory holding costs based on extended lead times.",
+                    "Optimize multi-SKU product allocations to prioritize transit speeds for high-margin items."
+                ],
+                clarifyingQuestions: [
+                    "What are the unit gross margins and volume densities (cube-to-weight ratios) for our individual product lines?",
+                    "What contractual late-delivery penalties do we face from our major retail clients if we miss the holiday launch date?",
+                    "Are there nearshore or domestic component alternatives available to substitute for our long-lead imports?"
+                ],
+                suggestedApproach: "Deploy a rigorous total landed cost and product stratification analysis. Avoid making a panicked blanket pivot to expensive air freight for all items. Segment products by margin density: transition high-value, high-margin items to air freight or a sea-air hybrid model via West Coast ports to secure the launch timeline. Maintain lower-margin, bulky products on ocean transit, and adjust safety stock parameters using the extended 52-day lead time baseline to manage cash flow risks.",
+                keyIssues: [
+                    "A flat pivot to air freight increases unit logistics costs by $45 per item, completely wiping out the profitability of lower-tier product models.",
+                    "Retail partners require a firm 3-week delivery window commitment, or they will cancel holiday orders and impose 10% gross revenue stockout penalties.",
+                    "Extended 52-day transit lead times lock up an additional $8M in pipeline working capital on the water."
+                ],
+                analysisRequired: "Recalculate pipeline inventory holding costs using a 25% annual carrying friction, compute the break-even air freight threshold per SKU based on gross margins, and model total landed cost scenarios.",
+                sampleDataOrExhibit: {
+                    caption: "Product Margin Density & Sourcing Logistics Profiles",
+                    rows: [
+                        ["Product Line Category", "Annual Launch Volume", "Unit Retail Price", "Unit Production Cost (COGS)", "Product Cube / Weight Profile"],
+                        ["Model Alpha: Premium Audio Hub", "50,000 Units", "$299", "$85", "Low Cube / 1.2 lbs per unit (High Density)"],
+                        ["Model Beta: Mid-Tier Soundbar", "120,000 Units", "$149", "$55", "Medium Cube / 8.5 lbs per unit (Moderate)"],
+                        ["Model Gamma: Entry Speaker Stand", "80,000 Units", "$49", "$22", "High Cube / 18.0 lbs per unit (Low Density)"]
+                    ]
+                },
+                strongAnswerPath: "The candidate establishes a data-driven product triage. They calculate that a 300% ocean freight spike alters the cost baseline, but a blanket shift to air freight ($45/unit premium) would ruin profitability for the low-margin Model Gamma. The candidate implements an optimized split-mode strategy: 1. Move 100% of Model Alpha to air freight immediately; its high profit margin ($214/unit) and low weight easily absorb the shipping premium, securing the holiday launch. 2. Route Model Beta through a fast sea-air hybrid pipeline via Vancouver to reduce transit times to 22 days at a reasonable cost premium. 3. Keep Model Gamma on standard ocean transport, renegotiating delivery windows with retailers to accept a minor delay rather than spending more on freight than the product is worth. This tiered logistics approach saves $3.8M in freight expenses while protecting top-tier revenue lines.",
+                finalRecommendation: "Deploy a stratified multi-mode shipping plan: air freight high-margin Model Alpha units, route Model Beta through a sea-air hybrid corridor, and keep bulky Model Gamma items on ocean transit to optimize total landed costs.",
+                coachingNotes: "This scenario tests the candidate's ability to analyze total landed costs under pressure. Look for candidates who resist un-optimized, reactive decisions and instead use product segmentation to match shipping modes with margin realities.",
+                redFlags: [
+                    "Proposing a blanket shift of all product lines to air freight to secure delivery dates, ignoring the catastrophic margin impact on low-value, heavy items.",
+                    "Failing to account for the added balance sheet carrying costs of pipeline inventory when transit times extend from 28 to 52 days."
+                ]
+            },
+            {
+                id: "S-011",
+                scenarioType: "demand drop / overcapacity",
+                difficulty: "Core",
+                title: "The Commercial Aerospace Component Pullback",
+                context: "Following a sudden structural regulatory change, a tier-2 precision forging operation in Salt Lake City faces an immediate 40% reduction in production demand for a highly specialized structural wing component, leaving expensive high-tonnage forge assets severely under-utilized.",
+                interviewerPrompt: "Outline an operational plan to scale down production capacity, minimize unabsorbed factory floor overhead, and adjust labor shifts without losing highly certified technical specialists.",
+                candidateObjectives: [
+                    "Calculate the financial impact of unabsorbed fixed manufacturing overhead caused by the volume drop.",
+                    "Restructure labor shift patterns to cut variable costs while protecting skilled technicians.",
+                    "Develop an internal improvement roadmap utilizing idle time to upgrade manufacturing quality."
+                ],
+                clarifyingQuestions: [
+                    "What is the ratio of variable labor costs to fixed machinery depreciation expenses on the forging line?",
+                    "Can our certified technicians be temporarily shifted to help with deferred equipment maintenance or quality improvement projects?",
+                    "What is the estimated timeline before aerospace demand is projected to recover?"
+                ],
+                suggestedApproach: "Isolate variable cost levers to cushion the impact of fixed overhead losses. Consolidate production schedules into a tight 3-day work week to cut variable energy and operating utility expenses. Avoid broad technical layoffs; instead, redirect idle operators to run an accelerated Total Productive Maintenance (TPM) initiative on the forging presses to improve machine reliability and eliminate future downtime.",
+                keyIssues: [
+                    "Fixed asset depreciation allocations make up 50% of the product cost structure, driving up paper unit costs as production volume drops.",
+                    "Technicians hold specialized aerospace welding certifications that require 9 months and $40,000 per person to renew if lost.",
+                    "Long-term raw material supply contracts require the plant to accept a minimum titanium allocation monthly or pay severe contract penalties."
+                ],
+                analysisRequired: "Compute the updated factory cost per hour under lower utilization rates, estimate the financial savings from shift consolidations, and calculate the cost of workforce turnover versus temporary retention programs.",
+                sampleDataOrExhibit: {
+                    caption: "Forging Center Overhead & Asset Performance Profiles",
+                    rows: [
+                        ["Cost Component Category", "Baseline Monthly Expense", "Under-Utilization Run Rate", "Cost Flexibility Status"],
+                        ["Direct Certified Labor", "$240,000", "$240,000", "Fixed Short-Term / Highly Skilled"],
+                        ["Heavy Asset Depreciation", "$300,000", "$300,000", "Sunk Fixed / Non-Cash Expense"],
+                        ["Factory Gas & Utilities", "$85,000", "$72,000", "Semi-Variable / Shift Dependent"],
+                        ["Outsourced Press Maintenance", "$45,000", "$45,000", "Contractual Fixed / Annual"]
+                    ]
+                },
+                strongAnswerPath: "The candidate separates paper accounting metrics from actual operating cash flows. They show that while paper unit costs look terrible due to fixed depreciation charges ($300k), executing a panicked layoff of certified welders would create a massive $480k re-hiring and certification liability when demand recovers. The candidate implements an smart adjustments plan: 1. Compress the factory schedule into a 3-day, 12-hour rotating shift, reducing weekly utility and facility operating expenses by 18%. 2. Use the remaining 2 idle days each week to bring the $45k outsourced press maintenance program completely in-house, utilizing their own technical staff to save cash. 3. Use the open capacity to build a small titanium safety buffer, satisfying raw material purchase commitments while preparing the plant to react instantly when the market rebounds.",
+                finalRecommendation: "Consolidate factory operations into a compressed 3-day shift layout to reduce variable utility costs. Keep your certified technical team intact by redirecting idle labor to run in-house equipment maintenance programs.",
+                coachingNotes: "This scenario evaluates a candidate's ability to balance short-term cost pressures against long-term operational capabilities. Look for clear distinctions between sunk fixed costs and variable cash streams, paired with a focus on talent retention.",
+                redFlags: [
+                    "Executing immediate structural layoffs of certified aerospace technicians to save short-term labor dollars, destroying the plant's long-term capability to win future contracts.",
+                    "Failing to modify the factory utility and shift scheduling patterns, leaving the facility running at full energy expenses despite lower output volumes."
+                ]
+            },
+            {
+                id: "S-012",
+                scenarioType: "supplier disruption / single-source failure",
+                difficulty: "Advanced",
+                title: "The Industrial Polymer Supplier Insolvency",
+                context: "A high-volume medical tubing plant in the Salt Lake region learns that its sole supplier of a specialized medical-grade polymer catalyst has filed for immediate Chapter 7 bankruptcy liquidation and stopped all shipments. The plant has exactly 10 days of raw catalyst inventory remaining on its warehouse floor.",
+                interviewerPrompt: "Formulate an immediate crisis sourcing plan to secure alternative catalyst volumes, manage customer delivery risks, and transition the plant away from this single-source bottleneck without violating strict medical regulatory standards.",
+                candidateObjectives: [
+                    "Secure alternative raw material volumes from secondary or international spot markets within 7 days.",
+                    "Navigate regulatory and customer qualification timelines for alternative material formulations.",
+                    "Manage remaining raw material buffers to protect production schedules for critical hospital orders."
+                ],
+                clarifyingQuestions: [
+                    "Are there alternative polymer suppliers who already hold active regulatory certifications for our medical product lines?",
+                    "What is the absolute minimum production volume required to keep our key healthcare client accounts running without interrupting patient care?",
+                    "Can we purchase the remaining raw material stock directly from the bankrupt supplier's asset liquidation pool?"
+                ],
+                suggestedApproach: "Launch an immediate, aggressive dual-track sourcing and regulatory plan. Send a procurement team to negotiate directly with the bankruptcy trustee to purchase all remaining raw catalyst stock from the closed facility. In parallel, initiate an emergency regulatory review process to qualify a pre-evaluated secondary source, and allocate your remaining 10 days of inventory strictly to keep high-priority, life-saving medical contracts running.",
+                keyIssues: [
+                    "Qualifying a brand-new material formulation normally requires a 6-month product testing and validation cycle under standard regulatory rules.",
+                    "An alternative European supplier exists but their current material piece price is 40% higher than our legacy contract.",
+                    "Sales contracts have strict delivery rules with heavy financial penalties for any unexcused order delays."
+                ],
+                analysisRequired: "Recalculate the product margin impact of a 40% material cost increase, evaluate the financial penalties of contract delivery delays, and model inventory allocation strategies.",
+                sampleDataOrExhibit: {
+                    caption: "Catalyst Inventory Balances & Alternative Sourcing Metrics",
+                    rows: [
+                        ["Sourcing Option Pipeline", "Available Volume (Days)", "Unit Cost Premium (%)", "Regulatory Validation Lead Time", "Sourcing Risk Status"],
+                        ["Legacy Bankrupt Supplier", "10 Days (On-Hand)", "0% Baseline", "Pre-Approved / Active", "Supply Stream Terminated"],
+                        ["Bankruptcy Liquidation Pool", "30 Days (Estimated)", "+15% Cash Premium", "Pre-Approved / Active", "Highly Variable / Legal Risk"],
+                        ["Qualified European Source", "Continuous Flow", "+40% Piece Price", "48-Hour Emergency Amendment", "High Price / Reliable Continuity"],
+                        ["Unqualified Domestic Source", "Continuous Flow", "-5% Below Base", "6 Months Standard Test", "Long Testing Validation Delays"]
+                    ]
+                },
+                strongAnswerPath: "The candidate acts with impressive speed and authority. They realize that the unqualified domestic source is useless during a 10-day inventory crisis due to its 6-month testing delay. They immediately execute a 3-step containment plan: 1. Approve the 40% price premium for the European source, utilizing an emergency 48-hour regulatory amendment to guarantee immediate supply continuity and protect the business from devastating line shutdowns. 2. Authorize an immediate cash bid to the bankruptcy trustee to purchase the 30-day liquidation stock buffer, helping to blend down total material costs during the transition. 3. Instruct sales leaders to establish an inventory allocation board, prioritizing remaining material buffers exclusively for high-margin, critical medical accounts. This multi-layered strategy secures supply continuity within 72 hours, protecting corporate revenue lines.",
+                finalRecommendation: "Activate the certified European supplier immediately via emergency regulatory procedures to secure material flow. Purchase the remaining asset stock from the bankrupt supplier's liquidation pool to lower near-term costs.",
+                coachingNotes: "This scenario evaluates top-tier procurement crisis management. Look for candidates who can accurately prioritize sourcing speed and regulatory compliance over simple piece-price considerations during a major supply disruption.",
+                redFlags: [
+                    "Proposing a switch to the un-certified domestic supplier to save money on piece prices, completely ignoring the fact that its 6-month testing delay would leave the factory facing a catastrophic production freeze.",
+                    "Delaying critical sourcing decisions for weeks while waiting for the bankrupt supplier to try and restructure their operations."
+                ]
+            }
+        );
+
+        contentData.frameworks.push(
+            {
+                name: "Value Stream Mapping (VSM) Core Typology",
+                tag: "Continuous Improvement / Lean Diagnostics",
+                when: "When a multi-stage manufacturing or distribution line experiences slow throughput speeds, long lead times, and unexplained inventory accumulations between processing steps.",
+                structure: "Map the complete value stream using standardized visual indicators across three main zones:\n1. Information Flow: Top section tracking customer order triggers, forecasting cycles, and production scheduling communication tracks.\n2. Physical Material Flow: Center row mapping inbound material shipping, step-by-step process boxes, data boxes (OEE, cycle time, changeovers), and WIP inventory triangles.\n3. Timeline Ladder: Bottom jagged line contrasting value-added Processing Time ($PT$) on the bottom steps against non-value-added Inventory Dwell Lead Time ($LT$) on the top steps.",
+                example: "A precision components plant draws a VSM and discovers that while actual machining takes only 45 minutes ($PT$), components spend an average of 18 days ($LT$) sitting idle in storage bins between work centers, allowing engineers to quickly target process-flow bottlenecks.",
+                mistakes: "Focusing entirely on detailing local machine processing speeds while failing to map the massive inventory triangles building up between workstations.",
+                customize: "Add a dedicated 'Software Platform' icon inside your information flow boxes to explicitly track where manual data re-entry steps are slowing down scheduling communication."
+            },
+            {
+                name: "Ishikawa / Fishbone Root-Cause Diagram Matrix",
+                tag: "Process Quality Diagnostics",
+                when: "Faced with a major quality defect, process deviation, or mechanical failure, where the root causes are complex, multi-layered, and spread across different operational silos.",
+                structure: "Place the primary quality defect or problem statement inside the 'head' box on the far right. Extend a central spine leftward, branching out into 6 main category bones (the 6 Ms of Manufacturing):\n1. Man (Methods/Labor): Training, fatigue, standard work compliance, and shift changes.\n2. Machine: Tool wear, calibration errors, hydraulic pressure drops, and maintenance lapses.\n3. Milieu (Mother Earth / Environment): Humidity shifts, ambient temperature spikes, and ambient dust contamination.\n4. Material: Supplier lot variation, raw material purity, and component dimensions.\n5. Method: Inaccurate SOP instructions, incorrect tool sequencing, and poor scheduling pacing.\n6. Measurement: Calibration errors on gauges, data entry mistakes, and visual inspection limits.",
+                example: "A food packaging facility experiences severe seal failures on a high-speed line. A cross-functional fishbone analysis reveals a combination of two root causes: ambient humidity spikes (Environment) and a recent un-tested adjustment to the heating tool settings (Method), helping engineers fix the issue.",
+                mistakes: "Using a fishbone diagram as a passive brainstorming list to complain about corporate issues, rather than a structured tool to isolate and test specific process variables.",
+                customize: "Color-code the bones on your diagram: use red for unverified guesses, yellow for factors currently being tested, and green for root causes confirmed by data."
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Order Fill Rate & Service Level Optimization",
+                formula: "Order Fill Rate = (Total Ordered Units - Total Stockout Units) / Total Ordered Units",
+                example: "A retail distribution center receives customer orders for a total of 25,000 units of a high-demand item during a busy peak shipping week. Due to a processing delay in the receiving department, the facility experiences localized stockouts on several picking lines, failing to ship 1,250 of the requested units.",
+                calc: "Ordered Volume = 25,000. Unfulfilled Volume = 1,250. Filled Volume = 25,000 - 1,250 = 23,750 units. Order Fill Rate = 23,750 / 25,000 = 0.95 = 95.00%.",
+                verbalize: "Our order fill rate for this peak shipping week stood at 95%, meaning we failed to deliver 1,250 units that our customers were actively trying to buy from us. This 5% service failure represents a direct loss of revenue and threatens our standing with key accounts. When we dig into the process logs, we find that the stockouts weren't caused by a lack of raw material in the building—they were driven by a processing bottleneck in our receiving department that delayed product put-away. By cross-training our shipping operators to support receiving during morning peak waves, we can clear that bottleneck, restore our fill rate to its 98.5% target, and capture that lost revenue without purchasing excess inventory safety stock.",
+                mistakes: "Conflating the Order Fill Rate (which tracks individual product units) with the Order Cycle Service Level (which tracks the percentage of total customer orders shipped completely intact)."
+            },
+            {
+                name: "Total Landed Cost Logistics Optimization",
+                formula: "Total Landed Cost = Ex-Works Unit Price + Freight + Tariffs + Insurance + Port Handling + Local Transport",
+                example: "A manufacturing group sources a high-volume assembly from an international supplier at an Ex-Works purchase price of $42.00 per unit. Ocean container freight breaks down to $4.50 per unit, international import tariffs add 15% to the base purchase price, marine insurance costs $0.50 per unit, port clearance fees average $1.20 per unit, and final-mile trucking to the facility costs $1.80 per unit.",
+                calc: "Ex-Works Price = $42.00. Freight = $4.50. Tariff = 15% of $42.00 = $6.30. Insurance = $0.50. Port Fees = $1.20. Local Transport = $1.80. Total Landed Cost = 42.00 + 4.50 + 6.30 + 0.50 + 1.20 + 1.80 = $56.30 per unit.",
+                verbalize: "While the raw invoice price for this component looks highly attractive at $42.00 ex-works, its true total landed cost is exactly $56.30 by the time it reaches our assembly floor. This reveals a hidden 34% cost premium driven by international shipping, import tariffs, and port handling fees. When we evaluate alternative nearshore or domestic suppliers, we must run our comparisons against this $56.30 baseline, not the surface $42 invoice price. If a nearshore vendor can deliver the component for $52.00 on a unit basis, they are actually saving us $4.30 per unit in total cost, while providing significantly shorter lead times that help compress our cash conversion cycle.",
+                mistakes: "Evaluating international sourcing opportunities based strictly on the supplier's surface invoice price, while completely ignoring import tariffs, customs clearance fees, and final-mile transport costs."
+            }
+        );        
         
         const competencies = [
             "Problem structuring & root-cause rigor",
