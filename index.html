@@ -3495,6 +3495,177 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-081",
+                category: "Inventory Management & Optimization",
+                difficulty: "Core",
+                question: "What is the structural and mathematical difference between a Reorder Point (ROP) calculation with constant lead time versus volatile lead time?",
+                conversational: "When your supplier provides a rock-solid, constant delivery lead time, calculating your reorder point is straightforward: you simply multiply your average daily sales pace by that fixed lead time number and add a small demand safety stock buffer. But when your supplier's lead time is volatile—delivering in 4 days one week and stalling out to 18 days the next—that variation introduces a massive risk of a stockout. Mathematically, lead-time volatility behaves like an exponential multiplier against your average daily sales volume, meaning a shaky delivery window forces you to hold a significantly larger safety stock buffer to protect a standard 95% or 98% customer service level.",
+                deepdive: "The mathematical models show this structural shift clearly. Under a constant lead time (L), the standard deviation of demand during lead time is simply: σ_LT = σ_d · sqrt(L). This requires a standard Reorder Point formula of: ROP = (d · L) + (Z · σ_d · sqrt(L)), where d is average daily demand. However, when lead time is volatile, we must incorporate lead time variance (σ_L^2) using the fully loaded inventory equation: ROP = (d · L) + (Z · sqrt(L · σ_d^2 + d^2 · σ_L^2)). Because average daily demand (d) enters the safety stock radical as a squared value (d^2), even minor drops in supplier delivery reliability inflate your required ROP, trapping excess working capital on the balance sheet.",
+                coaching: "The candidate needs to explain how lead-time volatility scales safety stock requirements exponentially. Look for them to identify that average demand enters the variance calculation as a squared factor, punishing operations that rely on unreliable vendors.",
+                redFlag: "Using simple averages for lead times when designing a fulfillment system for a volatile supplier, which inevitably causes chronic material stockouts during delivery delays."
+            },
+            {
+                id: "Q-082",
+                category: "Procurement & Supplier Management",
+                difficulty: "Advanced",
+                question: "How do you evaluate and structure a Supplier-Led Innovation (SLI) framework with a critical vendor without sacrificing intellectual property or commercial exclusivity?",
+                conversational: "Supplier-Led Innovation is a powerful way to leverage a vendor's R&D capabilities to improve your product designs, but it can quickly turn into a legal nightmare if you don't build tight boundaries early. I govern this process using a structured, multi-phase commercial agreement. Before any engineering files are shared, we sign a mutual NDA that establishes a clear 'Background IP' baseline, proving exactly what technology each company owned before the project started. Any new insights developed together are classified as 'Foreground IP.' We structure the contract so our company retains absolute ownership or exclusive commercial rights within our industry sector for a fixed window—say, three years. This gives the vendor a guaranteed volume contract to reward their innovation, while protecting our product's competitive market advantage.",
+                deepdive: "Governing an SLI framework requires balancing technical collaboration with strict legal and financial safeguards. The contract architecture should feature a clear 'Gain-Sharing' formula, linking the supplier's engineering milestones directly to long-term volume guarantees or minor unit price premiums, rather than allowing them to alter foundational raw margins. By formalizing sector-specific exclusivity clauses, the buying enterprise prevents the supplier from commercializing the joint innovation with direct competitors, turning shop-floor process improvements into lasting barriers to entry.",
+                coaching: "Look for strong cross-functional awareness. The candidate should naturally bridge engineering collaboration with legal IP protections, comfortably discussing background versus foreground IP and sector-specific commercial exclusivity windows.",
+                redFlag: "Allowing a critical vendor to completely redesign a core proprietary product component without any written IP agreement, giving the supplier the freedom to sell that innovation straight to your competitors."
+            },
+            {
+                id: "Q-083",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Core",
+                question: "What is Cross-Docking, and what layout and technology prerequisites are required to run a high-velocity cross-dock operation?",
+                conversational: "Cross-docking is a high-velocity logistics strategy where incoming material is transferred directly from inbound delivery trucks to outbound shipping trailers with little to no intermediate warehouse storage or picking labor. When an inbound truck arrives, teams instantly unload the pallets, sort them by customer destination across a narrow staging lane, and pack them straight into an outbound van within a fast 4-hour window. To run this without causing total floor chaos, you need specific prerequisites: a highly specialized warehouse layout featuring a narrow, 'I' or 'T' shaped building with docks on both sides, real-time EDI visibility to track incoming inventory manifests, and disciplined suppliers who pre-label and bar-code every single pallet perfectly.",
+                deepdive: "Cross-docking optimizes terminal throughput by entirely eliminating two of the most expensive and labor-intensive phases of traditional warehousing: put-away storage and discrete order picking. The operational economics rely on matching inbound supply schedules with outbound transport routing guides. Technology requirements mandate an advanced Warehouse Management System (WMS) capable of executing real-time task interleaving and automated barcode parsing. This system must automatically identify and match incoming material lots with open outbound shipments the second a barcode is swiped at the inbound dock gate, maximizing material velocity and driving warehouse dwell times to near zero.",
+                coaching: "The candidate must emphasize that cross-docking requires massive coordination and data visibility. Ensure they specify the structural prerequisites—such as dual-sided terminal designs, real-time WMS tracking, and disciplined supplier pre-labeling rules.",
+                redFlag: "Proposing a high-velocity cross-docking model for un-barcoded, highly irregular, or unpredictable product lines that require extensive manual quality checks or split sorting at receiving."
+            },
+            {
+                id: "Q-084",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Expert",
+                question: "How do you apply Single-Minute Exchange of Die (SMED) principles to compress changeover downtime on a primary line bottleneck asset?",
+                conversational: "When a critical machine bottleneck sits idle during a product changeover, your entire factory's throughput drops. I optimize these changeovers using the four stages of the SMED methodology, and I don't manage it from an office—I video-record the active changeover on the floor. First, we document every single tool adjustment and movement. Second, we separate 'Internal' tasks—steps that can only be done while the machine is completely stopped—from 'External' tasks that can be completed while the machine is actively running. We convert as many internal steps to external as possible, such as pre-heating tooling dies and staging materials before the machine sequence stops. Finally, we eliminate adjustments by using quick-release clamps instead of standard bolts, dropping changeover downtime by up to 70% within days.",
+                deepdive: "SMED logic re-engineers manufacturing setups to drive changeover times into the single digits (less than 10 minutes). The financial return is non-linear: compressing changeover downtime recovers lost capacity on the line constraint, lowering the optimal Economic Manufacturing Quantity (EMQ) batch size. This batch size reduction allows operations to run smaller production lots safely, slashing balance sheet Work-in-Progress (WIP) and finished goods inventory holding overheads while dramatically shortening customer delivery lead times.",
+                coaching: "Listen for a disciplined, stage-by-stage mastery of the SMED framework. Strong candidates focus explicitly on the separation and conversion of internal versus external tasks, linking changeover speed directly to batch size reductions and working capital velocity.",
+                redFlag: "Attempting to speed up specific changeover tasks or buying expensive automated tools before separating internal and external steps, which limits the total process improvement."
+            },
+            {
+                id: "Q-085",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Foundational",
+                question: "What is the primary difference between Quality Assurance (QA) and Quality Control (QC) within a production environment?",
+                conversational: "The difference between QA and QC comes down to prevention versus detection. Quality Assurance is a proactive, process-focused discipline. It looks at the design of the entire manufacturing system, establishing standard work instructions, training programs, and equipment maintenance rules to ensure that the process is structurally capable of building parts without errors. Quality Control is a reactive, product-focused discipline. It acts as the safety net on the floor, using automated inspection gates, manual gages, and lab tests to check completed parts and catch defects before they can leave our facility walls.",
+                deepdive: "From a statistical process engineering perspective, Quality Assurance (QA) targets the systemic management infrastructure, optimizing process parameters to eliminate common-cause variation and maximize baseline process capability indicators (Cₚ). Quality Control (QC) functions as the operational validation layer, monitoring real-time outputs to isolate and contain special-cause variations. QA designs the control boundaries and statistical sampling plans, while QC executes the measurements, monitors real-time SPC charts, and initiates formal quarantine containment protocols when lines drift off-center.",
+                coaching: "The candidate should clearly separate process-focused prevention (QA) from product-focused detection (QC). Look for them to highlight that an elite operation prioritizes robust QA process design to minimize the need for heavy QC inspection gates.",
+                redFlag: "Using the terms interchangeably, or suggesting that adding a massive layer of final visual inspectors (QC) is a valid long-term strategy to improve process quality capability (QA)."
+            },
+            {
+                id: "Q-086",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Core",
+                question: "What is the bullwhip effect's impact on an operation's capacity management, and how does real-time data integration damp it?",
+                conversational: "The bullwhip effect acts as a massive distortion engine that wrecks your factory floor's capacity management. When you sit multiple tiers away from the actual retail consumer, a minor 5% shift in store sales gets amplified into a wild 50% capacity spike by the time the order passes through distributors and reaches your production schedule. This forces factories to alternate between running expensive emergency overtime shifts and letting expensive machinery sit completely idle. We damp this distortion by breaking down the data walls between supply tiers. By setting up real-time electronic data links to look directly at actual retail point-of-sale data, we can see real consumption trends instantly, allowing us to level our manufacturing schedules and bypass the distorted order signals.",
+                deepdive: "The compounding variance of the bullwhip effect is mathematically driven by localized forecasting updates, order batching rules, and short-term promotional price adjustments. When each supply chain node places independent orders based solely on the tier directly below it, information delays compound, creating massive inventory swings. Real-time data integration via cloud platforms or EDI linkages overrides this lag by establishing a single version of demand truth. Sharing point-of-sale (POS) data allows upstream manufacturing sites to apply smoothed production scheduling logic, drastically reducing safety stock requirements and stabilizing asset utilization rates across the network.",
+                coaching: "Look for strong systemic thinking. The candidate should naturally explain how sequential data delays drive capacity volatility, and prioritize direct point-of-sale data integration over simple adjustments to local safety inventory.",
+                redFlag: "Blaming frontline operators or volatile consumer behaviors for factory scheduling disruptions, failing to see that the capacity crisis is entirely self-inflicted by data walls and long ordering batches."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-034",
+                scenarioType: "inventory optimization / cash conversion cycle",
+                difficulty: "Advanced",
+                title: "The Wasatch Electronics Multi-Echelon Component Tie-Up",
+                context: "An advanced industrial electronics manufacturer based along the Wasatch Front tracks a rising Cash Conversion Cycle, which has climbed from 32 days to 58 days over the past year. While top-line sales are growing, corporate finance audits reveal that $6.8M in liquid operating cash is completely locked up in static raw materials and sub-assembly components across three regional staging facilities, dragging down the business unit's Return on Invested Capital (ROIC) performance.",
+                interviewerPrompt: "How would you systematically analyze this multi-echelon inventory footprint, calculate the specific cash-flow leaks across capital nodes, and deploy lean controls to accelerate cash velocity without creating component shortages?",
+                candidateObjectives: [
+                    "Apply Days Inventory Outstanding (DIO) and Cash Conversion Cycle (CCC) equations to measure capital efficiency.",
+                    "Isolate localized inventory build-ups caused by decoupled batch-push manufacturing and long supplier lead times.",
+                    "Design a centralized pull replenishment framework to synchronize component staging with actual assembly line consumption."
+                ],
+                clarifyingQuestions: [
+                    "What are our current Average Accounts Receivable (DSO) and Accounts Payable (DPO) financial tracking baselines?",
+                    "Are components moved between our three staging facilities using fixed weekly schedules or responsive, demand-driven pull triggers?",
+                    "What percentage of the trapped $6.8M consists of custom, high-value components compared to cheap, standard hardware items?"
+                ],
+                suggestedApproach: "Perform a detailed multi-echelon inventory and cash flow audit. Calculate DIO, DSO, and DPO across product lines to map the Cash Conversion Cycle. Identify that the cash drain is driven by independent warehouse managers over-ordering parts to clear local safety stock targets, combined with a batch-push production model that floods staging areas with unneeded WIP. Transition the network to a synchronized hub-and-spoke configuration, establishing an e-Kanban data loop to link component releases directly to active final assembly lines, instantly freeing up locked-up capital.",
+                keyIssues: [
+                    "Component inventory records are managed via manual weekly spreadsheets, creating a 6-day data delay that forces teams to hold large safety stocks.",
+                    "The factory's procurement team buys high-value integrated circuits in massive annual lots to capture a surface-level 8% volume discount, trapping cash in storage.",
+                    "Finished sub-assemblies spend an average of 22 days sitting idle in staging areas before passing to final configuration lines."
+                ],
+                analysisRequired: "Compute end-to-end Days Inventory Outstanding metrics, quantify the financial holding cost reductions achieved by cutting component dwell times, and run volume discount vs. carrying cost trade-off equations.",
+                sampleDataOrExhibit: {
+                    caption: "Multi-Echelon Financial Metrics & Component Dwell Diagnostics",
+                    rows: [
+                        ["Inventory Staging Echelon Node", "On-Hand Asset Value ($M)", "Current Local Days of Supply", "Average Dwell Time (Days)", "Primary Material Allocation Model"],
+                        ["Node 1: Raw Component Warehouse", "$3.20M Asset Value", "72.5 Days Supply", "45 Days Stagnant", "Annual Bulk Speculative Batches"],
+                        ["Node 2: Sub-Assembly Staging Area", "$2.10M Asset Value", "48.2 Days Supply", "22 Days Staged", "Weekly Batch-Push Schedules"],
+                        ["Node 3: Final Configuration Hub", "$1.50M Asset Value", "28.4 Days Supply", "12 Days Staged", "On-Demand Customer Signaling"],
+                        ["Consolidated Capital Footprint", "$6.80M Total Locked", "DIO = 49.7 Days Baseline", "CCC = 58.2 Days Total", "Triggers Active ROIC Margin Drop"]
+                    ]
+                },
+                strongAnswerPath: "The candidate approaches the crisis with strong corporate finance and inventory physics. They review the data exhibit and show that Node 1 and Node 2 are the primary capital drains, trapping $5.3M in inventory due to speculative annual bulk buying and weekly batch-push schedules. They run a trade-off analysis on the integrated circuits: proving that the 8% surface-level volume discount saves $80,000 annually, but carrying the massive lot costs the company over $180,000 in annual inventory carrying friction (at a 25% rate), meaning the bulk contract actually destroys $100,000 in cash every year. They deploy a clear cash recovery strategy: 1. Cancel the bulk contract and move to a monthly rolling delivery schedule, cutting raw component inventory by 50%. 2. Replace the weekly push schedules at Node 2 with a responsive e-Kanban pull system, linking sub-assembly releases straight to final configuration lines and cutting intermediate dwell times from 22 days down to 4 days. This process compression drives the company's DIO down from 49.7 days to 28 days, shortening the Cash Conversion Cycle to a lean 36.5 days, and instantly releasing $2.9M in liquid capital back onto the balance sheet.",
+                finalRecommendation: "Transition high-value components away from speculative annual bulk purchasing to monthly rolling delivery schedules. Implement an active e-Kanban pull framework between sub-assembly nodes and final configuration lines to compress dwell times and free up $2.9M in working capital cash.",
+                coachingNotes: "This scenario evaluates the candidate's understanding of operational finance. Look for them to ignore surface-level purchase discounts and use comprehensive Days Inventory Outstanding (DIO) and Cash Conversion Cycle (CCC) metrics to prove how process compression unlocks balance sheet liquidity.",
+                redFlags: [
+                    "Approving continued annual bulk spot-buys purely to save on surface piece prices, failing to realize the heavy balance-sheet carrying costs of storing excess inventory for months.",
+                    "Attempting to accelerate cash velocity by delaying payments to critical suppliers (inflating DPO) without addressing the root cause: high inventory volumes and slow process flow on the floor."
+                ]
+            },
+            {
+                id: "S-035",
+                scenarioType: "network design / 3PL vs 4PL pivot",
+                difficulty: "Advanced",
+                title: "The Intermountain Logistics Network Third-Party Scaling Crisis",
+                context: "A rapidly expanding consumer products brand based in Salt Lake City faces an operational distribution crisis. Over the last three quarters, sales volumes have scaled by 55%, stretching their decentralized logistics network to its absolute breaking point. The company partners with four independent 3PL warehouse providers across western states, resulting in fragmented shipping data, mismatched inventory balances, and soaring freight expenses that are wiping out the channel's operating income.",
+                interviewerPrompt: "Structure an objective operational and financial evaluation to determine whether the enterprise should maintain its fragmented 3PL carrier network, consolidate distribution under a single master 3PL agreement, or pivot to an integrated 4PL control-tower management model.",
+                candidateObjectives: [
+                    "Evaluate the administrative and transport cost overheads of managing a decentralized, multi-vendor 3PL network.",
+                    "Analyze the financial and technological trade-offs of integrating data streams under a 4PL control-tower architecture.",
+                    "Formulate a migration plan that protects customer fulfillment metrics during the distribution network reorganization."
+                ],
+                clarifyingQuestions: [
+                    "What is our current average order picking accuracy and on-time shipping rate across our four independent 3PL facilities?",
+                    "Does our internal logistics team possess the technology infrastructure (TMS and WMS software) to consolidate data streams in-house?",
+                    "What are the contract exit terms and early termination penalties established with our current regional warehouse providers?"
+                ],
+                suggestedApproach: "Deploy a rigorous total logistics cost and network governance analysis. Map out the hidden overhead expenses of the current setup: managing four independent 3PL partners manually creates massive data confusion, drives up parcel freight rates due to fragmented volumes, and creates a 12% mismatch in inventory records. Reject the unoptimized multi-vendor setup. Recommend a pivot to an integrated 4PL control-tower model, outsourcing network coordination to an unaligned partner who can integrate tracking software across viewports, consolidate shipping volumes to capture deeper carrier discounts, and fully stabilize delivery metrics.",
+                keyIssues: [
+                    "Each regional 3PL utilizes a completely different warehouse management software, forcing internal teams to waste hours manually compiling inventory data.",
+                    "Fragmented shipping volumes prevent the company from satisfying minimum carrier thresholds, forcing them onto high spot-market parcel tariffs.",
+                    "Order errors have climbed to a weak 4.5% in outlying zones, triggering high customer service overheads and retail late-delivery fines."
+                ],
+                analysisRequired: "Run a total logistics cost analysis (combining administrative labor, freight tariffs, and inventory error costs), evaluate 4PL integration capital requirements, and model network scale economics.",
+                sampleDataOrExhibit: {
+                    caption: "Multi-3PL Network Performance & Freight Cost Diagnostics",
+                    rows: [
+                        ["Regional 3PL Partner Node", "Monthly Order Shipment Volume", "Average Order Picking Accuracy", "Landed Freight Cost Per Package", "Inventory Data Synchronization Model"],
+                        ["Warehouse Alpha (Utah Hub)", "35,000 Shipments", "98.8% (Stable Baseline)", "$4.10 / Package", "Daily Automated API Sync Runs"],
+                        ["Warehouse Beta (California)", "22,000 Shipments", "95.5% (Frequent Errors)", "$6.85 / Package", "Manual Weekly Excel Upload Sheets"],
+                        ["Warehouse Gamma (Colorado)", "14,000 Shipments", "96.2% (Moderate Errors)", "$7.20 / Package", "Manual Bi-Weekly Spreadsheet Syncs"],
+                        ["Warehouse Delta (Washington)", "9,000 Shipments", "94.1% (Severe Bottleneck)", "$8.95 / Package", "Phone/Email Manual Balance Rechecks"],
+                        ["Consolidated Logistics Grid", "80,000 Total Units", "Avg Accuracy = 96.1%", "Avg Cost = $5.95 / Pack", "Fragmented Siloed Data Architecture"]
+                    ]
+                },
+                strongAnswerPath: "The candidate acts with impressive structural focus, noting from the data exhibit that as shipping volumes branch out to outlying zones, picking accuracy plummets to a weak 94.1% and shipping costs soar to $8.95 per package due to manual data updates and fragmented volumes. They recommend a complete logistics network turnaround: 1. Reject the multi-vendor 3PL layout, as managing four independent systems manually blocks process standardization. 2. Pivot to an integrated 4PL partnership model, outsourcing fulfillment governance to an expert coordinator. 3. The 4PL installs a unified cloud-based control-tower platform, linking all regional nodes into a single version of inventory truth to eliminate spreadsheet tracking errors. 4. By consolidating the brand's total 80,000-order volume under the 4PL's master carrier contracts, the company qualifies for deep volume discounts, cutting average transport costs from $5.95 down to $4.25 per package. This strategic reorganization slashes annualized distribution expenses by $1.36M, drives order accuracy to 99.4%, and provides a scalable distribution footprint.",
+                finalRecommendation: "Consolidate your fragmented distribution network by migrating to an integrated 4PL control-tower management model. Utilize a unified cloud tracking platform to standardize inventory records and leverage total shipping volumes to capture deep carrier discounts.",
+                coachingNotes: "This scenario evaluates enterprise-level network design and logistics outsourcing logic. Look for candidates who look past surface vendor fees and focus on systemic costs—such as inventory data delays, picking accuracy losses, and volume consolidation metrics.",
+                redFlags: [
+                    "Sticking with the broken multi-vendor 3PL setup out of a fear of transition friction, allowing data delays and high spot freight rates to continue draining company profits.",
+                    "Attempting to build an expensive, custom in-house tracking software from scratch, failing to realize that software development would take over a year and add heavy overhead liabilities to the company balance sheet."
+                ]
+            }
+        );
+
+        contentData.quant.push(
+            {
+                name: "Reorder Point (ROP) Volatile Lead-Time Drill",
+                formula: "ROP = (d · L) + (Z · sqrt(L · σ_d^2 + d^2 · σ_L^2))",
+                example: "A high-precision assembly facility manages an average daily demand (d) of 80 components, with a daily standard deviation (σ_d) of 10 units. The critical parts supplier has an average delivery lead time (L) of 9 days, but shows significant delivery unreliability, carrying a lead-time standard deviation (σ_L) of exactly 3 days. Management enforces a strict 95% customer service level target (Z = 1.645).",
+                calc: "1. Lead-Time Demand = 80 · 9 = 720 units. 2. Demand Variance component = 9 · 10^2 = 9 · 100 = 900. 3. Lead-Time Variance component = 80^2 · 3^2 = 6,400 · 9 = 57,600. 4. Combined Variance Base = 900 + 57,600 = 58,500. 5. Combined Standard Deviation = sqrt(58,500) = 241.86 units. 6. Safety Stock Buffer = 1.645 · 241.86 = 397.87 ≈ 398 units. 7. Reorder Point = 720 + 398 = 1,118 units total.",
+                verbalize: "To protect our production line from material shortages, our inventory system must automatically trigger a new purchase order the exact moment our stock levels drop to 1,118 units. When we analyze the data components, we see a massive warning sign: out of our 398 units of safety stock, over 95% of that inventory buffer is held solely to protect us from our supplier's unstable delivery window rather than day-to-day demand shifts. If our supplier had a reliable, constant 9-day lead time, our required safety stock would drop from 398 units down to just 49 units, lowering our reorder point to 769. By spending time to help this vendor stabilize their shipping schedules and cut their lead-time variation down to zero, we can safely remove 349 units of inventory from our floor, instantly freeing up valuable cash without risking a line shortage.",
+                mistakes: "Adding demand standard deviation and lead-time standard deviation together linearly (σ_d + σ_L) before multiplying by the service level factor, which violates statistical rules and leaves the line facing deep material stockouts."
+            },
+            {
+                id: "QD-018",
+                name: "Economic Manufacturing Quantity (EMQ) Lot Sizing Calculation",
+                formula: "EMQ = sqrt((2 · D · S) / (H · (1 - D / P)))",
+                example: "An automated final packaging line manages an annualized consumer demand (D) of 36,000 units. The manufacturing cell can produce parts at a continuous production rate (P) of 144,000 units per year when active. Machine setup and changeover labor expenses (S) stand at exactly $400 per run sequence, and corporate finance mandates an annual inventory holding cost (H) of $5.00 per unit stored in the warehouse racks.",
+                calc: "D = 36,000, P = 144,000, S = 400, H = 5.00. 1. Accumulation Dampening Factor = 1 - (36,000 / 144,000) = 1 - 0.25 = 0.75. 2. Adjusted Holding Cost = 5.00 · 0.75 = 3.75. 3. Setup Cost Numerator = 2 · 36,000 · 400 = 28,800,000. 4. Calculation: EMQ = sqrt(28,800,000 / 3.75) = sqrt(7,680,000) = 2,771.28 ≈ 2,771 units per production run lot.",
+                verbalize: "To optimize our factory's cash flow, our scheduling team should run this packaging line in precise batches of 2,771 units per run. This batch size balances the trade-off between machine changeover costs and warehouse inventory expenses. Because our line builds products gradually at a fast 144,000-unit pace while our sales team sells them at a 36,000-unit pace, inventory builds up much more gradually on the floor, peaking at a lower level than a standard transactional shipment. The EMQ model captures this overlap via the 0.75 dampening factor. This inventory protection allows us to run larger, more efficient batches without trapping excessive working capital cash in static warehouse space.",
+                mistakes: "Failing to include the accumulation dampening factor (1 - D/P) in the denominator, which miscalculates the optimal lot size and forces the plant into frequent, high-cost machine setups."
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
