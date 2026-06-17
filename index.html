@@ -1351,6 +1351,83 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-015",
+                category: "Lean / Continuous Improvement",
+                difficulty: "Foundational",
+                question: "What are the components of the 5S methodology, and how do you move a team past viewing it as just a basic cleanup program?",
+                conversational: "5S stands for Sort, Set in Order, Shine, Standardize, and Sustain. The biggest mistake teams make is treating it like a simple spring cleaning day. To make it stick, I reframe 5S as a safety and productivity tool. 'Sort' means removing unneeded tools that cause safety hazards. 'Set in Order' means boxing and labeling critical tools so an operator doesn't waste 10 minutes looking for a wrench while a machine sits idle. By standardizing these locations and building audits directly into daily shift handoffs, 5S stops being a chore and becomes the foundation for reducing waste and stabilizing cycle times.",
+                deepdive: "The 5S pillars are derived from Japanese manufacturing practices: Seiri (Sort), Seiton (Set in order), Seiso (Shine), Seiketsu (Standardize), and Shitsuke (Sustain). Beyond workplace neatness, 5S reduces the Lean waste of Motion. Visual management cues—such as shadow boards, taped floor boundaries, and color-coded kanban squares—allow an observer to diagnose process abnormalities within 30 seconds. Sustaining is the hardest step; it requires integrating 5S scorecards into standard work and pairing them with tiered accountability loops.",
+                coaching: "Listen for an emphasis on the final two steps: Standardize and Sustain. Good candidates describe 5S as an operational discipline that reduces search-time waste and improves floor safety, rather than just an aesthetic cleanup crew.",
+                redFlag: "Treating 5S as a superficial project that you run once a year for executive tours, without building any standardized daily audit sheets for the floor teams."
+            },
+            {
+                id: "Q-016",
+                category: "Inventory Management & Optimization",
+                difficulty: "Foundational",
+                question: "Explain the mechanics of a standard ABC inventory segmentation and how it dictates daily cycle counting cycles.",
+                conversational: "You can't manage all inventory items the same way—you'll run out of time and money. I use ABC analysis based on the Pareto principle. 'A' items account for roughly 80% of our total dollar spend but represent only 20% of our actual inventory pieces. These are our high-value drivers, so we review them frequently and cycle count them every single month. 'B' items are mid-range, counted quarterly. 'C' items are our cheap, bulky parts—like standard nuts and bolts—making up 5% of our spend but 50% of our physical pieces. We only cycle count 'C' items once or twice a year, managing them with simple automated reorder triggers so we don't waste management resources on them.",
+                deepdive: "ABC classification segments inventory based on annual dollar usage (Annual Demand * Unit Cost). Once sorted, cycle counting protocols replace slow, expensive annual physical counts with continuous data verification. 'A' items maintain a tight +/- 1% inventory record accuracy (IRA) tolerance and are counted monthly. 'B' items have a +/- 5% tolerance counted quarterly, and 'C' items have a +/- 10% tolerance counted semi-annually. This targeted allocation protects data integrity where inventory discrepancies would cause immediate, expensive factory stockouts.",
+                coaching: "The candidate should clearly explain that the segmentation is driven by financial volume value, not physical piece volume. They should seamlessly connect the ABC classification back to data accuracy and inventory management costs.",
+                redFlag: "Suggesting that a facility should manually count every single SKU with the same high frequency, which wastes labor and creates an inefficient warehouse operation."
+            },
+            {
+                id: "Q-017",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Core",
+                question: "What is First-Pass Yield (FPY), how does it differ from Final Yield, and why is it a superior measure of factory floor health?",
+                conversational: "Final Yield is a deceptive metric. If you put 100 parts onto a line, and 95 come out the end looking perfect, your Final Yield looks like a great 95%. But if 30 of those parts had to be pulled off midway through, welded, re-machined, and worked on by a separate team to get them past final inspection, you are burning hidden labor and material costs. First-Pass Yield tracks the percentage of units that move through the entire process from start to finish without needing a single moment of rework or adjustment. It exposes the true health of your line, revealing the hidden factory waste that eats into your operating margins.",
+                deepdive: "First-Pass Yield (FPY) is calculated as: FPY = (Units Passing First Inspection / Total Units Entering the Process). For multi-stage manufacturing lines, the cumulative FPY is the mathematical product of individual stage yields: FPY_total = Y_1 * Y_2 * ... * Y_n. Final Yield completely masks hidden rework loops. Tracking FPY allows operations teams to isolate exactly which workstation or tool is introducing variation, helping engineers target their root-cause adjustments before scrap costs erode product gross margins.",
+                coaching: "Look for candidates who use the specific phrase 'the hidden factory.' They must articulate how hidden rework loops drive up variable overhead labor expenses, even when the final output numbers look acceptable to accounting.",
+                redFlag: "Conflating the two metrics or arguing that Final Yield is good enough for management reviews because the customer eventually receives a functional product."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-008",
+                scenarioType: "warehouse capacity & layout",
+                difficulty: "Core",
+                title: "The E-Commerce Fulfillment Facility Slotting Baseline",
+                context: "A regional e-commerce fulfillment center in Salt Lake City has experienced a steady 15% increase in small-parcel order volumes. The warehouse floor is showing signs of congestion, average order picking times have slowed by 12%, and operators complain that high-demand SKUs are stowed far away from the packing lines, forcing workers to walk miles of inefficient routes.",
+                interviewerPrompt: "How would you analyze this warehouse layout challenge, optimize the facility's slotting configuration to reduce walking travel times, and measure success without purchasing new warehouse space?",
+                candidateObjectives: [
+                    "Isolate high-velocity items from slow-moving inventory using order picking data.",
+                    "Design a designated fast-pick zone near the packing stations to minimize travel distances.",
+                    "Establish a standard process to update product placement dynamically as demand changes."
+                ],
+                clarifyingQuestions: [
+                    "Do we have historical pick-ticket data tracking exactly which SKUs are ordered together most frequently?",
+                    "What percentage of our current storage racks can be easily reconfigured into fast-pick picking bins?",
+                    "Is the picking operation currently manual, or are operators guided by automated handheld scanners?"
+                ],
+                suggestedApproach: "Perform an immediate warehouse velocity and slotting analysis. Extract order data to sort SKUs by picking frequency (number of times a product is touched, not total unit volume). Group the top 10% highest-frequency items into a dedicated 'Golden Zone' fast-pick layout located closest to the primary packing and staging areas. Rebalance picking paths and use standard work audits to ensure inventory placement continuously updates as seasonal demand shifts.",
+                keyIssues: [
+                    "High-volume promotional products are scattered across deep, hard-to-reach storage racks.",
+                    "Forklifts and manual pickers share the same main aisles, creating severe traffic bottlenecks during peak morning picking waves.",
+                    "Seasonal winter items are still sitting in premium pick slots during the summer months, blocking fast-moving products."
+                ],
+                analysisRequired: "Calculate total walking distance savings achieved by consolidating high-velocity SKUs, evaluate pick-rate efficiency metrics (picks per hour), and determine spatial capacity utilization rates.",
+                sampleDataOrExhibit: {
+                    caption: "Warehouse Inventory Picking Velocity & Location Profiles",
+                    rows: [
+                        ["SKU Velocity Tier Group", "Total Catalog SKU Count", "Percentage of Total Daily Pick Touches", "Current Location Profile", "Avg. Picking Travel Distance"],
+                        ["Tier 1: High-Velocity (Fast Pack)", "150 SKUs", "65.0%", "Scattered across back rows", "240 Feet Per Pick"],
+                        ["Tier 2: Mid-Velocity (Standard)", "450 SKUs", "25.0%", "Center storage racks", "120 Feet Per Pick"],
+                        ["Tier 3: Low-Velocity (Slow Move)", "1,400 SKUs", "10.0%", "Front rows near packing", "45 Feet Per Pick"]
+                    ]
+                },
+                strongAnswerPath: "The candidate correctly notes that the warehouse layout is completely inverted: low-velocity Tier 3 items are taking up premium space near the packing docks, while high-velocity Tier 1 items (which drive 65% of all daily picking work) are stuck in the back rows, forcing operators to walk 240 feet per pick. The candidate outlines a clear correction plan: 1. Swap locations by moving slow-moving Tier 3 items to deep storage or high-bay racks. 2. Build a high-density 'Golden Zone' fast-pick layout for the 150 fast-moving SKUs directly next to the packing stations. This changes the average picking distance for 65% of orders from 240 feet down to 45 feet, cutting total warehouse walking distances by over 50%. This update scales facility throughput by 20% and completely eliminates dock congestion without spending capital on a larger building.",
+                finalRecommendation: "Reconfigure the warehouse slotting layout immediately to group high-velocity items into a dedicated fast-pick zone nearest the packing lines. Implement a monthly velocity audit to adjust product locations dynamically as seasons change.",
+                coachingNotes: "This scenario evaluates a candidate's practical understanding of warehouse layout and flow. Look for a clear focus on reducing walking travel distance (the Lean waste of Motion) and sorting inventory by picking frequency rather than simple sales revenue.",
+                redFlags: [
+                    "Recommending an expensive warehouse expansion or automated conveyor investment without realizing that the building's current footprint is simply laid out backward.",
+                    "Sorting the inventory layout based on total revenue or item size, failing to see that the number of pick touches is what drives warehouse labor costs."
+                ]
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
