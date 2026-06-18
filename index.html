@@ -4262,6 +4262,154 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-111",
+                category: "Procurement & Supplier Management",
+                difficulty: "Advanced",
+                question: "How do you use financial insolvency auditing models like the Altman Z-Score to proactively monitor critical single-source supplier risk profiles?",
+                conversational: "When you rely on a critical single-source vendor, you cannot wait for a missed shipment or a sudden shutdown to realize they are in trouble. By then, it is already a catastrophe. I build a proactive supplier risk framework that mandates quarterly financial health reviews for our top-tier partners. We pull their balance sheets and calculate an objective Altman Z-Score, tracking working capital, retained earnings, and leverage ratios. If a critical vendor drops into the 'Grey' or 'Distress' zones, it acts as an immediate operational trigger. We don't panic or cut them off; we discreetly begin building up a strategic inventory buffer of their parts on our floor while fast-tracking qualification for a domestic secondary source to insulate our production line from an abrupt vendor bankruptcy.",
+                deepdive: "The Altman Z-Score for manufacturing enterprises applies five weighted financial ratios to evaluate insolvency probabilities: Z = 1.2 · X1 + 1.4 · X2 + 3.3 · X3 + 0.6 · X4 + 0.999 · X5. Where X1 = Working Capital / Total Assets, X2 = Retained Earnings / Total Assets, X3 = EBIT / Total Assets, X4 = Market Value of Equity / Total Liabilities, and X5 = Sales / Total Assets. A calculated score below 1.81 places the supplier firmly in the Distress Zone, indicating a high statistical probability of bankruptcy within 24 months. Procurement leaders use these continuous risk signals to justify the working capital cost of holding temporary safety stocks or allocating engineering capital to dual-sourcing validation paths.",
+                coaching: "Look for candidates who treat risk management as a proactive financial discipline. They should comfortably explain how corporate liquidity metrics (like working capital and EBIT margins) serve as early warning signals on the shop floor, driving proactive safety stock and dual-sourcing triggers.",
+                redFlag: "Evaluating critical supplier health purely based on casual conversations or backward-looking historical delivery metrics, leaving the company completely exposed to an unexpected vendor bankruptcy."
+            },
+            {
+                id: "Q-112",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Core",
+                question: "How do you synchronize Milk Run collection schedules with a centralized Cross-Docking facility to prevent dock door gridlock during peak shipping windows?",
+                conversational: "Synchronizing regional milk runs with a central cross-dock terminal is a pure timing challenge. If all your dedicated pickup trucks collect materials from local suppliers and arrive at your cross-docking terminal at the exact same time, you will instantly create dock door gridlock. Inbound trucks will sit idle in the staging yard accumulating delay fines, while outbound delivery vans sit completely starved of material. To fix this, I implement a strict, time-slotted 'Yamazumi' scheduling grid for our logistics routing guide. We stagger the suppliers' pickup windows so that inbound trucks land at the cross-dock in a steady, leveled stream every 45 minutes, matching our cross-dock sorting capacity perfectly with our outbound trailer departure beats.",
+                deepdive: "Logistics network synchronization applies queueing theory constraints to terminal layout capacities. If the arrival rate of inbound transport vehicles (λ) exceeds the effective processing and cross-dock sorting rate of the dock crews (μ), the queue length and dock dwell times explode non-linearly. To prevent terminal gridlock, logistics engineers establish strict, pre-allocated arrival windows (düsseldorf slots) linked to real-time GPS fleet tracking. Suppliers must comply with strict pre-labeling and advanced shipping notice (ASN) electronic data manifests, allowing terminal cross-dock crews to execute automated barcode sorting loops and shift materials from inbound docks to outbound doors inside a lean 4-hour window.",
+                coaching: "The candidate needs to connect route planning straight to terminal dock capacities. Look for them to use quantitative logistics terms—like leveled arrival streams and data manifests—to explain how they prevent yard congestion and maintain high material velocities.",
+                redFlag: "Suggesting that you can resolve cross-dock terminal gridlock by simply telling warehouse crews to unload forklifts faster, ignoring the underlying lack of scheduled arrival controls."
+            },
+            {
+                id: "Q-113",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Expert",
+                question: "How do you coordinate Overall Equipment Effectiveness (OEE) metrics with the Theory of Constraints (TOC) to ensure plant engineers don't waste capital optimizing non-bottleneck assets?",
+                conversational: "Every manufacturing facility has hundreds of metrics, but chasing local efficiency improvements everywhere is a massive trap that drains your capital and clogs your floor with excess inventory. If plant engineers spend $50,000 to upgrade a fast stamping press from 70% to 90% OEE, but that press sits upstream from a slow assembly bottleneck, that expensive upgrade won't add a single unit of final output. It just creates huge piles of work-in-progress inventory that trap your working capital. I align our engineering resources strictly with the Theory of Constraints. We measure OEE across all assets, but we *only* fund capital upgrades to maximize availability, speed, and quality right at the primary system bottleneck, ensuring every dollar spent drives real throughput straight to the bottom line.",
+                deepdive: "The financial return of an OEE improvement depends entirely on asset placement within the value stream graph. An increase in OEE at the primary system constraint asset expands total system throughput (TH), generating an immediate financial payback modeled as: Delta Throughput Margin - Delta Capital Cost. Conversely, increasing OEE at a non-bottleneck station merely expands local idle time or drives up unmanaged WIP inventory, lengthening process lead times as proven by Little's Law. Operational governance requires enforcing a strict policy: non-bottleneck stations must be subordinated to the pace of the primary constraint, locking local scheduling to the constraint's Drum-Buffer-Rope pace to protect corporate margins.",
+                coaching: "Look for strong systemic thinking based on bottleneck economics. Elite candidates identify that maximizing local machine efficiencies across non-bottleneck assets can backfire, and explain how they focus engineering investments on the system constraint.",
+                redFlag: "Rewarding local shop-floor supervisors based on maximizing standalone machine utilization metrics across all assets independently, which encourages overproduction and generates massive floor WIP waste."
+            },
+            {
+                id: "Q-114",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Advanced",
+                question: "What are the structural data inputs and governance parameters required to run a multi-tier S&OP Exception Routing rule across a global enterprise?",
+                conversational: "An effective S&OP process can easily get bogged down in administrative detail if executives try to review thousands of individual SKUs every month. To keep the process focused and strategic, I implement automated exception routing rules backed by clear data boundaries. The planning software continuously tracks actual sales against our forecasts. If a product's demand deviates within a normal, minor band—say +/- 5%—the system handles it automatically using our standard safety stock buffers. But if a high-volume category breaches an exception threshold—like a sudden 20% spike in orders—it triggers an immediate automated alert. The data payload routes straight to a specialized cross-functional triage team, allowing them to adjust factory schedules and material orders before shortages can disrupt our operations.",
+                deepdive: "S&OP exception routing architectures utilize statistical process control limits to separate random demand noise from structural market shifts. Exception triggers are contractually defined using clear data metrics mapped to three primary tiers: Tier 1 (Minor variances within +/- 5% MAPE; managed autonomously via localized inventory parameters), Tier 2 (Moderate variances between 5% and 15%; routes to the cross-functional S&OP coordinator layer to adjust regional asset capacities), and Tier 3 (Severe variances exceeding 15% or altering anchor client contracts; escalates straight to the executive S&OP steering committee). This structured rule filters out low-value noise, allowing leadership to focus on long-term strategy and capacity balancing choices.",
+                coaching: "Listen for a clear explanation of how statistical control boundaries filter out data noise. Strong candidates should comfortably detail multi-tier escalation paths and explain how automated triggers prevent S&OP meetings from getting bogged down in low-value details.",
+                redFlag: "Forcing executive S&OP steering committees to manually review and approve demand scheduling plans for every individual low-volume SKU every single month, stalling corporate agility."
+            },
+            {
+                id: "Q-115",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Core",
+                question: "How do you identify the financial warning signs of the 'Hidden Factory' within a manufacturing line, and what metrics expose these untracked rework costs?",
+                conversational: "The 'hidden factory' represents all the untracked time, labor, and material waste spent manually correcting part defects before they ever reach final inspection. It is a silent margin killer. If a factory line starts 1,000 pieces and drops 980 units onto the shipping dock, your traditional final yield looks like a fantastic 98%. But if 200 of those units failed midway down the line and were pulled off to be welded again, polished, and re-tested by operators, you are burning significant labor capacity and capacity hours that are completely hidden from your standard reports. I locate this waste by tossing out final yield summaries and tracking strict First-Pass Yield and Rolled Throughput Yield metrics, forcing supervisors to fix process variations early.",
+                deepdive: "Financially, the hidden factory inflates the Cost of Goods Sold (COGS) and lowers manufacturing margins by absorbing excess variable labor and overhead hours that standard cost models assume are spent building new products. Exposing these costs requires shifting KPIs from traditional final yield metrics over to First-Pass Yield (FPY) and Rolled Throughput Yield (RTY). RTY calculates the probability that a unit will pass through a multi-stage process completely error-free on the first attempt: RTY = Y1 · Y2 · ... · Y_n. A significant gap between a high final yield (98%) and a low rolled throughput yield (72%) proves statistically that the hidden factory is draining capacity, directing engineers to target process variation points.",
+                coaching: "The candidate must clearly connect First-Pass Yield to the concept of the 'hidden factory' and absorbed labor overheads. Look for an preference for tracking continuous inline process variations over passive, exit-gate final quality inspections.",
+                redFlag: "Relying entirely on final inspection yields to evaluate factory floor productivity, showing a total ignorance of how internal rework loops inflate unit manufacturing costs."
+            },
+            {
+                id: "Q-116",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Expert",
+                question: "How do you evaluate the end-to-end Capital Expenditure (CapEx) ROI for an advanced manufacturing automation loop, balancing raw labor savings against systemic capacity flexibilities?",
+                conversational: "When companies evaluate a major CapEx investment for robotics or advanced automation, they usually make the classic mistake of focusing entirely on direct labor cost replacement—calculating how many operators they can displace to pay off the machinery. This narrow approach completely misses the biggest strategic benefits of automation. To present a robust, board-ready investment case, I run a comprehensive Net Present Value analysis that incorporates both direct labor reductions and systemic flexibility advantages. We quantify how automation shortens our changeover times, slashes our floor WIP inventory capital, cuts product defect scrap costs, and gives our lines the agility to flex volumes up or down dynamically in response to market shifts, framing automation as a strategic driver of enterprise agility.",
+                deepdive: "Advanced automation CapEx optimization models look beyond simple labor arbitrage and apply Real Options Analysis to quantify network flexibility value. The master financial architecture maps out cash flows across distinct performance categories: Direct operational savings (variable labor elimination, first-pass quality yield improvements, lower material scrap rates), Working Capital optimization (shorter setup times enable smaller manufacturing lot sizes, compressing Days Inventory Outstanding), and Revenue Enhancement (the capacity to flex product configurations dynamically maximizes contract wins during market surges). Modeling these variables inside an NPV or internal rate of return (IRR) matrix ensures engineering investments align with long-term corporate profitability goals.",
+                coaching: "Evaluate the candidate's strategic financial judgment. They must look past basic labor-replacement calculations and comfortably demonstrate how advanced automation optimizes working capital metrics and expands systemic flexibility, framing CapEx choices around enterprise value.",
+                redFlag: "Justifying a multi-million dollar automated robotics capital project based entirely on a surface-level payback calculation of operators displaced, ignoring changeover flexibilities, quality yield metrics, or capital maintenance costs."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-044",
+                scenarioType: "supplier bankruptcy / constraint management",
+                difficulty: "Advanced",
+                title: "The Great Basin Single-Source Financial Insolvency Crisis",
+                context: "A prominent industrial components provider based in Salt Lake City learns that its primary single-source supplier for a custom, high-precision machining casting has abruptly entered corporate restructuring. While the supplier's lines are still running temporarily, their credit rating has plunged, raw material vendors are demanding cash-on-delivery, and their calculated Altman Z-Score has dropped to a critical 1.15, threatening a sudden production shutdown within 30 days.",
+                interviewerPrompt: "Develop an immediate 72-hour risk mitigation and inventory containment strategy to insulate your assembly lines from an abrupt supplier failure, establish a secure material buffer, and fast-track qualification for an alternative domestic forge vendor.",
+                candidateObjectives: [
+                    "Formulate a rapid material containment strategy to build up an immediate emergency inventory buffer without panicking the insolvent vendor.",
+                    "Evaluate the total landed cost and tooling capital investment required to qualify an alternative domestic forge option.",
+                    "Structure a financial support or dual-sourcing roadmap to protect assembly schedules during the vendor's restructuring window."
+                ],
+                clarifyingQuestions: [
+                    "What is our exact daily consumption rate for this specialized machining casting, and how many days of safety stock do we currently hold?",
+                    "How long does the engineering qualification, quality testing, and tooling setup take to activate the alternative domestic forge option?",
+                    "Does our current contract allow us to purchase and legally transfer the proprietary manufacturing tooling dies out of the insolvent supplier's facility?"
+                ],
+                suggestedApproach: "Deploy a rigorous, proactive supplier risk containment framework. Do not wait passively for a total factory shutdown. Issue an immediate, large-volume purchase order to buy out the vendor's remaining raw materials and build a 90-day physical inventory safety stock buffer on your floor, paying them upfront to shore up their near-term operating cash flow. Simultaneously, authorize the emergency capital needed to duplicate production tooling dies at the alternative domestic foundry, managing the 6-week technical qualification delay safely behind your inventory cushion.",
+                keyIssues: [
+                    "A sudden production freeze at the insolvent supplier would stop the Salt Lake facility's final assembly lines, triggering $35,000 per day in customer late fees.",
+                    "Duplicating the custom manufacturing tooling dies at the alternative domestic forge requires an immediate $65,000 capital charge and a 42-day engineering timeline.",
+                    "The alternative domestic foundry's piece price is 15% higher than the legacy contract baseline rate."
+                ],
+                analysisRequired: "Calculate the total financial exposure of an unhedged assembly line shutdown, run an Altman Z-Score risk assessment, and model the ROI of duplicate tooling capital investments.",
+                sampleDataOrExhibit: {
+                    caption: "Supplier Financial Solvency & Sourcing Mitigation Options",
+                    rows: [
+                        ["Sourcing Mitigation Corridor Node", "Available Component Inventory", "Unit Piece Price Surcharge", "Implementation Lead Time Window", "Net Risk Exposure Status Profile"],
+                        ["Legacy Single-Source Supplier", "14 Days Stock On-Hand", "0% Baseline Rate", "Impending 30-Day Freeze", "Altman Z-Score = 1.15 (Critical Insolvency)"],
+                        ["Emergency Pre-Buy Buffer", "90 Days Extended Buffer", "0% (Contract Base)", "72 Hours to Execute Order", "Secures Line Stability; Shores up Supplier Cash"],
+                        ["Alternative Domestic Forge", "Continuous Flow Supply", "+15% Unit Surcharge", "42 Days Tooling Calibration", "Requires $65k Capital; Eliminates Node Risk"]
+                    ]
+                },
+                strongAnswerPath: "The candidate acts with impressive tactical clarity, noting from the risk exhibit that a 1.15 Altman Z-Score indicates high insolvency probabilities, meaning their 14-day safety stock buffer is a catastrophic vulnerability. They execute an immediate 3-step risk containment roadmap: 1. Authorize an immediate emergency purchase order to buy a 90-day buffer of castings from the legacy vendor, paying cash upfront to give the supplier near-term liquidity and lock down materials before courts can freeze assets. 2. Ignore the sales department's complaints about the 15% domestic piece premium and instantly fund the $65,000 capital charge to build duplicate tooling dies at the alternative domestic forge. 3. Use the 90-day casting buffer to fully absorb the domestic foundry's 42-day engineering and qualification lead time. This fast intervention protects the final assembly lines, completely eliminates exposure to the $35,000/day customer late fee, and smoothly transitions the category to a resilient domestic footprint.",
+                finalRecommendation: "Issue an immediate 90-day emergency purchase order to secure casting buffers from the legacy supplier while providing them near-term operating liquidity. Fund the $65,000 capital charge immediately to build duplicate tooling dies at the alternative domestic forge, using the inventory buffer to manage the 42-day engineering qualification window safely.",
+                coachingNotes: "This scenario evaluates advanced supplier risk mitigation, financial data literacy, and crisis management. Look for candidates who look past surface piece prices and use financial warning signs (Altman Z-Scores) to take swift, data-driven actions, prioritizing line protection and duplicate tooling investments to secure the sourcing network.",
+                redFlags: [
+                    "Taking a passive approach and doing nothing because the supplier hasn't missed a delivery yet, allowing a sudden bankruptcy to freeze the main assembly lines and trigger massive $35,000/day customer fines.",
+                    "Canceling the legacy supplier contract immediately on Day 1 out of panic, which triggers an immediate production stoppage because the alternative domestic source requires 42 days of tooling calibration time."
+                ]
+            },
+            {
+                id: "S-045",
+                scenarioType: "distribution network optimization / multi-channel friction",
+                difficulty: "Advanced",
+                title: "The Wasatch Omni-Channel Fulfillment Network Clash",
+                context: "A prominent retail consumer goods manufacturer based along the Wasatch Front experiences severe distribution friction. Over the last year, the company's direct-to-consumer (D2C) e-commerce channel has grown by 65%, flooding their centralized Salt Lake distribution hub with high-volume, single-item parcel orders. This parcel volume has completely congested the facility layout, causing severe shipping delays and order picking errors on their high-volume, traditional B2B pallet shipments to major retail stores.",
+                interviewerPrompt: "How would you step into this multi-channel fulfillment gridlock, analyze the operational trade-offs of physical space segregation, and re-engineer the warehouse processing flows to protect both distribution channels without building a new facility?",
+                candidateObjectives: [
+                    "Apply an Activity-Based Costing framework to measure the handling labor overheads of mixing B2B and D2C fulfillment streams.",
+                    "Design a segmented warehouse layout and task-interleaving schedule to isolate high-volume picking paths from bulk storage zones.",
+                    "Evaluate the financial return of deploying automated pick-to-light or put-wall sortation matrices to handle high-velocity parcel orders."
+                ],
+                clarifyingQuestions: [
+                    "What is our precise order picking accuracy rate and average order cycle time for B2B pallet orders versus D2C parcel shipments?",
+                    "Can we reconfigure our existing warehouse storage racks to establish a dedicated, low-bay picking zone solely for e-commerce SKUs?",
+                    "What percentage of our shared product catalog is sold through both retail store networks and the direct-to-consumer website?"
+                ],
+                suggestedApproach: "Deploy a rigorous warehouse velocity, slotting, and layout segmentation analysis. Identify that mixing high-volume, single-piece D2C picking with bulk B2B pallet picking down the same aisles destroys terminal flow velocity and drives up order errors. Separate the facility footprint into two independent, specialized processing cells: maintain bulk back racks for B2B pallet picking, and build a dedicated, high-density zone-picking cell near the shipping docks equipped with a put-wall sortation matrix to handle e-commerce orders, standardizing workflows across channels.",
+                keyIssues: [
+                    "B2B order picking accuracy has plummeted to a weak 94.8% due to operators accidentally mixing up loose D2C inventory pieces with bulk cases.",
+                    "Forklifts and manual picking carts are constantly blocking each other down narrow shared storage aisles, driving up warehouse travel times.",
+                    "Missing retail store delivery windows has triggered $140,000 in monthly service level agreement penalties and late shipping fines."
+                ],
+                analysisRequired: "Compute warehouse cost-to-serve metrics across fulfillment channels, calculate travel distance reductions achieved by layout segmentation, and determine the ROI of put-wall sortation investments.",
+                sampleDataOrExhibit: {
+                    caption: "Multi-Channel Fulfillment Volumes & Warehouse Operating Metrics",
+                    rows: [
+                        ["Fulfillment Channel Profile Stream", "Weekly Order Volume", "Avg Picking Labor Time Required", "Current Order Accuracy Rate", "Monthly Service Level Fine Overhead"],
+                        ["Stream A: Traditional B2B (Bulk Pallets)", "1,200 Pallets", "18.5 Minutes Per Pallet", "94.8% (Severe Drop)", "$140,000 SLA Late Shipping Fines"],
+                        ["Stream B: Direct-to-Consumer (Parcels)", "24,000 Packages", "4.2 Minutes Per Order", "95.1% (High Errors)", "$45,000 Customer Refund Losses"],
+                        ["Consolidated Facility Footprint", "Mixed Operations", "Travel Distances Up 45%", "Avg Accuracy = 95.0%", "$185,000 Total Monthly Cost Leakage"]
+                    ]
+                },
+                strongAnswerPath: "The candidate highlights the core operational breakdown using the metrics exhibit: mixing loose-piece D2C picking with bulk B2B pallet fulfillment has clogged the facility aisles, causing travel distances to spike 45%, accuracy to drop to 95%, and retail late fines to soar to $140,000. They reject the unoptimized mixed layout and deploy a robust 30-day warehouse re-engineering plan: 1. Structurally segregate the warehouse footprint into two independent specialized cells within the existing walls. 2. Reserve the deep back racks exclusively for bulk B2B case-picking and pallet storage, completely removing manual D2C carts from those forklift lanes. 3. Build a dedicated, high-density zone-picking pick module near the shipping doors to handle the 24,000 weekly D2C parcel orders, using a 3-unit standard work-in-progress (SWIP) buffer. 4. Invest $85,000 in an automated put-wall sortation matrix to batch-pick e-commerce orders and sort them rapidly by customer zip code. This layout segmentation cuts forklift travel distances by 40%, drives overall picking accuracy to a pristine 99.4%, completely eliminates the $140,000 monthly retail late penalties, and fully optimizes multi-channel throughput velocity within the existing real estate footprint.",
+                finalRecommendation: "Segregate the existing warehouse footprint into two independent specialized fulfillment zones to separate bulk B2B pallet storage from high-velocity D2C parcel picking. Install a dedicated zone-picking pick module and an automated put-wall sortation matrix near the shipping docks to eliminate floor travel wastes, boost order accuracy to 99.4%, and wipe out retail late penalties.",
+                coachingNotes: "This scenario evaluates multi-channel fulfillment network design, warehouse slotting optimization, and cross-functional capacity management. Look for candidates who look past simple staff expansions and apply layout segmentation and activity-based cost metrics to isolate process flows and optimize terminal throughput velocity.",
+                redFlags: [
+                    "Proposing to rent a costly second warehouse facility to split the channels, failing to realize that the existing building footprint can be optimized through layout segmentation and high-density pick cell configurations.",
+                    "Attempting to resolve multi-channel gridlock by simply extending manual shift hours or telling picking operators to work faster, leaving the root cause of mixed-aisle traffic congestion completely unaddressed."
+                ]
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
