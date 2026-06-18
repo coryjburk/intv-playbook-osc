@@ -3964,6 +3964,155 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-099",
+                category: "Procurement & Supplier Management",
+                difficulty: "Foundational",
+                question: "What is Vendor Rationalization, and what operational advantages does a business gain by reducing its active supplier base count?",
+                conversational: "Vendor rationalization is the process of auditing your supplier base and systematically weeding out underperforming or redundant vendors to focus your purchasing power on a small group of high-performing strategic partners. Many decentralized operations suffer from vendor bloat—allowing individual sites to buy parts from hundreds of local suppliers ad-hoc. By cutting out the noise and consolidating your spend with a few core suppliers, you gain massive volume purchasing leverage to negotiate lower unit prices. You also slash your administrative procurement overhead by managing fewer invoices, and dramatically simplify your quality tracking because your incoming material streams are completely standardized.",
+                deepdive: "Vendor Rationalization optimizes procurement physics by maximizing the purchasing leverage ratio (Spend Consolidator Volume / Total Category Spend). Managing a bloated vendor base inflates transaction costs, drives up compliance tracking expenses, and introduces significant product quality variation. Consolidating volume allows the enterprise to transition from short-term transactional purchasing over to structured master service agreements (MSAs) featuring built-in volume tiered discounts, electronic data interchange (EDI) link integrations, and automated replenishment schedules. This consolidation drives down raw material unit costs, lowers receiving inspection overhead, and improves supplier compliance metrics.",
+                coaching: "Look for candidates who tie vendor rationalization straight to purchasing leverage and transaction cost reductions. Strong answers should focus on how narrowing the supplier base lowers material variation and simplifies operational tracking overheads.",
+                redFlag: "Suggesting that a business should automatically buy from dozens of redundant suppliers for standard parts without evaluating the heavy administrative processing overhead or the loss of volume-based discounts."
+            },
+            {
+                id: "Q-090",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Core",
+                question: "How does a Postponement Strategy alter your inventory risk profile, and what manufacturing prerequisites are required to execute it?",
+                conversational: "A postponement strategy—or late product differentiation—is an inventory optimization design where you keep your products in a generic, semi-finished state for as long as possible, only customizing them at the final second once a real customer order is locked in. Think of a global electronics brand: instead of packing and sealing region-specific chargers and language manuals at the primary factory, they build a generic, unbranded device and ship it to regional hubs. Once an order rolls in, they drop in the correct power cable and localized manual. This changes your inventory risk completely—instead of holding expensive safety stocks of 50 different finished products, you hold a few shared generic components, slashing warehouse storage costs and completely eliminating product obsolescence risks.",
+                deepdive: "Postponement leverages the statistical principle of demand aggregation across product families to flatten forecasting variations. The required safety stock for generic components combines via non-correlated variances, which is significantly lower than the cumulative safety stocks needed to support separate finished goods configurations. To execute postponement successfully, product engineering must design modular product architectures with standard interfaces, manufacturing must run fast final assembly cells near consumer markets, and the enterprise must maintain real-time visibility across final-mile fulfillment streams to synchronize configuration triggers.",
+                coaching: "The candidate should comfortably detail the relationship between aggregate demand smoothing and component safety stock drops. Look for them to specify the structural prerequisites—such as modular product design and responsive final assembly networks.",
+                redFlag: "Proposing a postponement model for a highly monolithic, un-modularized product line that requires long chemical processing setups or heavy machinery curing cycles during final configuration steps."
+            },
+            {
+                id: "Q-101",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Advanced",
+                question: "What are the core operational differences between a Cross-Docking distribution hub and a traditional Put-Away Warehousing model, and how do they alter facility unit economics?",
+                conversational: "The difference between cross-docking and traditional warehousing comes down to material velocity and asset utilization. A traditional warehouse operates as a storage bank: incoming inventory is unloaded, checked, placed onto racks by forklifts, and sits on a shelf for weeks until a picker manually retrieves it for an order. This drives up real estate storage costs and requires heavy manual touch labor. A cross-dock terminal acts as a high-speed routing station: incoming pallets are unloaded from inbound trucks, sorted instantly across a narrow staging lane, and loaded straight onto outbound delivery trailers within a fast 4-hour window. This completely eliminates storage costs and put-away labor, turning your logistics center into a high-throughput velocity engine.",
+                deepdive: "The operational economics of traditional warehousing are dominated by fixed space asset costs and variable storage holding overheads, making it suitable for managing speculative safety stocks or slow-moving bulk inventories. Cross-docking shifts facility economics entirely to a throughput velocity model, maximizing terminal flow rates (Units Processed / Square Foot / Hour) and driving warehouse dwell times to near zero. However, cross-docking requires real-time Electronic Data Interchange (EDI) tracking manifests, highly disciplined carriers who hit tight arrival windows, and automated barcode scanning arrays to coordinate task interleaving without causing floor congestion.",
+                coaching: "Listen for an emphasis on material velocity. The candidate should use precise industrial engineering metrics—such as floor dwell times and square foot throughput rates—explaining how cross-docking eliminates put-away and storage steps.",
+                redFlag: "Recommending a high-velocity cross-docking model for un-barcoded, highly variable, or unpredictable product streams that require extensive manual quality testing or split sorting upon receipt."
+            },
+            {
+                id: "Q-102",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Expert",
+                question: "How do you use an Assembly Precedence Diagram to balance tasks across a production line, and what happens to line efficiency when you violate task dependencies?",
+                conversational: "An Assembly Precedence Diagram is a visual schematic chart that maps out the exact sequence in which individual manufacturing tasks must be completed to build a product safely. For instance, you physically cannot solder a circuit chip onto a board until the board has been loaded into the carrier nest. Line balancing uses this diagram to group manual tasks into workstations so that every operator's cycle time sits just below the customer Takt time beat. If a supervisor ignores these dependencies and mixes up the sequence just to keep workers busy, you create immediate process quality failures, drop your line efficiency, and flood the floor with unmanaged WIP inventory blocks.",
+                deepdive: "The Precedence Diagram establishes the mathematical sequencing boundaries for line balancing algorithms. Individual work elements (t_i) feature absolute precedence constraints that cannot be violated due to physical assembly requirements. Violating these dependencies breaks the line balancing structure, dropping Line Balancing Efficiency—calculated as: Efficiency % = (Sum(t_i) / (Number of Workstations · Bottleneck Cycle Time)) · 100. Violating dependencies introduces severe process quality variation, forces operators into inefficient movements (Motion waste), and creates un-decoupled WIP accumulation backlogs, lengthening manufacturing lead times as proven by Little's Law.",
+                coaching: "Look for strong, data-driven line balancing logic. Strong candidates explain how precedence diagrams set the mathematical boundaries for task assignments, and tie sequencing violations straight to dropped line efficiencies and unmanaged WIP inflation.",
+                redFlag: "Believing that assembly tasks can be scattered randomly across workstations without mapping precedence rules, or suggesting that line efficiency can be optimized without calculating customer Takt time boundaries."
+            },
+            {
+                id: "Q-103",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Core",
+                question: "What is the Cost of Quality (CoQ) framework, and how do you use it to balance Prevention and Appraisal investments against Failure overheads?",
+                conversational: "The Cost of Quality framework moves you away from treating quality as an abstract engineering concept and turns it into a clear financial model. CoQ breaks quality expenses into four distinct buckets: Prevention, Appraisal, Internal Failure, and External Failure. Prevention covers proactive investments like operator training and tool calibrations. Appraisal covers inspection costs like testing gages and audit labor. Failure overheads are the real profit drains—Internal failures include running up scrap and rework loops on the floor, while External failures are catastrophic costs like customer returns, product recalls, and warranty penalties. I use this framework to prove to executives that spending an extra $10k upfront on prevention can eliminate $100k in external failure liabilities, driving cash straight to the company's bottom line.",
+                deepdive: "The financial optimization model of CoQ minimizes Total Quality Cost by shifting resource allocation upstream: Total CoQ = Prevention + Appraisal + Internal Failure + External Failure. Proactive expenditures in Prevention (such as robust Quality Assurance process designs and machine capability calibrations) and Appraisal (such as Statistical Process Control inline sampling charts) reduce the frequency of defects. This prevention prevents defects from escaping to Internal Failure zones (scrap, unabsorbed floor labor) or leaking out to high-cost External Failure nodes (warranty liabilities, recall logistics), protecting the company's EBITDA margins.",
+                coaching: "The candidate must detail all four categories of the CoQ matrix. Look for them to frame quality management as a clear financial optimization strategy, proving that proactive prevention investments lower total operational costs.",
+                redFlag: "Treating quality costs as purely the expense of running the final inspection lab, showing a total ignorance of how internal scrap or external warranty liabilities drain corporate profits."
+            },
+            {
+                id: "Q-104",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Advanced",
+                question: "How do you evaluate and structure an Operational Turnaround strategy for an underperforming manufacturing facility facing negative profit margins?",
+                conversational: "When a manufacturing plant is losing money, you cannot save it by sitting in a boardroom reviewing spreadsheets—you have to get onto the shop floor to run a rigorous value-stream audit. I handle a turnaround by targeting three key execution areas: stabilizing process flow, eliminating structural materials waste, and aligning team performance incentives. We immediately map the floor cycle times to locate the true line bottleneck asset, throttling upstream material intake to clear floor congestion and stop overproduction waste. We run bottom-up should-cost clean-sheet tracking to eliminate supplier markup leakages, and shift the plant's operational KPIs away from deceptive local utilization metrics over to total system First-Pass Yield and delivery fulfillment, converting a bleeding operation back into a highly profitable facility.",
+                deepdive: "Executing a manufacturing facility turnaround requires separating variable operational wastes from fixed structural overhead liabilities. The operations leader utilizes Value Stream Mapping (VSM) and Activity-Based Costing to trace cost drivers across the production floor. Bottleneck capacity constraints are optimized using the Theory of Constraints (TOC) focusing steps, maximizing asset availability and speed through autonomous maintenance protocols. By re-engineering product flow layouts to enable Single-Piece Flow and restructuring materials procurement under leveraged category management guidelines, the turnaround strategy lowers the facility's operational break-even volume, expanding EBITDA margins and recovering Return on Invested Capital (ROIC) targets.",
+                coaching: "Listen for an analytical, systematic approach to facility turnarounds. Elite responses avoid vague motivational generalizations, focusing instead on bottleneck economics, value stream mapping, material waste elimination, and restructuring team incentives around system throughput metrics.",
+                redFlag: "Proposing to fix a bleeding, negative-margin factory floor by simply firing frontline operators or cutting quality inspection budgets, which increases defect rates and destroys customer fulfillment performance."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-040",
+                scenarioType: "network design / postponement optimization",
+                difficulty: "Advanced",
+                title: "The Intermountain Medical Electronics Postponement Shift",
+                context: "A high-precision medical electronic monitoring devices brand based in Salt Lake City distributes 16 distinct customized country-specific finished models across international hospital networks. Spreading finished inventory across multiple global regional warehouses has locked up a massive $5.4M in static safety stock assets, while extended transit pipeline lead times regularly cause product stockouts on high-demand configurations.",
+                interviewerPrompt: "How would you design and implement a late product differentiation postponement framework to centralize inventory safety stocks, modularize your assembly sequences, and shorten customer delivery lead times without expanding your warehouse footprint?",
+                candidateObjectives: [
+                    "Model aggregate demand smoothing across product categories to calculate the safety stock reductions of generic component pooling.",
+                    "Design a modular final configuration cell layout located at a centralized distribution hub to customize devices on-demand.",
+                    "Formulate a transition schedule that protects medical regulatory compliance testing data during product architecture re-engineering."
+                ],
+                clarifyingQuestions: [
+                    "What percentage of the device's internal component architecture consists of shared, generic circuit boards compared to specialized country-specific power plugs or language software chips?",
+                    "How long does the final customization packaging configuration step take to complete within a localized distribution cell?",
+                    "Do international medical regulatory certification rules allow final software flashing and language label positioning to occur at a distribution hub rather than the primary cleanroom factory floor?"
+                ],
+                suggestedApproach: "Deploy a rigorous product postponement and modular architecture framework. Stop manufacturing and shipping fully customized finished goods ahead of time based on speculative forecasts. Redesign the device sub-assemblies into a single shared generic base module containing 85% of the product's total value. Maintain this aggregate inventory pool at a centralized Salt Lake hub, using the Square Root Law to slash safety stocks by 45%. Set up a high-velocity final customization cell right at the distribution hub to flash localized language software, insert region-specific power cords, and apply labels within 24 hours of receiving a real customer order confirmation.",
+                keyIssues: [
+                    "The current monolithic product design encapsulates country-specific power transformers deep inside the welded chassis, requiring 3 hours of technical teardown labor to modify.",
+                    "International medical certification standards require a strict 100% automated final testing verification sweep on any customized device before shipping to hospitals.",
+                    "The enterprise currently maintains a heavy 65-day finished goods inventory safety buffer across international warehouse sites to guard against transport lags."
+                ],
+                analysisRequired: "Apply the Square Root Law of Inventory Consolidation to quantify working capital reductions, compute the financial return of modular tool changes, and model configuration cell throughputs.",
+                sampleDataOrExhibit: {
+                    caption: "Finished Inventory Spreads vs. Centralized Postponement Metrics",
+                    rows: [
+                        ["Inventory Sourcing Architecture Tier", "Total Warehouse Stock Nodes", "Aggregate Safety Stock Value ($M)", "Average Customer Lead Time", "Product Obsolescence Scrap Risk Rate"],
+                        ["Legacy Finished Goods Sourcing Plan", "6 International Hub Sites", "$5.40M Staged Capital", "24-Day Transit Pipeline", "8.2% Annual Style/Model Write-Offs"],
+                        ["Proposed Modular Postponement Model", "1 Centralized Salt Lake Hub", "$2.90M Pooled Capital", "48-Hour Air Courier Delivery", "0.5% Near-Zero Obsolescence Profile"],
+                        ["Net Network Performance Shift", "Consolidated Sourcing Grid", "-$2.50M Cash Reclaimed", "Lead Time Compressed by 90%", "Saves $420,000 Annual Scrap Expense"]
+                    ]
+                },
+                strongAnswerPath: "The candidate focuses on the structural value of inventory aggregation, using the data exhibit to prove that the legacy plan traps $5.4M in capital and carries a high 8.2% scrap risk. They present a comprehensive postponement strategy: 1. Re-engineer the device chassis to make the power transformer and software chip modular slots accessible from an exterior backplate, dropping customization teardown times from 3 hours to 4 minutes. 2. Centralize inventory at the Salt Lake facility as a shared, generic base module, reclaiming $2.5M in liquid working capital cash from the balance sheet using the Square Root Law. 3. Build a dedicated configuration cell at the hub, installing automated diagnostic software units to run the required 100% regulatory testing sweep in under 90 seconds. 4. Fulfill global orders via fast air courier directly from Salt Lake City within 48 hours. This structural pivot compresses customer delivery timelines, completely eliminates international warehouse overheads, and cuts annual scrap write-offs by $420,000.",
+                finalRecommendation: "Redesign the electronic monitoring device into a modular component architecture to support late product differentiation. Centralize generic base components at the Salt Lake distribution hub to reclaim $2.5M in working capital cash, and build an inline final configuration cell to customize and verify orders on-demand within 48 hours.",
+                coachingNotes: "This scenario evaluates advanced global network design, modular product architecture, and postponement skills. Look for candidates who can accurately use data-dense matrices to balance product design modifications against balance-sheet working capital velocity and customer service speed.",
+                redFlags: [
+                    "Rejecting the postponement model because fast air courier shipping fees are higher than slow ocean transport freight, failing to calculate the multi-million dollar balance sheet capital savings and scrap expense reductions.",
+                    "Attempting to launch postponement customization at the distribution hub without modifying the monolithic product design, freezing cell operations due to the 3-hour manual teardown labor bottleneck."
+                ]
+            },
+            {
+                id: "S-041",
+                scenarioType: "production bottleneck / high-mix cellular design",
+                difficulty: "Expert",
+                title: "The Wasatch Biomedical High-Mix Cell Turnaround",
+                context: "A specialized biomedical testing kits facility along the Wasatch Front experiences a severe capacity constraint. The facility manufactures 45 distinct custom testing kit varieties on a shared manual packaging line. Due to a rising product mix and frequent, unoptimized machine changeovers, total line output has dropped by 35% over two quarters, creating a massive order backlog and running up expensive operator overtime fees.",
+                interviewerPrompt: "How would you systematically redesign this chaotic batch manufacturing line into an integrated high-mix cellular layout, apply SMED to compress changeover delays, and balance operator workloads to satisfy a high-volume customer Takt time beat?",
+                candidateObjectives: [
+                    "Group the 45 custom testing kit SKUs into distinct, shared product families using production routing commonalities.",
+                    "Apply SMED principles to separate internal and external machine changeover tasks to drive setup times into single digits.",
+                    "Design a balanced, U-shaped manufacturing cell layout that eliminates operator walking distances and idle time wastes."
+                ],
+                clarifyingQuestions: [
+                    "What are the precise manual cycle times and machine processing steps required to assemble and pack the different testing kit families?",
+                    "What is the total planned production runtime per shift, and what is the required daily customer order demand volume?",
+                    "How many hours do line operators currently spend completing tool calibrations and material adjustments during a standard product changeover?"
+                ],
+                suggestedApproach: "Deploy a comprehensive high-mix cellular manufacturing and SMED strategy. Do not run all 45 SKUs in massive blocks across a single straight line. Group the kits into 3 distinct product families based on shared machine routing paths. Apply SMED principles to reduce setup times on the primary line bottleneck asset, video-recording the changeover to separate internal tasks from external tasks. Reconfigure the layout into a tight, U-shaped cellular design, cross-training operators to enable flexible task handling that matches worker capacity with the required customer Takt time.",
+                keyIssues: [
+                    "Machine changeover times currently take an average of 75 minutes per product switch, limiting the line to just one product run per shift.",
+                    "Operators waste 28% of their on-road hours walking across the facility to retrieve components due to a fragmented linear layout.",
+                    "Upstream formulation tanks are run at maximum capacity to optimize local asset utilization metrics, flooding the floor with unmanaged WIP blocks."
+                ],
+                analysisRequired: "Calculate customer Takt time boundaries, compute individual workstation cycle times, run SMED task separation breakdowns, and determine total Line Balancing Efficiency gains.",
+                sampleDataOrExhibit: {
+                    caption: "Biomedical Packaging Station Performance & Processing Metrics",
+                    rows: [
+                        ["Packaging Workstation Node", "Number of Active Staff", "Manual Work Cycle Time", "Workstation Idle Time Percentage", "Local Material Inventory Status"],
+                        ["Station 1: Kit Tray Loading", "1 Operator", "45 Seconds", "43.7% Idle Staging Wait", "Stable / Low Intermediate WIP"],
+                        ["Station 2: Fluid Vial Inserter", "1 Operator", "80 Seconds (Bottleneck)", "0.0% Structural Stress", "95 Units Stalled in Floor Queue"],
+                        ["Station 3: Label & Barcode Tag", "1 Operator", "35 Seconds", "56.2% Idle Staging Wait", "Stable / Low Intermediate WIP"],
+                        ["Station 4: Sterile Heat Sealer", "1 Operator", "50 Seconds", "37.5% Idle Staging Wait", "110 Units Backlogged in Queue"]
+                    ]
+                },
+                strongAnswerPath: "The candidate approaches the high-mix crisis with disciplined line balancing physics. First, they determine the line constraints using the performance exhibit, isolating Station 2 (Fluid Vial Inserter) as the true bottleneck capping output pace at 80 seconds per unit. They call out the plant's structural mistake: allowing upstream stations to run at full capacity to hit local utilization targets, which simply floods the floor with 205 units of stalled WIP and traps capital. They execute a robust lean turnaround roadmap: 1. Group the 45 SKUs into 3 shared product families to standardize routing profiles. 2. Run a SMED project on the fluid inserter asset, pre-staging materials externally while the machine runs to slash changeover times from 75 minutes down to 8 minutes, allowing for flexible daily product adjustments. 3. Reconfigure the linear footprint into a tight, U-shaped cell, cutting operator walking distances completely and saving 28% of lost labor hours. 4. Balance the workload by moving 20 seconds of component prep work away from the Station 2 bottleneck and onto the under-utilized Station 3 operator (shifting Station 3 from 35 to 55 seconds). This smart task redistribution drops the bottleneck cycle time from 80 to 60 seconds, scaling cell output capacity by 33% and increasing total line efficiency from 65.6% up to 87.5% without adding any headcount overhead.",
+                finalRecommendation: "Group the 45 product SKUs into 3 shared manufacturing families, and reconfigure the linear line layout into a tight, U-shaped cellular design. Apply SMED methods to compress machine changeover delays from 75 minutes down to 8 minutes, and move 20 seconds of manual assembly tasks away from the Station 2 bottleneck to balance the cell flow.",
+                coachingNotes: "This scenario evaluates advanced high-mix cellular manufacturing, line balancing, and SMED methodology execution. Look for candidates who move past generic suggestions and use precise task redistribution and internal/external setup separations to optimize bottleneck asset capacities.",
+                redFlags: [
+                    "Proposing to buy an expensive secondary automated fluid inserter machine without realizing that the asset's capacity is simply being drained by poor setup methods and unbalanced operator workloads.",
+                    "Leaving the line in a fragmented linear layout and telling operators to work faster, failing to fix the 75-minute changeover bottleneck or the long walking distance wastes."
+                ]
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
