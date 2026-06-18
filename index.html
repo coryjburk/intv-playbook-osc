@@ -3816,6 +3816,154 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-093",
+                category: "Procurement & Supplier Management",
+                difficulty: "Advanced",
+                question: "What is Strategic Spend Category Management, and how do you structure cross-functional governance to eliminate Maverick Spend across decentralized corporate sites?",
+                conversational: "Category management moves procurement away from transactional order-taking and turns it into a strategic, multi-year sourcing program. Instead of letting individual plant managers buy materials independently from local spot vendors, you group your corporate expenditures into distinct categories—like raw materials, logistics, or MRO. We govern this by building cross-functional category teams that include engineering, operations, and finance. We aggregate our total business volume and run structured RFPs to select a core set of preferred strategic suppliers. To wipe out maverick spend—where local sites buy outside our master contracts—we integrate our approved vendor catalogs straight into the company's ERP platform, automatically blocking unvalidated purchase orders before they can cause margin leaks.",
+                deepdive: "Strategic Category Management operates as a continuous four-phase lifecycle framework: spend data aggregation and taxonomy classification, market intelligence benchmarking, portfolio optimization strategy selection (utilizing the Kraljic matrix), and supplier relationship governance. Maverick spend creates immediate compliance issues and margin leakage, forcing companies to absorb a 12% to 15% unit cost premium on spot-market transactions. Governance controls require locking down the corporate procurement infrastructure: setting up automated Electronic Procurement catalogs, establishing strict tier-level spend approval limits, and tracking contract compliance metrics (Contracted Spend / Total Category Spend) across all decentralized facilities to protect corporate EBITDA goals.",
+                coaching: "Look for candidates who can view procurement as a high-level corporate alignment strategy. They should comfortably explain how data visibility and automated ERP controls are used to eliminate rogue spot buying and leverage corporate purchasing power.",
+                redFlag: "Believing that category management is just an administrative exercise in reclassifying accounting codes, with no awareness of cross-functional team execution or automated ERP vendor controls."
+            },
+            {
+                id: "Q-094",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Advanced",
+                question: "What is a Merge-in-Transit (MIT) distribution network, and what specific coordination and technology variables determine its success?",
+                conversational: "Merge-in-Transit is an advanced logistics strategy where components from completely different suppliers are combined into a single customer shipment while they are actively moving through the transport pipeline, bypassing the need to store them in a standard warehouse. Think of a computer brand selling an enterprise workstation: the screen ships from one vendor, the keyboard from another, and the computer tower from a third. Instead of shipping these parts to a central warehouse to sit on shelves, they travel independently to a specialized cross-dock terminal closest to the customer. They arrive within hours of each other, merge into a single delivery van, and land on the customer's doorstep as one complete order, slashing warehouse storage overheads completely.",
+                deepdive: "Merge-in-Transit (MIT) optimizes delivery physics by substituting active transportation coordination for static warehouse real estate assets, dramatically improving Days Inventory Outstanding (DIO) performance. However, this strategy introduces high network synchronization demands. The structural prerequisites mandate real-time Electronic Data Interchange (EDI) or API data streams linking all suppliers, a unified Transportation Management System (TMS) to coordinate cross-dock arrival schedules, and highly reliable carriers who can hit tight delivery windows. If one supplier encounters a minor production delay or a truck hits a transport bottleneck, the entire shipment stalls at the cross-dock, triggering high terminal holding overheads and late-delivery contract fines.",
+                coaching: "The candidate needs to frame this as an explicit balance between warehouse storage capital savings and higher transportation tracking pressures. They should comfortably detail the core data tools—like shared API streams and advanced TMS tracking—needed to prevent terminal bottleneck delays.",
+                redFlag: "Recommending a Merge-in-Transit strategy for highly unstable, unpredictable, or low-margin product lines that lack real-time transit visibility or clear supplier schedule discipline."
+            },
+            {
+                id: "Q-095",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Expert",
+                question: "What is a CONWIP (Constant Work-in-Process) control framework, and how does it advance traditional Kanban pull-system execution on a high-variety line?",
+                conversational: "Traditional Kanban is a part-specific pull system where every single SKU must have its own dedicated physical card loop on the floor. If you run a high-variety production facility building 500 different custom products, managing 500 separate card loops creates absolute chaos and stalls your line flexibility. A CONWIP framework resolves this complexity by decoupling your pull signals from specific part numbers. Instead, it places a strict, cap on the total number of items allowed on the factory floor at one time. A raw material batch cannot enter the front of the line unless a generic CONWIP card is released at the exit gate. This simple constraint controls your floor inventory, minimizes travel bottlenecks, and allows operators to switch production sequences instantly based on real-time customer demand.",
+                deepdive: "CONWIP functions as a generalized, multi-product pull-control loop that governs total manufacturing lead times by enforcing a rigid capacity ceiling on floor inventory. The line velocity physics are governed by Little's Law, structured as: WIP_cap = Throughput · Lead Time. By maintaining a constant WIP level across a multi-stage production line, the system stabilizes the queue waiting times between workstations, preventing the unmanaged inventory triangles that traditional MRP batch-push systems force onto constraint assets. While Kanban regulates inventory levels for individual SKUs, CONWIP regulates the total queue volume across the entire value stream, making it the ideal lean control framework for high-mix, low-volume job shops.",
+                coaching: "Look for strong systemic thinking based on Little's Law. The candidate should clearly explain how decoupling pull signals from specific part numbers enables single-card flexibility on a high-variety production floor while maintaining tight boundaries over total WIP capital.",
+                redFlag: "Conflating a general CONWIP ceiling control with a standard forecast-driven MRP push schedule, or assuming that CONWIP requires separate dedicated card loops for every unique SKU configuration."
+            },
+            {
+                id: "Q-096",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Advanced",
+                question: "What is Forecast Consumption, and how does its execution logic prevent manufacturing lines from overproducing stock inside the Demand Time Fence window?",
+                conversational: "Forecast consumption is the data logic your planning software uses to ensure you don't double-count your numbers as you move closer to active production. At the start of the month, your S&OP team publishes a speculative sales forecast—say, aiming for 1,000 units. As actual customer orders flow into the system, they consume or replace that speculative forecast block line-by-line. If you have collected 600 units of real customer orders, the system knows it only needs to build an extra 400 units of uncommitted stock. If your software lacks this consumption logic, it will treat the forecast and the real orders as separate targets, blindly forcing the factory floor to build 1,600 units, flooding your warehouse with overproduction waste.",
+                deepdive: "Forecast consumption rules regulate how a Master Production Schedule (MPS) responds to market demand inside defined planning boundaries. Outside the Planning Time Fence, the system schedules production based on the maximum value between the speculative forecast and actual customer bookings. As inventory moves inside the strict Demand Time Fence (the near-term window where raw material changes are blocked to prevent line disruptions), the scheduling engine switches logic to focus entirely on Actual Orders. This consumption tracking prevents the system from generating duplicate material requirements, stabilizing the production schedule and protecting the facility's working capital metrics.",
+                coaching: "Listen for an accurate explanation of how customer orders decrement speculative forecast variables over a planning timeline. Strong candidates should comfortably use manufacturing execution terms like Demand Time Fence and Master Production Schedule.",
+                redFlag: "Believing that actual customer orders should always be added directly on top of speculative sales forecasts during near-term manufacturing schedules, showing an ignorance of forecast consumption rules."
+            },
+            {
+                id: "Q-097",
+                category: "Lean / Continuous Improvement",
+                difficulty: "Core",
+                question: "What is Single-Piece Flow, and what structural cell and tool adjustments are required to transition a manual batch assembly line away from batch-and-queue habits?",
+                conversational: "Single-piece flow is the ultimate lean state where products move through an assembly line one unit at a time with zero intermediate waiting queues or work-in-progress inventory triangles between stations. In a traditional batch-and-queue layout, an operator processes 50 units at a time, stacks them on a pallet, and pushes them down to the next station, forcing that downstream worker to sit idle while material clogs the floor. To transition to single-piece flow, you must reconfigure your shop floor into a tight, U-shaped cellular layout, compress equipment changeover times down to minutes using SMED, cross-train operators to handle multiple tasks, and install automated error-proofing sensors so that quality errors are caught and corrected instantly before a part moves downstream.",
+                deepdive: "Transitioning away from a batch-and-queue architecture requires balancing workstation cycle times directly with the required customer Takt time. The physical cell layout must be optimized to compress operator walking distances and eliminate material handling wastes. Task assignments are redistributed using precedence diagrams to eliminate line imbalances and balance employee workloads. This process compression slashes total system manufacturing lead times as proven by Little's Law, but it requires high process discipline: since there are no intermediate inventory cushions to hide machine breakdowns or quality defects, teams must implement robust preventive maintenance and inline error-proofing to keep the cell flowing.",
+                coaching: "The candidate should focus on the operational disciplines required to sustain continuous flow. Look for them to highlight that removing intermediate inventory buffers requires pairing the layout change with strict error-proofing and excellent equipment reliability.",
+                redFlag: "Proposing an immediate move to single-piece flow without addressing high machine breakdown rates or long tooling changeover times, which causes the entire line to freeze the second a minor delay happens."
+            },
+            {
+                id: "Q-098",
+                category: "Operations Strategy & Fundamentals",
+                difficulty: "Expert",
+                question: "How do you handle an executive mandate to implement an across-the-board 15% operational budget cut without destroying final customer service levels or violating facility safety metrics?",
+                conversational: "When executive leadership demands a sudden 15% budget cut, taking a meat-cleaver approach and slashing resources equally across all departments is a weak strategy that ruins plant safety and breaks customer trust. I handle this by running a rigorous, data-driven value-stream analysis. I leave core frontline production labor, critical safety maintenance schedules, and quality check gates completely untouched. Instead, I target the non-value-added overheads and structural logistics wastes. I renegotiate low-leverage procurement spend lines using bottom-up should-cost tracking, eliminate expensive warehouse storage congestion by cross-docking promotional goods, and automate repetitive data-entry workflows to lower administrative costs, hitting the 15% savings target while fully protecting the safety of our floor teams.",
+                deepdive: "Executing strategic expense reductions requires separating structural process wastes from necessary core operational capabilities. Operations leaders avoid horizontal percentage cuts, which inadvertently cripple bottleneck constraint assets and degrade process capability indicators. Instead, they apply Activity-Based Costing and Lean engineering principles to eliminate tracking wastes across the value stream: optimizing distribution drop densities to compress final-mile freight tariffs, consolidating raw commodity spend categories to capture volume scale discounts, and deploying autonomous maintenance to lower emergency repair fees. This analytical focus preserves process precision, protects contract fulfillment rates, and maintains absolute safety standard compliance.",
+                coaching: "Evaluate the candidate's strategic judgment and financial acumen under pressure. They must reject weak, flat percentage cost-cutting mandates and detail a structured plan to eliminate non-value-added operational wastes while explicitly protecting plant safety gates and bottleneck asset capacities.",
+                redFlag: "Proposing immediate, arbitrary cuts to worker safety training programs, routine machine maintenance schedules, or critical quality inspection gates to hit short-term budget targets, creating extreme long-term corporate liabilities."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-038",
+                scenarioType: "warehouse throughput / automation constraint",
+                difficulty: "Advanced",
+                title: "The Wasatch Fulfillment Automated Sortation Gridlock",
+                context: "A high-velocity direct-to-consumer e-commerce fulfillment engine based along the Wasatch Front deploys a new automated robotic parcel sortation matrix to handle a 45% surge in daily shipment volumes. However, during peak operating hours, a critical data synchronization lag between the scanner arrays and the warehouse management system causes a high 6.8% barcode mis-read rate, forcing thousands of packages into manual recirculating loops and creating a severe processing bottleneck at the shipping dock doors.",
+                interviewerPrompt: "Walk me through how you would isolate the technical and data variables driving this automation bottleneck, clear the shipping floor congestion, and implement inline control tracking to maximize daily throughput without reverting to slow, manual sorting methods.",
+                candidateObjectives: [
+                    "Perform a detailed process throughput audit to measure the capacity loss caused by automated scanner mis-read rates.",
+                    "Apply data-driven root-cause tools to isolate data transmission lags from physical mechanical conveyor alignment errors.",
+                    "Design a temporary task-interleaving and sorting buffer layout to manage the overflow packages while the data software is calibrated."
+                ],
+                clarifyingQuestions: [
+                    "What is the precise data response latency threshold required by the robotic sortation gates to route packages accurately at full conveyor speeds?",
+                    "Are the barcode scanning errors concentrated on specific high-velocity product packaging dimensions or specific print label styles?",
+                    "Can we temporarily slow the conveyor belt speed by 10% to give the software system more time to parse the shipping data manifests safely?"
+                ],
+                suggestedApproach: "Deploy a rigorous automation and technical systems audit. Identify that running a high-speed robotic sortation matrix past its data latency threshold causes tracking loops that stall the entire facility footprint. Set up an immediate visual multi-vari chart check to determine if errors are driven by software latency or physical label wrinkles. Implement a temporary, managed recirculation lane to pull out exception packages instantly, avoiding gridlock on the main conveyor track, and upgrade network data processing rules to ensure real-time manifest synchronization.",
+                keyIssues: [
+                    "The automated scanning array fails to parse shipping barcodes whenever the package data lag exceeds 120 milliseconds.",
+                    "Conveyor lines run continuously at maximum speed, forcing mis-read boxes into a long loop that blocks incoming packages from entering the sort track.",
+                    "Shipping floor operators are overwhelmed, losing picking velocity because they are manually sorting recirculated exception boxes by hand."
+                ],
+                analysisRequired: "Calculate the total capacity drain of the 6.8% automation mis-read rate, evaluate the financial return of upgrading system data processing pipelines, and model conveyor flow adjustments.",
+                sampleDataOrExhibit: {
+                    caption: "Automated Sortation Line Performance & Data Latency Metrics",
+                    rows: [
+                        ["Sortation Conveyor Line Node", "Hourly Package Throughput", "Barcode Scanner Mis-Read Rate", "Avg System Data Lag (MS)", "Workstation Operational Status Status"],
+                        ["Conveyor Line Alpha (Standard)", "4,500 Packages / Hr", "0.45% (Normal Noise)", "42 Milliseconds (Stable)", "Operational / High Flow Velocity"],
+                        ["Conveyor Line Beta (Core Hub)", "5,800 Packages / Hr", "6.80% (Bottleneck)", "185 Milliseconds (Lag)", "Severe System Spatial Gridlock"],
+                        ["Conveyor Line Gamma (Standard)", "4,200 Packages / Hr", "0.52% (Normal Noise)", "48 Milliseconds (Stable)", "Operational / High Flow Velocity"]
+                    ]
+                },
+                strongAnswerPath: "The candidate approaches the automation failure with strong systems engineering logic. They isolate Line Beta using the performance metrics exhibit, noting that a high data latency lag of 185 milliseconds is what triggers the 6.8% barcode mis-read rate and stalls the warehouse flow. They implement an immediate 48-hour recovery strategy: 1. Throttle the conveyor belt speed on Line Beta by a minor 8% to match its active processing limits, dropping scanner error rates by 50% instantly while a permanent data fix is built. 2. Establish a physical, dedicated exception layout lane to remove mis-read boxes from the main loop immediately, preventing conveyor congestion. 3. Work with IT systems engineers to deploy a direct database query rule that pre-loads shipping manifests onto local scanner arrays, cutting data response times down to 35 milliseconds. This technical adjustment drops the error rate back to a clean 0.45%, clears the shipping floor congestion, and unlocks the full 5,800 package-per-hour design capacity.",
+                finalRecommendation: "Pre-load shipping manifest data onto localized scanner arrays to drop network processing latency below 50 milliseconds. Install a dedicated physical exception lane to remove sorting errors instantly and prevent main conveyor track gridlock.",
+                coachingNotes: "This scenario evaluates a candidate's technical problem-solving skills and command over automated systems. Look for them to move past basic warehouse labor adjustments and use data latency tracking and conveyor line physics to resolve the core technical constraint.",
+                redFlags: [
+                    "Proposing to shut down the automated system entirely and hire 50 temporary workers to sort packages by hand, ignoring the severe financial expense and slower processing speeds of manual operations.",
+                    "Blaming floor operators for poor label placement without reviewing the 185-millisecond data synchronization lag that is driving the scanner tracking errors."
+                ]
+            },
+            {
+                id: "S-039",
+                scenarioType: "logistics procurement / contract negotiation strategy",
+                difficulty: "Advanced",
+                title: "The Great Basin Industrial Minerals Multi-Year Freight RFP Synergy",
+                context: "Following a series of regional acquisitions, a consolidated industrial minerals enterprise based in Salt Lake City manages an annual logistics freight spend of $42M across multiple decentralized operating mines and facilities. Each independent site negotiates its own over-the-road truckload carrier contracts, resulting in severe shipping price variation, fragmented lane coverage, and significant margin leakage across the network.",
+                interviewerPrompt: "Develop an enterprise-wide logistics procurement optimization strategy to consolidate this fragmented spend, eliminate price variation across regional lanes, and restructure carrier networks to maximize corporate operating margins without risking material delivery delays.",
+                candidateObjectives: [
+                    "Analyze and segment regional shipping data to construct a unified corporate transportation spend visibility cube.",
+                    "Design a centralized carrier core-routing guide to consolidate purchasing power across shared shipping corridors.",
+                    "Formulate a multi-year master contract negotiation framework that balances dedicated carrier capacity against spot-market rate exposures."
+                ],
+                clarifyingQuestions: [
+                    "What is the current price variance for identical freight lane corridors across our different operational mining facilities?",
+                    "Do our individual facilities utilize specialized trailer equipment (like pneumatic bulk tankers) or standard flatbed over-the-road trucks?",
+                    "Are local plant managers contractually bound to long-term commitments with regional trucking lines that feature early-termination penalties?"
+                ],
+                suggestedApproach: "Deploy a structured strategic sourcing and logistics procurement framework. Gather and aggregate shipping records from all decentralized sites into a centralized spend visibility cube to isolate lane overlaps. Consolidate fragmented regional carrier contracts into a single master request for proposal (RFP), leveraging the enterprise's combined volume to negotiate lower long-term rates. Establish a strict core-carrier routing guide to limit spot-market usage, and allocate lanes using a primary/secondary framework to secure capacity while driving down transportation expenses.",
+                keyIssues: [
+                    "Local logistics managers are actively resisting centralization, fearing that corporate carrier contracts will fail to secure trucks during regional harvest spikes.",
+                    "Price variation for identical shipping lanes is high, with some facilities paying up to a 45% cost premium on spot-market spot buys.",
+                    "Product delivery tracking is fragmented, with over 28 independent regional carrier lines requiring manual tracking workflows."
+                ],
+                analysisRequired: "Run a freight price-variance analysis across regional corridors, calculate total transport cost reductions achieved by volume consolidation, and model core-carrier capacity commitments.",
+                sampleDataOrExhibit: {
+                    caption: "Logistics Freight Lane Sourcing & Price Variation Matrix",
+                    rows: [
+                        ["Regional Freight Shipping Lane Corridor", "Total Consolidated Shipments", "Active Carrier Count across Sites", "Min Contract Price Paid per Load", "Max Spot Price Paid per Load"],
+                        ["Lane Corridor 1: Salt Lake to Denver, CO", "3,500 Loads / Year", "14 Independent Carriers", "$1,450 / Load Contract", "$2,150 / Load Spot Market"],
+                        ["Lane Corridor 2: Salt Lake to Phoenix, AZ", "2,200 Loads / Year", "8 Independent Carriers", "$1,850 / Load Contract", "$2,600 / Load Spot Market"],
+                        ["Lane Corridor 3: Salt Lake to Los Angeles, CA", "4,800 Loads / Year", "22 Independent Carriers", "$1,600 / Load Contract", "$2,450 / Load Spot Market"]
+                    ]
+                },
+                strongAnswerPath: "The candidate addresses the logistics fragmentation with sophisticated procurement and routing guide governance. They review the spend matrix exhibit and point out a major cost drain: using 44 independent carriers across overlapping lanes, forcing the enterprise to absorb an unoptimized 45% spot market cost premium ($2,450 vs. $1,600). They execute an enterprise turnaround strategy: 1. Consolidate the fragmented $42M spend into a single master regional freight RFP, compressing the active vendor network from 44 down to 3 core strategic carriers. 2. Lock in long-term dedicated volume contracts with these 3 carriers, using their combined freight capacity to drop average shipping rates to $1,500 per load across corridors. 3. To overcome local management resistance and manage harvest volume spikes, they design a primary/secondary routing guide, allocating 80% of volume to the primary contract carrier while keeping a pre-qualified secondary trucking line ready for peak seasons. This logistics consolidation captures a clean 14% total savings across categories, instantly injecting $5.88M directly into corporate operating income margins.",
+                finalRecommendation: "Consolidate your fragmented regional shipping spend into a centralized corporate transport RFP. Implement a structured core-carrier routing guide utilizing a primary/secondary vendor framework to lower shipping costs while securing seasonal logistics capacity.",
+                coachingNotes: "This scenario evaluates enterprise-level logistics procurement and cross-functional negotiation skills. Look for candidates who look past surface price-haggling tactics and focus on structural levers like spend aggregation, carrier network consolidation, routing guide enforcement, and capacity risk protection.",
+                redFlags: [
+                    "Passively allowing local plant managers to continue using expensive, uncoordinated spot carriers to avoid short-term tension, completely missing the multi-million dollar corporate cost-saving opportunity.",
+                    "Attempting to cancel all regional carrier agreements on Day 1 without verifying secondary carrier availability or checking contract terms, risking production stoppages due to severe truck shortages."
+                ]
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
