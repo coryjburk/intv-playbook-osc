@@ -4113,6 +4113,155 @@
             }
         );
         
+        contentData.questions.push(
+            {
+                id: "Q-105",
+                category: "Inventory Management & Optimization",
+                difficulty: "Advanced",
+                question: "What is the strategic and mathematical distinction between Local Inventory and Multi-Echelon Echelon Inventory optimization across a distribution network?",
+                conversational: "Traditional local inventory optimization treats every warehouse node like a siloed island. The manager at the regional hub looks strictly at their local demand, and the manager at the central factory does the same, leading each site to build up independent safety stock buffers. This disconnected approach creates massive excess stock and worsens the bullwhip effect. Multi-Echelon inventory optimization views the entire supply chain as a single, integrated ecosystem. Instead of guessing at each tier, it calculates 'Echelon Inventory'—which is the total volume of a part currently sitting on your shelves plus everything already in transit downstream. By optimizing inventory globally across all tiers simultaneously, you can safely pull safety stock out of intermediate warehouses and hold it at the lowest-cost upstream node, cutting total network holding capital while keeping customer service levels secure.",
+                deepdive: "Mathematically, local optimization focuses on localized reorder points where Lead Time Demand is modeled independently per node. Multi-Echelon optimization models the network as a directed graph where Echelon Inventory (E_i) at node i equals the local stock on-hand plus all downstream inventory in possession or transit: E_i = I_i + Sum(Inventory downstream from node i). By calculating the stochastic demand propagation across the entire network topology, operations leaders can determine the true safety stock allocation boundaries. This approach positions inventory dynamically: keeping generic components centralized upstream to capture risk-pooling capital savings, while pushing only fast-turning finished goods to the final-mile spokes to minimize total network working capital requirements.",
+                coaching: "Look for candidates who use the term 'Echelon Inventory' correctly, distinguishing it from siloed local stocking practices. They should comfortably explain how multi-echelon math enables strategic risk pooling and shifts safety stocks upstream to optimize working capital.",
+                redFlag: "Suggesting that the best way to optimize a multi-tiered distribution network is to force every individual warehouse manager to lower their local safety stocks independently, which causes systemic part shortages."
+            },
+            {
+                id: "Q-106",
+                category: "Procurement & Supplier Management",
+                difficulty: "Core",
+                question: "How do you design a proactive Supplier Scorecard framework, and how do you link Service Level Agreement (SLA) clawbacks directly to financial risk mitigation?",
+                conversational: "A supplier scorecard shouldn't just be a passive report card emailed out once a year; it needs to function as an active, data-driven governance tool. I build scorecards around four core metrics: On-Time In-Full (OTIF) delivery, First-Pass Quality Yield, Lead Time Compliance, and Cost Variance. We look at these weekly, not annually. To give the scorecard real teeth, we link it straight to contractually binding SLA clawback provisions. If a vendor's OTIF drops below our 98% threshold and triggers a manufacturing bottleneck, the contract shouldn't just issue a warning—it must automatically enforce a financial penalty, such as a 2% price discount per day of delay. This aligns the supplier's incentives directly with our operational stability and recovers the cash lost to shop-floor disruptions.",
+                deepdive: "SLA clawback design requires translating supplier failures into objective operational finance penalties. If an unreliable component vendor stalls a primary line constraint asset, the company absorbs a clear financial loss driven by unabsorbed fixed factory overhead and customer late-delivery fines. Contractual clawbacks recover these expenses: Unit Price Paid = Contract Base Price - Surcharge Penalty (where the penalty scales non-linearly based on the deviation from the OTIF or quality baseline). By formalizing these data-driven clawbacks inside Master Service Agreements, procurement teams insulate the corporate P&L from vendor execution variances and establish a clear financial barrier against supply chain disruptions.",
+                coaching: "Listen for a disciplined, structured approach to vendor governance. Strong candidates treat scorecards and SLAs as financial protection mechanisms, explicitly linking supplier execution metrics back to corporate P&L performance.",
+                redFlag: "Managing critical vendor relationships based entirely on casual, emotional feedback loops with no structured scorecard data or contractually protected financial clawbacks."
+            },
+            {
+                id: "Q-107",
+                category: "Logistics, Distribution & Network Design",
+                difficulty: "Advanced",
+                question: "What is Zone Skipping in parcel logistics, and how do you evaluate the freight cost and transit speed trade-offs required to execute it?",
+                conversational: "Zone skipping is a highly effective freight consolidation strategy used to bypass expensive parcel shipping tariffs over long distances. If you ship thousands of individual small packages from a single fulfillment center in Salt Lake City to customers scattered across the East Coast, parcel carriers will hit you with high Zone 7 and Zone 8 postal rates per box. With zone skipping, you group those thousands of small packages together into one dense, consolidated full truckload shipment. You fly or drive that single truck straight across the country to a parcel carrier's regional hub on the East Coast—say, in New York—bypassing the intermediate shipping zones entirely. The truck unloads, the local parcel network scans the boxes, and they are delivered locally under cheap Zone 2 rates, cutting your long-distance transport costs significantly.",
+                deepdive: "The operational break-even point for Zone Skipping is governed by linehaul trucking costs versus parcel tariff differentials across postal zones. Small parcel carriers (UPS, FedEx, USPS) price packages using a matrix of weight and distance tiers (Zones 2 through 8). Zone skipping eliminates high-zone parcel surcharges by substituting a low-fixed-cost over-the-road linehaul truckload (FTL) for variable, high-cost individual package shipments. The mathematical optimization models the minimum volume threshold required per regional cluster to ensure that the parcel savings (Sum(Parcel Zone8_cost - Parcel Zone2_cost)) strictly exceed the fixed cost of the linehaul truck, while accounting for a potential 24-to-48 hour transit delay for consolidation.",
+                coaching: "The candidate must clearly outline the trade-off between fixed linehaul trucking costs and variable parcel zone savings. Look for them to specify the volume thresholds and geographic clustering required to execute zone skipping successfully.",
+                redFlag: "Proposing zone skipping for low-volume, highly scattered regional shipping patterns, which drives up linehaul trucking costs without generating enough parcel tariff savings to break even."
+            },
+            {
+                id: "Q-108",
+                category: "Manufacturing / Production & Capacity",
+                difficulty: "Expert",
+                question: "How do you optimize a Dynamic Line Balancing sequence in a high-mix manufacturing environment where product processing times vary wildly between consecutive units?",
+                conversational: "Dynamic line balancing in a high-mix environment is one of the toughest challenges a plant manager faces. If your line builds a standard product that takes 40 seconds, followed immediately by a custom unit that takes 90 seconds, a traditional fixed layout will instantly buckle. The 90-second part creates a massive bottleneck at the workstation, causing upstream operators to block and downstream machines to starve. To optimize this fluid flow, you cannot rely on rigid task assignments. I implement a flexible 'Chaku-Chaku' cellular layout combined with a dynamic worker tracking system, like a 'bumping' or 'rabbit-chase' sequence. Operators are cross-trained to follow the product across multiple stations, stepping forward or backward based on visual inventory queues to absorb the cycle time variations without halting the line flow.",
+                deepdive: "High-mix line balancing requires moving away from static deterministic cycle times and designing systems that handle stochastic process variations. The capacity scheduling model must utilize Mixed-Model Sequencing rules to balance the workload, ensuring high-work-content units are separated by low-work-content units to prevent line congestion. Operators are organized into a cellular layout utilizing standard work-in-progress (SWIP) buffers between stations to decouple processing times. By enforcing clear visual pull boundaries on the floor, the manufacturing cell stabilizes total throughput velocity, preventing local cycle time spikes from inflating unmanaged floor WIP as governed by Little's Law.",
+                coaching: "Look for strong, high-level systemic thinking. Elite candidates avoid simple suggestions like increasing headcount, focusing instead on structural lean mechanisms like mixed-model sequencing, U-shaped cellular layouts, and dynamic cross-station operator tracking.",
+                redFlag: "Suggesting that the only way to handle high-mix variation is to build large intermediate inventory buffers between every single station, which clogs the floor and slows down customer lead times."
+            },
+            {
+                id: "Q-109",
+                category: "Demand Planning, Forecasting & S&OP",
+                difficulty: "Core",
+                question: "What is Sales Forecast Bias, how do you track it statistically, and how do you protect an S&OP schedule from intentional sales 'sandbagging'?",
+                conversational: "Sales forecast bias is a systematic error where your sales team's predictions consistently miss the mark in one specific direction. The most common variation is intentional 'sandbagging'—where sales reps deliberately under-forecast their expected volume by 15% so they can easily crush their targets and secure their quarterly bonuses. While this looks great for their commissions, it inflicts a massive penalty on operations: the factory under-orders raw materials, lines are hit with sudden capacity shortages, and you're forced to pay for emergency weekend overtime and spot freight to fulfill the actual demand. I track this using a formal Tracking Signal and Mean Error metric, bringing these objective bias analytics into our S&OP meetings to hold the commercial team accountable and align the manufacturing schedule with historical data.",
+                deepdive: "Forecast bias is measured statistically using the Mean Error (ME) or the Running Sum of Forecast Errors (RSFE), defined as: RSFE = Sum(Actual Demand_t - Forecast Demand_t). In an unbiased forecasting model, errors are completely random and hover around zero over time. When intentional sandbagging happens, the RSFE stays positive month after month, driving the Tracking Signal (TS = RSFE / MAD) past established control boundaries. Operations leaders protect the corporate P&L by applying statistical overrides to biased sales forecasts within the S&OP engine, decoupling the active manufacturing schedule from sales performance incentives to stabilize the plant's operating costs.",
+                coaching: "The candidate should clearly separate forecast accuracy (size of error) from forecast bias (direction of error). Look for them to use data-driven metrics—like tracking signals—to explain how they manage sales sandbagging and protect factory capacity schedules.",
+                redFlag: "Accepting a highly biased sales forecast blindly because 'the sales team knows the market best,' showing a complete ignorance of how systematic forecasting bias damages factory operating efficiencies."
+            },
+            {
+                id: "Q-110",
+                category: "Quality Management, Metrics & KPIs",
+                difficulty: "Expert",
+                question: "Contrast classical Taguchi Design of Experiments (DOE) with the Shainin Multi-Vari variables-isolation technique, and outline when you deploy each.",
+                conversational: "Classical Taguchi Design of Experiments is a powerful, highly mathematical quality engineering tool where you build structured multi-variable matrices to test how dozens of different process settings interact with each other at the same time. It is an incredible tool when you are designing a brand-new manufacturing process from scratch and need to find the optimal recipe. But it is slow, expensive, and forces you to disrupt daily factory operations. The Shainin methodology takes the exact opposite approach for troubleshooting active production lines: it is a rapid process of passive elimination. Instead of running complex mathematical models, you use simple tools like Multi-Vari charts and component swaps to let the parts speak to you on the floor. This lets you quickly rule out innocent variables and isolate the single dominant root cause—the 'Red X'—without halting factory throughput.",
+                deepdive: "The selection rule balances experimental overhead against diagnostic precision. Taguchi DOE uses orthogonal arrays and analysis of variance (ANOVA) linear regressions to optimize robust target configurations across complex parameter spaces, making it highly effective for pre-production process validation. Shainin variables isolation operates on the Pareto-based principle that one single dominant cause (the Red X) drives the vast majority of process distribution defects. By running passive diagnostic passes—such as positional, cyclical, and temporal Multi-Vari tracking—engineering teams can eliminate non-contributing factors cleanly, compressing troubleshooting timelines by up to 80% and protecting the facility's yield metrics without needing to halt active production.",
+                coaching: "Listen for an analytical comparison based on speed and operational execution. Strong candidates use Taguchi DOE for upstream process development and Shainin techniques for rapid, inline defect isolation on active production floors.",
+                redFlag: "Suggesting that the only way to troubleshoot a sudden factory floor yield failure is to freeze the entire line for a month to run a massive, hundred-run Taguchi matrix, failing to see the financial penalty of halting factory throughput."
+            }
+        );
+
+        contentData.scenarios.push(
+            {
+                id: "S-042",
+                scenarioType: "logistics infrastructure / zone skipping optimization",
+                difficulty: "Advanced",
+                title: "The Wasatch Parcel Distribution Zone-Skipping Freight Pivot",
+                context: "A high-volume direct-to-consumer e-commerce brand based in Salt Lake City distributes specialized sports equipment to consumers across the United States. Following a sudden 35% surge in East Coast sales volume, corporate accounting flags a severe cash drain: the company's small-parcel shipping expenses have soared because over 70% of shipments are hitting high Zone 7 and Zone 8 parcel carrier rates, eroding the e-commerce channel's net operating profit margin.",
+                interviewerPrompt: "How would you systematically analyze this long-distance small-parcel shipping spend, calculate the volume break-even thresholds needed to implement a zone-skipping logistics model, and restructure your transportation network to restore corporate margins?",
+                candidateObjectives: [
+                    "Construct a transportation cost-per-zone matrix to compare individual small-parcel rates against consolidated truckload linehaul costs.",
+                    "Calculate the exact weekly package volume threshold required per regional hub to make a zone-skipping freight pivot profitable.",
+                    "Design a primary/secondary carrier routing guide to manage cross-country linehaul schedules without slowing down customer delivery speeds."
+                ],
+                clarifyingQuestions: [
+                    "What is our current average package weight, physical cube dimensions, and weekly shipment volume destined for the New York tri-state area?",
+                    "Do our small-parcel contract terms include volume-based discount tiers that would be damaged if we divert packages to a zone-skipping model?",
+                    "What is the exact fixed cost and transit time required to source a dedicated full truckload linehaul carrier from Salt Lake City to an East Coast distribution hub?"
+                ],
+                suggestedApproach: "Deploy a rigorous total logistics cost and transport network analysis. Map the parcel spend by destination zip code to build a clear geographic spend cube. Identify that shipping individual small packages across multiple zones is highly inefficient. Group the East Coast packages together at the Salt Lake facility, consolidate them into a dedicated full truckload (FTL) linehaul carrier, and ship them straight to an injection hub in New York. This strategy allows the packages to enter the carrier's network locally, bypassing high-zone surcharges and capturing massive shipping savings.",
+                keyIssues: [
+                    "Shipping individual 8-lb packages directly via Zone 8 parcel rates costs an expensive $18.50 per unit.",
+                    "A dedicated over-the-road linehaul truck from Salt Lake to New York costs a fixed $4,200 per run and can hold up to 3,500 consolidated packages.",
+                    "Consolidating packages into full truckloads adds an extra 48 hours of transit buffer time, which could conflict with next-day delivery promises."
+                ],
+                analysisRequired: "Compute full logistics trade-off metrics (comparing individual parcel rates against linehaul truck costs), calculate the minimum volume break-even points, and model delivery speed metrics.",
+                sampleDataOrExhibit: {
+                    caption: "Small-Parcel Surcharges vs. Consolidated Zone-Skipping Cost Metrics",
+                    rows: [
+                        ["Logistics Sourcing Strategy Tier", "Weekly Shipping Volume", "Landed Transport Cost Per Unit", "Cross-Country Transit Lead Time", "Net Annualized Freight Spend Impact"],
+                        ["Legacy Siloed Small-Parcel Plan", "7,000 Packages / Week", "$18.50 / Individual Box", "4-Day Ground Pipeline", "$6.73M High-Cost Baseline Expense"],
+                        ["Proposed FTL Zone-Skipping Model", "7,000 Packages (2 Trucks)", "$5.45 / Unit Fully Loaded", "5-Day Consolidated Loop", "$1.98M Cost-Optimized Expense"],
+                        ["Net Network Performance Shift", "Consolidated Transport Grid", "-$13.05 Savings Per Package", "+24-Hour Consolidation Lag", "Saves $4.75M Annualized Capital Cash"]
+                    ]
+                },
+                strongAnswerPath: "The candidate utilizes the logistics metrics exhibit to target the core financial opportunity: individual parcel shipping over long distances is highly inefficient, costing $18.50 per unit. They run a bottom-up network optimization model: a dedicated linehaul truck costs $4,200 and carries 3,500 packages, resulting in a cheap linehaul cost of just $1.20 per unit ($4,200 / 3,500). Adding the local Zone 2 parcel injection rate of $4.25 brings the fully loaded zone-skipping unit cost to $5.45 ($1.20 + $4.25). Comparing this to the legacy $18.50 rate highlights an incredible $13.05 savings per package. For their weekly 7,000-package volume, they recommend sourcing 2 dedicated full truckloads per week. This freight consolidation slashes annualized transportation expenses by a massive $4.75M. To manage the 24-hour consolidation delay, they propose a smart operational compromise: routing time-critical next-day air orders via the standard parcel network, while shifting the dominant ground volume to the zone-skipping linehaul grid to protect corporate margins.",
+                finalRecommendation: "Consolidate long-distance East Coast ground orders into twice-weekly full truckloads at the Salt Lake hub, injecting them directly into regional East Coast carrier hubs. This zone-skipping strategy bypasses high-zone parcel surcharges, capturing a massive $13.05 savings per unit and reducing annualized transport expenses by $4.75M.",
+                coachingNotes: "This scenario evaluates advanced parcel logistics network design and transportation procurement skills. Look for candidates who can calculate freight cost differentials and manage volume thresholds, using hard logistics data to optimize shipping density and carrier networks.",
+                redFlags: [
+                    "Accepting high Zone 8 parcel surcharges as an unchangeable market reality, or proposing a broad product price increase that drives away online buyers and ignores the transportation root cause.",
+                    "Launching zone skipping for a low-volume regional lane that fails to satisfy the 3,500-package truck capacity, trapping cash in half-empty linehaul vehicles."
+                ]
+            },
+            {
+                id: "S-043",
+                scenarioType: "manufacturing capacity / mixed-model sequencing bottleneck",
+                difficulty: "Advanced",
+                title: "The Intermountain Precision Machining Mixed-Model Gridlock",
+                context: "A prominent automotive components manufacturer along the Wasatch Front experiences a severe throughput crisis on an automated assembly line. Due to a rising product mix driven by a new customized vehicle program, the line must process three distinct component configurations with wildly varying cycle times. Because the factory runs these parts in traditional large batches, the downstream automated welding and inspection stations are heavily bottlenecked, causing floor WIP inventory to pile up and dropping shift throughput from a targeted 240 units down to 165 units.",
+                interviewerPrompt: "How would you systematically analyze the cycle time variations across these three component configurations, apply mixed-model sequencing rules to level the production schedule, and resize floor buffers to maximize throughput without purchasing new equipment?",
+                candidateObjectives: [
+                    "Isolate the line bottleneck by calculating the weighted-average cycle time across the multi-product demand mix.",
+                    "Apply Heijunka leveling principles to sequence production in a continuous, blended stream that matches the customer Takt time.",
+                    "Size a managed standard work-in-progress (SWIP) decoupling buffer to protect downstream stations from cycle time variations."
+                ],
+                clarifyingQuestions: [
+                    "What are the precise standalone cycle times for each of the three component configurations across our four assembly stations?",
+                    "What is the exact percentage breakdown of monthly customer demand across the three different product models?",
+                    "What is the current machine changeover time required to switch the line between the different component configurations?"
+                ],
+                suggestedApproach: "Apply the strict physics of cellular manufacturing and the Theory of Constraints. Map the individual cycle times for each product model across stations to locate the primary line bottleneck. Reject the large-batch push strategy, as it creates massive intermediate inventory triangles that stall process flow. Calculate the customer Takt time based on active shift parameters. Apply Heijunka leveling principles to sequence the production schedule in a continuous, blended stream (matching the real demand mix ratio), and position a managed standard work-in-progress (SWIP) decoupling buffer right before the constraint station to keep the line flowing.",
+                keyIssues: [
+                    "Model Premium takes a long 110 seconds to process at Station 2, while Model Standard takes only 45 seconds, creating immediate line blockages during large premium batches.",
+                    "Machine changeover times currently take 45 minutes per product switch, forcing supervisors to run large, un-leveled batches to optimize local machine utilization metrics.",
+                    "Line operators lack real-time visibility into downstream backlogs, causing upstream stations to keep pushing material forward blindly."
+                ],
+                analysisRequired: "Calculate the customer Takt time based on demand targets, compute weighted-average cycle times across the multi-product mix, and determine the capacity gains from line leveling.",
+                sampleDataOrExhibit: {
+                    caption: "Multi-Product Configuration Cycle Times & Demand Breakdowns",
+                    rows: [
+                        ["Component Product Model Line", "Monthly Demand Share (%)", "Station 1 Processing Time", "Station 2 Processing Time", "Station 3 Processing Time", "Station 4 Processing Time"],
+                        ["Model Standard (Low Content)", "50% Demand Volume", "40 Seconds", "45 Seconds", "35 Seconds", "40 Seconds"],
+                        ["Model Deluxe (Mid Content)", "30% Demand Volume", "45 Seconds", "70 Seconds", "45 Seconds", "50 Seconds"],
+                        ["Model Premium (High Content)", "20% Demand Volume", "50 Seconds", "110 Seconds (Bottleneck)", "60 Seconds", "55 Seconds"],
+                        ["Weighted-Average Cycle Times", "100% Total Demand", "43.5 Seconds", "65.5 Seconds Target", "43.0 Seconds", "46.0 Seconds"]
+                    ]
+                },
+                strongAnswerPath: "The candidate approaches the high-mix crisis with disciplined line balancing physics. First, they determine the line constraints using the multi-product exhibit, isolating Station 2 as the true system bottleneck where the Premium model's 110-second cycle time exceeds the line's limits. They calculate the customer Takt time: an 8-hour shift contains 480 minutes, and subtracting 30 minutes for planned breaks leaves 450 minutes of actual production time. To deliver the target 240 units, the line must produce one finished unit every 1.875 minutes, setting a firm Takt time of 112.5 seconds per unit. They note that the bottleneck's weighted-average cycle time of 65.5 seconds sits safely below the 112.5-second Takt line, proving that the capacity shortfall is entirely self-inflicted by poor scheduling and large-batch sequencing. They execute a robust lean turnaround roadmap: 1. Deploy SMED methods to compress machine changeover times from 45 minutes down to a clean 4 minutes, allowing for flexible daily product adjustments. 2. Eliminate large-batch scheduling and implement a leveled Heijunka sequence based on the demand mix ratio (5 parts Standard, 3 parts Deluxe, 2 parts Premium). 3. Position a managed 4-unit standard work-in-progress (SWIP) decoupling buffer right in front of Station 2 to absorb cycle time variations safely. This process alignment increases shift throughput from 165 up to the required 240 units, completely stabilizing the manufacturing flow without adding headcount overhead.",
+                finalRecommendation: "Transition the factory schedule away from large-batch push production to a leveled mixed-model Heijunka sequence (5 Standard / 3 Deluxe / 2 Premium) to match real customer demand. Size a managed 4-unit SWIP decoupling buffer right before Station 2 to absorb cycle time variations and unlock full line capacity.",
+                coachingNotes: "This scenario evaluates advanced mixed-model sequencing, line balancing, and constraint management skills. Look for candidates who look past local machine utilization metrics and use precise weighted-average cycle times and decoupling buffers to stabilize manufacturing flow velocity.",
+                redFlags: [
+                    "Proposing to purchase a second expensive automated welding machine for Station 2 without realizing that the asset's capacity is simply being drained by poor large-batch scheduling and un-leveled sequencing.",
+                    "Attempting to resolve the capacity shortfall by telling operators to work faster or extending manual shift hours, ignoring the root cause of large-batch line blockages."
+                ]
+            }
+        );
+        
         const competencies = [
             "Problem structuring & root-cause rigor",
             "Operational & technical knowledge",
