@@ -8,7 +8,7 @@
 
 ## Live Link
 
-‘https://coryjburk.github.io/intv-playbook-osc/’
+**[Open the OSC Interview Playbook](https://coryjburk.github.io/intv-playbook-osc/)**
 
 ---
 
