@@ -2,7 +2,13 @@
 
 > A complete, self-contained interview-prep tool for manager-level roles in operations, supply chain, logistics, manufacturing, procurement, and continuous improvement. One HTML file. No install, no account, works offline.
 
-**Part of Eccles MBA Career Tools** · University of Utah David Eccles School of Business
+**Part of Eccles MBA Career Tools** · Full-Time MBA Program · David Eccles School of Business
+
+---
+
+## Live Link
+
+‘https://coryjburk.github.io/intv-playbook-osc/’
 
 ---
 
